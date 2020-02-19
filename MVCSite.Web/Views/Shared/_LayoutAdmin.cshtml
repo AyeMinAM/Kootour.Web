@@ -1,0 +1,118 @@
+﻿@using SquishIt.Framework
+@using MVCSite.Web.ViewModels
+@model MVCSite.Web.ViewModels.Layout
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML Strict//EN">
+<html>
+<head id="head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- The following 3 lines is for google plus -->
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="@Model.MetaDescription" />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/images/kootour.ico")" />
+    <title>@ViewBag.Title</title>
+    <base href="/">
+    <!-- Styles -->
+    @Html.Raw(Bundle.Css()
+        .Add("~/assets/css/bootstrap.min.css")
+        .Add("~/assets/css/bootstrap-theme.min.css")
+        .Add("~/assets/css/bootstrap-datetimepicker.min.css")
+        .Add("~/assets/css/bootstrap-dialog.min.css")
+        .Add("~/assets/css/kootour.css")
+        .Add("~/assets/css/star-rating.min.css")
+        .Add("~/assets/css/theme-star-kootour.css")
+        .Add("~/Content/validation.css")
+        .Add("~/Content/kootourExt.css")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/styles/jqx.base.css")
+        .Render("~/Content/combined_#.css"))
+    <link rel="stylesheet" href="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/styles/jqx.base.css" type="text/css" />
+
+    @Html.Raw(Bundle.JavaScript()
+        
+        .Add("~/assets/js/jquery-1.12.3.min.js")
+        .Add("~/assets/js/moment.js")
+        .Add("~/assets/js/bootstrap.min.js")
+        .Add("~/assets/js/bootstrap-datetimepicker.min.js")
+        .Add("~/assets/js/bootstrap-dialog.min.js")
+        .Add("~/assets/js/star-rating.min.js")
+        .Add("~/assets/js/read-more.js")
+        //.Add("~/assets/js/lib/wishlist.js")
+        .Add("~/assets/js/main.js")
+        //.Add("~/Scripts/Popup.js")
+        //.Add("~/ViewScripts/Shared/_Layout.js")
+
+        //.Add("~/libs/core-js/client/shim.min.js")
+        //.Add("~/libs/zone.js/dist/zone.js")
+        //.Add("~/libs/reflect-metadata/Reflect.js")
+        //.Add("~/libs/systemjs/dist/system.src.js")
+
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxcore.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxnotification.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxdata.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxbuttons.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxscrollbar.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxmenu.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxcheckbox.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxlistbox.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxdropdownlist.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.sort.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.pager.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.selection.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.edit.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.filter.js")
+        //.Add("~/tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.columnsresize.js")
+
+    .Render("~/js/LAdminCombined_#.js"))
+
+    <!-- 1. Load libraries -->
+    <!-- Polyfill(s) for older browsers -->
+    <script src="../libs/core-js/client/shim.min.js"></script>
+    <script src="../libs/zone.js/dist/zone.js"></script>
+    <script src="../libs/reflect-metadata/Reflect.js"></script>
+    <script src="../libs/systemjs/dist/system.src.js"></script>
+
+    @*<script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/scripts/jquery-1.11.1.min.js"></script>*@
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxcore.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxnotification.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxdata.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxbuttons.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxscrollbar.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxmenu.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxcheckbox.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxlistbox.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxdropdownlist.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.sort.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.pager.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.selection.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.edit.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.filter.js"></script>
+    <script type="text/javascript" src="../tsScripts/jqwidgets-ver4.3.0/jqwidgets/jqxgrid.columnsresize.js"></script>
+
+    <!-- 2. Configure SystemJS -->
+    <script src="../systemjs.config.js"></script>
+    <script>
+        System.import('../tsScripts/main')
+            .catch(function(err) {
+                console.error(err);
+            });
+    </script>
+
+</head>
+<body>
+
+    @if (!Model.IsIndex)
+    {
+        @Html.Action("HeaderAdmin", "Home", new {role = Model.Role, page = 0}, true)
+    }
+    @RenderBody()
+
+    @Html.Partial("_Footer")
+    <script type="text/javascript" src="@Url.Content("/js/Analytics.js")"></script>
+
+</body>
+</html>

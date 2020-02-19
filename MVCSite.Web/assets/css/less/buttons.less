@@ -1,0 +1,112 @@
+.btn {
+    padding: 8px 16px;
+    .font-size(@buttonFontSize);
+    border-radius: @borderRadius;
+}
+
+.btn-xs, .btn-group-xs>.btn {
+    padding: 4px 8px;
+}
+
+.btn-lg {
+    .font-size(@lgButtonFontSize);
+    padding: 8px 16px;
+    border-radius: @borderRadius;
+}
+
+.btn-xxl {
+  font-size: 20px;
+  padding: 20px 50px;
+  border-radius: 3px;
+}
+
+.btn:focus, .btn:active:focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn.active.focus {
+    outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.btn:hover, .btn:focus, .btn.focus {
+    color: @white;
+    text-decoration: none;
+}
+
+.btn:active, .btn.active {
+    box-shadow: inset 0 0px 0px rgba(0,0,0,0.125);
+}
+
+/* Buttons */
+.btn-kootour-gray  {
+  border-radius: @borderRadius;
+  color: @white;
+  background-color: @breadcrumbBackground;
+}
+
+.btn-kootour,
+.btn-kootour-bold {
+  border-radius: @borderRadius;
+  color: @white;
+  background-color: @buttonBackground;
+}
+
+.btn-kootour-bold {
+  font-family: Montserrat-Medium;
+}
+
+.btn.fullwidth {
+  width: 100%;
+}
+
+
+.btn-kootour:hover,
+.btn-kootour-bold:hover {
+  background-color: @buttonHoverBackground;
+  color: @white;
+}
+
+.btn-search {
+    /*margin-top: 15px;*/
+}
+
+.btn-social {
+    font-family: Montserrat-Light;
+    .font-size(@lgButtonFontSize);
+    color: @white;
+    line-height: 25px;
+}
+
+.btn-social img {
+    width: 20px;
+    padding: 0 10px;
+    box-sizing: content-box;
+}
+
+.btn-social.btn-social-google {
+    background-color: #E02831;
+}
+
+.btn-social.btn-social-facebook {
+    background-color: rgba(59, 89, 152, 1);
+}
+
+.btn-social.btn-social-facebook:hover {
+    background-color: rgba(59, 89, 152, 0.8);
+}
+
+.btn-social.btn-social-facebook img {
+    margin-top: -5px;
+}
+
+.btn-social.btn-social-wechat {
+    background-color: rgba(123, 179, 46, 1);
+}
+
+.btn-social.btn-social-wechat:hover {
+    background-color: rgba(123, 179, 46, 0.8);
+}
+
+/*@media screen and (max-width: 1170px) {
+  .btn-kootour {
+    padding: 5px 14px;
+  }
+}*/

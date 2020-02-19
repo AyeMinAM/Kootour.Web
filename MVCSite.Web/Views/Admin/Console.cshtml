@@ -1,0 +1,103 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model MVCSite.Web.ViewModels.Layout
+@{
+    ViewBag.Title = "Admin Console | Kootour";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .container {
+        width: 100%;
+    }
+
+    #img-loader-div {
+        position: absolute;
+        left: 46%;
+        top: 15%;
+    }
+    .jqx-notification-container {
+        z-index: 10000;
+    }
+    .user-panel-Role-div {
+        padding: 5px 0px 0px 5px;
+    }
+    .tour-panel-Edit-button {
+        padding: 5px 0px 0px 0px;
+        width: 40px;
+        height: 30px;
+    }
+    .user-panel-EmailConfirmed-true-div {
+        padding: 5px 0px 0px 30px;
+    }
+    .user-panel-EmailConfirmed-false-div {
+        padding: 5px 0px 0px 30px;
+        color: #fa0000;
+    }
+
+    .tour-panel-Status-div {
+        margin: 5px 0px 0px 0px; 
+        color: #fa0000;
+    }    
+    .tour-panel-Status-complete-option {
+        color: #000;
+    }
+    .tour-panel-Status-inactive-option {
+        color: #fa0000;
+    }
+    .tour-panel-Status-active-option {
+
+        color: #DFA01C;
+    }
+    .tour-panel-Status-published-option {
+        color: #10c70c;
+    }
+    .tour-panel-Status-selector {
+        padding: 0px 0px 0px 5px;
+        width: 100px;
+        height: 30px;
+        cursor: pointer;
+    }
+
+    .tour-panel-BookingType-div {
+        padding: 5px 0px 0px 10px;
+    }
+</style>
+
+<div class="container">
+
+    @*<h1 class="text-center title-page blue">Manage</h1>*@
+    <div class="row">
+        <my-app>
+            <div id="img-loader-div"><img id="img-loader" src="../images/ring-alt.gif"/>
+            </div>
+        </my-app>
+    </div>
+    @*<div id="newGuidesNotification"></div>*@
+</div>
+
+<script>
+    UpdateTourStatus = function (tourId, newStatus) {
+        var arr = '{ "id": '+tourId+', "status": '+newStatus+' }';
+        $.ajax
+        ({
+                url: '/Admin/TourSetStatus',
+                type:'POST',
+                data: jQuery.parseJSON(arr),
+                dataType:'json'
+        });
+    }
+
+    UpdateUserBio = function (row, value) {
+        var arr = '{ "id": ' + row.ID + ', "bio": "' + value + '" }';
+
+       $.ajax
+            ({
+                url: '/Admin/UserSetBio',
+                type: 'POST',
+                data: jQuery.parseJSON(arr),
+                dataType: 'json'
+            });
+        
+        }
+
+</script>

@@ -1,0 +1,244 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.PicturesModel
+<div class="widget-body">
+
+    <div id="fuelux-wizard-container">
+        <div class="form-group">
+            <ul class="steps visible-lg hidden-xs hidden-sm hidden-md">
+                <li data-step="1" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("TourType"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">1</span>
+                        <span class="title kootour-main-color">Tour Type</span>
+                    </a>
+                </li>
+                <li data-step="2" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("Overview"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">2</span>
+                        <span class="title kootour-main-color">Overview</span>
+                    </a>
+                </li>
+
+                <li data-step="3" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("BookingDetails"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">3</span>
+                        <span class="title kootour-main-color">Booking Details</span>
+                    </a>
+                </li>
+
+                <li data-step="4" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("SchedulerPrice"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">4</span>
+                        <span class="title kootour-main-color">Schedule & Price</span>
+                    </a>
+                </li>
+
+                <li data-step="5" class="active">
+                    <span class="step kootour-main-color">5</span>
+                    <span class="title kootour-main-color">Pictures</span>
+                </li>
+                <li data-step="6">
+                    <span class="step kootour-main-color">6</span>
+                    <span class="title kootour-main-color">Activation</span>
+                </li>
+            </ul>
+
+            <ul class="steps visible-xs visible-sm visible-md hidden-lg">
+                <li style="display:none"></li>
+                <li data-step="3" class="active">
+                    <span class="step kootour-main-color">5</span> 
+                    <span class="title kootour-main-color">Pictures</span>
+                </li>
+                <li style="display:none"></li>
+            </ul>
+        </div>
+
+        <div class="step-pane active" data-step="5">
+            <h4 class="lighter block kootour-main-color">9. Upload Pictures:</h4>
+            <h5 class="block">Upload at least 3 photos that represent your tour or activity. You can add 5 photos at a time, up to a maximum of 10 photos.</h5>
+            <h5 class="block">Minimum size is 720 x 480. Images must be horizontal. </h5>
+            <h5 class="block">Don’t show logo or company name.</h5>
+            <div class="file-preview">
+                <div class="file-drop-zone">
+                    @if (Model.Pictures != null && Model.Pictures.Count > 0)
+                    {
+                        foreach (var pic in Model.Pictures)
+                        {
+                            <div class="file-preview-thumbnails">
+                                <div class="file-preview-frame" id="uploaded-1468108461223" data-fileindex="-1">
+                                    <img src="@pic.Url" class="file-preview-image" title="Tour Image" alt="Tour Image" style="width: auto; height: 160px;">
+                                    <div class="file-thumbnail-footer">
+                                        @*<div class="file-caption-name" title="AlertConditionRed1.png" style="width: 213px;">AlertConditionRed1.png</div>*@
+                                        <div class="file-actions">
+                                            <div class="file-footer-buttons">
+                                                @*                                                <button type="button" class="kv-file-upload btn btn-xs btn-default" title="Upload file" style="display: none;">
+                                                        <i class="glyphicon glyphicon-upload text-info"></i>
+                                                    </button>*@
+                                                <button type="button" pictureId="@pic.ID" tourId="@pic.TourID" class="kv-file-remove btn btn-xs btn-default" title="Remove file" style="display: block;"><i class="glyphicon glyphicon-trash text-danger"></i></button>
+                                            </div>
+                                            @*<div class="file-upload-indicator" tabindex="-1" title="Uploaded"><i class="glyphicon glyphicon-ok-sign file-icon-large text-success"></i></div>*@
+                                            <div class="clearfix"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    <div class="clearfix"></div>
+                    <div class="file-preview-status text-center text-success"></div>
+                    <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                </div>
+            </div>
+            <form id="uploadForm" action="" method="post" target="_self" enctype="multipart/form-data">
+                <input id="uploadFileInput" name="file" type="file" multiple class="file-loading" accept="image/*">
+            </form>
+
+            <p style="margin-top:15px">
+                Please remember to click upload to save your selected photos
+            </p>
+        </div>
+    </div>
+    @using (Html.BeginForm("Pictures", @ViewContext.RouteData.Values["controller"].ToString(), new { }, FormMethod.Post, new { id = "PicturesForm", @class = "primary-col clearfix" }))
+    {
+        @Html.HiddenFor(m => m.TourID)
+        <div class="validation-row">
+            @Html.ValidationMessageFor(m => m.ValidateInfo)
+        </div>
+        <div class="wizard-actions">
+            @*<a class="btn  btn-success  btn-next" href="@Url.Action("SchedulerPrice",new{id=@Model.TourID})">*@
+            <a class="btn  btn-blue  btn-next" href="#" onclick="return OnClickBackButton('@Url.Action(("SchedulerPrice"), new { id = Model.TourID })');">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                Prev
+            </a>
+
+            <button type="submit" class="btn btn-blue btn-next" data-last="Finish">
+                Save & Next
+                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#uploadFileInput").fileinput({
+            language: 'en', 
+            showCaption: false,
+            showRemove:false,
+            browseClass: "btn btn-blue",
+            uploadClass: "btn btn-blue",
+            multiple: true,
+            maxFileCount: 5,
+            uploadUrl: "/Guide/UploadFiles",
+            allowedFileExtensions: ["jpg", "png", "jpeg"],
+            maxFileSize: 5000,
+            layoutTemplates:{
+                main1: '{preview}\n' +
+                    '<div class="kv-upload-progress hide"></div>\n' +
+                    '<div class="input-group {class}">\n' +
+                    '   {caption}\n' +
+                    '   <div class="input-group-btn">\n' +
+                    '       {remove}\n' +
+                    '       {cancel}\n' +
+                    '       {upload}\n' +
+                    '       {browse}\n' +
+                    '   </div>\n' +
+                    '</div>',
+                main2: '{preview}\n<div class="kv-upload-progress hide"></div>\n{remove}\n{cancel}\n{upload}\n{browse}\n',
+                preview: '<div class="file-preview {class}">\n' +
+                    '    {close}\n' +
+                    '    <div class="close fileinput-remove">×</div>\n' +
+                    '    <div class="{dropClass}">\n' +
+                    '    <div class="file-preview-thumbnails">\n' +
+                    '    </div>\n' +
+                    '    <div class="clearfix"></div>' +
+                    '    <div class="file-preview-status text-center text-success"></div>\n' +
+                    '    <div class="kv-fileinput-error"></div>\n' +
+                    '    </div>\n' +
+                    '</div>',
+                icon: '<span class="glyphicon glyphicon-file kv-caption-icon"></span>',
+                caption: '<div tabindex="-1" class="form-control file-caption {class}">\n' +
+                    '   <div class="file-caption-name"></div>\n' +
+                    '</div>',
+                btnDefault: '<button type="{type}" tabindex="500" title="{title}" class="{css}"{status}>{icon}{label}</button>',
+                btnLink: '<a href="{href}" tabindex="500" title="{title}" class="{css}"{status}>{icon}{label}</a>',
+                btnBrowse: '<div tabindex="500" class="{css}"{status}>{icon}{label}</div>',
+                modalMain: '<div id="kvFileinputModal" class="file-zoom-dialog modal fade" tabindex="-1" aria-labelledby="kvFileinputModalLabel"></div>',
+                modal: '<div class="modal-dialog modal-lg" role="document">\n' +
+                    '  <div class="modal-content">\n' +
+                    '    <div class="modal-header">\n' +
+                    '      <div class="kv-zoom-actions pull-right">{toggleheader}{fullscreen}{borderless}{close}</div>\n' +
+                    '      <h3 class="modal-title">{heading} <small><span class="kv-zoom-title"></span></small></h3>\n' +
+                    '    </div>\n' +
+                    '    <div class="modal-body">\n' +
+                    '      <div class="floating-buttons"></div>\n' +
+                    '      <div class="kv-zoom-body file-zoom-content"></div>\n' + '{prev} {next}\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</div>\n',
+                progress: '<div class="progress">\n' +
+                    '    <div class="progress-bar progress-bar-success progress-bar-striped text-center" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
+                    '        {percent}%\n' +
+                    '     </div>\n' +
+                    '</div>',
+                footer: '<div class="file-thumbnail-footer">\n' +
+                    '    <div class="file-caption-name" style="width:{width}">{caption}</div>\n' +
+                    '    {progress} {actions}\n' +
+                    '</div>',
+                actions: '<div class="file-actions">\n' +
+                    '    <div class="file-footer-buttons">\n' +
+                    '        {delete}' +
+                    '    </div>\n' +
+                    '    {drag}\n' +
+                    '    <div class="file-upload-indicator" title="{indicatorTitle}">{indicator}</div>\n' +
+                    '    <div class="clearfix"></div>\n' +
+                    '</div>',
+                actionDelete: '<button type="button" class="kv-file-remove {removeClass}" title="{removeTitle}"{dataUrl}{dataKey}>{removeIcon}</button>\n',
+                actionUpload: '<button type="button" class="kv-file-upload {uploadClass}" title="{uploadTitle}">{uploadIcon}</button>\n',
+                actionZoom: '<button type="button" class="kv-file-zoom {zoomClass}" title="{zoomTitle}">{zoomIcon}</button>',
+                actionDrag: '<span class="file-drag-handle {dragClass}" title="{dragTitle}">{dragIcon}</span>'
+            },
+            uploadExtraData: {
+                uploadType: 0,
+                tourId: "@Html.Raw(Model.TourID.ToString())"
+            }
+        });
+@*        $('#uploadFileInput').on('fileuploaded', function(event, data, previewId, index) {
+            location.href="@Url.Action("Pictures", new { id=Model.TourID})";            
+        });*@
+        $('#uploadFileInput').on('filebatchuploadcomplete', function (event, data, previewId, index) {
+            location.href="@Url.Action("Pictures", new { id=Model.TourID})";            
+        });
+        $(".kv-file-remove").click(function () {
+            var pictureId = $(this).attr("pictureId");
+            var tourId = $(this).attr("tourId");
+            var url = "/Guide/DeletePicture?picId=" + pictureId + "&tourId=" + tourId;
+            BootstrapDialog.show({
+                title: 'Confirm Please',
+                message: "Are you sure you want to delete this tour image ?",
+                buttons: [{
+                    label: 'Delete',
+                    cssClass: 'btn btn-blue',
+                    action: function (dialog) {
+                        dialog.close();
+                        $.post(url, null, function (data) {
+                            if (data.Result) {
+                                location.href = data.Data;
+                            }
+
+                        });
+                    }
+                },
+                {
+                    label: 'Close',
+                    cssClass: 'btn btn-blue',
+                    action: function (dialog) {
+                        dialog.close();
+                    }
+                },
+                ]
+            });
+
+        });
+    });
+</script>

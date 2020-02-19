@@ -1,0 +1,335 @@
+﻿@using MVCSite.Common.NameHelper
+@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@model MVCSite.Web.ViewModels.TouristModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Traveller | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Traveller." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <section class="section section-small col-xs-12">
+            
+                <div class="nopadding col-lg-offset-0 col-lg-9 col-md-offset-0 col-md-12 col-sm-offset-3 col-sm-6 col-md-offset-12 col-xs-12">
+                        
+                    <table class="table-guide-desc">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="user-thumbnail img-circle" style="background-image:url('@Model.AvatarUrl')"></div>
+                                <p class="subtitle">@Model.UserName</p>
+                                    
+                                <p>
+                                    <a href="@Url.Action("EditProfile", "Account")">Edit my profile</a>
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                    </table>
+
+                    <table class="table-guide-desc">
+                        <tr>
+                            <td><img class="icon" src="/images/icons/ID.png" /></td>
+                            <td><span class="subtitle">Verified ID</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                            @if (Model.IsEmailConfirmed)
+                            {
+                                <p>Email Address <img class="medium-icon pull-right" src="/images/icons/icon_verified.png"></p>
+                            }
+                            else
+                            {
+                                <p>Email Address <img class="medium-icon pull-right" src="/images/icons/icon_unverified.png"></p>
+                            }
+                            @if (Model.IsPhoneConfirmed)
+                            {
+                                <p>Phone Number <img class="medium-icon pull-right" src="/images/icons/icon_verified.png"></p>
+                            }
+                            else
+                            {
+                                <p>Phone Number <img class="medium-icon pull-right" src="/images/icons/icon_unverified.png"></p>
+                            }
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!--<table class="table-guide-desc">
+                        <tr>
+                            <td><img class="icon" src="/images/icons/icon_credits.png" /></td>
+                            <td><span class="subtitle">Credits</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><h2>@Model.Credits</h2></td>
+                        </tr>
+                    </table>-->
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="section col-xs-12">
+                <span class="title">My Wish List (@Model.WishesCount)</span>
+
+                <div class="wishlist-wrapper">
+                    @foreach (var wish in Model.Wishes)
+                    {
+                    <div class="tours">
+                        <a href="@Url.Action("Tour", new {tourname=@NameHelper.GenTourInUrl(wish.TourName), id = wish.TourId})">
+                            <div class="tours-content">
+                                <div class="tours-illustration" style="background-image: url('@wish.ImageUrl')">
+                                    <div class="tours-price-wrapper">
+                                        <div><h2 class="tours-price">$@wish.NowPrice</h2></div> 
+                                        <div>
+                                            @if (@wish.SugRetailPrice > @wish.NowPrice)
+                                            {
+                                                <div class="tours-original-price">$@wish.SugRetailPrice</div>
+                                            }
+                                            @wish.PerPersonOrGroup
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="subtitle nomargin">@wish.TourName</p>
+                                <div class="vote-wrapper">
+                                    <input class="star-rating-kootour rating" type="text"  readonly="true" value="@wish.ReviewAverageScore" /> 
+                                    <span class="vote-label">@wish.ReviewCount reviews</span>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    }
+                </div>
+            </section>
+            <section class="section nopadding col-xs-12">
+                <span class="title">Purchase History (@Model.PurchasesCount)</span>
+
+                @foreach (var purchase in Model.Purchases)
+                {
+                
+                <div class="section purchase-payment col-xs-12">
+                    <a href="@Url.Action("Tour", new { id = @purchase.TourId, calendar = string.Empty })">
+                        <div class="text-center nopadding col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                            @*<img class="tour-thumbnail" width="100%" src="/images/Dazu-Rock-Carvings.jpg">*@
+                            <img class="tour-thumbnail" width="100%" src="@purchase.ImageUrl">                       
+                        </div>
+
+                        <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                            <span class="subtitle nomargin">@purchase.TourName</span>
+                            <p>By @purchase.GuiderName</p>
+
+                            <div class="nopadding col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <table class="table-booking-summary">
+                                    <tr>
+                                        <td class="blue">Date</td>
+                                        <td>@purchase.Date</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">Time</td>
+                                        <td>@purchase.Time</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="blue">Location</td>
+                                        <td>@purchase.Location</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </a>
+                        <div class="col-xs-12  text-right">
+                            <div class="action col-xs-12 col-sm-6  text-left">                            
+                                @if (!@purchase.IsReviewAdded)
+                                {
+                                    <a href="@Url.Action("EditReview", new { id = purchase.TourId })">
+                                    <img class="small-icon" src="/images/icons/arrow_head_right_192X192.png" /> Add a review
+                                    </a>
+                                }
+                                 else
+                                 {
+                                    <a href="@Url.Action("EditReview", new { id = purchase.TourId })">
+                                    <img class="small-icon" src="/images/icons/arrow_head_right_192X192.png" /> Edit a review
+                                    </a>
+                                }
+                            
+                            </div>
+                            <div class="action col-xs-12 col-sm-6  text-right">
+                                <a href="#" data-purchase-payment-id="@purchase.BookingId" class="purchase-payment-link" >
+                                    <img class="small-icon" src="/images/icons/arrow_head_right_192X192.png" /> Payment details
+                                </a>
+                            </div>
+                        </div>
+                    
+                </div>
+
+                <div id="@("purchase_"+purchase.BookingId)" style="display:none" class="purchase-payment-details widget nopadding col-xs-12">
+                    <div class="form-horizontal">
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span class="subtitle">Travellers:</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                    <span>@purchase.TravellerCount travellers</span>
+                            </div>
+                        </div>
+
+                        <div class="widget-row col-xs-12">
+                            <div class="option-label">
+                                <span class="subtitle">Your Customized Options:</span>
+                            </div>
+                        </div>
+                        @for (int i = 0; i < @purchase.Extras.Count; i++)
+                        {
+                            if (!string.IsNullOrEmpty(@purchase.Extras[i].Name))
+                            {
+                                <div class="widget-row customized-option customized-option-readonly">
+                                    <div class="option-label">
+                                        <label for="chb1">@purchase.Extras[i].Name</label>
+                                    </div>
+                                    <div class="option-price">
+                                        <span>$ @purchase.Extras[i].Price</span>
+                                        @if (@purchase.Extras[i].Times != 0)
+                                        {
+                                            <span class="hours"><i>Extra @purchase.Extras[i].Times @TimeTypeTranslation.GetTranslationOf(@purchase.Extras[i].TimeType)</i></span>
+                                        }
+                                    </div>
+                                </div>                                
+                            }
+                        }
+                         @if (@purchase.BookingType == 0 && @purchase.DiscountTourists > 0 && @purchase.TravellerCount >= @purchase.DiscountTourists && (@purchase.DiscountValue > 0 || @purchase.DiscountPercent > 0))
+                        {
+                            @*<div class="widget-row col-xs-12">
+                                <div class="col-xs-6 nopadding">
+                                    <span>Discount:</span>
+                                </div>*@
+                              <div class="widget-row customized-option customized-option-readonly">
+                                    <div class="option-label">
+                                        <label>Discount  (for @purchase.DiscountTourists guests and more)</label>
+                                    </div>
+                                    
+                             @if (@purchase.DiscountValue > 0)
+                             { 
+                                @*<div class="col-xs-6 nopadding text-right">*@
+                                 <div class="option-price">
+                                  <span>-$@purchase.DiscountValue</span>
+                                </div>
+                             }
+                             else if (@purchase.DiscountPercent > 0)
+                             { 
+                                @*<div class="col-xs-6 nopadding text-right">*@
+                                 <div class="option-price">
+                                    <span>-@purchase.DiscountPercent%</span>
+                                </div>
+                             }
+                            </div>                            
+                        }
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span class="subtitle">Sub-total:</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                 <span>$@purchase.SubTotal</span>
+                            </div>
+                        </div>
+
+                        @if(!string.IsNullOrEmpty(purchase.Taxes))
+                        {
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span class="subtitle">Taxes:</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                 <span>$@purchase.Taxes</span>
+                            </div>
+                        </div>
+                        }
+                        @*@if(!string.IsNullOrEmpty(purchase.Discount))
+                        {
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span>Discount:</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                <span>@purchase.Discount</span>
+                            </div>
+                        </div>
+                        }*@
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span class="subtitle">Service Fee (3.9%):</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                <span>$@purchase.ServiceFee.ToString("0.00")</span>
+                            </div>
+                        </div>
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span class="subtitle">Promotion:</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                <span>$@purchase.PromoPrice.ToString("0.00")</span>
+                            </div>
+                        </div>
+                        <div class="widget-row col-xs-12">
+                            <div class="col-xs-6 nopadding">
+                                <span class="subtitle">Total Paid:</span>
+                            </div>
+                            <div class="col-xs-6 nopadding text-right">
+                                    <span><b>$@purchase.TotalPay</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </section>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var starOptions = {
+        min: 0,
+        max: 5,
+        step: 1,
+        size: 'xs',
+        showClear: false,
+        showCaption: false,
+        theme: "star-kootour",
+        emptyStar: "<i class='glyphicon glyphicon-star'></i>"
+    };
+    $(".star-rating-kootour.rating").rating(starOptions);
+    $(function () {
+        $(".purchase-payment-link").on("click",
+            function (e) {
+                e.preventDefault();
+
+                var arrowDown = "/images/icons/arrow_head_down_192X192.png";
+                var arrowUp = "/images/icons/arrow_head_right_192X192.png";
+                var purchasePaymentID = this.dataset.purchasePaymentId;
+
+                if (purchasePaymentID) {
+                    $("#purchase_" + purchasePaymentID).toggle();
+
+                    var currentImage = $(this).find("img")[0];
+
+                    if ($(currentImage).attr("src") == arrowUp) {
+
+                        $(currentImage).attr("src", arrowDown);
+                    } else {
+
+                        $(currentImage).attr("src", arrowUp);
+                    }
+                }
+            });
+    });
+</script>

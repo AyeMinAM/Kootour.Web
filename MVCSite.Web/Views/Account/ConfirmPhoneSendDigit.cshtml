@@ -1,0 +1,67 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.ConfirmPhoneSendDigitModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Confirm Phone Send Digit | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Confirm Phone Send Digit." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="text-center section section-small">
+                    <ul class="indicators">
+                        <li data-step="step-1"><a href="#"></a></li>
+                        <li data-step="step-2" class="active"><a href="#"></a></li>
+                        <li data-step="step-3"><a href="#"></a></li>
+                    </ul>
+                    <div id="step-2">
+                        <label class="title black"><b>Please Enter Your 4-Digit Code</b></label>
+
+                        @*<p>We've just sent you at <b id="phoneNumber-label">your phone</b> with 4-digit code</p>*@
+                        <p>We just sent a 4-digit code to your phone. Please type it below.</p>
+
+                        <div class="phone-icon">
+                            <img class="" src="/images/icons/icon_phone.png" />
+                        </div>
+
+                        <div class="row">
+                            <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-3 col-xs-offset-3 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                                @*<form id="digit-form" class="form-horizontal">*@
+                                 @using (Html.BeginForm("ConfirmPhoneSendDigit", "Account", new { }, FormMethod.Post, new { id = "ConfirmPhoneSendDigitForm" }))
+                                 {
+                                    @Html.HiddenFor(m => m.DoneControllerName)
+                                    @Html.HiddenFor(m => m.DoneActionName)
+                                    <div class="form-group required">
+                                        <div class="col-sm-12">
+                                            <div class="input-group">
+                                                <span class="input-group-addon" style="border:0">
+                                                     <span class="glyphicon glyphicon-phone" aria-hidden="true"></span>
+                                                </span>
+                                                @*<input type="text" class="form-control input-lg gray" id="digitcode" required>*@
+                                                @Html.TextBoxFor(m => m.DigitCode, new { @class = "form-control input-lg gray", placeholder = "Type Code Here" ,style = "font-size:small;padding:0px"})
+                                            </div>
+                                            <div class="validation-row">
+                                                @Html.ValidationMessageFor(m => m.DigitCode)
+                                            </div>   
+                                        </div>
+                                    </div>
+
+                                    <button type="submit" class="btn btn-kootour-bold fullwidth">Confirm</button>
+                                 }
+                                @*</form>*@
+                            </div>
+                        </div>
+                    </div>
+                </section>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.TourOverviewModel
+@{
+    Layout = "~/Views/Shared/_LayoutGuide.cshtml";    
+}
+<div class="main-container container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="page-content-nopadding">
+                <div class="" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                           @* <a href="@Url.Action("TourProducts")">Home</a>*@
+                            <a href="#" onclick="return OnClickBackButton('@Url.Action("TourProducts")');">Home</a>
+                        </li>
+
+                        <li>
+                            @*<a href="@Url.Action("TourType")">Create Tour</a>*@
+                            <a href="#" onclick="return OnClickBackButton('@Url.Action("TourType")');">Create Tour</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+			<div class="page-content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="kootour-widget-color-main">
+                            <div class="widget-header col-xs-12">
+                                <div class="col-xs-12 nopadding ">
+                                    <h3 class="widget-title">
+                                        <span class="blue">Create Tour - Overview</span>
+                                    </h3>
+                                </div>
+                            </div>
+
+                            @Html.EditorFor(model=>model, "OverviewTemplate")
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>

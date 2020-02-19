@@ -1,0 +1,113 @@
+﻿@using SquishIt.Framework
+@using MVCSite.Web.ViewModels
+@model MVCSite.Web.ViewModels.Layout
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML Strict//EN">
+<html>
+<head id="head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    @*
+        <!-- The following 3 lines is for google plus -->
+        <meta itemprop="name" content="@Model.MetaName" />
+        <meta name="description" content="@Model.MetaDescription" />
+        <title>@Model.PageTitle</title>
+    *@
+    @RenderSection("seoinfo", required: false)
+
+    <link rel="icon" type="image/x-icon" href="@Url.Content("~/images/kootour.ico")" />
+    @*Google Tag Manager*@
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KBJ7GWT');
+    </script>
+    @*End Google Tag Manager*@
+    @Html.Raw(Bundle.Css()
+        .Add("~/assets/css/bootstrap.min.css")
+        .Add("~/assets/css/bootstrap-theme.min.css")
+        .Add("~/assets/css/bootstrap-datetimepicker.min.css")
+        .Add("~/assets/css/bootstrap-dialog.min.css")
+        .Add("~/assets/css/kootour.css")
+        .Add("~/assets/css/star-rating.min.css")
+        .Add("~/assets/css/theme-star-kootour.css")
+        .Add("~/Content/validation.css")
+        .Add("~/Content/kootourExt.css")
+        .Render("~/Content/combined_#.css"))
+    @Html.Raw(Bundle.JavaScript()
+        .Add("~/assets/js/jquery-1.11.1.min.js")
+        .Add("~/assets/js/moment.js")
+        .Add("~/assets/js/bootstrap.min.js")
+        .Add("~/assets/js/bootstrap-datetimepicker.min.js")
+        .Add("~/assets/js/bootstrap-dialog.min.js")
+        .Add("~/assets/js/star-rating.min.js")
+        .Add("~/assets/js/read-more.js")
+        //.Add("~/assets/js/lib/wishlist.js")
+        .Add("~/assets/js/main.js")
+        //.Add("~/Scripts/Popup.js")
+        //.Add("~/ViewScripts/Shared/_Layout.js")
+        .Render("~/js/LWhyKootourCombined_#.js"))
+</head>
+<body>
+    @*Google Tag Manager (noscript)*@
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBJ7GWT"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    @*End Google Tag Manager (noscript)*@
+    @RenderBody()
+
+    @Html.Partial("_Footer")
+    @Html.Partial("_Intercom")
+    <script type="text/javascript" src="@Url.Content("/js/Analytics.js")"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
+    <script type="text/javascript" src="/assets/js/modernizr-2.7.1.min.js"></script>
+<script>
+    $(function () {
+
+        /*-----------------------------------------------------------------------------------*/
+        /*  Anchor Link
+        /*-----------------------------------------------------------------------------------*/
+        $('a[href*=#]:not([href=#])').click(function () {
+            if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
+                || location.hostname == this.hostname) {
+
+                var target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                if (target.length) {
+                    $('html,body').animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                    return false;
+                }
+            }
+        });
+
+        /*-----------------------------------------------------------------------------------*/
+        /*  Tooltips
+        /*-----------------------------------------------------------------------------------*/
+        $('.tooltip-side-nav').tooltip();
+
+        $('.team_profile').matchHeight();
+    });
+</script>
+
+@*PushEngage*@
+<script src="https://clientcdn.pushengage.com/core/9188.js"></script>
+<script>
+    _pe.subscribe();
+</script>
+@*Lucky Orange*@
+<script type='text/javascript'>
+window.__lo_site_id = 78443;
+(function ()
+{ var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true; wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s); }
+)();
+</script>
+</body>
+
+
+</html>

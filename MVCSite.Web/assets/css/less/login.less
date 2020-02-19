@@ -1,0 +1,64 @@
+.login-wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    margin-bottom: 30px;
+}
+
+.login-wrap > .login-container {
+    flex: 0 1 47%;
+    -webkit-flex: 0 1 47%;
+}
+
+.login-wrap > .login-separator {
+    flex: 0 1 auto;
+    -webkit-flex: 0 1 auto;
+}
+
+
+.login-form .form-actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+.login-form .form-actions > * {
+    flex-grow: 1;
+    flex-basis: 50%;
+    flex-shrink: 1;
+}
+
+
+@media screen and (max-width: 768px) {
+    .login-wrap {
+        justify-content: center;
+    }
+
+    .login-wrap-collapse {
+        flex-direction: column;
+    }
+
+    .login-wrap > .login-container {
+        flex: 0 1 auto;
+        -webkit-flex: 0 1 auto;
+        margin: 0 15px;
+    }
+
+    .login-wrap-collapse > .login-container:first-child {
+        margin-bottom: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .login-form .form-actions {
+        display: block;
+        text-align: left;
+    }
+
+    .login-form .form-actions > * {
+        display: block;
+                text-align: left;
+    }
+}

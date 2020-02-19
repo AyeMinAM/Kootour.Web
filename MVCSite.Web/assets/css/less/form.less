@@ -1,0 +1,222 @@
+.control-label {
+    font-weight: normal;
+    .font-size(@inputFontSize);
+}
+
+.has-warning .form-control,
+.has-warning .form-control:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #FF9800;
+}
+
+.has-success .form-control,
+.has-success .form-control:focus {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    border-color: #4CAF50;
+}
+
+.form-control {
+    color: @inputColor;
+    .placeholder(@copyrightColor);
+    padding: 6px 12px; /*weird 0 */
+    height: @inputHeight;
+    border-radius: @borderRadius;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+}
+
+
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:@blue;
+  padding: 8px;
+}
+
+select, input,textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+select {
+    overflow: hidden;
+    background-image: url('@{images}/icons/arrow_downwards.png') !important;
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    background-position: right 15px center; 
+    background-size: 15px;
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+select.black {
+    background-image: url('@{images}/icons/arrow_downwards_white.png') !important;
+}
+
+select.white {
+  background-color: transparent;
+  color: @white;
+  border-color: @white;
+}
+
+textarea {
+    resize: none;
+}
+
+select.gray,
+input.gray,
+textarea.gray {
+  background-color: @body-background;
+  color: @body-color;
+  border-color: @body-background;
+}
+
+select.black,
+input.black,
+textarea.black {
+    background-color: @body-color;
+    color: white;
+    border-color: white;
+    
+}
+
+select.transparent,
+input.transparent,
+textarea.transparent {
+  background-color:transparent !important;
+  color: @body-color;
+  border-color: transparent;
+}
+
+input[type="file"]:focus, input[type="radio"]:focus, input[type="checkbox"]:focus {
+    outline: thin dotted;
+    outline: 0px auto -webkit-focus-ring-color;
+    outline-offset: -2px;
+}
+
+.checkbox {
+  display:none;
+}
+
+.checkbox ~ label {
+    padding-left: 0;
+    font-weight: normal;
+    margin-bottom: -6px;
+    display: block;
+}
+
+.checkbox + label {
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.checkbox + label {
+    background: url('@{images}/icons/checklist_blank.png') no-repeat;
+    background-size: contain;
+}
+
+.checkbox:checked + label {
+    background:url('@{images}/icons/checklist.png') no-repeat;
+        background-size: contain;
+}
+
+input[type=radio] {
+    display:none;
+}
+
+input[type=radio] + label{
+    padding-left: 35px;
+    display:inline-block;
+    background-repeat:no-repeat;
+    cursor:pointer;
+    background-size: 22px;
+}
+
+
+input[type=radio] + label {
+    background-image: url('../../images/icons/button_radio_off.png');
+}
+
+input[type=radio]:checked + label {
+    background-image: url('../../images/icons/button_radio_on.png');
+}
+
+
+select.input-lg,
+.input-lg {
+    height: @lgInputHeight;
+    padding: 10px 13px;
+    line-height: 1.3333333;
+  .font-size(@lgInputFontSize);
+}
+
+/* File upload */
+
+
+.file-input {
+    color: transparent;
+    width: 100%;
+    height: @inputHeight;
+}
+
+.file-input::-webkit-file-upload-button {
+  visibility: hidden;
+  color: transparent;
+
+}
+.file-input::before {
+    content: 'Change Picture';
+    display: inline-block;
+    .btn-kootour();
+    .btn-lg();
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.file-input:hover::before {
+  background-color: @buttonHoverBackground;
+  color: @white;
+}
+
+.uploader-from-group .uploader {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+@media screen and (max-width: 640px) {
+    .uploader-from-group .uploader {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+
+    .uploader-from-group .uploader .file-input {
+        margin-top: 15px;
+    }
+    
+}

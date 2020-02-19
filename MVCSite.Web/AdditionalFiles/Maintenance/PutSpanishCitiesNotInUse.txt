@@ -1,0 +1,1 @@
+﻿Run the Stored Procedures called 'PutSpanishCitiesNotInUse' under the /Programmability folder through SQL Server Management Studio

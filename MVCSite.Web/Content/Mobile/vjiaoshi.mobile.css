@@ -1,0 +1,32 @@
+#demo-borders .ui-collapsible-heading .ui-btn
+{
+    border-top-width: 1px !important;
+}
+.tablist-left {
+    width: 35%;
+    display: inline-block;
+}
+.tablist-content {
+    width: 60%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 2%;
+} 
+.wrapword{
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    word-break: break-all;
+    white-space: normal;
+}        
+.intro-text {
+    font-size:small;
+    margin-right:44px;
+}                
+.ui-navbar li .ui-btn {
+	font-size: 20px;
+    padding-top:10px;
+    padding-bottom:10px;
+}

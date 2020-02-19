@@ -1,0 +1,33 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+@section seoinfo{
+    <title>Contact to Customer Service Representative done | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Contact to Customer Service Representative done." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="text-center section section-small">
+                <div id="step-3">
+                    <label class="title black"><b>We got your request!</b></label>
+                    <p>Your Customer Service Representative will contact you ASAP.</p>
+                    <p>Thanks for your support to Kootour.</p>
+                    <div class="row">
+                        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-3 col-xs-offset-3 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                            <a  href="@Url.Action("Index")"><span class="btn btn-kootour-bold fullwidth">Return</span></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>

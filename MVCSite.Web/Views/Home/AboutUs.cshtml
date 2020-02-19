@@ -1,0 +1,286 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_LayoutAboutUs.cshtml";
+}
+@section seoinfo{
+    <title>About Us | Meet the Team | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Want to know who's helping you plan your trip? Meet the Kootour team and learn about how we help you enjoy travel more." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="about us, about, introduction, what kootour does, tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+<style>
+    .header_content {
+        position: absolute;
+        text-align: center;
+        top: 38%;
+        left: 0;
+        color: #ffffff;
+        width: 100%;
+    }
+
+    .secondNav {
+        padding-top: 50px;
+        margin: 0 auto;
+        width: 600px;
+    }
+
+    .sectionheading_align {
+        margin-top: 0;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .paragraph_align {
+        padding-bottom: 50px;
+    }
+
+    .image_align {
+        padding-right: 10px;
+    }
+
+    .image_width_align {
+        width: 80px;
+        max-width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .team-wrapper {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .team-wrapper .team_profile {
+        height: auto;
+        background-color: #fff;
+        border-top: 10px solid #00CCCC;
+        border-radius: 3px;
+        box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        padding-top: 15px;
+        padding-bottom: 30px;
+    }
+    .bio_img {
+        width: 285px;
+        height: 285px;
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bio_text {
+        margin: 0 0 10px;
+        margin-left: 30px;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    .team_text {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .table_center {
+        margin: 20px auto 20px auto;
+    }
+
+    .aboutus_text {
+        background-color: #fff;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 50px;
+        border-radius: 3px;
+        box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    }
+
+</style>
+
+<div class="main-container">
+
+    <div class="cover-aboutus">
+        @Html.Action("Header", "Home", new {role = Model.Role, page = 1}, true)
+        <div class="cover-aboutus-cover-content">
+            <h1 class="aboutus-slogan">About Us</h1>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="aboutus_text">
+            <nav id="mainNav" class="secondNav content clearfix">
+
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#about"><h4>About Us</h4></a>
+                    </li>
+                    <li>
+                        <a href="#mission" title="Next Section"><h4>Our Mission and Vision</h4></a>
+                    </li>
+                    <li>
+                        <a href="#values" title="Next Section"><h4>Our Values</h4></a>
+                    </li>
+                    <li>
+                        <a href="#team" title="Next Section"><h4>Our Team</h4></a>
+                    </li>
+                </ul>
+            </nav>
+            <section id="about" class="content anchor-link clearfix">
+                <table class="table_center">
+                    <tbody>
+                    <tr>
+                        <td width="60px">
+                            <img class="icon_help image_align image_width_align" src="/images/icons/about_us.png" alt="aboutUs">
+                        </td>
+                        <td>
+                            <h2 class="section-heading sectionheading_align blue">About Kootour</h2>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Our goal is to connect travellers with high-quality guides who offer unique tours. We also have a selection of traditional tours for the first time visitor. We want travellers to be able to connect with expert locals who can provide amazing insights, visit hard-to-reach destinations and find hidden gems. 
+                </p>Many of our trips are also designed with the time-conscious traveller in mind and incorporate ‘must-sees’ with local favourites. Exploring Asia can be challenging, we want to bring together tours and experiences with authentic, local travel. Travel has evolved. We want to bring a new outlook to using guides for exploration and we create access to authentic, customized experiences that are designed with the unique traveller in mind.
+                 </p>
+            </section>
+
+
+
+            <section id="mission" class="content anchor-link clearfix">
+                <table class="table_center">
+                    <tbody>
+                    <tr>
+                        <td width="60px">
+                            <img class="icon_help image_align image_width_align" src="/images/icons/mission.png" alt="mission">
+                        </td>
+                        <td>
+                            <h2 class="section-heading sectionheading_align blue">Our Mission</h2>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Kootour is committed to operating an online marketplace for travellers to find unique tour services and experiences and for tour operators to advertise their services to a market they cannot easily access.</p>
+
+                <table class="table_center">
+                    <tbody>
+                    <tr>
+                        <td width="60px">
+                            <img class="icon_help image_align image_width_align" src="/images/icons/vision.png" alt="">
+                        </td>
+                        <td>
+                            <h2 class="section-heading sectionheading_align blue">Our Vision</h2>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h4>For Travellers:</h4>
+                <p>For international travellers, Kootour is an online marketplace that provides private, guided tour solutions and highly customizable options. Our platform matches travellers to experienced local guides and tailored itineraries. We understand that each traveller is different, and we endeavour to tailor our trips to their specific interests and needs.</p>
+                <h4>For Guides:</h4>
+                <p>For our local guides, we will diversify and expand their exposure by driving international traffic and exposing them to our international network. We will help them to expand their business by increasing sales and providing advice, support and training to maximise their business potential. We also work with the best cross-border payment systems to lower their receivable costs. Our commission rates are very competitive which means more money goes directly to the guides and their local economies, promoting a more ethical way to travel.</p>
+            </section>
+
+
+
+            <section id="values" class="content anchor-link clearfix">
+                <table class="table_center">
+                    <tbody>
+                    <tr>
+                        <td width="60px">
+                            <img class="icon_help image_align image_width_align" src="/images/icons/value.png" alt="mission">
+                        </td>
+                        <td>
+                            <h2 class="section-heading sectionheading_align blue">Our Values</h2>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>We have a diversified cultural background, allowing us to understand and effectively liaise with a variety of different communities, travellers and guides. This also allows us to thoroughly understand the customer and overall travel process.</p>
+                <p>We are flexible and mobile. We can act to solve problems quickly and effectively, utilizing feedback and research to continuously evolve as both a product and a company.</p>
+                <p>By executing our vision and values we will support the local economies we are involved with. More profits from guided tourism will go directly into local pockets, rather than big companies. We will also connect and work with non-profit organizations that support the local communities that we operate in.</p>
+            </section>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <section id="team">
+            <table class="table_center">
+                <tbody>
+                <tr>
+                    <td width="60px">
+                        <img class="icon_help image_align image_width_align" src="/images/icons/team.png" alt="team">
+                    </td>
+                    <td>
+                        <h2 class="section-heading sectionheading_align blue">Our Team</h2>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/Hansen.jpg">
+                        <p class="bio_text">Hansen is passionate entrepreneur. He has established and operated several businesses in Canada: a software development business, a higher education institute, and the present Kootour company. He originates from China and has lived in Vancouver for more than 16 years.</p>
+                        <p class="bio_text">Hansen loves to travel and has visited more than 30 countries. He established Kootour because he realised there was untapped potential for matching local tour guides with an active and internet-savvy traveller community. Hansen is an avid golfer and you’ll usually find him on the golf course, rain or shine.</p>
+                    </div>
+                </div>
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/Elise.jpg">
+                        <p class="bio_text">Elise has a global background growing up in the UK, then working in Asia and now North America. She is our digital marketing specialist, handling our content production, PR and media strategy. Like all of our team she is a truly passionate about travel and brings her enthusiasm and knowledge to our platform.</p>
+                        <p class="bio_text">
+                            She loves the food and craft beer scene in Vancouver and can usually be found with her dog Libby or on a trail in the mountains.<br><br><br>
+                        </p>
+                    </div>
+                </div>
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/Daniel.jpg">
+                        <p class="bio_text">Daniel is a passionate adventurer who was born in the beautiful country of Venezuela. He is Kootour’s marketing analyst. He’s currently finishing his MBA at the University of British Columbia. His desire to learn about other cultures has led him around the globe to destinations throughout Asia, Europe and the Americas.</p>
+                        <p class="bio_text">As a professional, he has worked in marketing, sales and advertising for companies in both North America and Venezuela. He loves learning new languages and is hoping to add Chinese and Korean to his repertoire.</p>
+                    </div>
+                </div>
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/Kevin.jpg">
+                        <p class="bio_text">As a full-stack developer, Kevin joined Kootour utilizing his expertise in both software development and maintenance. Kevin has years of experience in web and mobile development. He understands and follows new technology trends.</p>
+                        <p class="bio_text">Kevin has travelled to many different destinations and is never without his camera to capture beautiful scenery. He has lived in Vancouver for over 8 years, and given the choice he would be outdoors all day. He would prefer to do his coding work in a meadow or at the beach, with his laptop and a folding chair. If only there were WiFi!</p>
+                    </div>
+                </div>
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/Cedric.jpg">
+                        <p class="bio_text">Originally from France, Cedric completed his MSc. in Computer Science from SUPINFO University and started his career as a front-end developer in San Francisco. Since then, he has worked for clients all around the globe as well as working collaboratively with designers and product managers on solo projects.</p>
+                        <p class="bio_text">He is a developer with an innovative streak, and enjoys expertly transforming all the great work that the designers craft into development.</p>
+                        <p class="bio_text">His favorite sport is basketball, and he never misses a match of his favorite team, the Golden State Warriors.</p>
+                    </div>
+                </div>
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/AyeMin.jpg">
+                        <p class="bio_text">Originally from a land yet to be discovered by many travellers, Burma. AyeMin landed in Nanaimo, crossing oceans and mountains to pursue his passion for Digital Media at Vancouver Island University. He now focuses on user experience and user interface design which he has combined with his technical skills to design an innovative platform for Kootour.</p>
+                        <p class="bio_text">He also brings his worldly experience to the table, and adds to an adventurous and well-travelled team. Now he is enjoying the great outdoor life in BC, photographing all his adventures, especially cold-water surfing in Tofino.</p>
+                    </div>
+                </div>
+                <div class="team-wrapper col-lg-4 col-md-6 col-sm-6">
+                    <div class="team_profile">
+                        <img class="bio_img" src="/images/Jaimie.jpg">
+                        <p class="bio_text">Jaimie graduated with a major in Psychology from Simon Fraser University, and uses her intuitive nature, cultural understanding and education to expertly manage Kootour’s accounts. She is bilingual, speaking English and Mandarin which allows her to liaise with consumers and guides from across the globe.</p>
+                        <p class="bio_text">Her passion is food, and her goal is to try a dish from every country in the world.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    @Html.Partial("_Social")
+
+</div>
+
+
+
+
+

@@ -1,0 +1,141 @@
+.createNewChat {
+	top: 200px;
+	left: 400px;
+	z-index: 999;
+	width: 400px;
+	width: 400px;
+}
+.chatPanel .listContentWrap {
+	width: 100%;
+	height: 452px;
+	overflow: hidden;
+	overflow-y: auto;
+	background-color: #f5f5f5;
+}
+.chatPanel .list {
+	position: relative;
+	float: left;
+	width: 276px;
+	border-radius: 6px;
+	z-index: 99;
+	border: 1px solid #424448;
+	box-shadow: 0px 2px 6px #313131;
+}
+.chatPanel .content {
+	position: relative;
+	z-index: 2;
+}
+.chatPanel {
+	position: relative;
+	margin: 0 auto;
+	padding: 40px 0 30px 0;
+	width: 962px;
+	border-radius: 4px;
+	text-align: center;
+}
+
+.scrollbarBox {
+	width: 9px;
+}
+.scrollbarBox .scrollbar {
+	width: 100%;
+	background-color: #6B747A;
+	opacity: 0.6;
+	border-radius: 10px;
+}
+.createNewChat .groupTitle {
+	display: block;
+	text-decoration: none;
+	font-size: 12px;
+	color: #5b7991;
+	padding: 8px 31px 3px;
+	border-top: 1px solid #D0D8E2;
+	color: #536175;
+	text-shadow: none;
+	line-height: 20px;
+	text-align: left;
+}
+.createNewChat a.friendDetail {
+	display: block;
+	padding: 5px 10px 5px 32px;
+	background: #F5F5F5;
+	cursor: pointer;
+}
+.createNewChat .friendDetail .avatar {
+	display: block;
+	float: left;
+	width: 36px;
+	height: 36px;
+}
+.createNewChat .friendDetail .nickName {
+	display: block;
+	float: left;
+	font-size: 12px;
+	color: #343434;
+	margin-left: 10px;
+	text-shadow: 0px 1px 0px #ffffff;
+	word-wrap: normal;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: left;
+	margin-top: 5px;
+	padding-top: 4px;
+}
+
+.createNewChat a.friendDetail .name {
+	width: 300px;
+	max-width: 306px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+.createNewChat .friendDetail .nickName .name {
+	max-width: 187px;
+	width: 180px;
+	padding-top: 4px;
+	margin-top: -4px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	-o-text-overflow: ellipsis;
+	overflow: hidden;
+}
+.createNewChat .friendDetail .avatar img {
+	display: block;
+	width: 33px;
+	height: 33px;
+	border: 1px solid #FFF;
+}
+.createNewChat .groupTitle .groupTitleLetter {
+	font-size: 14px;
+	font-weight: bold;
+}
+.emoji {
+	background: url("../images/emoji1844c2.png") top left no-repeat;
+	width: 20px;
+	height: 20px;
+	display: inline;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: top;
+	zoom: 1;
+	display: inline: ;
+}
+.emoji1f437 {
+	background-position: 0px -2780px;
+}
+.createNewChat .friendDetail .nickName .emoji {
+	margin-top: -5px;
+	margin-top: 0px;
+	vertical-align: bottom;
+}
+.createNewChat .groupTitle .lapIcon {
+	width: 17px;
+	height: 20px;
+	display: block;
+	background: url('../images/community/icons.png') no-repeat -109px -34px;
+}
+.createNewChat .groupTitle .lapedIcon {
+    background-position: -135px -34px;
+}

@@ -1,0 +1,49 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.ShareModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Social Media Share | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Social Media Share." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+        <div class="row">
+
+            <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12 text-center">
+                <section class="section row">
+
+                    <span class="title">Share this tour!</span>
+
+                    <div class="nested-section col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-md-6 col-sm-8 col-xs-8">
+                        <input type="text" value="kootour/index.html" class="text-center form-control input-lg gray" id="link" readonly="readonly">
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <p class="subtitle nomargin">Share this with email!</p>
+                    
+                    <div class="nested-section col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-md-6 col-sm-8 col-xs-8">
+                        <a href="#" class="btn btn-lg btn-kootour-bold fullwidth">Email</a>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <p class="subtitle nomargin">Share this on social media!</p>
+
+                    <div class="lg-social-links">
+                        <a href="#"><img src="/images/icons/icon_facebook_color.png"></a>
+                        <a href="#"><img src="/images/icons/icon_twitter_color.png"></a>
+                        <a href="#"><img src="/images/icons/icon_instagram_color.png"></a>
+                        <a href="#"><img src="/images/icons/icon_linkedin_color.png"></a>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>

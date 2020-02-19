@@ -1,0 +1,20 @@
+
+.theme-star-kootour {
+    padding-top: 7px;
+}
+
+.theme-star-kootour .filled-stars {
+    color: #f5d10a;
+    border: 0;
+    text-shadow: 0 0;
+    -webkit-text-stroke: 0px;
+}
+
+.theme-star-kootour .empty-stars {
+    color: #c3c3c3;
+    border: 0;
+}
+
+.rating-xs {
+    font-size: 1em;
+}

@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Activation Email Send| Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Activation Email Send." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <section class="section">
+                <span class="title">Registration email has been sent</span>
+                <p>Please check your inbox and follow the instructions in the email to finish registration</p>
+                <p><li>If the email isn't in your inbox, please try checking in the spam folder</li></p>
+            </section>
+        </div>
+    </div>
+</div>

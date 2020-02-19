@@ -1,0 +1,43 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@model MVCSite.Web.ViewModels.EditProfileModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Edit Profile | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Edit Profile." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+<div class="container">
+        <div class="row">
+
+            <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <section class="section section-small">
+                    <table class="table-header">
+                        <tr>
+                            <td>
+                                <span class="subtitle"><b>Profile</b></span>
+                            </td>
+                            <td>
+                                <a class="btn btn-lg btn-kootour-gray pull-right" href="@Url.Action("Tourist", "Tourist")">View Profile</a>
+                                @*                               @if(!MVCSite.DAC.Common.StaticSiteConfiguration.IsGuiderSite)
+                                {
+                                <a class="btn btn-lg btn-kootour-gray pull-right" href="@Url.Action("Tourist","Tourist")">View Profile</a>
+                                }*@
+                            </td>
+                        </tr>
+                    </table>
+
+                    @Html.EditorFor(model => model, "EditProfileTemplate")
+                    
+                </section>
+            </div>
+        </div>
+</div>
+

@@ -1,0 +1,222 @@
+﻿@using System.Web.Mvc
+@model MVCSite.Web.ViewModels.TourTypeModel
+<div class="widget-body col-xs-12">
+
+    @using (Html.BeginForm("TourType", @ViewContext.RouteData.Values["controller"].ToString(), new { }, FormMethod.Post, new { id = "TourTypeForm", @class = "primary-col clearfix form-horizontal" }))
+    {
+        @Html.HiddenFor(m => m.ID)
+        @Html.HiddenFor(m => m.GuideID)
+        <div id="fuelux-wizard-container">
+            <div class="form-group">
+                <ul class="steps visible-lg hidden-xs hidden-sm hidden-md">
+                    <li data-step="1" class="active">
+                        <span class="step kootour-main-color">1</span>
+                        <span class="title kootour-main-color">Tour Type</span>
+                    </li>
+
+                    <li data-step="2">
+                        <span class="step kootour-main-color">2</span>
+                        <span class="title kootour-main-color">Overview</span>
+                    </li>
+
+                    <li data-step="3">
+                        <span class="step kootour-main-color">3</span>
+                        <span class="title kootour-main-color">Booking Details</span>
+                    </li>
+
+                    <li data-step="4">
+                        <span class="step kootour-main-color">4</span>
+                        <span class="title kootour-main-color">Schedule &amp; Price</span>
+                    </li>
+
+                    <li data-step="5">
+                        <span class="step kootour-main-color">5</span>
+                        <span class="title kootour-main-color">Pictures</span>
+                    </li>
+                    <li data-step="6">
+                        <span class="step kootour-main-color">6</span>
+                        <span class="title kootour-main-color">Activation</span>
+                    </li>
+                </ul>
+
+                <ul class="steps visible-xs visible-sm visible-md hidden-lg">
+                    <li data-step="1" class="active">
+                        <span class="step kootour-main-color">1</span>
+                        <span class="title kootour-main-color">Tour Type</span>
+                    </li>
+                    <li data-step="2">
+                        <span class="step kootour-main-color">2</span>
+                        <span class="title kootour-main-color">Overview</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="form-group">
+                <h4 class="lighter block kootour-main-color">1.Name of your Tour</h4>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        @*<input id="fullName" type="text" name="fullName" class="form-control" name="fullName" />*@
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", placeholder = "e.g. Vancouver Two-Hour Downtown Walking Tour" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="lighter block kootour-main-color">2.Type of your Tour</h4>
+                <div class="control-group form-validator">
+                    <div class="row">
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsHistorical)
+                                <span class="lbl">&nbsp;Historical&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsAdventure)
+                                <span class="lbl">&nbsp;Adventure&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsLeisureSports)
+                                <span class="lbl">&nbsp;Leisure & Sports&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsCultureArts)
+                                <span class="lbl">&nbsp;Culture & Arts&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsNatureRural)
+                                <span class="lbl">&nbsp;Nature & Rural&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsFestivalEvents)
+                                <span class="lbl">&nbsp;Festival & Events&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsNightlifeParty)
+                                <span class="lbl">&nbsp;Nightlife & Party&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsFoodDrink)
+                                <span class="lbl">&nbsp;Food & Drink&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsShoppingMarket)
+                                <span class="lbl">&nbsp;Shopping & Market&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsTransportation)
+                                <span class="lbl">&nbsp;Transportation&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsBusinessInterpretation)
+                                <span class="lbl">&nbsp;Business & Interpretation&nbsp;</span>
+                            </label>
+                        </div>
+                        <div class="checkbox col-md-4 col-xs-6">
+                            <label>
+                                @Html.CheckBoxFor(m => m.IsPhotography)
+                                <span class="lbl">&nbsp;Photography&nbsp;</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.TypeValidMsg)
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <h4 class="lighter block kootour-main-color">3.Languages you can provide</h4>
+                <div class="control-group form-validator">
+                    @Html.ListBoxFor(m => m.LanguageIDs, Model.LanguageOptions, new { @class = "form-control chosen", multiple = "multiple", style = "height:40px;padding:0px;" })
+
+                    @*                                            @Html.DropDownListFor(m => m.LanguageIDs,Model.LanguageOptions,new { @class = "form-control chosen",multiple="multiple",style="height:40px;padding:0px;"})*@
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.LanguageIDs)
+                    </div>
+                    @*                                            <div class="row">
+                            <div class="checkbox col-xs-4" style="margin-top:-5px;">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsEnglish)
+                                    <span class="lbl">&nbsp;English&nbsp;</span>
+                                </label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsJapanese)
+                                    <span class="lbl">&nbsp;Japanese&nbsp;</span>
+                                </label>
+                            </div>
+                            <div class="checkbox col-xs-4">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsChinese)
+                                    <span class="lbl">&nbsp;Chinese&nbsp;</span>
+                                </label>
+                            </div>
+                        </div>
+                    *@
+
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.LanguageValidMsg)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wizard-actions">
+            @if (@ViewContext.RouteData.Values["controller"].ToString() == "Admin")
+            {
+                <a class="btn  btn-blue  btn-next" href="#" onclick="return OnClickBackButton('@Url.Action("Console/Tour")');">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Prev
+                </a>
+            }
+            else
+            {
+                <a class="btn  btn-blue  btn-next" href="#" onclick="return OnClickBackButton('@Url.Action("TourProducts")');">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Prev
+                </a>
+            }
+
+            <button type="submit" class="btn btn-blue btn-next" data-last="Finish">
+                Save & Next
+                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    }
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.chosen').chosen({
+            placeholder_text_multiple: "Please select languages",
+            no_results_text: "",
+            minWidth: '300px',
+            width: '100%',
+        });
+    });
+
+</script>

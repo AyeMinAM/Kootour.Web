@@ -1,0 +1,105 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Help Centre | Home | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Need help using Kootour? Here you can find answers to many questions." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="section row">
+
+                <h2 class="blue">Help Centre</h2>
+                <span class="title_help">Please select the catagory that you need help with.</span>
+
+                <div style="margin: 80px 0;" class="row">
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center help_content_center">
+                        <a href="@Url.Action("HelpTravellers")">
+                            <div class="panel">
+                                <div class="panel-body help_shadow">
+
+
+                                    @* <img class="icon_help" alt="travellers" src="@Url.Content("~/images/icons/help_travellers.svg")"/ >*@
+                                    <img class="icon_help" src="@Url.Content("~/images/icons/help_travellers.svg")">
+
+                                    <p>Travellers</p>
+
+
+                                </div>
+                            </div>
+                        </a>
+                    </div> <!--help for Travellers-->
+
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center help_content_center">
+                        <a href="@Url.Action("HelpGuides")">
+                            <div class="panel">
+                                <div class="panel-body help_shadow">
+
+
+                                    <img class="icon_help" src="@Url.Content("~/images/icons/help_flag.svg")" alt="guides">
+
+
+
+                                    <p>Guides</p>
+
+
+                                </div>
+                            </div>
+                        </a>
+                    </div> <!--help for guides-->
+
+
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center help_content_center">
+                        <a href="@Url.Action("HelpAccountRelated")">
+                            <div class="panel">
+                                <div class="panel-body help_shadow">
+
+
+                                    <img class="icon_help" src="@Url.Content("~/images/icons/help_account related.svg")"/ alt="account related">
+
+
+
+                                    <p>Account Related</p>
+
+
+                                </div>
+                            </div>
+                        </a>
+                    </div> <!--help for account related-->
+
+
+                    <div class="col-lg-3 col-md-3 col-sm-6 text-center help_content_center">
+                        <a href="@Url.Action("HelpCorporate") ">
+                            <div class="panel">
+                                <div class="panel-body help_shadow">
+
+                                    <img class="icon_help" src="@Url.Content("~/images/icons/corporate and affiliate.svg")"/ alt="corporate and affiliate">
+                                    <p>Corporate & Affiliate </p>
+
+
+                                </div>
+                            </div>
+                        </a>
+                    </div> <!--help for account affiliate-->
+                </div>  <!--for row-->
+
+            </section>
+            @Html.Partial("_Social")
+        </div>
+    </div>
+</div>

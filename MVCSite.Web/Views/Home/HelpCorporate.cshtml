@@ -1,0 +1,119 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Help Centre | Corporate & Affiliate | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Need corporate tours or want to become our affiliate? This page has the steps to follow." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+ <div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+                <section class="section row">
+
+                	<!--breadcrumb-->
+
+                    <ol class="breadcrumb nobackgroundcolor">
+                        <li><a href="@Url.Action("HelpHome")">Help</a></li>
+                        <li class="active">Corporate & Affiliate  </li>
+                    </ol>
+
+                    <!--breadcrumb-->
+                   
+                    <h2 class="blue">Corporate & Affiliate  </h2>
+                    <span class="title_help">Corporate Tours and Activities</span>
+
+                    <!--start accordian-->
+
+                            		          
+                            	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                    
+                                    <!---01-->
+												  
+									<div class="panel-heading" role="tab" id="headingOne">
+										<h4 class="panel-title">
+											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+											Can I book tours for corporate event and bigger groups?
+                                            </a>
+										</h4>
+									</div>
+
+
+									<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+										<div class="new_panel_body">
+										Yes, it’s possible. First find the tour that you’d like to book for a corporate event, then click the button on the right side of the screen for contacting the guide. Send them a message detailing your requirements and they’ll get back to you in less than 48 hours and tell you if they can accommodate your group.
+										</div>
+									</div>
+                                    <hr>
+                                    <span class="title_help">Partnerships</span>
+
+                                    <!---02-->
+												  
+									<div class="panel-heading" role="tab" id="headingTwo">
+										<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+											Do you work with travel agents?
+										</a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+										<div class="new_panel_body">
+										Yes, we do. If you are a travel agent and would like to include our tours in your customer’s travel plans, please contact <a href="mailto:contact@kootour.com">contact@kootour.com</a> We will contact you regarding our partnership program and benefits.
+
+										</div>
+									</div>
+												  
+
+                                <!---03-->
+
+												  
+									<div class="panel-heading" role="tab" id="headingThree">
+										<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+											Do you work with hotels?
+										</a>
+										</h4>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+										<div class="new_panel_body">
+										Yes, we do. If you are a hotel concierge and would like to offer our tours to your guests, please contact <a href="mailto:contact@kootour.com">contact@kootour.com</a>. We will contact you regarding our partnership program and benefits.
+										</div>
+									</div>
+												  
+
+                        @*         <!---04-->
+                                    <!--for later
+                                                    
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I get credit towards future tours from referrals I make?
+
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="new_panel_body">
+                                        Referral program
+
+                                        </div>
+                                    </div> -->*@
+						</div><!--end accordian-->
+				</section> <!--the end of section for row-->
+
+                @Html.Partial("_Social")
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,25 @@
+﻿@model MVCSite.Web.ViewModels.Message
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Message | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Message." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <section class="section">
+                <span class="title">@Model.Title</span>
+                <p>@Model.Text</p>
+                <a href="@Model.Referrer">Click here to return</a>
+            </section>
+        </div>
+    </div>
+</div>

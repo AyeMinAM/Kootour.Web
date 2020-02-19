@@ -1,0 +1,580 @@
+﻿@using MVCSite.Common.NameHelper
+@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@using SquishIt.Framework
+@model MVCSite.Web.ViewModels.BookingModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Booking @Model.TourName | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Booking Tour." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+
+
+<style>
+    .payment_stripe_logo {
+        width: 170px;
+    }
+
+    .payment_contact {
+        border: 0;
+        box-shadow: none;
+    }
+</style>
+
+<nav class="navbar-breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index")">Home</a></li>
+
+            @if (!string.IsNullOrEmpty(Model.Location) && Model.Location.Contains(","))
+            {
+                <li><a href="@Url.Action("Tours", new {cname=@NameHelper.SpaceToDash(@Model.Location.Substring(0, @Model.Location.IndexOf(",")))})">@Model.Location.Substring(0, @Model.Location.IndexOf(","))</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("Tours", new {cname=@NameHelper.SpaceToDash(@Model.Location)})">@Model.Location</a></li>
+            }
+            <li><a href="@Url.Action("Tour", new { id=@Model.TourID , calendar=DateTime.UtcNow.ToString(MVCSite.Common.TimeHelper.DefaultDateFormat) })">@Model.TourName</a></li>
+            <li class="active">Booking Summary</li>
+        </ol>
+    </div>
+</nav>
+<div class="main-container container">
+    <div class="row">
+        <div class="left-column col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="section section-small col-xs-12">
+                <div class="title">
+                    <div>Booking Summary</div>
+                    <div class="small">We've put this tour on hold for you. Please complete your booking within 15 minutes.</div>
+                </div>
+
+                <div class="text-center nopadding col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                    <img class="tour-thumbnail" src="@Model.ImageUrl">
+                </div>
+
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                    @*<span class="subtitle nomargin">@Model.TourName</span>
+                    <p>@Model.GuideName</p>*@
+                    <div class="booking-summary nopadding col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <span class="subtitle">@Model.TourName</span>
+                    </div>
+                    <div class="booking-summary nopadding col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding">
+                            <span class="subtitle">Guide</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-9 col-xs-9 nopadding text-right">
+                            <span>@Model.GuideName</span>
+                        </div>
+                    </div>
+                    <div class="booking-summary nopadding col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding">
+                            <span class="subtitle">Date</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-9 col-xs-9 nopadding text-right">
+                            <span>@Model.Date</span>
+                        </div>
+                    </div>
+                    <div class="booking-summary nopadding col-lg-9 col-md-9 col-sm-12 col-xs-12">
+
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding">
+                            <span class="subtitle">Time</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-9 col-xs-9 nopadding text-right">
+                            <span>@Model.Time</span>
+                        </div>
+                    </div>
+                    <div class="booking-summary nopadding col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 nopadding">
+                            <span class="subtitle">Location</span>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-9 col-xs-9 nopadding text-right">
+                            <span>@Model.TourLocationSimple</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            
+           
+
+            <section class="widget nopadding section section-small col-xs-12">
+                
+                @Html.EditorFor(model => model, "PriceDetailsTemplate")
+                @*@Html.Partial("_PriceDetailsPartial", Model)*@
+               
+
+            </section>
+            
+        
+
+                @using (Html.BeginForm("Payment", "Tourist", new { }, FormMethod.Post, new { id = "payment-form", @class = "form-horizontal  payment_form" }))
+                {                               
+                   
+                        <section class="section section-small col-xs-12">
+                            <div class="title">
+                                <div>Traveller Information</div>
+                                <div class="small">Please ensure the data below is correct so your guide can contact you.</div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-6">
+                                    @if (ViewBag.isGuestBooking)
+                                    {
+                                        @Html.TextBoxFor(m => m.TravellerInformationModel.FirstName, new { @class = "form-control input-lg gray", placeholder = "First Name" })
+                                        @Html.ValidationMessageFor(m => m.TravellerInformationModel.FirstName)
+                                    }
+                                    else
+                                    {                                               
+                                        @Model.TravellerInformationModel.FirstName
+                                    }
+                                </div>
+
+                                <div class="hidden-sm hidden-md hidden-lg col-xs-12 " style="margin-bottom:15px" ></div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                    @if (ViewBag.isGuestBooking)
+                                     {
+                                        @Html.TextBoxFor(m => m.TravellerInformationModel.LastName, new { @class = "form-control input-lg gray", placeholder = "Last Name" })
+                                        @Html.ValidationMessageFor(m => m.TravellerInformationModel.LastName)
+                                    }
+                                    else
+                                    {
+                                        @Model.TravellerInformationModel.LastName
+                                    }
+                                </div>
+                            </div>
+
+                          
+                            <div class="form-group">
+                                <div class="col-xs-12 col-sm-6">
+                                    @if (ViewBag.isGuestBooking)
+                                     {
+                                        @Html.TextBoxFor(m => m.TravellerInformationModel.Email, new { @class = "form-control input-lg gray", placeholder = "Email" })
+                                        @Html.ValidationMessageFor(m => m.TravellerInformationModel.Email)
+
+                                        }
+                                        else
+                                        {
+                                        @Model.TravellerInformationModel.Email
+                                        }
+                                </div>
+
+                                <div class="hidden-sm hidden-md hidden-lg col-xs-12 " style="margin-bottom:15px" ></div>
+
+                                <div class="col-xs-12 col-sm-6">
+                                
+                                    @if (ViewBag.isGuestBooking)
+                                    {
+                                    @Html.TextBoxFor(m => m.TravellerInformationModel.PhoneNumber, new { @class = "form-control input-lg gray", placeholder = "Phone Number (optional)" })
+                                    @Html.ValidationMessageFor(m => m.TravellerInformationModel.PhoneNumber)
+
+                                    }
+                                    else
+                                    {
+                                    @Model.TravellerInformationModel.PhoneNumber
+                                    }
+                                </div>
+                            </div>
+
+                            @if (ViewBag.isGuestBooking)
+                            {
+                                    <input class="checkbox" id="TravellerInformationModel.IfWantNewsletter" value=true name="TravellerInformationModel.IfWantNewsletter" type="checkbox" checked="required">
+                                    <label for="TravellerInformationModel.IfWantNewsletter"></label>
+                                    <label for="TravellerInformationModel.IfWantNewsletter">Receive travel tips and deals</label>
+                            }
+                        </section>
+                        
+                 
+                        <section class="section section-small col-xs-12">
+
+                            <span class="payment-errors"></span>
+
+                            <div class="col-xs-12">
+                                <!--for all div-->
+
+                                <div class="form-group required">
+                                    <!--card-->
+                                    <label class="col-sm-3 text-left">Card Number</label>
+
+                                    <div class="col-sm-9 required">
+                                        @*<input type="text" size="20" data-stripe="number" class="form-control input-lg gray" required>*@
+                                        @Html.TextBoxFor(m => m.PaymentModel.CardNumber, new { id = "cc-number", @class = "form-control input-lg gray" })
+                                    </div>
+                                </div> <!--card-->
+
+                                <div class="form-group">
+                                    <label class="col-sm-3 col-xs-12 text-left control-label">Expiration</label>
+                                    <div class="col-xs-4 col-sm-2 payment_adjustment required">
+                                        @*<input type="text" size="2" data-stripe="exp_year" placeholder="MM/ YY" class="form-control input-lg gray" id="firstName" required>*@
+                                        @Html.TextBoxFor(m => m.PaymentModel.ExpirationMonth, new { id = "cc-exp-month", @class = "form-control input-lg gray", placeholder = "MM" })
+                                    </div>
+
+                                    <div class="col-xs-4 col-sm-2 payment_adjustment required">
+                                        @*<input type="text" size="2" data-stripe="exp_year" placeholder="MM/ YY" class="form-control input-lg gray" id="firstName" required>*@
+                                        @Html.TextBoxFor(m => m.PaymentModel.ExpirationYear, new { id = "cc-exp-year", @class = "form-control input-lg gray", placeholder = "YY" })
+                                    </div>
+
+                                    <div class="col-xs-4 col-sm-2 payment_adjustment required">
+                                        @*<input type="text" size="4" data-stripe="cvc" placeholder="CVC" class="form-control input-lg gray id=firstName" required>*@
+                                        @Html.TextBoxFor(m => m.PaymentModel.CVC, new { id = "cc-cvc", @class = "form-control input-lg gray", placeholder = "CVC" })
+                                    </div>
+
+                                    <div class="hidden-sm hidden-md hidden-lg col-xs-12 " style="margin-bottom:15px" ></div>
+                                    <div class="col-xs-12  col-sm-offset-0 col-sm-3 required">
+                                        @*<input type="text" size="6" data-stripe="address_zip" placeholder ="Postal Code" class="form-control input-lg gray" id="firstName" required>*@
+                                        @Html.TextBoxFor(m => m.PaymentModel.PostalCode, new { id = "PostalCode", @class = "form-control input-lg gray", placeholder = "Postal Code" })
+                                    </div>
+                                </div>
+
+
+                                <div class="nested-section">
+                                    <!--button-->
+                                    <p class="text-center">
+                                        @*<button type="submit" class="btn btn-lg btn-kootour-bold fullwidth"> <span class="payment_lock glyphicon glyphicon-lock "></span>Pay (US $ 162.00)</button>*@
+                                        <button type="submit" class="btn btn-kootour-bold fullwidth"><span class="payment_lock glyphicon glyphicon-lock "></span> Pay (US $ @Model.PaymentModel.Price.ToString("0.00")) </button>
+                                    </p>
+                                </div> <!--button-->
+                                @Html.HiddenFor(m => m.PaymentModel.StripePublishableKey)
+                                @Html.HiddenFor(m => m.PaymentModel.Price)
+                                @Html.HiddenFor(m => m.PaymentModel.BookID)
+                                @Html.HiddenFor(m => m.BookingID)
+                                @Html.HiddenFor(m => m.TourID)
+                                @Html.HiddenFor(m => m.UserID)
+
+
+
+
+
+
+                                @Html.ValidationSummary(false, "There was an error in payment.", new { id = "payment-errors", @class = "alert alert-danger" })
+
+                                <div class="col-lg-12 col-md-12 col-sm12 col-xs-12">
+                                    <p class="payment_text"> * All payments are sent over a secure connection and processed through Stripe. No credit card data is stored in our database.</p>
+                                
+                                    <p>By proceeding, you agree to Kootour's <a href="@Url.Action("Terms","Home")">terms and conditions</a></p>  
+                                
+                                </div>
+                            </div> <!--for all div-->
+                            <div class="col-lg-12 col-md-12 col-sm12 col-xs-12 text-right">
+                                <img class="payment_stripe_logo" src="/images/icons/outline@3x.png">
+                            </div>
+                        </section>
+                        }
+                        @*</form>*@
+
+
+                    </div>
+
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+           
+
+            <section class="section section-small col-xs-12">
+
+                <div>
+                    <p>
+                        <img id="SaveToWishListImg" src="/images/icons/heart_active.png" class="medium-icon" />
+                        @if (!@Model.IsDataSaved)
+                        {
+                            @*<img id="SaveToWishListImg" src="/images/icons/heart_intactive.png" class="medium-icon" />*@
+                            <a class="wishlink" id="SaveToWishList" data-saved="false" href="#">Save to the Wish List</a>
+                        }
+                        else
+                        {
+                            @*<img id="SaveToWishListImg" src="/images/icons/heart_active.png" class="medium-icon" />*@
+                            <a class="wishlink" id="SaveToWishList" data-saved="true" href="#">Remove from the Wish List</a>
+                        }
+
+                    </p>
+                </div>
+
+                <div class="title">Frequently Asked Questions</div>
+
+                <div class="faq borderbottom">
+                    <p>
+                        <a class="nocolor" id="question_2" href="#">
+                            <img src="/images/icons/arrow_head_right_192X192.png" class="small-icon" />How long do I have to complete my booking?
+                        </a>
+                    </p>
+
+                    <p class="answers" id="answer_2" style="display:none">Your tour date and time are reserved for 15 minutes. If you are having problems with your booking, please contact us.</p>
+                </div>
+
+                <div class="faq borderbottom">
+                    <p>
+                        <a class="nocolor" id="question_3" href="#">
+                            <img src="/images/icons/arrow_head_right_192X192.png" class="small-icon" />Can I change the date and/or time of a booked tour?
+                        </a>
+                    </p>
+
+                    <p class="answers" id="answer_3" style="display:none">
+                        This will depend on the availability of the guide. Your best option is to contact the guide directly to confirm with him/her if this is a possibility. However, neither Kootour nor the guide can guarantee that a change will be made.
+                    </p>
+                </div>
+
+                <div class="faq borderbottom">
+                    <p>
+                        <a class="nocolor" id="question_4" href="#">
+                            <img src="/images/icons/arrow_head_right_192X192.png" class="small-icon" />Can I cancel a tour I’ve booked?
+                        </a>
+                    </p>
+
+                    <p class="answers" id="answer_4" style="display:none">You can cancel a tour you’ve booked from your “Profile” page by looking under “Purchase History”. Any refund made will be according to our <a href="/Terms-and-Conditions#Refund-Policy">Refund Policy</a>.</p>
+                </div>
+
+                <div class="faq borderbottom">
+                    <p>
+                        <a class="nocolor" id="question_5" href="#">
+                            <img src="/images/icons/arrow_head_right_192X192.png" class="small-icon" />Can I pay the guide in cash on the day of the tour?
+                        </a>
+                    </p>
+
+                    <p class="answers" id="answer_5" style="display:none">Payments must always be made through the Kootour platform. Cash payments made during the tour should only be to pay for expenses not included in the tour’s price.</p>
+                </div>
+
+                <p>
+                    <a target="_blank" class="btn btn-lg btn-kootour-bold fullwidth" href="@Url.Action("HelpHome", "Home")">
+                        <img src="/images/icons/arrow_head_right_192X192.png" class="small-icon" />Learn More
+                    </a>
+                </p>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="@Url.Content("~/assets/js/lib/wishlist.js")"></script>
+<script type="text/javascript">
+
+    $(function () {
+
+        var defaults = {
+            notsaved : "Save to the Wish List",
+            saved: "Remove from the Wish List"
+        }
+        var wishlist = new Wishlist();
+        wishlist.setLink(document.getElementsByClassName("wishlink"));
+        var curTourId=@Model.TourID;
+        $("#SaveToWishList").on("click",
+            function () {
+                var isSave=$(this).attr("data-saved")==="true"?1:0;
+                $.post('/Tourist/SetWish',
+                    {tourId: curTourId,save:isSave},
+                    function (data) {
+                        var objForLogin = data;
+                        if (objForLogin.result) {
+                            //BootstrapDialog.show({
+                            //    title: isSave?'Saved successfully':'Removed successfully',
+                            //    message: objForLogin.message,
+                            //    buttons: [{
+                            //        label: 'Close',
+                            //        action: function (dialog) {
+                            //            dialog.close();
+                            //        }
+                            //    }]
+                            //});
+                            if(!isSave)
+                            {
+                                $("#SaveToWishListImg").attr("src","@Url.Content("~/images/icons/heart_intactive.png")");
+                                $("#SaveToWishList").attr('data-saved',"false");
+                                $("#SaveToWishList").html(defaults.notsaved);
+                            }
+                            else
+                            {
+                                $("#SaveToWishListImg").attr("src","@Url.Content("~/images/icons/heart_active.png")");
+                                $("#SaveToWishList").attr('data-saved',"true");
+                                $("#SaveToWishList").html(defaults.saved);
+                            }
+                        }
+
+                        else {
+                            BootstrapDialog.show({
+                                title: 'Please login to save this tour',
+                                message: '<a href="@Url.Action("Register","Account")">Sign Up</a> or <a href="@Url.Action("LogOn","Account")">Log In</a>',
+                                buttons: [{
+                                    label: 'Close',
+                                    action: function (dialog) {
+                                        dialog.close();
+                                    }
+                                }]
+                            });
+                        }
+                    }
+                );
+                return false;
+            }
+        );
+
+
+        $("#promoButton").on("click", function () {
+            $("#promoCodeErrorMsg").text("");
+            var code = $("#promoValue").val().trim();
+            //if (code != "")
+            {
+                $.post('/Tourist/ApplyPromoCode',
+                    {bookingID:@Model.BookingID, code: code },
+                    function(data) {
+                        if (data.ID===0) {
+                            $("#promoCodeErrorMsg").text("Promotion Code Invalid");
+                            if (code=="") {
+                                $("#promoCodeErrorMsg").text("");
+                            }
+                            $("#promoPrice").text(0);
+                            var finalPrice = parseFloat(@Model.SubTotalPrice) + parseFloat(@Model.ServiceFee);
+                            finalPrice = ((finalPrice * 100) / 100).toFixed(2);
+                            $(".totalPrice").text(finalPrice);
+                            return false;
+                        }
+                        var beginDate = new Date();
+                        beginDate.setTime(data.BeginDate.substr(6,13));
+                        var endDate = new Date();
+                        endDate.setTime(data.EndDate.substr(6,13));
+                        var today = new Date();
+
+                        if (today < beginDate || endDate < today) {
+                            $("#promoCodeErrorMsg").text("Promotion Code Expired");
+                            return false;
+                        }
+                        if ( parseInt(@Model.SubTotalPrice) <= data.MinValueToUse) {
+                            $("#promoCodeErrorMsg").text("Promotion Code only applies to tour with Sub-Total greater than $ " + data.MinValueToUse);
+                            return false;
+                        }
+                        if (data.OpenToUse===0 || data.PromoValue===0) {
+                            $("#promoCodeErrorMsg").text("Promotion Code Invalid");
+                            return false;
+                        }
+
+                        var promoValue = data.PromoValue;
+                        //$("label[for*='PromoPrice']").text(promoValue);
+                        $("#promoPrice").text(promoValue);
+                        var finalPrice = parseFloat(@Model.SubTotalPrice) + parseFloat(@Model.ServiceFee) + parseInt(promoValue);
+                        finalPrice = ((finalPrice * 100) / 100).toFixed(2);
+                        $(".totalPrice").text(finalPrice);
+                    }
+                );
+            }
+        });
+
+
+        $("#question_2").click(function(){
+
+            if($("#answer_2").is(":visible")) {
+                $("#answer_2").hide();
+                return false;
+            }
+
+            $(".answers").hide();
+            $("#answer_2").toggle();
+            return false;
+        });
+
+        $("#question_3").click(function(){
+
+            if($("#answer_3").is(":visible")) {
+                $("#answer_3").hide();
+                return false;
+            }
+
+            $(".answers").hide();
+            $("#answer_3").toggle();
+            return false;
+        });
+
+        $("#question_4").click(function(){
+
+            if($("#answer_4").is(":visible")) {
+                $("#answer_4").hide();
+                return false;
+            }
+
+            $(".answers").hide();
+            $("#answer_4").toggle();
+            return false;
+        });
+
+        $("#question_5").click(function(){
+
+            if($("#answer_5").is(":visible")) {
+                $("#answer_5").hide();
+                return false;
+            }
+
+            $(".answers").hide();
+            $("#answer_5").toggle();
+            return false;
+        });
+
+        $("#question_6").click(function(){
+
+            if($("#answer_6").is(":visible")) {
+                $("#answer_6").hide();
+                return false;
+            }
+
+            $(".answers").hide();
+            $("#answer_6").toggle();
+            return false;
+        });
+    });
+
+
+</script>
+
+
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+@Html.Raw(Bundle.JavaScript()
+    .Add("~/ViewScripts/Tourist/payment-validations.js")
+    .Add("~/ViewScripts/Tourist/jquery.payment.js")
+    .Render("~/js/PYCombined_#.js"))
+
+<script type="text/javascript">
+    Stripe.setPublishableKey("@Model.PaymentModel.StripePublishableKey");
+    $(function() {
+        $('[data-toggle="popover"]').popover();
+        $('#payment-form')
+            .submit(function(e) {
+                e.preventDefault();
+                var $form = $(this);
+
+                // Disable the submit button to prevent repeated clicks
+                $form.find('button').prop('disabled', true);
+
+                //Stripe.card.createToken($form, stripeResponseHandler);
+                //expiration = $('#cc-exp').payment('cardExpiryVal');
+                expirationMonth = $('#cc-exp-month').val();
+                expirationYear = $('#cc-exp-year').val();
+                Stripe.card.createToken({
+                        number: $('#cc-number').val(),
+                        cvc: $('#cc-cvc').val(),
+                        exp_month: (expirationMonth || 0),
+                        exp_year: (expirationYear || 0)
+                    },
+                    stripeResponseHandler);
+
+            });
+        var stripeResponseHandler = function(status, response) {
+            var $form = $('#payment-form');
+
+            if (response.error) {
+                // Show the errors on the form
+                $paymentErrors = $form.find('#payment-errors');
+                $paymentErrors.text(response.error.message);
+                $paymentErrors.toggle($paymentErrors.text.length > 0);
+
+                $form.find('button').prop('disabled', false);
+            } else {
+                // token contains id, last4, and card type
+                var token = response.id;
+                // Insert the token into the form so it gets submitted to the server
+                $form.append($('<input type="hidden" name="PaymentModel.StripeToken" />').val(token));
+                // and re-submit
+                $form.get(0).submit();
+            }
+        };
+    });
+</script>

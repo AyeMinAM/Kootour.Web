@@ -1,0 +1,62 @@
+.navbar-default {
+  background-color: rgba(0,0,0,0.2);
+  border-color: #fff;
+     -webkit-box-shadow: -1px 4px 5px 0px rgba(0,0,0,0.05);
+-moz-box-shadow: -1px 4px 5px 0px rgba(0,0,0,0.05);
+box-shadow: -1px 4px 5px 0px rgba(0,0,0,0.05);
+}
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #f5d10a;
+  background-color: transparent;
+}
+.navbar-default .navbar-text {
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #fff;
+  text-shadow: 3px 2px 2px rgba(0, 0, 0, 0.1);
+
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #00cccc;
+  border-color: #00cccc;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #00cccc;
+  border-color: #f5d10a;
+  background-color:transparent;
+}
+.navbar-default .navbar-nav > .disabled > a,
+.navbar-default .navbar-nav > .disabled > a:hover,
+.navbar-default .navbar-nav > .disabled > a:focus {
+  color: #ccc;
+  background-color: transparent;
+}
+.navbar-default .navbar-toggle {
+  border-color: #fff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #fff;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #00cccc;
+  border-color: #00cccc;
+  background-color: #333;
+}

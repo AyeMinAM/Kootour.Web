@@ -1,0 +1,30 @@
+﻿@model WMath.Web.ViewModels.Layout
+<div class="information_board">
+    <font color="#000000"><font color="#ff0000" size="5">打免费的国内长途，用免费软件，请上<a href="http://www.wellyours.com"><strong>微教室！</strong></a></font>
+    </font>
+
+</div>
+@foreach (var msg in Model.MsgList)
+{
+    <div class="information_board">
+        <strong>@msg.Name</strong></div>
+    <div class="information_board">
+        @msg.Description
+    </div>
+}
+
+
+
+@model WMath.Web.ViewModels.Layout
+<div class ="information_board">
+    <font color="#000000"><font color="#ff0000" size="5">打免费的国内长途，用免费软件，请上<><strong>微教室</strong></font>好友成功注册并使用电话系统将获得系统赠送的<font color="#ff0000" size="5"><strong>90</strong></font>分钟国内长途！多邀请多得。</font>
+<div><font color="#ff0000" size="5"><strong>支付宝充值用户请使用支付宝账户登录查看余额，邮箱直接登录会进入不同账户因此无法查看，谢谢！</strong></font>	</div>
+</div>
+@foreach (var msg in Model.MsgList)
+{
+    <div class="information_board">
+        <strong>@msg.Name</strong></div>
+    <div class="information_board">
+        @msg.Description
+    </div>
+}

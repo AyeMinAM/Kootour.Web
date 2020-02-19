@@ -1,0 +1,99 @@
+footer {
+  margin-top: auto;
+  background-color: @body-color;
+  color: @white;
+}
+
+footer a,
+footer a:hover {
+  color: @white;
+}
+
+footer .container {
+  padding-top: 60px;
+  padding-bottom: 60px;
+}
+
+footer .container.copyright {
+  padding-top: 0px;
+  padding-bottom: 65px;
+  color: @copyrightColor;
+}
+
+footer form {    
+    max-width: 200px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+footer .footer-band {
+    .font-size(@bandFontSize);
+    font-family: Montserrat-Light;
+    color: @white;
+    vertical-align: bottom;
+}
+
+
+.footer-band-wrapper {
+    margin-top: -45px;
+    margin-bottom: 30px;
+}
+
+.social-links img {
+  width: 30px;
+}
+
+.social-links > a {
+  padding-right: 10px; 
+}
+
+.social-links > a:last-child {
+  padding-right: 0px; 
+}
+
+.lg-social-links  {
+  margin: 20px 0;
+}
+
+.lg-social-links img {
+  width: 50px;
+}
+
+.lg-social-links > a {
+  padding-right: 30px; 
+}
+
+.lg-social-links > a:last-child {
+  padding-right: 0px; 
+}
+
+.social-links img:hover,
+.lg-social-links img:hover  {
+    -webkit-filter: brightness(85%);
+    filter: brightness(85%);
+}
+
+@media (max-width: 1200px) {
+    .footer-band-wrapper {
+        text-align: center;
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        text-align: center;
+    }
+
+    .footer-block {
+        margin-bottom: 30px;
+    }
+
+    .lg-social-links img {
+        width: 30px;
+    }
+
+    .lg-social-links > a {
+        padding-right: 15px; 
+    }
+}
+

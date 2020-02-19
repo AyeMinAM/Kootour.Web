@@ -1,0 +1,103 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.EditReviewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Edit Review | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Edit Review." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="section row">
+            @if (!@Model.IsReviewAdded)
+            {
+                <span class="title">Add my review</span>
+            }
+            else
+            {
+                <span class="title">Edit my review</span>
+            }
+            @using (Html.BeginForm("EditReview", "Tourist", new { }, FormMethod.Post, new { id = "EditReviewForm", @class = "form-horizontal" }))
+            {
+                <div class="form-group">
+                    <label for="accuracy" class="col-sm-3 text-left control-label">Accuracy</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Accuracy, new { id = "accuracy", @class = "star-rating-kootour rating" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="communication" class="col-sm-3 text-left control-label">Communication</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Communication, new { id = "communication", @class = "star-rating-kootour rating" })                            
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="services" class="col-sm-3 text-left control-label">Services</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Services, new { id = "services", @class = "star-rating-kootour rating" })                            
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="knowledge" class="col-sm-3 text-left control-label">Knowledge</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Knowledge, new { id = "knowledge", @class = "star-rating-kootour rating" })                            
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="value" class="col-sm-3 text-left control-label">Value</label>
+                    <div class="col-sm-9">
+                        @Html.TextBoxFor(m => m.Value, new { id = "value", @class = "star-rating-kootour rating" })                            
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        @Html.TextAreaFor(m => m.Comment, new { @class="form-control",@placeholder="Your comment",@rows="5"})
+                        @*<textarea class="form-control" placeholder="Edit my review" rows="5" required>This is my review</textarea>*@
+                    </div>
+                        <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Comment)
+                    </div>
+                </div>
+
+                <button type="submit" class="pull-right btn btn-kootour-bold">Save</button>
+            }
+            </section>
+        </div>
+    </div>
+</div>
+@*<script src="/assets/js/review-add.js"></script>*@
+<script type="text/javascript">
+    var starOptions = {
+        min: 0,
+        max: 5,
+        step: 1,
+        size: 'xs',
+        showClear: false,
+        showCaption: false,
+        theme: "star-kootour",
+        emptyStar: "<i class='glyphicon glyphicon-star'></i>"
+    };
+
+    $("#accuracy").rating(starOptions);
+    $("#communication").rating(starOptions);
+    $("#services").rating(starOptions);
+    $("#knowledge").rating(starOptions);
+    $("#value").rating(starOptions);
+
+    $(function () {
+
+    });
+</script>

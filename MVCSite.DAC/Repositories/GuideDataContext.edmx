@@ -1,0 +1,1318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WMathStatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="BankInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Branch" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AccountNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountType" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="AccountOwner" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GuiderExcludedDates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Promo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromoName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PromoValue" Type="int" />
+          <Property Name="PromoPercent" Type="float" />
+          <Property Name="OpenToUse" Type="bit" />
+          <Property Name="MinTouristsToUse" Type="int" />
+          <Property Name="MinValueToUse" Type="int" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="GuideID" Type="int" />
+          <Property Name="TourID" Type="int" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsHistorical" Type="bit" Nullable="false" />
+          <Property Name="IsAdventure" Type="bit" Nullable="false" />
+          <Property Name="IsLeisureSports" Type="bit" Nullable="false" />
+          <Property Name="IsCultureArts" Type="bit" Nullable="false" />
+          <Property Name="IsNatureRural" Type="bit" Nullable="false" />
+          <Property Name="IsFestivalEvents" Type="bit" Nullable="false" />
+          <Property Name="IsNightlifeParty" Type="bit" Nullable="false" />
+          <Property Name="IsFoodDrink" Type="bit" Nullable="false" />
+          <Property Name="IsShoppingMarket" Type="bit" Nullable="false" />
+          <Property Name="IsEnglish" Type="bit" Nullable="false" />
+          <Property Name="IsChineseMandarian" Type="bit" Nullable="false" />
+          <Property Name="IsChineseCantonese" Type="bit" Nullable="false" />
+          <Property Name="IsFrench" Type="bit" Nullable="false" />
+          <Property Name="IsSpanish" Type="bit" Nullable="false" />
+          <Property Name="IsGerman" Type="bit" Nullable="false" />
+          <Property Name="IsPortuguese" Type="bit" Nullable="false" />
+          <Property Name="IsItalian" Type="bit" Nullable="false" />
+          <Property Name="IsRussian" Type="bit" Nullable="false" />
+          <Property Name="IsKorean" Type="bit" Nullable="false" />
+          <Property Name="IsJapanese" Type="bit" Nullable="false" />
+          <Property Name="Overview" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Itinerary" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Duration" Type="int" Nullable="false" />
+          <Property Name="TourCityID" Type="int" Nullable="false" />
+          <Property Name="MeetupLocation" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MinTouristNum" Type="int" Nullable="false" />
+          <Property Name="MaxTouristNum" Type="int" Nullable="false" />
+          <Property Name="BookingType" Type="tinyint" Nullable="false" />
+          <Property Name="MinHourAdvance" Type="int" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="DurationTimeType" Type="tinyint" Nullable="false" />
+          <Property Name="ReviewCount" Type="int" Nullable="false" />
+          <Property Name="ReviewAverageScore" Type="float" Nullable="false" />
+          <Property Name="IsTransportation" Type="bit" Nullable="false" />
+          <Property Name="IsPhotography" Type="bit" Nullable="false" />
+          <Property Name="IsBusinessInterpretation" Type="bit" Nullable="false" />
+          <Property Name="IsNorwegian" Type="bit" Nullable="false" />
+          <Property Name="IsSwedish" Type="bit" Nullable="false" />
+          <Property Name="IsDanish" Type="bit" Nullable="false" />
+          <Property Name="IsFeatured" Type="bit" />
+        </EntityType>
+        <EntityType Name="TourExclusion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="SortNo" Type="tinyint" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourExtra">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="SortNo" Type="tinyint" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Time" Type="int" Nullable="false" />
+          <Property Name="TimeType" Type="tinyint" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourInclusion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="300" />
+          <Property Name="SortNo" Type="tinyint" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourPicture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="RelativePath" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="SortNo" Type="tinyint" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourPriceBreakdown">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="EndPoint1" Type="int" Nullable="false" />
+          <Property Name="EndPoint2" Type="int" Nullable="false" />
+          <Property Name="DiscountValue" Type="int" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="SortNo" Type="tinyint" Nullable="false" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="DateRange" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TourSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="IsMonday" Type="bit" Nullable="false" />
+          <Property Name="IsTuesday" Type="bit" Nullable="false" />
+          <Property Name="IsWednesday" Type="bit" Nullable="false" />
+          <Property Name="IsThursday" Type="bit" Nullable="false" />
+          <Property Name="IsFriday" Type="bit" Nullable="false" />
+          <Property Name="IsSaturday" Type="bit" Nullable="false" />
+          <Property Name="IsSunday" Type="bit" Nullable="false" />
+          <Property Name="DiscountTourists" Type="int" />
+          <Property Name="DiscountValue" Type="int" />
+          <Property Name="DiscountPercent" Type="float" />
+          <Property Name="StartTime1" Type="varchar" MaxLength="10" />
+          <Property Name="StartTime2" Type="varchar" MaxLength="10" />
+          <Property Name="StartTime3" Type="varchar" MaxLength="10" />
+          <Property Name="StartTime4" Type="varchar" MaxLength="10" />
+          <Property Name="StartTime5" Type="varchar" MaxLength="10" />
+          <Property Name="StartTime6" Type="varchar" MaxLength="10" />
+          <Property Name="SugRetailPrice" Type="float" />
+          <Property Name="CommisionPay" Type="float" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="DateRange" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="NetPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="TourVendorPromo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PromoName" Type="nvarchar" MaxLength="100" />
+          <Property Name="PromoValue" Type="int" Nullable="false" />
+          <Property Name="PromoPercent" Type="float" Nullable="false" />
+          <Property Name="SortNo" Type="tinyint" Nullable="false" />
+          <Property Name="OpenToUse" Type="bit" />
+          <Property Name="MinTouristsToUse" Type="int" />
+          <Property Name="MinValueToUse" Type="int" />
+          <Property Name="BeginDate" Type="datetime" Nullable="false" />
+          <Property Name="EndDate" Type="datetime" Nullable="false" />
+          <Property Name="DateRange" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="GuideID" Type="int" />
+          <Property Name="TourID" Type="int" />
+        </EntityType>
+        <EntityType Name="UserTourBooking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Calendar" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Time" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Travellers" Type="int" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="TourUserID" Type="int" Nullable="false" />
+          <Property Name="TourName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CalendarStart" Type="datetime" Nullable="false" />
+          <Property Name="CalendarEnd" Type="datetime" Nullable="false" />
+          <Property Name="TourImgPath" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="GuiderName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="SubTotal" Type="float" Nullable="false" />
+          <Property Name="Taxes" Type="float" Nullable="false" />
+          <Property Name="DiscountValue" Type="float" Nullable="false" />
+          <Property Name="TotalPay" Type="float" Nullable="false" />
+          <Property Name="ExtraIds" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="DiscountTourist" Type="tinyint" Nullable="false" />
+          <Property Name="DiscountPercent" Type="float" Nullable="false" />
+          <Property Name="ServiceFee" Type="float" Nullable="false" />
+          <Property Name="PromoPrice" Type="float" />
+        </EntityType>
+        <EntityType Name="UserTourReview">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="Accuracy" Type="tinyint" Nullable="false" />
+          <Property Name="Communication" Type="tinyint" Nullable="false" />
+          <Property Name="Services" Type="tinyint" Nullable="false" />
+          <Property Name="Knowledge" Type="tinyint" Nullable="false" />
+          <Property Name="Value" Type="tinyint" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="AverageScore" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserWish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="TourID" Type="int" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="TourName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SugRetailPrice" Type="float" Nullable="false" />
+          <Property Name="NowPrice" Type="float" Nullable="false" />
+          <Property Name="TourImgPath" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BookingType" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_TourExclusion_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourExclusion" Type="Self.TourExclusion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourExclusion">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourExtra_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourExtra" Type="Self.TourExtra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourExtra">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourInclusion_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourInclusion" Type="Self.TourInclusion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourInclusion">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourPicture_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourPicture" Type="Self.TourPicture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourPicture">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourPriceBreakdown_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourPriceBreakdown" Type="Self.TourPriceBreakdown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourPriceBreakdown">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourSchedule_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="TourSchedule" Type="Self.TourSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourSchedule">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourVendorPromo_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="0..1" />
+          <End Role="TourVendorPromo" Type="Self.TourVendorPromo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourVendorPromo">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTourBooking_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="UserTourBooking" Type="Self.UserTourBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTourBooking">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserTourReview_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="UserTourReview" Type="Self.UserTourReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTourReview">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserWish_Tour">
+          <End Role="Tour" Type="Self.Tour" Multiplicity="1" />
+          <End Role="UserWish" Type="Self.UserWish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWish">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="WMathStatModelStoreContainer">
+          <EntitySet Name="BankInfo" EntityType="Self.BankInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="GuiderExcludedDates" EntityType="Self.GuiderExcludedDates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Promo" EntityType="Self.Promo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tour" EntityType="Self.Tour" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourExclusion" EntityType="Self.TourExclusion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourExtra" EntityType="Self.TourExtra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourInclusion" EntityType="Self.TourInclusion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPicture" EntityType="Self.TourPicture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourPriceBreakdown" EntityType="Self.TourPriceBreakdown" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourSchedule" EntityType="Self.TourSchedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TourVendorPromo" EntityType="Self.TourVendorPromo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTourBooking" EntityType="Self.UserTourBooking" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserTourReview" EntityType="Self.UserTourReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserWish" EntityType="Self.UserWish" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TourExclusion_Tour" Association="Self.FK_TourExclusion_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourExclusion" EntitySet="TourExclusion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourExtra_Tour" Association="Self.FK_TourExtra_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourExtra" EntitySet="TourExtra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourInclusion_Tour" Association="Self.FK_TourInclusion_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourInclusion" EntitySet="TourInclusion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourPicture_Tour" Association="Self.FK_TourPicture_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourPicture" EntitySet="TourPicture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourPriceBreakdown_Tour" Association="Self.FK_TourPriceBreakdown_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourPriceBreakdown" EntitySet="TourPriceBreakdown" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourSchedule_Tour" Association="Self.FK_TourSchedule_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourSchedule" EntitySet="TourSchedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourVendorPromo_Tour" Association="Self.FK_TourVendorPromo_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="TourVendorPromo" EntitySet="TourVendorPromo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTourBooking_Tour" Association="Self.FK_UserTourBooking_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="UserTourBooking" EntitySet="UserTourBooking" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTourReview_Tour" Association="Self.FK_UserTourReview_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="UserTourReview" EntitySet="UserTourReview" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserWish_Tour" Association="Self.FK_UserWish_Tour">
+            <End Role="Tour" EntitySet="Tour" />
+            <End Role="UserWish" EntitySet="UserWish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GuideModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GuideDataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BankInfoes" EntityType="GuideModel.BankInfo" />
+          <EntitySet Name="TourExclusions" EntityType="GuideModel.TourExclusion" />
+          <EntitySet Name="TourInclusions" EntityType="GuideModel.TourInclusion" />
+          <EntitySet Name="TourPictures" EntityType="GuideModel.TourPicture" />
+          <EntitySet Name="GuiderExcludedDates" EntityType="GuideModel.GuiderExcludedDates" />
+          <EntitySet Name="TourSchedules" EntityType="GuideModel.TourSchedule" />
+          <EntitySet Name="Tours" EntityType="GuideModel.Tour" />
+          <AssociationSet Name="FK_TourExclusion_Tour" Association="GuideModel.FK_TourExclusion_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourExclusion" EntitySet="TourExclusions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourInclusion_Tour" Association="GuideModel.FK_TourInclusion_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourInclusion" EntitySet="TourInclusions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourPicture_Tour" Association="GuideModel.FK_TourPicture_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourPicture" EntitySet="TourPictures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TourSchedule_Tour" Association="GuideModel.FK_TourSchedule_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourSchedule" EntitySet="TourSchedules" />
+          </AssociationSet>
+          <EntitySet Name="UserWishes" EntityType="GuideModel.UserWish" />
+          <AssociationSet Name="FK_UserWish_Tour" Association="GuideModel.FK_UserWish_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="UserWish" EntitySet="UserWishes" />
+          </AssociationSet>
+          <EntitySet Name="UserTourReviews" EntityType="GuideModel.UserTourReview" />
+          <AssociationSet Name="FK_UserTourReview_Tour" Association="GuideModel.FK_UserTourReview_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="UserTourReview" EntitySet="UserTourReviews" />
+          </AssociationSet>
+          <EntitySet Name="UserTourBookings" EntityType="GuideModel.UserTourBooking" />
+          <AssociationSet Name="FK_UserTourBooking_Tour" Association="GuideModel.FK_UserTourBooking_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="UserTourBooking" EntitySet="UserTourBookings" />
+          </AssociationSet>
+          <EntitySet Name="TourExtras" EntityType="GuideModel.TourExtra" />
+          <AssociationSet Name="FK_TourExtra_Tour" Association="GuideModel.FK_TourExtra_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourExtra" EntitySet="TourExtras" />
+          </AssociationSet>
+          <EntitySet Name="TourPriceBreakdowns" EntityType="GuideModel.TourPriceBreakdown" />
+          <AssociationSet Name="FK_TourPriceBreakdown_Tour" Association="GuideModel.FK_TourPriceBreakdown_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourPriceBreakdown" EntitySet="TourPriceBreakdowns" />
+          </AssociationSet>
+          <EntitySet Name="Promoes" EntityType="GuideModel.Promo" />
+          <EntitySet Name="TourVendorPromoes" EntityType="GuideModel.TourVendorPromo" />
+          <AssociationSet Name="FK_TourVendorPromo_Tour" Association="GuideModel.FK_TourVendorPromo_Tour">
+            <End Role="Tour" EntitySet="Tours" />
+            <End Role="TourVendorPromo" EntitySet="TourVendorPromoes" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="BankInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Branch" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AccountNo" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AccountType" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="AccountOwner" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TourExclusion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="SortNo" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourExclusion_Tour" FromRole="TourExclusion" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="TourInclusion">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="SortNo" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourInclusion_Tour" FromRole="TourInclusion" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="TourPicture">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="String" Name="RelativePath" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="SortNo" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourPicture_Tour" FromRole="TourPicture" ToRole="Tour" />
+        </EntityType>
+        <EntityType Name="GuiderExcludedDates">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="String" Name="Date" Nullable="false" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TourSchedule">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="BeginDate" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="EndDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="DateRange" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="IsMonday" Nullable="false" />
+          <Property Type="Boolean" Name="IsTuesday" Nullable="false" />
+          <Property Type="Boolean" Name="IsWednesday" Nullable="false" />
+          <Property Type="Boolean" Name="IsThursday" Nullable="false" />
+          <Property Type="Boolean" Name="IsFriday" Nullable="false" />
+          <Property Type="Boolean" Name="IsSaturday" Nullable="false" />
+          <Property Type="Boolean" Name="IsSunday" Nullable="false" />
+          <Property Type="Int32" Name="DiscountTourists" />
+          <Property Type="Int32" Name="DiscountValue" />
+          <Property Type="Double" Name="DiscountPercent" />
+          <Property Type="String" Name="StartTime1" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StartTime2" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StartTime3" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StartTime4" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StartTime5" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="StartTime6" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="NetPrice" />
+          <Property Type="Double" Name="SugRetailPrice" />
+          <Property Type="Double" Name="CommisionPay" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourSchedule_Tour" FromRole="TourSchedule" ToRole="Tour" />
+          
+        </EntityType>
+        <EntityType Name="Tour">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsHistorical" Nullable="false" />
+          <Property Type="Boolean" Name="IsAdventure" Nullable="false" />
+          <Property Type="Boolean" Name="IsLeisureSports" Nullable="false" />
+          <Property Type="Boolean" Name="IsCultureArts" Nullable="false" />
+          <Property Type="Boolean" Name="IsNatureRural" Nullable="false" />
+          <Property Type="Boolean" Name="IsFestivalEvents" Nullable="false" />
+          <Property Type="Boolean" Name="IsNightlifeParty" Nullable="false" />
+          <Property Type="Boolean" Name="IsFoodDrink" Nullable="false" />
+          <Property Type="Boolean" Name="IsShoppingMarket" Nullable="false" />
+          <Property Type="Boolean" Name="IsTransportation" Nullable="false" />
+          <Property Type="Boolean" Name="IsBusinessInterpretation" Nullable="false" />
+          <Property Type="Boolean" Name="IsPhotography" Nullable="false" />
+          <Property Type="Boolean" Name="IsEnglish" Nullable="false" />
+          <Property Type="Boolean" Name="IsChineseMandarian" Nullable="false" />
+          <Property Type="Boolean" Name="IsChineseCantonese" Nullable="false" />
+          <Property Type="Boolean" Name="IsFrench" Nullable="false" />
+          <Property Type="Boolean" Name="IsSpanish" Nullable="false" />
+          <Property Type="Boolean" Name="IsGerman" Nullable="false" />
+          <Property Type="Boolean" Name="IsPortuguese" Nullable="false" />
+          <Property Type="Boolean" Name="IsItalian" Nullable="false" />
+          <Property Type="Boolean" Name="IsRussian" Nullable="false" />
+          <Property Type="Boolean" Name="IsKorean" Nullable="false" />
+          <Property Type="Boolean" Name="IsJapanese" Nullable="false" />
+          <Property Name="IsNorwegian" Type="Boolean" Nullable="false" />
+          <Property Name="IsSwedish" Type="Boolean" Nullable="false" />
+          <Property Name="IsDanish" Type="Boolean" Nullable="false" />
+          <Property Type="String" Name="Overview" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Itinerary" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Duration" Nullable="false" />
+          <Property Type="Int32" Name="TourCityID" Nullable="false" />
+          <Property Type="String" Name="MeetupLocation" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="MinTouristNum" Nullable="false" />
+          <Property Type="Int32" Name="MaxTouristNum" Nullable="false" />
+          <Property Type="Byte" Name="BookingType" Nullable="false" />
+          <Property Type="Int32" Name="MinHourAdvance" Nullable="false" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Byte" Name="DurationTimeType" Nullable="false" />
+          <NavigationProperty Name="TourExclusions" Relationship="GuideModel.FK_TourExclusion_Tour" FromRole="Tour" ToRole="TourExclusion" />
+          <NavigationProperty Name="TourInclusions" Relationship="GuideModel.FK_TourInclusion_Tour" FromRole="Tour" ToRole="TourInclusion" />
+          <NavigationProperty Name="TourPictures" Relationship="GuideModel.FK_TourPicture_Tour" FromRole="Tour" ToRole="TourPicture" />
+          <NavigationProperty Name="TourSchedules" Relationship="GuideModel.FK_TourSchedule_Tour" FromRole="Tour" ToRole="TourSchedule" />
+          <NavigationProperty Name="UserWishes" Relationship="GuideModel.FK_UserWish_Tour" FromRole="Tour" ToRole="UserWish" />
+          <Property Type="Int32" Name="ReviewCount" Nullable="false" />
+          <Property Type="Double" Name="ReviewAverageScore" Nullable="false" />
+          <NavigationProperty Name="UserTourReviews" Relationship="GuideModel.FK_UserTourReview_Tour" FromRole="Tour" ToRole="UserTourReview" />
+          <NavigationProperty Name="UserTourBookings" Relationship="GuideModel.FK_UserTourBooking_Tour" FromRole="Tour" ToRole="UserTourBooking" />
+          <NavigationProperty Name="TourExtras" Relationship="GuideModel.FK_TourExtra_Tour" FromRole="Tour" ToRole="TourExtra" />
+          <NavigationProperty Name="TourPriceBreakdowns" Relationship="GuideModel.FK_TourPriceBreakdown_Tour" FromRole="Tour" ToRole="TourPriceBreakdown" />
+          <NavigationProperty Name="TourVendorPromoes" Relationship="GuideModel.FK_TourVendorPromo_Tour" FromRole="Tour" ToRole="TourVendorPromo" />
+          <Property Name="IsFeatured" Type="Boolean" />
+        </EntityType>
+        <Association Name="FK_TourExclusion_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.TourExclusion" Role="TourExclusion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourExclusion">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourInclusion_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.TourInclusion" Role="TourInclusion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourInclusion">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourPicture_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.TourPicture" Role="TourPicture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourPicture">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TourSchedule_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.TourSchedule" Role="TourSchedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourSchedule">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserWish">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_UserWish_Tour" FromRole="UserWish" ToRole="Tour" />
+          <Property Type="String" Name="TourName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Double" Name="SugRetailPrice" Nullable="false" />
+          <Property Type="Double" Name="NowPrice" Nullable="false" />
+          <Property Type="String" Name="TourImgPath" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="BookingType" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserWish_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.UserWish" Role="UserWish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserWish">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserTourReview">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="Byte" Name="Accuracy" Nullable="false" />
+          <Property Type="Byte" Name="Communication" Nullable="false" />
+          <Property Type="Byte" Name="Services" Nullable="false" />
+          <Property Type="Byte" Name="Knowledge" Nullable="false" />
+          <Property Type="Byte" Name="Value" Nullable="false" />
+          <Property Type="String" Name="Comment" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_UserTourReview_Tour" FromRole="UserTourReview" ToRole="Tour" />
+          <Property Type="Double" Name="AverageScore" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_UserTourReview_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.UserTourReview" Role="UserTourReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTourReview">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserTourBooking">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="UserID" Nullable="false" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="String" Name="Calendar" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Time" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="Travellers" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="TourUserID" Nullable="false" />
+          <Property Type="String" Name="TourName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CalendarStart" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="CalendarEnd" Nullable="false" Precision="3" />
+          <Property Type="String" Name="TourImgPath" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="GuiderName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Location" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+          <Property Type="Double" Name="SubTotal" Nullable="false" />
+          <Property Type="Double" Name="Taxes" Nullable="false" />
+          <Property Type="Double" Name="DiscountValue" Nullable="false" />
+          <Property Type="Double" Name="TotalPay" Nullable="false" />
+          <Property Type="String" Name="ExtraIds" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="DiscountTourist" Nullable="false" />
+          <Property Type="Double" Name="DiscountPercent" Nullable="false" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_UserTourBooking_Tour" FromRole="UserTourBooking" ToRole="Tour" />
+          <Property Type="Double" Name="ServiceFee" Nullable="false" />
+          <Property Name="PromoPrice" Type="Double" />
+        </EntityType>
+        <Association Name="FK_UserTourBooking_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.UserTourBooking" Role="UserTourBooking" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="UserTourBooking">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TourExtra">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="TourID" Nullable="false" />
+          <Property Type="Byte" Name="SortNo" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Price" Nullable="false" />
+          <Property Type="Int32" Name="Time" Nullable="false" />
+          <Property Type="Byte" Name="TimeType" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourExtra_Tour" FromRole="TourExtra" ToRole="Tour" />
+        </EntityType>
+        <Association Name="FK_TourExtra_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.TourExtra" Role="TourExtra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourExtra">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TourPriceBreakdown">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TourID" Type="Int32" Nullable="false" />
+          <Property Name="EndPoint1" Type="Int32" Nullable="false" />
+          <Property Name="EndPoint2" Type="Int32" Nullable="false" />
+          <Property Name="DiscountValue" Type="Int32" />
+          <Property Name="DiscountPercent" Type="Double" />
+          <Property Name="SortNo" Type="Byte" Nullable="false" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateRange" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EnterTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourPriceBreakdown_Tour" FromRole="TourPriceBreakdown" ToRole="Tour" />
+        </EntityType>
+        <Association Name="FK_TourPriceBreakdown_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="1" />
+          <End Type="GuideModel.TourPriceBreakdown" Role="TourPriceBreakdown" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourPriceBreakdown">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Promo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromoName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PromoValue" Type="Int32" />
+          <Property Name="PromoPercent" Type="Double" />
+          <Property Name="OpenToUse" Type="Boolean" />
+          <Property Name="MinTouristsToUse" Type="Int32" />
+          <Property Name="MinValueToUse" Type="Int32" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GuideID" Type="Int32" />
+          <Property Name="TourID" Type="Int32" />
+          <Property Name="EnterTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="TourVendorPromo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PromoName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PromoValue" Type="Int32" Nullable="false" />
+          <Property Name="PromoPercent" Type="Double" Nullable="false" />
+          <Property Name="SortNo" Type="Byte" Nullable="false" />
+          <Property Name="OpenToUse" Type="Boolean" />
+          <Property Name="MinTouristsToUse" Type="Int32" />
+          <Property Name="MinValueToUse" Type="Int32" />
+          <Property Name="BeginDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateRange" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EnterTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifyTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GuideID" Type="Int32" />
+          <Property Name="TourID" Type="Int32" />
+          <NavigationProperty Name="Tour" Relationship="GuideModel.FK_TourVendorPromo_Tour" FromRole="TourVendorPromo" ToRole="Tour" />
+        </EntityType>
+        <Association Name="FK_TourVendorPromo_Tour">
+          <End Type="GuideModel.Tour" Role="Tour" Multiplicity="0..1" />
+          <End Type="GuideModel.TourVendorPromo" Role="TourVendorPromo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tour">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TourVendorPromo">
+              <PropertyRef Name="TourID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WMathStatModelStoreContainer" CdmEntityContainer="GuideDataContext">
+          <EntitySetMapping Name="BankInfoes">
+            <EntityTypeMapping TypeName="GuideModel.BankInfo">
+              <MappingFragment StoreEntitySet="BankInfo">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="AccountOwner" ColumnName="AccountOwner" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="AccountNo" ColumnName="AccountNo" />
+                <ScalarProperty Name="Branch" ColumnName="Branch" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourExclusions">
+            <EntityTypeMapping TypeName="GuideModel.TourExclusion">
+              <MappingFragment StoreEntitySet="TourExclusion">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourInclusions">
+            <EntityTypeMapping TypeName="GuideModel.TourInclusion">
+              <MappingFragment StoreEntitySet="TourInclusion">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPictures">
+            <EntityTypeMapping TypeName="GuideModel.TourPicture">
+              <MappingFragment StoreEntitySet="TourPicture">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="RelativePath" ColumnName="RelativePath" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="GuiderExcludedDates">
+            <EntityTypeMapping TypeName="GuideModel.GuiderExcludedDates">
+              <MappingFragment StoreEntitySet="GuiderExcludedDates">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourSchedules">
+            <EntityTypeMapping TypeName="GuideModel.TourSchedule">
+              <MappingFragment StoreEntitySet="TourSchedule">
+                <ScalarProperty Name="DateRange" ColumnName="DateRange" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="CommisionPay" ColumnName="CommisionPay" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="SugRetailPrice" ColumnName="SugRetailPrice" />
+                <ScalarProperty Name="StartTime6" ColumnName="StartTime6" />
+                <ScalarProperty Name="StartTime5" ColumnName="StartTime5" />
+                <ScalarProperty Name="StartTime4" ColumnName="StartTime4" />
+                <ScalarProperty Name="StartTime3" ColumnName="StartTime3" />
+                <ScalarProperty Name="StartTime2" ColumnName="StartTime2" />
+                <ScalarProperty Name="StartTime1" ColumnName="StartTime1" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="DiscountTourists" ColumnName="DiscountTourists" />
+                <ScalarProperty Name="IsSunday" ColumnName="IsSunday" />
+                <ScalarProperty Name="IsSaturday" ColumnName="IsSaturday" />
+                <ScalarProperty Name="IsFriday" ColumnName="IsFriday" />
+                <ScalarProperty Name="IsThursday" ColumnName="IsThursday" />
+                <ScalarProperty Name="IsWednesday" ColumnName="IsWednesday" />
+                <ScalarProperty Name="IsTuesday" ColumnName="IsTuesday" />
+                <ScalarProperty Name="IsMonday" ColumnName="IsMonday" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tours">
+            <EntityTypeMapping TypeName="GuideModel.Tour">
+              <MappingFragment StoreEntitySet="Tour">
+                <ScalarProperty Name="IsFeatured" ColumnName="IsFeatured" />
+                <ScalarProperty Name="ReviewAverageScore" ColumnName="ReviewAverageScore" />
+                <ScalarProperty Name="ReviewCount" ColumnName="ReviewCount" />
+                <ScalarProperty Name="DurationTimeType" ColumnName="DurationTimeType" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="MinHourAdvance" ColumnName="MinHourAdvance" />
+                <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+                <ScalarProperty Name="MaxTouristNum" ColumnName="MaxTouristNum" />
+                <ScalarProperty Name="MinTouristNum" ColumnName="MinTouristNum" />
+                <ScalarProperty Name="MeetupLocation" ColumnName="MeetupLocation" />
+                <ScalarProperty Name="TourCityID" ColumnName="TourCityID" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+                <ScalarProperty Name="Itinerary" ColumnName="Itinerary" />
+                <ScalarProperty Name="Overview" ColumnName="Overview" />
+                <ScalarProperty Name="IsDanish" ColumnName="IsDanish" />
+                <ScalarProperty Name="IsSwedish" ColumnName="IsSwedish" />
+                <ScalarProperty Name="IsNorwegian" ColumnName="IsNorwegian" />
+                <ScalarProperty Name="IsJapanese" ColumnName="IsJapanese" />
+                <ScalarProperty Name="IsKorean" ColumnName="IsKorean" />
+                <ScalarProperty Name="IsRussian" ColumnName="IsRussian" />
+                <ScalarProperty Name="IsItalian" ColumnName="IsItalian" />
+                <ScalarProperty Name="IsPortuguese" ColumnName="IsPortuguese" />
+                <ScalarProperty Name="IsGerman" ColumnName="IsGerman" />
+                <ScalarProperty Name="IsSpanish" ColumnName="IsSpanish" />
+                <ScalarProperty Name="IsFrench" ColumnName="IsFrench" />
+                <ScalarProperty Name="IsChineseCantonese" ColumnName="IsChineseCantonese" />
+                <ScalarProperty Name="IsChineseMandarian" ColumnName="IsChineseMandarian" />
+                <ScalarProperty Name="IsEnglish" ColumnName="IsEnglish" />
+                <ScalarProperty Name="IsPhotography" ColumnName="IsPhotography" />
+                <ScalarProperty Name="IsBusinessInterpretation" ColumnName="IsBusinessInterpretation" />
+                <ScalarProperty Name="IsTransportation" ColumnName="IsTransportation" />
+                <ScalarProperty Name="IsShoppingMarket" ColumnName="IsShoppingMarket" />
+                <ScalarProperty Name="IsFoodDrink" ColumnName="IsFoodDrink" />
+                <ScalarProperty Name="IsNightlifeParty" ColumnName="IsNightlifeParty" />
+                <ScalarProperty Name="IsFestivalEvents" ColumnName="IsFestivalEvents" />
+                <ScalarProperty Name="IsNatureRural" ColumnName="IsNatureRural" />
+                <ScalarProperty Name="IsCultureArts" ColumnName="IsCultureArts" />
+                <ScalarProperty Name="IsLeisureSports" ColumnName="IsLeisureSports" />
+                <ScalarProperty Name="IsAdventure" ColumnName="IsAdventure" />
+                <ScalarProperty Name="IsHistorical" ColumnName="IsHistorical" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserWishes">
+            <EntityTypeMapping TypeName="GuideModel.UserWish">
+              <MappingFragment StoreEntitySet="UserWish">
+                <ScalarProperty Name="BookingType" ColumnName="BookingType" />
+                <ScalarProperty Name="TourImgPath" ColumnName="TourImgPath" />
+                <ScalarProperty Name="NowPrice" ColumnName="NowPrice" />
+                <ScalarProperty Name="SugRetailPrice" ColumnName="SugRetailPrice" />
+                <ScalarProperty Name="TourName" ColumnName="TourName" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTourReviews">
+            <EntityTypeMapping TypeName="GuideModel.UserTourReview">
+              <MappingFragment StoreEntitySet="UserTourReview">
+                <ScalarProperty Name="AverageScore" ColumnName="AverageScore" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Knowledge" ColumnName="Knowledge" />
+                <ScalarProperty Name="Services" ColumnName="Services" />
+                <ScalarProperty Name="Communication" ColumnName="Communication" />
+                <ScalarProperty Name="Accuracy" ColumnName="Accuracy" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTourBookings">
+            <EntityTypeMapping TypeName="GuideModel.UserTourBooking">
+              <MappingFragment StoreEntitySet="UserTourBooking">
+                <ScalarProperty Name="PromoPrice" ColumnName="PromoPrice" />
+                <ScalarProperty Name="ServiceFee" ColumnName="ServiceFee" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="DiscountTourist" ColumnName="DiscountTourist" />
+                <ScalarProperty Name="ExtraIds" ColumnName="ExtraIds" />
+                <ScalarProperty Name="TotalPay" ColumnName="TotalPay" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="Taxes" ColumnName="Taxes" />
+                <ScalarProperty Name="SubTotal" ColumnName="SubTotal" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="GuiderName" ColumnName="GuiderName" />
+                <ScalarProperty Name="TourImgPath" ColumnName="TourImgPath" />
+                <ScalarProperty Name="CalendarEnd" ColumnName="CalendarEnd" />
+                <ScalarProperty Name="CalendarStart" ColumnName="CalendarStart" />
+                <ScalarProperty Name="TourName" ColumnName="TourName" />
+                <ScalarProperty Name="TourUserID" ColumnName="TourUserID" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Travellers" ColumnName="Travellers" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Calendar" ColumnName="Calendar" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourExtras">
+            <EntityTypeMapping TypeName="GuideModel.TourExtra">
+              <MappingFragment StoreEntitySet="TourExtra">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="TimeType" ColumnName="TimeType" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourPriceBreakdowns">
+            <EntityTypeMapping TypeName="GuideModel.TourPriceBreakdown">
+              <MappingFragment StoreEntitySet="TourPriceBreakdown">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="DateRange" ColumnName="DateRange" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="EndPoint2" ColumnName="EndPoint2" />
+                <ScalarProperty Name="EndPoint1" ColumnName="EndPoint1" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Promoes">
+            <EntityTypeMapping TypeName="GuideModel.Promo">
+              <MappingFragment StoreEntitySet="Promo">
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="MinValueToUse" ColumnName="MinValueToUse" />
+                <ScalarProperty Name="MinTouristsToUse" ColumnName="MinTouristsToUse" />
+                <ScalarProperty Name="OpenToUse" ColumnName="OpenToUse" />
+                <ScalarProperty Name="PromoPercent" ColumnName="PromoPercent" />
+                <ScalarProperty Name="PromoValue" ColumnName="PromoValue" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="PromoName" ColumnName="PromoName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TourVendorPromoes">
+            <EntityTypeMapping TypeName="GuideModel.TourVendorPromo">
+              <MappingFragment StoreEntitySet="TourVendorPromo">
+                <ScalarProperty Name="TourID" ColumnName="TourID" />
+                <ScalarProperty Name="GuideID" ColumnName="GuideID" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="DateRange" ColumnName="DateRange" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+                <ScalarProperty Name="MinValueToUse" ColumnName="MinValueToUse" />
+                <ScalarProperty Name="MinTouristsToUse" ColumnName="MinTouristsToUse" />
+                <ScalarProperty Name="OpenToUse" ColumnName="OpenToUse" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="PromoPercent" ColumnName="PromoPercent" />
+                <ScalarProperty Name="PromoValue" ColumnName="PromoValue" />
+                <ScalarProperty Name="PromoName" ColumnName="PromoName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="StatDataContext" ZoomLevel="91">
+        <EntityTypeShape EntityType="GuideModel.BankInfo" Width="1.5" PointX="1.5" PointY="6.125" Height="2.9417936197916665" />
+        <EntityTypeShape EntityType="GuideModel.TourExclusion" Width="1.5" PointX="10.625" PointY="5.375" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GuideModel.TourInclusion" Width="1.5" PointX="10.5" PointY="8.625" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GuideModel.TourPicture" Width="1.5" PointX="10.5" PointY="11.375" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="GuideModel.GuiderExcludedDates" Width="1.5" PointX="3.125" PointY="11.125" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="GuideModel.TourSchedule" Width="1.5" PointX="3.125" PointY="13.625" />
+        <EntityTypeShape EntityType="GuideModel.Tour" Width="2" PointX="0.5" PointY="9" />
+        <AssociationConnector Association="GuideModel.FK_TourExclusion_Tour" >
+          <ConnectorPoint PointX="0.91406124999999994" PointY="9" />
+          <ConnectorPoint PointX="0.91406124999999994" PointY="5.71875" />
+          <ConnectorPoint PointX="1.1236997916666667" PointY="5.7187499999999991" />
+          <ConnectorPoint PointX="1.2903664583333332" PointY="5.71875" />
+          <ConnectorPoint PointX="10.625" PointY="5.71875" />
+        </AssociationConnector>
+        <AssociationConnector Association="GuideModel.FK_TourInclusion_Tour" >
+          <ConnectorPoint PointX="2.125" PointY="10.862488606770834" />
+          <ConnectorPoint PointX="10.5" PointY="10.862488606770834" />
+        </AssociationConnector>
+        <AssociationConnector Association="GuideModel.FK_TourPicture_Tour" >
+          <ConnectorPoint PointX="1.375" PointY="18.864645182291667" />
+          <ConnectorPoint PointX="1.375" PointY="19.114645182291667" />
+          <ConnectorPoint PointX="1.6979191666666667" PointY="19.114645182291667" />
+          <ConnectorPoint PointX="1.8645858333333332" PointY="19.114645182291667" />
+          <ConnectorPoint PointX="2.375" PointY="19.114645182291667" />
+          <ConnectorPoint PointX="2.375" PointY="13.547587890625" />
+          <ConnectorPoint PointX="3.375" PointY="13.547587890625" />
+          <ConnectorPoint PointX="3.375" PointY="11.836474057692307" />
+          <ConnectorPoint PointX="10.5" PointY="11.836474057692307" />
+        </AssociationConnector>
+        <AssociationConnector Association="GuideModel.FK_TourSchedule_Tour" >
+          <ConnectorPoint PointX="2.125" PointY="14.3050439453125" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="14.3050439453125" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="14.3050439453125" />
+          <ConnectorPoint PointX="5.25" PointY="14.3050439453125" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GuideModel.UserWish" Width="1.5" PointX="10.182036179202626" PointY="14.352969921358382" />
+        <AssociationConnector Association="GuideModel.FK_UserWish_Tour" >
+          <ConnectorPoint PointX="2.125" PointY="13.932322591145834" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="13.932322591145834" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="13.932322591145834" />
+          <ConnectorPoint PointX="5" PointY="13.932322591145834" />
+          <ConnectorPoint PointX="5" PointY="13" />
+          <ConnectorPoint PointX="10.25" PointY="13" />
+          <ConnectorPoint PointX="10.25" PointY="13.989889322916667" />
+          <ConnectorPoint PointX="10.875" PointY="13.989889322916667" />
+          <ConnectorPoint PointX="10.875" PointY="14.375" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GuideModel.UserTourReview" Width="1.5" PointX="6" PointY="0.75" Height="3.3263964843749996" />
+        <AssociationConnector Association="GuideModel.FK_UserTourReview_Tour" >
+          <ConnectorPoint PointX="1.207033125" PointY="9" />
+          <ConnectorPoint PointX="1.207033125" PointY="2.4131982421875" />
+          <ConnectorPoint PointX="6" PointY="2.4131982421875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GuideModel.UserTourBooking" Width="2" PointX="0.5" PointY="20.25" Height="5.6340136718750031" />
+        <AssociationConnector Association="GuideModel.FK_UserTourBooking_Tour" >
+          <ConnectorPoint PointX="2.125" PointY="16.932322591145834" />
+          <ConnectorPoint PointX="2.2916666666666665" PointY="16.932322591145834" />
+          <ConnectorPoint PointX="2.4583333333333335" PointY="16.932322591145834" />
+          <ConnectorPoint PointX="2.875" PointY="16.932322591145834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GuideModel.TourExtra" Width="1.5" PointX="7.375" PointY="20.5" Height="2.9417936197916674" />
+        <AssociationConnector Association="GuideModel.FK_TourExtra_Tour" >
+          <ConnectorPoint PointX="1.7812525" PointY="18.864645182291667" />
+          <ConnectorPoint PointX="1.7812525" PointY="22.970896809895834" />
+          <ConnectorPoint PointX="2.875" PointY="22.970896809895834" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="GuideModel.TourPriceBreakdown" Width="1.75" PointX="3.25" PointY="20.75" />
+        <AssociationConnector Association="GuideModel.FK_TourPriceBreakdown_Tour" />
+        <EntityTypeShape EntityType="GuideModel.Promo" Width="1.75" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GuideModel.TourVendorPromo" Width="1.5" PointX="3.25" PointY="0.75" />
+        <AssociationConnector Association="GuideModel.FK_TourVendorPromo_Tour" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

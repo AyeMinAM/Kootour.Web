@@ -1,0 +1,149 @@
+﻿.pop-over
+{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #B9B9B9;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 1px 1px 4px 1px;
+    position:  fixed;
+    z-index: 20;
+    display: block;
+    /*width:154px; */
+    width:260px;    
+    height:550px;
+    max-height: 560px; 
+        
+}
+
+#PopupDialog .header
+{
+    background: none repeat scroll 0 0 #EEEEEE;
+    border-bottom: 1px solid #CCCCCC;
+    font-size: 15px;
+    padding-bottom: 5px;
+    padding-top: 5px;   
+}
+#CloseCatSites
+{
+    padding-left:10px;
+    float:right;  
+}
+#categoryLocator li
+{
+    padding-top:5px;
+    padding-bottom:10px;   
+}
+
+#sitesPager
+{
+    top:530px;
+    position:absolute; 
+}
+#sitesPager td
+{
+     padding:0 1px;
+}
+#sitesContainer li
+{
+    padding:2px;
+    font-size:small;    
+}
+#categoryLocator li
+{
+    padding:2px;
+    font-size:smaller;    
+}
+
+#leftbar li,#leftbar a {
+    width: 156px;
+}
+
+#leftbar li,#rightbar li{
+    padding: 3px 2px;
+}
+#leftbar h3 {
+    padding: 6px 2px;
+}
+
+#rightbar h3 {
+    padding: 5px 5px 15px 0px;
+    font-size:16px;
+}
+#_m_m_a_
+{
+	color:Red;
+	font-style:oblique;
+}
+#DistanceShowSpan
+{
+	color:Red;
+}
+#MarkMapPosition
+{
+	color:Blue;
+	font-weight:bold;
+    cursor: pointer;	
+}
+#MarkMapPosition:hover {
+	border-bottom: 1px solid #ccc;
+	background: #eee;
+}
+.hp #topban a:hover { color:purple; }
+#MyLocationBar
+{
+    width:100%;
+    height:32px;    
+}
+#MyLocationBar *
+{
+    float:left;    
+}
+#MyLocationBar h2
+{
+    float:right;  
+    padding: 0;      
+}
+
+.HotSpaceParent
+{
+    height: 24px; 
+}
+#HotPlaceBox li a
+{
+    font-size:13px;    
+}
+.HotSpaceParentLink
+{
+    width:50px;    
+}
+.HotSpaceParent a
+{
+    float: left; 
+    font-size:14px;
+    font-weight:bold;          
+}
+.SwitchBizCircle.Hide {
+    background: url("/Content/Images/expand.png") no-repeat transparent;
+    float: right;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+
+}
+.SwitchBizCircle.Show{
+    background: url("/Content/Images/pack.png") no-repeat transparent;
+    float: right;
+    cursor: pointer;
+    height: 16px;
+    width: 16px;
+    
+}
+.HotSpaceKids
+{
+    clear:both;
+    display:none;    
+}
+#WaitMsgContainer
+{
+    display:none;            
+}

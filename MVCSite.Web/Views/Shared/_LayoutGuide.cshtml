@@ -1,0 +1,99 @@
+﻿@using SquishIt.Framework
+@using MVCSite.Web.ViewModels
+@model MVCSite.Web.ViewModels.Layout
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML Strict//EN">
+<html>
+<head id="head">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=0">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <!-- The following 3 lines is for google plus -->
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="@Model.MetaDescription" />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <link rel="icon" type="image/x-icon"  href="@Url.Content("~/images/kootour.ico")" />
+    <title>@Model.PageTitle</title>
+    @*Google Tag Manager*@
+    <script>
+    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window, document, 'script', 'dataLayer', 'GTM-KBJ7GWT');
+    </script>
+    @*End Google Tag Manager*@
+    @Html.Raw(Bundle.Css()
+        .Add("~/Content/guideSrc/css/bootstrap.min.css")
+        .Add("~/Content/font-awesome.min.css")
+        //.Add("~/Content/guideSrc/css/font-awesome/css/font-awesome.min.css")
+        .Add("~/Content/guideSrc/css/chosen.min.css")
+        .Add("~/Content/guideSrc/css/daterangepicker.css")
+        .Add("~/Content/guideSrc/css/fileinput.min.css")
+        .Add("~/Content/guideSrc/css/jquery.timepicker.css")
+        .Add("~/assets/css/bootstrap-dialog.min.css")
+        //.Add("~/Content/guideSrc/summernote/summernote.css")
+        .Add("~/Content/guideSrc/fonts/fonts.kootour.css")
+        .Add("~/Content/guideSrc/css/fullcalendar.min.css")
+        .Add("~/Content/guideSrc/css/kootour.css")
+        
+        .Add("~/Content/guideSrc/css/ace.min.css")
+        .Add("~/Content/validation.css")
+        .Add("~/Content/kootourExt.css")
+        .Render("~/Content/guide_#.css"))
+        <link rel="stylesheet" href="@Url.Content("~/Content/guideSrc/summernote/summernote.css")" />
+
+    @Html.Raw(Bundle.JavaScript()
+        .Add("~/Content/guideSrc/js/jquery-2.2.0.min.js")    
+        .Add("~/Content/guideSrc/js/bootstrap.min.js")
+        .Add("~/Content/guideSrc/js/ace-elements.min.js")
+        .Add("~/Content/guideSrc/js/ace.min.js")   
+        .Add("~/Content/guideSrc/js/ace-extra.min.js")             
+        .Add("~/Content/guideSrc/js/chosen.jquery.min.js")
+        .Add("~/Content/guideSrc/summernote/summernote.min.js")
+        .Add("~/Content/guideSrc/js/moment.min.js")
+        .Add("~/Content/guideSrc/js/daterangepicker.js")
+        .Add("~/Content/guideSrc/js/bootbox.min.js")
+        .Add("~/Content/guideSrc/js/fileinput.js")
+        .Add("~/Content/guideSrc/js/fuelux.wizard.min.js")
+        .Add("~/Content/guideSrc/js/jquery.validate.min.js")
+        .Add("~/Content/guideSrc/js/jquery.timepicker.min.js")
+        .Add("~/Content/guideSrc/js/jquery.datepair.min.js")
+        .Add("~/Content/guideSrc/js/jquery.nestable.min.js")
+        .Add("~/assets/js/bootstrap-dialog.min.js")
+        .Add("~/Content/guideSrc/js/fullcalendar.min.js")   
+        .Add("~/ViewScripts/Shared/_LayoutGuide.js")               
+        //.Add("~/Content/guideSrc/js/localhostCourse.js")
+        .Render("~/js/Guide_#.js"))
+</head>
+<body class="no-skin">
+@*Google Tag Manager (noscript)*@
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KBJ7GWT"
+            height="0" width="0" style="display:none;visibility:hidden"></iframe>
+</noscript>
+@*End Google Tag Manager (noscript)*@
+
+@Html.Action("HeaderGuide", "Home", new { returnUrl = Model.ReturnUrl, role = Model.Role }, true)
+@RenderBody()
+<div class="main-container container" id="main-container">
+
+</div>
+
+@Html.Partial("_Footer")
+@Html.Partial("_Intercom")
+<script type="text/javascript" src="@Url.Content("/js/Analytics.js")"></script>
+@*PushEngage*@
+<script src="https://clientcdn.pushengage.com/core/9188.js"></script>
+<script>
+    _pe.subscribe();
+</script>
+@*Lucky Orange*@
+<script type='text/javascript'>
+    window.__lo_site_id = 78443;
+    (function ()
+    { var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true; wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s); }
+    )();
+</script>
+</body>
+</html>

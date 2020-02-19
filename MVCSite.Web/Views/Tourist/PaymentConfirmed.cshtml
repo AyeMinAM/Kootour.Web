@@ -1,0 +1,76 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.PaymentConfirmedModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Payment Confirmed | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Payment Confirmed." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+
+<!-- Google Code for Tour Booking Conversion Page -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 874876171;
+var google_conversion_language = "en";
+var google_conversion_format = "3";
+var google_conversion_color = "ffffff";
+var google_conversion_label = "CYe6CJ-boG0Qi5qWoQM";
+var google_conversion_value = 100.00;
+var google_conversion_currency = "CAD";
+var google_remarketing_only = false;
+/* ]]> */
+</script>
+<script type="text/javascript"
+        src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+    <div style="display:inline;">
+        <img height="1" width="1" style="border-style:none;" alt=""
+             src="//www.googleadservices.com/pagead/conversion/874876171/?value=100.00&currency_code=CAD&label=CYe6CJ-boG0Qi5qWoQM&guid=ON&script=0" />
+    </div>
+</noscript>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="text-center section">
+                <!-- Display step-1 and step-2 if email not confirmed -->
+                <div id="step-1">
+                    <label class="title black"><b>Payment Done</b></label>
+                    <div class="phone-icon">
+                        <img class="" src="/images/icons/check-mark-button.png" />
+                    </div>
+                    <div>
+                       <p>Your booking is confirmed.</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-md-6 col-sm-8 col-xs-8">
+@*                            <div class="form-group required">             
+                                @Html.TextBoxFor(m => m.BookingNo , new { @class = "form-control input-lg gray" })
+                            </div> *@
+                            <div>
+                                <p>Thank you for booking with Kootour. Please check your email for the details.</p>
+                                @if (Model.TempPassword.Length > 0)
+                                {
+                                    <p>Your temporary Password is <em>@Model.TempPassword</em></p>
+                                }
+                            </div>
+                            <div>
+                                <a href="@Url.Action("Index")">Continue browsing tours</a>
+                            </div>
+                        </div>  
+                    </div>                      
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+
+
+

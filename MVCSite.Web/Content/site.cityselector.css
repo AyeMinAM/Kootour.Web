@@ -1,0 +1,13 @@
+﻿/*selector buttons*/
+#citySelector #container { color:#6D6E71;padding:10px 0px 10px 15px; margin-bottom:5px; }
+#citySelector .sel { background-color:#0779BE; border-radius: 5px 5px 5px 5px; }
+#citySelector h2 { float:left; }
+#citySelector #countries li, 
+#citySelector #usaLetters li { float:left; list-style-type:none; padding:5px 5px 5px ; margin-right: 2px; vertical-align:top; color:black; font-size: 16px; font-weight:bold;}
+ 
+/*selector cities*/
+#citySelector #usaCities li, 
+#citySelector #container { display:none; color: #6D6E71;}
+#citySelector #change { color:#0779BE; font-size: 16px; font-weight: bold; }
+#citySelector .region { color: #6D6E71; font-size: 15px; font-weight:bold; }
+#citySelector .columns { list-style-type:none; float:left; width:130px; }

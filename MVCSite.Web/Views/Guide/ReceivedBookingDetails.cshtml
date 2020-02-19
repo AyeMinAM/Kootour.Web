@@ -1,0 +1,147 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@model MVCSite.Web.ViewModels.BookingModel
+@{
+    Layout = "~/Views/Shared/_LayoutGuide.cshtml";
+}
+<style>
+    #main-container{
+        padding-bottom:40px;
+        
+    }
+
+    .title{
+        padding-top: 20px;
+        padding-bottom: 5px;
+        font-weight: bold;
+    }
+</style>
+<div class="main-container container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="@Url.Action("TourProducts")">Home</a>
+                    </li>
+
+                    <li>
+                        @*<a href="#">Bank Information</a>*@
+                        <a href="#">Received Booking Details</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-content">
+                @Html.Partial("_GuideMenu")
+                @*Tour Information*@
+                <div class="widget-row col-xs-12">
+                    <div class="title">
+                        <div>Tour Information</div>
+                    </div>
+                </div>
+
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Name:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.TourName</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Location:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.Location</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Meetup Location:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.MeetupLocation</span>
+                    </div>
+                </div>
+                @*Booking Person*@
+                <div class="widget-row col-xs-12">
+                    <div class="title">
+                        <div>Booking Traveller</div>
+                    </div>
+                </div>
+
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Name:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.TravelerName</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Come from:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.TravelerAddress</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Gender:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.TravelerGender</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Email:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.TravelerEmail</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Phone:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.TravelerPhoneAreaCode @Model.TravelerMobile</span>
+                    </div>
+                </div>
+
+                @*PriceDetailsTemplate*@
+                <div class="widget-row col-xs-12">
+                    <div class="title">
+                        <div>Booking Details</div>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Date:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.Date</span>
+                    </div>
+                </div>
+                <div class="widget-row col-xs-12">
+                    <div class="col-xs-6 nopadding">
+                        <span class="subtitle">Time:</span>
+                    </div>
+                    <div class="col-xs-6 nopadding text-right">
+                        <span>@Model.Time</span>
+                    </div>
+                </div>
+                @Html.EditorFor(model => model, "PriceDetailsTemplate")
+
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>
+

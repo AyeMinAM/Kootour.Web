@@ -1,0 +1,144 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.TourOverviewActiveModel
+@{
+    Layout = "~/Views/Shared/_LayoutGuide.cshtml";    
+}
+
+<div class="main-container container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="page-content-nopadding">
+                <div class="" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="@Url.Action("TourProducts")">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("TourType")">Create Tour</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+			<div class="page-content">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					
+                        <div class="kootour-widget-color-main">
+                            <div class="widget-header col-xs-12">
+                                <div class="col-xs-12 nopadding ">
+                                    <h3 class="widget-title">
+                                        <span class="blue">Modify Active Tour</span>
+                                    </h3>
+                                </div>
+                            </div>
+
+								<div class="widget-main">
+                                    @using (Html.BeginForm("OverviewActive", "Guide", new { }, FormMethod.Post, new { id = "OverviewActiveForm", @class = "primary-col clearfix form-horizontal" }))
+                                    {
+                                    @Html.HiddenFor(m => m.TourID)        
+
+                                    <div id="fuelux-wizard-container">
+
+                                        <div class="form-group">
+                                            <h4 class="lighter block kootour-main-color">
+                                                4.Overview of your tour</h4>
+                                            <div class="form-validator">
+                                                <div class="clearfix">
+                                                    @*<input type="text" id="overview" name="overview" style="display: none">*@
+                                                    @Html.TextAreaFor(m => m.Overview, new { id="OverviewTB",@class = "form-control"})
+                                                </div>
+                                                <span style="font-size:medium">Max 3000 Characters</span>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.Overview)
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <h4 class="lighter block kootour-main-color">
+                                                5.Itinerary</h4>
+                                            <div class="form-validator">
+                                                <div class="clearfix">
+                                                    @*<input type="text" id="itinerary" name="itinerary" style="display: none">*@
+                                                    @Html.TextAreaFor(m => m.Itinerary, new {id="ItineraryTB", @class = "form-control" })
+                                                </div>
+                                                <span style="font-size:medium">Max 10000 Characters</span>
+                                                <div class="validation-row">
+                                                @Html.ValidationMessageFor(m => m.Itinerary)
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <h4 class="lighter block kootour-main-color">Extend your date</h4>
+                                            <div class="form-validator">
+                                                <div class="clearfix">
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-clock-o"></i>
+                                                        </span>
+                                                        @Html.TextBoxFor(m => m.EndDate, new {id="DaterangeTB", @class = "form-control",style="width:200px;" })
+                                                    </div>
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.EndDate)
+                                                </div>
+                                            </div>
+                                        </div>                                                          
+                                    </div>
+                                    <div class="wizard-actions">
+                                        <a class="btn  btn-blue  btn-next" href="@Url.Action("TourProducts")">
+                                            <i class="ace-icon fa fa-arrow-left"></i>Prev
+                                        </a>
+                                        <button type="submit" class="btn btn-blue btn-next" data-last="Finish">
+                                            Update <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                                        </button>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#OverviewTB').summernote({
+            airMode: false,
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,                  // set focus to editable area after initializing summernote
+            placeholder: "e.g Some description of your tour"
+        });
+        $('#ItineraryTB').summernote({
+            airMode: false,
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,                  // set focus to editable area after initializing summernote
+            placeholder: "e.g The itinerary description of your tour"
+        });
+        $('input[id="DaterangeTB"]').daterangepicker({
+                singleDatePicker: true,
+                showDropdowns: true,
+                minDate: '@Model.EndDate',
+            },
+            function (start, end, label) {
+                //var years = moment().diff(start, 'years');
+                //alert("You are " + years + " years old.");
+            }
+        );
+    });
+</script>

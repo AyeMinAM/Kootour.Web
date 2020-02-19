@@ -1,0 +1,64 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.ConfirmEmailSendModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Confirm Email Send | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Confirm Email Send." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="text-center section section-small">
+                <ul class="indicators">
+                    <!-- Display step-1 and step-2 if email not confirmed -->
+                    <li data-step="step-1" ><a href="#"></a></li>
+                    <li data-step="step-2" class="active"><a href="#"></a></li>
+                    <!-- Display step-3 if email confirmed -->
+                    <!--<li data-step="step-3"><a href="#"></a></li>-->
+                </ul>
+
+                <!-- Display step-1 and step-2 if email not confirmed -->
+
+                <div id="step-2">
+                    <label class="title black"><b>Email send!</b></label>
+
+                    <p>Tap the link in the email we sent you.<br/>Confirming your email adress helps us send you trip information.</p>
+
+                    <div class="phone-icon">
+                        <img class="" src="/images/icons/icon_email.png" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-3 col-xs-offset-3 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                            <a href="@Url.Action(Model.DoneRedirect.DoneActionName, Model.DoneRedirect.DoneControllerName)">
+                                <span class ="btn btn-kootour-bold fullwidth">Done</span>
+                            </a> 
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Display step-3 if email confirmed -->
+                <!--<div id="step-3">
+                    <label class="title black"><b>Email confirmed</b></label>
+
+                    <div class="phone-icon">
+                        <img class="" src="images/icons/icon_email.png" />
+                    </div>
+
+                    <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-3 col-xs-offset-3 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a href="index.html" class="btn btn-kootour-bold fullwidth">Next</a>
+                    </div>
+                </div>-->
+            </section>
+        </div>
+    </div>
+</div>

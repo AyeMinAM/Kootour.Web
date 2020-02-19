@@ -1,0 +1,150 @@
+/* Section */
+.border-section {
+    border-top: 10px solid #00CCCC;
+    border-radius: @borderRadius;
+    .boxshadow();
+}
+
+section.section {
+    padding-top: @sectionPaddingTop;
+    padding-bottom: @sectionPaddingBottom;
+    padding-left: @sectionPaddingLeft;
+    padding-right: @sectionPaddingRight;
+}
+
+section.section.section-small {
+    padding-top: @sectionSmallPaddingTop;
+    padding-bottom: @sectionSmallPaddingBottom;
+    padding-left: @sectionSmallPaddingLeft;
+    padding-right: @sectionSmallPaddingRight;
+}
+
+section.section {
+    margin-top: 25px;
+    background-color: white;
+    .border-section();
+}
+
+section.carousel-kootour-section {
+    margin-top: 25px;
+    background-color: white;
+}
+
+section.section.noborder {
+    border-color: transparent;
+}
+
+section.section.nomargin {
+  margin-top: 0px;
+}
+
+section.section.noshadow {
+    box-shadow: 0px 0px;
+}
+
+section.section.nopadding {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+section.section.nopadding .title {
+  padding-left: @sectionPaddingLeft;
+  padding-right: @sectionPaddingRight;
+}
+
+section.section-small.nopadding .title {
+  padding-left: @sectionSmallPaddingLeft;
+  padding-right: @sectionSmallPaddingRight;
+}
+
+section.section.transparent {
+  background-color: transparent;
+}
+
+section.section table.table-information {
+    margin-bottom: 10px;
+}
+
+section.section table.table-information td {
+  padding-bottom: 10px;
+  vertical-align: bottom;
+}
+
+section.section a.action {
+  float: right;
+  margin-top: 10px;
+}
+
+section.map {
+    width:100%;
+    height: 400px;
+    position: relative;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+section.map > section.contact {
+    font-family: Montserrat-Light;
+    color: white;
+    background-color: @blue;
+    width: 370px;
+    max-width: 100%;
+    height: 258px;
+    opacity: 0.85;
+
+}
+
+section.map > section.contact p {
+    margin: 15px auto;
+}
+
+.nested-section {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    section.map > section.contact {
+        margin: 0 15px;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+section.backgroundimg {
+  background-image: url('@{images}/aboutus.jpg');
+  width: 100%;
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+section.background-img-help {
+  background-image: url('@{images}/help.jpg');
+  width: 100%;
+  height: 400px;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+.services-section {
+  background: white;
+  text-align: center;
+  padding-bottom: 0px;
+}
+.services-section .row.row-padding {
+  padding-top: 40px;
+}

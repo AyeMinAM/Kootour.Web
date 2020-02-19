@@ -1,0 +1,32 @@
+﻿@using MVCSite.Biz
+
+@model EmailUserContactCSR
+
+
+<td colspan="2" bgcolor="#FFFFFF">
+    <font face="Arial, Helvetica, sans-serif" color="#0779be" size="5"><strong>Hi,Kootour CSR,</strong></font> 
+    <font face="Arial, Helvetica, sans-serif" color="#000000">
+        <p>
+            There is a service request from our customer:@Model.Name         
+        </p>
+        <p>
+            Topic:@Model.Topic
+        </p>
+        <p>
+            Email:@Model.Email
+        </p>
+        <p>
+            Phone:@Model.Phone
+        </p>
+        <p>
+            Comment:@Model.Comment
+        </p>
+    </font>
+    <font face="Arial, Helvetica, sans-serif" color="#000000"></font> 
+    <font face="Arial, Helvetica, sans-serif"
+        color="#000000">
+        <p>
+            <b>Please reply ASAP.</b>
+        </p>
+    </font>
+</td>

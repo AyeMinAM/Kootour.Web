@@ -1,0 +1,22 @@
+.header 
+{
+    border-radius: 5px 5px 0 0;  
+}
+
+.group-corners .ui-bar {
+    -webkit-border-top-left-radius: inherit;
+    border-top-left-radius: inherit;
+    -webkit-border-top-right-radius: inherit;
+    border-top-right-radius: inherit;
+    margin:10px 10px 0 10px;
+}
+.group-corners .ui-body {
+    border-top-width: 0;
+    -webkit-border-bottom-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    -webkit-border-bottom-right-radius: inherit;
+    border-bottom-right-radius: inherit;
+    margin: 0 10px 10px 10px; 
+}
+
+

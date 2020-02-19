@@ -1,0 +1,70 @@
+
+.thumbnail_big {
+	/*margin-bottom: 30px;*/
+}
+
+.thumbnail_middle {
+	/*margin-bottom: 30px;*/
+}
+
+.caption_package {
+}
+
+.thumbnail_big .caption_package_big {
+	padding: 18px;
+}
+
+.div_tourist_small_img {
+	float: right;
+	margin-right: 70px;
+	margin-top: -110px;
+}
+.div_tourist_small_img div {
+	position: absolute;
+	z-index: 1;
+}
+
+.tourist_small_img {
+	border:1px;
+	width: 60px;
+	height: 60px;
+}
+
+.div_tourist_img {
+	float: right;
+	margin-right: 110px;
+	margin-top: -200px;
+}
+.div_tourist_img div {
+	position: absolute;
+	z-index: 1;
+}
+
+.tourist_img {
+	border:1px;
+	width: 100px;
+	height: 100px;
+}
+
+.row2 div {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.col_blank {
+	float: left;
+	width: 98px;
+}
+
+#header {
+	height: 30px;
+	width: 100%;
+}
+#headerleft {
+	width: 100px;
+	float: left;
+}
+#headerright {
+	width: 100px;
+	float: right;
+}

@@ -1,0 +1,55 @@
+/* Vote */
+.vote-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.vote-wrapper > * {
+    flex: 0 1 auto;
+}
+
+.vote-wrapper-block.vote-wrapper-block {
+  display: block;
+}
+
+.vote-wrapper ul.vote {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-right: 15px;
+}
+
+.vote-wrapper ul.vote > li {
+  display: inline-block;
+}
+
+.vote-wrapper ul.vote > li > img {
+    width: 22px;
+    display: block;
+}
+
+@media screen and (max-width: 970px) {
+  .vote-wrapper ul.vote > li > img {
+    width: 12px;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .vote-wrapper > * {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 500px) {
+    .vote-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .vote-wrapper ul.vote {
+        margin-right: 0px;
+    }
+}

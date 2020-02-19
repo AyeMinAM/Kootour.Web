@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MVCSiteModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="MVCSiteModelStoreContainer">
+          <EntitySet Name="QueuedEmails" EntityType="MVCSiteModel.Store.QueuedEmails" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SendEmailLog" EntityType="MVCSiteModel.Store.SendEmailLog" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="QueuedEmails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sender" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Receiver" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Body" Type="ntext" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="SiteType" Type="tinyint" Nullable="false" />
+          <Property Name="EmailType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendEmailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sender" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Receiver" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Title" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Body" Type="ntext" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="SendResult" Type="bit" Nullable="false" />
+          <Property Name="SiteType" Type="tinyint" Nullable="false" />
+          <Property Name="EMailType" Type="int" Nullable="false" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MVCSite.EmailService" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="Repository" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="QueuedEmails" EntityType="MVCSite.EmailService.QueuedEmail" />
+          <EntitySet Name="SendEmailLogs" EntityType="MVCSite.EmailService.SendEmailLog" />
+        </EntityContainer>
+        <EntityType Name="QueuedEmail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Sender" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Receiver" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" />
+          <Property Type="Byte" Name="SiteType" Nullable="false" />
+          <Property Type="Int32" Name="EmailType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendEmailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Sender" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Receiver" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" />
+          <Property Type="DateTime" Name="SendTime" Nullable="false" />
+          <Property Type="Boolean" Name="SendResult" Nullable="false" />
+          <Property Type="Byte" Name="SiteType" Nullable="false" />
+          <Property Type="Int32" Name="EMailType" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MVCSiteModelStoreContainer" CdmEntityContainer="Repository">
+          <EntitySetMapping Name="QueuedEmails">
+            <EntityTypeMapping TypeName="MVCSite.EmailService.QueuedEmail">
+              <MappingFragment StoreEntitySet="QueuedEmails">
+                <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+                <ScalarProperty Name="SiteType" ColumnName="SiteType" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendEmailLogs">
+            <EntityTypeMapping TypeName="MVCSite.EmailService.SendEmailLog">
+              <MappingFragment StoreEntitySet="SendEmailLog">
+                <ScalarProperty Name="EMailType" ColumnName="EMailType" />
+                <ScalarProperty Name="SiteType" ColumnName="SiteType" />
+                <ScalarProperty Name="SendResult" ColumnName="SendResult" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Repository">
+        <EntityTypeShape EntityType="MVCSite.EmailService.QueuedEmail" Width="1.5" PointX="0.75" PointY="0.75" Height="2.5571907552083326" />
+        <EntityTypeShape EntityType="MVCSite.EmailService.SendEmailLog" Width="1.5" PointX="2.75" PointY="0.75" Height="2.9417936197916656" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

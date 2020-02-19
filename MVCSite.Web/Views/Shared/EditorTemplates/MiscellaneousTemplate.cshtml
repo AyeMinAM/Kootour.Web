@@ -1,0 +1,186 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.MiscellaneousModel
+<div class="widget-body">
+
+    <div id="fuelux-wizard-container">
+        <div class="form-group">
+            <ul class="steps visible-lg hidden-xs hidden-sm hidden-md">
+                <li data-step="1" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("TourType"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">1</span>
+                        <span class="title kootour-main-color">Tour Type</span>
+                    </a>
+                </li>
+                <li data-step="2" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("Overview"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">2</span>
+                        <span class="title kootour-main-color">Overview</span>
+                    </a>
+                </li>
+
+                <li data-step="3" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("BookingDetails"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">3</span>
+                        <span class="title kootour-main-color">Booking Details</span>
+                    </a>
+                </li>
+
+                <li data-step="4" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("SchedulerPrice"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">4</span>
+                        <span class="title kootour-main-color">Schedule & Price</span>
+                    </a>
+                </li>
+
+                <li data-step="5" class="complete">
+                    <a href="#" onclick="return OnClickBackButton('@Url.Action(("Pictures"), new { id = Model.TourID })');">
+                        <span class="step kootour-main-color">5</span>
+                        <span class="title kootour-main-color">Pictures</span>
+                    </a>
+                </li>
+                <li data-step="6" class="active">
+                    <span class="step kootour-main-color">6</span>
+                    <span class="title kootour-main-color">Activation</span>
+                </li>
+            </ul>
+
+            <ul class="steps visible-xs visible-sm visible-md hidden-lg">
+                <li style="display:none"></li>
+                <li data-step="3" class="active">
+                    <span class="step kootour-main-color">6</span> 
+                    <span class="title kootour-main-color">Activation</span>
+                </li>
+                <li style="display:none"></li>
+            </ul>
+        </div>
+
+        <div class="step-pane active" data-step="5">
+            <h4 class="lighter block kootour-main-color">10. Activation:</h4>
+
+
+
+        </div>
+    </div>
+    @using (Html.BeginForm("Publish", @ViewContext.RouteData.Values["controller"].ToString(), new { }, FormMethod.Post, new { id = "PicturesForm", @class = "primary-col clearfix" }))
+    {
+        @Html.HiddenFor(m => m.TourID)
+        <div>
+            <div>
+                @if (Model.IsEmailAndPhoneVerified)
+                {
+                    <p style="margin-top: 15px">
+                        Is this tour ready to be activated?
+                    </p>
+                }
+                else if (Model.UserID == Model.GuideID)
+                {
+                    <p style="margin-top: 15px">
+                        Is this tour ready to be activated?
+                    </p>
+                    <p style="margin-top: 15px">
+                        Note: You can change your tours to “inactive” at any time.
+                    </p>
+                }
+                else
+                {
+                    <p style="margin-top: 15px">
+                        Note: After the guide verifies email and phone, this tour will be available for publishing.
+                    </p>
+                }
+            </div>
+
+            @if (Model.IsEmailAndPhoneVerified)
+            {
+                <div id="publish-div">
+                    <table id="publish-table" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.IfActive, true) Yes
+                                </td>
+
+                                <td>
+                                    @Html.RadioButtonFor(m => m.IfActive, false) No
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else if (Model.UserID == Model.GuideID)
+            {
+                <div id="publish-div">
+                    <table id="publish-table" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.IfActive, true) Yes
+                                </td>
+
+                                <td>
+                                    @Html.RadioButtonFor(m => m.IfActive, false) No
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div id="publish-div" style="visibility: hidden;">
+                    <table id="publish-table" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    @Html.RadioButtonFor(m => m.IfActive, true) Yes
+                                </td>
+
+                                <td>
+                                    @Html.RadioButtonFor(m => m.IfActive, false) No
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+
+        </div>
+        <div class="wizard-actions">
+            
+            
+            @*<a class="btn  btn-success  btn-next" href="@Url.Action("SchedulerPrice",new{id=@Model.TourID})">*@
+            <a class="btn  btn-blue  btn-next" href="#" onclick="return OnClickBackButton('@Url.Action(("Pictures"), new {id = Model.TourID})');">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                Prev
+            </a>
+
+            <button type="submit" class="btn btn-blue btn-next" data-last="Finish">
+                Save & Finish
+                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    }
+</div>
+
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        @*@if (Model.IsEmailVerified && Model.IsPhoneVerified)
+        {
+            $("#publish-div").css
+        }
+        else if (Model.UserID == Model.GuideID)
+        {
+
+        }
+        else
+        {
+
+        }*@
+    });
+</script>

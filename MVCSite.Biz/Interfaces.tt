@@ -1,0 +1,146 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ output extension=".cs" #>
+
+<#@ assembly name="System.Core.dll" #>
+<#@ assembly name="System.Xml.Linq.dll" #>
+<#@ assembly name="System.Xml.dll" #>
+<#@ assembly name="EnvDTE" #>
+<#@ assembly name="EnvDTE80" #>
+
+<#@ import namespace="EnvDTE" #>
+<#@ import namespace="EnvDTE80" #>
+<#@ Import Namespace="System.Collections" #>
+<#@ Import Namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Xml.Linq" #>
+
+//using WMath.Engine.DomainEntities;
+
+namespace MVCSite.Biz.Interfaces {
+
+<#
+	Type transformationType = this.GetType();
+	System.Reflection.PropertyInfo hostProperty = transformationType.GetProperty("Host");
+	if (hostProperty == null)
+		  throw new Exception("Unable to retrieve templating engine host. " 
+					+ "Ensure that the template includes hostspecific=\"True\" "
+					+ "parameter in the \<#@ template \#> directive.");
+
+	Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost host = (Microsoft.VisualStudio.TextTemplating.ITextTemplatingEngineHost)hostProperty.GetValue(this, null);
+	IServiceProvider hostServiceProvider = (IServiceProvider)host;
+	EnvDTE.DTE dte = (EnvDTE.DTE)hostServiceProvider.GetService(typeof(EnvDTE.DTE));
+	EnvDTE.ProjectItem containingProjectItem = dte.Solution.FindProjectItem(host.TemplateFile);
+	Project project = containingProjectItem.ContainingProject;
+	var elements = CodeElementsInProjectItems(project.ProjectItems);
+	var classesToFind = new[] { 
+		"PublicCommands",
+		"Emailer",
+		"UserCommands",
+		"UserQueries",
+		"CallCommands",
+		"CommunityCommands",
+		"CommunityQueries",
+	};
+	var classes = elements.Where(el => el.Kind == vsCMElement.vsCMElementClass)
+						  .Cast<CodeClass>()
+						  .Where(cl => classesToFind.Contains(cl.Name));
+
+	foreach(var codeClass in classes)
+	{
+#> 
+		public partial interface I<#= codeClass.Name #> {
+<#
+			foreach(var member in codeClass.Members) {
+				var property = member as CodeProperty;
+				if(property != null) {
+#>
+					<#= property.Type.AsString #> <#= property.Name #> { <#= (property.Setter != null && property.Setter.Access == vsCMAccess.vsCMAccessPublic)?"set; ":string.Empty #><#= (property.Getter != null && property.Getter.Access == vsCMAccess.vsCMAccessPublic)?"get;":string.Empty #> }
+<#
+				}
+				var function = member as CodeFunction;
+				if(function != null) {
+					if(function.Access != vsCMAccess.vsCMAccessPublic) 
+						continue; //skip not public members
+					if(function.Name == codeClass.Name) 
+						continue; //skip constructor
+					string parms = "";
+					var isFirstParam = true;
+					foreach (CodeParameter param in function.Parameters) {
+						parms += ( (isFirstParam?"":", ") + param.Type.AsString + " " + param.Name);
+						isFirstParam = false;
+					}
+#>					<#= function.Type.AsString #> <#= function.Name #>(<#= parms #>);
+<#
+				}
+			}
+#>
+		}
+<#
+	}
+#>
+}
+
+<#+
+public IEnumerable<CodeElement> CodeElementsInProjectItems(ProjectItems projectItems) {
+    foreach (ProjectItem projectItem in projectItems) {
+        foreach(CodeElement el in CodeElementsInProjectItem(projectItem)) {
+            yield return el;
+        }
+    }
+}
+ 
+public IEnumerable<CodeElement> CodeElementsInProjectItem(ProjectItem projectItem) {
+    FileCodeModel fileCodeModel = projectItem.FileCodeModel;
+    if (fileCodeModel != null) {
+        foreach (CodeElement codeElement in fileCodeModel.CodeElements) {
+            //WalkElements(codeElement, null);
+            foreach(CodeElement el in CodeElementDescendantsAndSelf(codeElement)) {
+                yield return el;
+            }
+        }
+    }
+    if (projectItem.ProjectItems != null) {
+        foreach (ProjectItem childItem in projectItem.ProjectItems) {
+            foreach (CodeElement el in CodeElementsInProjectItem(childItem)) {
+                yield return el;
+            }
+        }
+    }        
+}
+ 
+public IEnumerable<CodeElement> CodeElementsDescendants(CodeElements codeElements) {
+    foreach(CodeElement element in codeElements) {
+        foreach (CodeElement descendant in CodeElementDescendantsAndSelf(element)) {
+            yield return descendant;                
+        }
+    }
+}
+ 
+public IEnumerable<CodeElement> CodeElementDescendantsAndSelf(CodeElement codeElement) {
+    yield return codeElement;
+    
+	CodeElements codeElements;
+    switch(codeElement.Kind) {        
+        /* namespaces */
+        case vsCMElement.vsCMElementNamespace: {
+            CodeNamespace codeNamespace = (CodeNamespace)codeElement;                                        
+            codeElements = codeNamespace.Members;
+            foreach(CodeElement descendant in CodeElementsDescendants(codeElements))
+            {
+                yield return descendant;                
+            }
+            break;
+        }
+        /* Process classes */
+        case vsCMElement.vsCMElementClass: {            
+            CodeClass codeClass = (CodeClass)codeElement;            
+            codeElements = codeClass.Members;
+            foreach(CodeElement descendant in CodeElementsDescendants(codeElements))
+            {                
+                yield return descendant;                
+            }            
+            break;    
+        }        
+    }    
+}
+#>

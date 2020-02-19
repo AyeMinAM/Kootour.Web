@@ -1,0 +1,218 @@
+.navbar-kootour {
+  margin-bottom: 0;
+  font-family: Montserrat-Light;
+  background-color: @blue;
+  height: @navbarHeight;
+  z-index: 3;
+  border-radius: 0;
+  border: 0;
+}
+
+.navbar-kootour .navbar-brand-img {
+  padding:0;
+  padding-left: 15px;
+}
+
+.navbar-kootour .navbar-brand-img img {
+    height: inherit;
+}
+
+.navbar-kootour .navbar-brand {
+    height: @navbarHeight;
+}
+
+.navbar-kootour.nomargin {
+    margin-bottom: 0px;
+}
+
+.navbar-kootour.transparent {
+    background: -webkit-linear-gradient(rgba(0,0,0,0.2), transparent); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(rgba(0,0,0,0.2), transparent); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(rgba(0,0,0,0.2), transparent); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(rgba(0,0,0,0.2), transparent); /* Standard syntax */
+    background-color: transparent;
+    border: 0px;
+}
+
+.navbar-kootour a,
+.navbar-kootour a:hover,
+.navbar-kootour a:active,
+.navbar-kootour a:focus {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar-kootour .icon {
+  max-height: 29px;
+  width: auto;
+  margin: 0 0 0 10px;
+}
+
+/* hack for the flag */
+.navbar-kootour .navbar-nav > li > a {
+  line-height: 30px;
+}
+.navbar-kootour .navbar-right li:first-child .icon {
+  max-height: 25px;
+}
+.nav>li>a:hover, .nav>li>a:focus {
+  text-decoration: none;
+  background-color: inherit;
+}
+
+.navbar-kootour .icon-navbar {
+    height: 24px;
+}
+
+.navbar-kootour .kootour-link {
+    .font-size(2.4);
+}
+
+.navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+.navbar-toggle .navbar-toggle {
+  background-color: white;
+}
+
+.navbar-kootour .navbar-text {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: 0;
+    color: white;
+}
+
+.navbar-kootour .navbar-collapse {
+    box-shadow:  none;
+}
+
+.navbar-kootour .open>a, .navbar-kootour .open>a:hover, .navbar-kootour .open>a:focus,
+.navbar-kootour:not(.transparent) .nav > li > a:hover, .navbar-kootour:not(.transparent) .nav > li > a:focus {
+    background-color: @navbarhover;
+    border-color: @navbarhover;
+}
+
+.navbar-kootour .dropdown-menu {
+    border-top: 0;
+}
+
+.navbar-kootour .dropdown-menu>li>a:hover, .navbar-kootour .dropdown-menu>li>a:focus {
+    background: none;
+    background-color: @lightGray;
+}
+
+
+.navbar-kootour .dropdown-menu>li>a {
+    padding: 9px 20px;
+    color: @blue;
+    font-size: 16px;
+}
+
+
+.navbar-kootour .dropdown-menu>li:not(:last-child) > a {
+    .borderbottom();
+}
+
+.navbar-kootour .dropdown-dashboard {
+    width: 350px;
+    padding: 0;
+}
+
+.navbar-kootour .dropdown-dashboard>li>a {
+    color: @body-color;
+}
+
+.navbar-kootour .dropdown-dashboard a {
+    margin: 0;
+}
+
+.navbar-kootour .dropdown-dashboard .see-all {
+    color: @blue;
+    font-weight: bold;
+    padding: 6px;
+    display: block;
+}
+
+
+.navbar-kootour .dropdown-dashboard>li>a {
+    padding: 0;
+    font-size: 16px;
+}
+
+.navbar-kootour .dropdown-dashboard .icon-notification {
+    width: 35px;
+    margin-bottom: 0;
+}
+
+
+
+.navbar-kootour .dropdown-dashboard .dashboard-divider {
+    text-align: center;
+    padding: 6px;
+    color: white;
+    font-weight: bold;
+    background-color: @blue;
+}
+
+@media (min-width: 768px) {
+  .navbar-kootour .navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .message-link-desktop {
+    display: block !important;
+  }
+
+  .message-link-mobile {
+    display:none !important;
+  }
+}
+
+@media (max-width: 768px) {
+    .navbar-nav .open .dropdown-menu>li>a {
+        color: white;
+    }
+
+    .message-link-desktop {
+        display: none !important;
+    }
+
+    .message-link-mobile {
+        display:block !important;
+    }
+
+    .navbar-kootour .navbar-collapse {
+        background-color: rgba(0, 204, 204, 1);
+    }
+
+    .navbar-kootour .navbar-text {
+        margin-top: 20px;
+        margin-bottom: 0px;
+        margin-left: 0;
+        color: white;
+    }
+
+    .navbar-kootour {
+        height: @smallNavbarHeight !important;
+    }
+
+    .navbar-kootour .navbar-brand {
+        height: @smallNavbarHeight !important;
+    }
+
+    .navbar-kootour .navbar-text {
+        display: none;
+    }
+
+    .navbar-kootour.transparent {
+        background-color: rgba(0, 204, 204, 1);
+        background: rgba(0, 204, 204, 1);
+    }
+
+    .navbar-kootour .dropdown-menu > li:not(:last-child) > a {
+        border: 0;
+    }
+}
+

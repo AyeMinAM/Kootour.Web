@@ -1,0 +1,488 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{31DA683A-93D5-4073-A8A4-BB76E587B372}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MVCSite.DAC</RootNamespace>
+    <AssemblyName>MVCSite.DAC</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'CrawlerDebug|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\CrawlerDebug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\MVCSite.DAC.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'DebugOnLocal|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\DebugOnLocal\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisLogFile>bin\Debug\MVCSite.DAC.dll.CodeAnalysisLog.xml</CodeAnalysisLogFile>
+    <CodeAnalysisUseTypeNameInSuppression>true</CodeAnalysisUseTypeNameInSuppression>
+    <CodeAnalysisModuleSuppressionsFile>GlobalSuppressions.cs</CodeAnalysisModuleSuppressionsFile>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSetDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\\Rule Sets</CodeAnalysisRuleSetDirectories>
+    <CodeAnalysisIgnoreBuiltInRuleSets>true</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisRuleDirectories>;C:\Program Files (x86)\Microsoft Visual Studio 10.0\Team Tools\Static Analysis Tools\FxCop\\Rules</CodeAnalysisRuleDirectories>
+    <CodeAnalysisIgnoreBuiltInRules>true</CodeAnalysisIgnoreBuiltInRules>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Libraries\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libraries\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cache\ActionSettings.cs" />
+    <Compile Include="Cache\ActionSettingsSerialiser.cs" />
+    <Compile Include="Cache\CacheHeadersHelper.cs" />
+    <Compile Include="Cache\CacheItem.cs" />
+    <Compile Include="Cache\CacheSettings.cs" />
+    <Compile Include="Cache\CacheSettingsManager.cs" />
+    <Compile Include="Cache\AjaxDonutOutputCacheAttribute.cs" />
+    <Compile Include="Cache\ObjectCacheManager.cs" />
+    <Compile Include="Cache\SecureDonutOutputCacheAttribute.cs" />
+    <Compile Include="Cache\DonutHoleFiller.cs" />
+    <Compile Include="Cache\DonutOutputCacheAttribute.cs" />
+    <Compile Include="Cache\EncryptingActionSettingsSerialiser.cs" />
+    <Compile Include="Cache\Encryptor.cs" />
+    <Compile Include="Cache\HtmlHelperExtensions.cs" />
+    <Compile Include="Cache\IActionSettingsSerialiser.cs" />
+    <Compile Include="Cache\ICacheHeadersHelper.cs" />
+    <Compile Include="Cache\ICacheSettingsManager.cs" />
+    <Compile Include="Cache\IDonutHoleFiller.cs" />
+    <Compile Include="Cache\IEncryptor.cs" />
+    <Compile Include="Cache\IExtendedOutputCacheManager.cs" />
+    <Compile Include="Cache\IKeyBuilder.cs" />
+    <Compile Include="Cache\IKeyGenerator.cs" />
+    <Compile Include="Cache\IOutputCacheManager.cs" />
+    <Compile Include="Cache\KeyBuilder.cs" />
+    <Compile Include="Cache\KeyGenerator.cs" />
+    <Compile Include="Cache\MemoryCacheProvider.cs" />
+    <Compile Include="Cache\OutputCache.cs" />
+    <Compile Include="Cache\OutputCacheManager.cs" />
+    <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\SqlHelper.cs" />
+    <Compile Include="Common\SafeConvert.cs" />
+    <Compile Include="Common\FieldLoader.cs" />
+    <Compile Include="Common\SelectOptionsHelper.cs" />
+    <Compile Include="Common\EmailHelper.cs" />
+    <Compile Include="Common\Enums.cs" />
+    <Compile Include="Common\SiteConfiguration.cs" />
+    <Compile Include="Common\SiteUrlHelper.cs" />
+    <Compile Include="DACUnityContainer.cs" />
+    <Compile Include="Entities\BankInfo.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Category.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\CianQuestionLog.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\City.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Country.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EFDBContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EmailAccountToSend.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GuiderExcludedDates.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\InternatinalPhoneCode.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MailTemp.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\OperationLog.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Pagevar.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Promo.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\QueuedEmails.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Region.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SendEmailLog.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\StatDataContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Tour.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourExclusion.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourExtra.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourInclusion.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourPicture.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourPriceBreakdown.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourSchedule.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TourVendorPromo.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UniqueVisits.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\GuideDataContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\User.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserMsg.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserPromo.cs">
+      <DependentUpon>EFDBContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserQueryLog.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserQuerySummary.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserTourBooking.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserTourReview.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\UserWish.cs">
+      <DependentUpon>GuideDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Visits.cs">
+      <DependentUpon>StatDataContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\AllowCrossSiteJsonAttribute.cs" />
+    <Compile Include="Extensions\Promo.cs" />
+    <Compile Include="Extensions\GuiderExcludedDates.cs" />
+    <Compile Include="Extensions\TourPriceBreakdown.cs" />
+    <Compile Include="Extensions\TourVendorPromo.cs" />
+    <Compile Include="Extensions\UserTourReview.cs" />
+    <Compile Include="Extensions\TourSchedule.cs" />
+    <Compile Include="Extensions\TourPicture.cs" />
+    <Compile Include="Extensions\TourInclusion.cs" />
+    <Compile Include="Extensions\TourExclusion.cs" />
+    <Compile Include="Extensions\Tour.cs" />
+    <Compile Include="Extensions\JsonpResult.cs" />
+    <Compile Include="Extensions\DropDownListExtensions.cs" />
+    <Compile Include="Extensions\User.cs" />
+    <Compile Include="Extensions\DisplayNameExtensions.cs" />
+    <Compile Include="Extensions\HtmlExtensions.cs" />
+    <Compile Include="Extensions\IEnumerableExtensions.cs" />
+    <Compile Include="Extensions\IQueryableExtensions.cs" />
+    <Compile Include="Extensions\BankInfo.cs" />
+    <Compile Include="Extensions\TourExtra.cs" />
+    <Compile Include="Extensions\UserTourBooking.cs" />
+    <Compile Include="Extensions\UserWish.cs" />
+    <Compile Include="Extensions\UserMsg.cs" />
+    <Compile Include="Instrumentation\Membership\CustomMembershipProvider.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Instrumentation\Pageable.cs" />
+    <Compile Include="Instrumentation\Tracker.cs" />
+    <Compile Include="Instrumentation\CacheProvider.cs" />
+    <Compile Include="Instrumentation\FormsAuthentication\CustomPrincipal.cs" />
+    <Compile Include="Instrumentation\FormsAuthentication\FormsTicketDataV1.cs" />
+    <Compile Include="Instrumentation\Settings.cs" />
+    <Compile Include="Interfaces1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Interfaces.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PerRequestLifetimeManager.cs" />
+    <Compile Include="Instrumentation\Membership\Crypto.cs" />
+    <Compile Include="Instrumentation\Membership\CustomRoleProvider.cs" />
+    <Compile Include="Instrumentation\WebApplicationContext.cs" />
+    <Compile Include="Repositories\RepositoryTourists.cs" />
+    <Compile Include="Repositories\RepositoryBigQueries.cs" />
+    <Compile Include="Repositories\EFDataContext.cs">
+      <DependentUpon>EFDataContext.tt</DependentUpon>
+      <SubType>Code</SubType>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Include="Repositories\EFDataContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EFDataContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\EFDataContext.Custom.cs" />
+    <Compile Include="Repositories\Repository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\RepositoryBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\RepositoryCities.cs" />
+    <Compile Include="Repositories\RepositoryStats.cs" />
+    <Compile Include="Repositories\RepositoryPromos.cs" />
+    <Compile Include="Repositories\RepositoryUsers.cs" />
+    <Compile Include="Repositories\StatDataContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatDataContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\StatDataContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StatDataContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\GuideDataContext.Designer.cs">
+      <DependentUpon>GuideDataContext.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\GuideDataContext.Context.cs">
+      <DependentUpon>GuideDataContext.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Repositories\RepositoryGuides.cs" />
+    <Compile Include="Repositories\RepositoryTypes.cs" />
+    <Compile Include="Resources\EmailTemplates\EmailTemplates.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmailTemplates.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\PriceService.cs" />
+    <Compile Include="Services\QueriesBase.cs" />
+    <Compile Include="Services\Security.cs" />
+    <Compile Include="Instrumentation\Logger.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Interfaces.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Interfaces1.cs</LastGenOutput>
+    </None>
+    <None Include="Entities\EFDBContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EFDBContext.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Repositories\StatDataContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StatDataContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <EntityDeploy Include="Repositories\EFDataContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EFDataContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="packages.config" />
+    <None Include="Repositories\EFDataContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>EFDataContext.cs</LastGenOutput>
+    </None>
+    <None Include="Repositories\StatDataContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StatDataContext.Context.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Repositories\GuideDataContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>GuideDataContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\EmailTemplates\EmailTemplates.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>EmailTemplates.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Cache\DevTrends.MvcDonutCaching.csproj" />
+    <Content Include="Entities\StatDataContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StatDataContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\GuideDataContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GuideDataContext.cs</LastGenOutput>
+    </Content>
+    <Content Include="Libraries\Autofac.dll" />
+    <Content Include="Libraries\Autofac.pdb" />
+    <Content Include="Libraries\Autofac.xml" />
+    <Content Include="Libraries\EntityFramework.dll" />
+    <Content Include="Libraries\EntityFramework.xml" />
+    <Content Include="Libraries\FreeSMTP.Net.dll" />
+    <Content Include="Libraries\FreeSMTP.Net.xml" />
+    <Content Include="Libraries\log4net.dll" />
+    <Content Include="Libraries\log4net.xml" />
+    <Content Include="Libraries\Microsoft.Practices.Unity.dll" />
+    <Content Include="Libraries\Microsoft.Practices.Unity.pdb" />
+    <Content Include="Libraries\Microsoft.Practices.Unity.xml" />
+    <Content Include="Libraries\Microsoft.Web.Testing.Lightweight.dll" />
+    <Content Include="Libraries\Microsoft.Web.Testing.Lightweight.pdb" />
+    <Content Include="Libraries\Microsoft.Web.Testing.Lightweight.XML" />
+    <Content Include="Libraries\Moq.Contrib.dll" />
+    <Content Include="Libraries\Moq.Contrib.pdb" />
+    <Content Include="Libraries\Moq.Contrib.xml" />
+    <Content Include="Libraries\Moq.dll" />
+    <Content Include="Libraries\Moq.pdb" />
+    <Content Include="Libraries\Moq.xml" />
+    <Content Include="Libraries\SquishIt.Framework.dll" />
+    <Content Include="Libraries\SquishIt.Framework.pdb" />
+    <Content Include="Libraries\Yahoo.Yui.Compressor.dll" />
+    <None Include="Repositories\GuideDataContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>GuideDataContext.Context.cs</LastGenOutput>
+    </None>
+    <Content Include="Resources\EmailTemplates\email_confirmation.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MVCSite.Common\MVCSite.Common.csproj">
+      <Project>{AB822146-5A9D-4349-BACA-1CBCB5795C01}</Project>
+      <Name>MVCSite.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

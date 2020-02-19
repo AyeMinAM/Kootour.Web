@@ -1,0 +1,114 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.BankInformationModel
+@{
+    Layout = "~/Views/Shared/_LayoutGuide.cshtml";
+}
+<div class="main-container container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+            
+            <div class="page-content-nopadding">
+                <div class="" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="@Url.Action("TourProducts")">Home</a>
+                        </li>
+
+                        <li>
+                        <a href="#">Bank Information</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            @Html.Partial("_GuideMenu")
+
+            <div class="page-content">
+
+                @using (Html.BeginForm("BankInformation", "Guide", new { }, FormMethod.Post, new { id = "BankInformationForm", @class = "form-horizontal" }))
+                {
+                    @Html.HiddenFor(m=>m.ID)
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="kootour-widget-color-main">
+                                <div class="widget-header col-xs-12">
+                                    <div class="col-xs-6 nopadding">
+                                        <h3 class="widget-title">
+                                            <span class="blue">Bank Information</span>
+                                        </h3>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12">
+                                    <div class="form-group">
+                                        <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                            <b>Bank Name</b></label>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            @*<input type="text" id="bankName" name="bankName" class="form-control">*@
+                                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control" })
+                                        </div>
+                                        <div class="validation-row">
+                                            @Html.ValidationMessageFor(m => m.BankName)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                            <b>Bank Branch</b></label>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            @* <input type="text" id="bankBranch" name="bankBranch" class="form-control">*@
+                                            @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control" })
+                                        </div>
+                                        <div class="validation-row">
+                                            @Html.ValidationMessageFor(m => m.BankBranch)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                            <b>Bank account No</b></label>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            @*<input type="text" id="bankAccountNo" name="bankAccountNo" class="form-control">*@
+                                            @Html.TextBoxFor(m => m.BankAccountNo, new { @class = "form-control" })
+                                        </div>
+                                        <div class="validation-row">
+                                            @Html.ValidationMessageFor(m => m.BankAccountNo)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                            <b>Bank account type</b></label>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            @*<input type="text" id="bankAccountType" name="bankAccountType" class="form-control">*@
+                                            @Html.TextBoxFor(m => m.BankAccountType, new { @class = "form-control" })
+                                        </div>
+                                        <div class="validation-row">
+                                            @Html.ValidationMessageFor(m => m.BankAccountType)
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                            <b>Bank account owner</b></label>
+                                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                            @*<input type="text" id="bankAccountOwner" name="bankAccountOwner" class="form-control">*@
+                                            @Html.TextBoxFor(m => m.BankAccountOwner, new { @class = "form-control" })
+                                        </div>
+                                        <div class="validation-row">
+                                            @Html.ValidationMessageFor(m => m.BankAccountOwner)
+                                        </div>
+                                    </div>
+
+                                     <button type="submit" class="btn btn-blue kootour-btn-main pull-right">Update</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>
+

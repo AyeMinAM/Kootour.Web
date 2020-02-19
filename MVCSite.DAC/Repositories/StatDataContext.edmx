@@ -1,0 +1,568 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WMathStatModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="CianQuestionLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Question" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="AnswerResult" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="CategoryID" Type="int" Nullable="false" />
+          <Property Name="DirectionID" Type="int" Nullable="false" />
+          <Property Name="DirectionString" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CategoryString" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="EmailAccountToSend">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Link" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="TemplateID" Type="smallint" Nullable="false" />
+          <Property Name="TemplateName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'EmailServer.dbo.MailTemp' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MailTemp">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="From" Type="nvarchar" MaxLength="50" />
+          <Property Name="Tos" Type="nvarchar" MaxLength="500" />
+          <Property Name="MailSubjects" Type="nvarchar" MaxLength="500" />
+          <Property Name="MailContents" Type="nvarchar(max)" />
+          <Property Name="MailTypes" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailFormats" Type="nvarchar" MaxLength="500" />
+          <Property Name="MailPriority" Type="int" />
+          <Property Name="MailsStructure" Type="int" />
+          <Property Name="EnterTime" Type="datetime" />
+          <Property Name="EnterUser" Type="int" />
+        </EntityType>
+        <EntityType Name="OperationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LogID" Type="int" Nullable="false" />
+          <Property Name="KeyObjType" Type="int" Nullable="false" />
+          <Property Name="KeyGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RelatedObjType" Type="int" Nullable="false" />
+          <Property Name="RelatedObjGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OperationType" Type="tinyint" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="OperationTime" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="Flag" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pagevar">
+          <Key>
+            <PropertyRef Name="pagevar" />
+          </Key>
+          <Property Name="pagevar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="counts" Type="int" Nullable="false" />
+          <Property Name="counts_nonusers" Type="int" />
+          <Property Name="signups" Type="int" Nullable="false" />
+          <Property Name="female" Type="int" />
+          <Property Name="conversion" Type="decimal" Precision="14" Scale="4" Nullable="false" />
+          <Property Name="femaleconver" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="intent" Type="decimal" Precision="14" Scale="4" />
+          <Property Name="completedprofiles" Type="int" />
+          <Property Name="purchase" Type="money" />
+          <Property Name="nologins" Type="int" />
+          <Property Name="nologinssevendaysago" Type="int" />
+          <Property Name="completedprofilessevendaysago" Type="int" />
+        </EntityType>
+        <EntityType Name="QueuedEmails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sender" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Receiver" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Body" Type="ntext" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="SiteType" Type="tinyint" Nullable="false" />
+          <Property Name="EmailType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SendEmailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sender" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Receiver" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Body" Type="ntext" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="SendTime" Type="datetime" Nullable="false" />
+          <Property Name="SendResult" Type="bit" Nullable="false" />
+          <Property Name="SiteType" Type="tinyint" Nullable="false" />
+          <Property Name="EMailType" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniqueVisits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Session_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" />
+          <Property Name="browser" Type="varchar" MaxLength="200" />
+          <Property Name="referer" Type="varchar" MaxLength="600" />
+          <Property Name="visitdate" Type="datetime" Nullable="false" />
+          <Property Name="path" Type="varchar" MaxLength="255" />
+          <Property Name="Pagevar" Type="varchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="ipcountry_id" Type="int" />
+          <Property Name="firstvisit" Type="datetime" />
+          <Property Name="keyword" Type="varchar" MaxLength="100" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="create_date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="UserQueryLog">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="Category" Type="int" />
+          <Property Name="UserIP" Type="nvarchar" MaxLength="15" />
+          <Property Name="EnterTime" Type="datetime" />
+          <Property Name="EnterUser" Type="int" />
+          <Property Name="SubCategory" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserQuerySummary">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Keyword" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="Count" Type="int" />
+        </EntityType>
+        <EntityType Name="Visits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Session_id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" />
+          <Property Name="browser" Type="varchar" MaxLength="100" />
+          <Property Name="referer" Type="varchar" MaxLength="600" />
+          <Property Name="visitdate" Type="datetime" Nullable="false" />
+          <Property Name="path" Type="varchar" MaxLength="2000" />
+          <Property Name="Pagevar" Type="varchar" MaxLength="200" />
+          <Property Name="user_id" Type="int" />
+          <Property Name="ipcountry_id" Type="int" />
+          <Property Name="firstvisit" Type="datetime" />
+          <Property Name="keyword" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="WMathStatModelStoreContainer">
+          <EntitySet Name="CianQuestionLog" EntityType="Self.CianQuestionLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmailAccountToSend" EntityType="Self.EmailAccountToSend" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OperationLog" EntityType="Self.OperationLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pagevar" EntityType="Self.Pagevar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QueuedEmails" EntityType="Self.QueuedEmails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SendEmailLog" EntityType="Self.SendEmailLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UniqueVisits" EntityType="Self.UniqueVisits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserQueryLog" EntityType="Self.UserQueryLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserQuerySummary" EntityType="Self.UserQuerySummary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Visits" EntityType="Self.Visits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailTemp" EntityType="Self.MailTemp" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[MailTemp].[RID] AS [RID], 
+[MailTemp].[From] AS [From], 
+[MailTemp].[Tos] AS [Tos], 
+[MailTemp].[MailSubjects] AS [MailSubjects], 
+[MailTemp].[MailContents] AS [MailContents], 
+[MailTemp].[MailTypes] AS [MailTypes], 
+[MailTemp].[MailFormats] AS [MailFormats], 
+[MailTemp].[MailPriority] AS [MailPriority], 
+[MailTemp].[MailsStructure] AS [MailsStructure], 
+[MailTemp].[EnterTime] AS [EnterTime], 
+[MailTemp].[EnterUser] AS [EnterUser]
+FROM [dbo].[MailTemp] AS [MailTemp]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WMathStatModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="StatDataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MailTemp" EntityType="WMathStatModel.MailTemp" />
+          <EntitySet Name="OperationLog" EntityType="WMathStatModel.OperationLog" />
+          <EntitySet Name="Pagevar" EntityType="WMathStatModel.Pagevar" />
+          <EntitySet Name="UserQueryLog" EntityType="WMathStatModel.UserQueryLog" />
+          <EntitySet Name="UserQuerySummary" EntityType="WMathStatModel.UserQuerySummary" />
+          <EntitySet Name="CianQuestionLog" EntityType="WMathStatModel.CianQuestionLog" />
+          <EntitySet Name="SendEmailLog" EntityType="WMathStatModel.SendEmailLog" />
+          <EntitySet Name="QueuedEmails" EntityType="WMathStatModel.QueuedEmails" />
+          <EntitySet Name="UniqueVisits" EntityType="WMathStatModel.UniqueVisits" />
+          <EntitySet Name="Visits" EntityType="WMathStatModel.Visits" />
+          <EntitySet Name="EmailAccountToSends" EntityType="WMathStatModel.EmailAccountToSend" />
+        </EntityContainer>
+        <EntityType Name="MailTemp">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="From" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Tos" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="MailSubjects" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="MailContents" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MailTypes" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="MailFormats" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="MailPriority" Type="Int32" />
+          <Property Name="MailsStructure" Type="Int32" />
+          <Property Name="EnterTime" Type="DateTime" Precision="3" />
+          <Property Name="EnterUser" Type="Int32" />
+        </EntityType>
+        <EntityType Name="OperationLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogID" Type="Int32" Nullable="false" />
+          <Property Name="KeyObjType" Type="Int32" Nullable="false" />
+          <Property Name="KeyGUID" Type="Guid" Nullable="false" />
+          <Property Name="RelatedObjType" Type="Int32" Nullable="false" />
+          <Property Name="RelatedObjGUID" Type="Guid" Nullable="false" />
+          <Property Name="OperationType" Type="Byte" Nullable="false" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="32" Unicode="false" FixedLength="false" />
+          <Property Name="OperationTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="Flag" Type="Byte" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pagevar">
+          <Key>
+            <PropertyRef Name="pagevar1" />
+          </Key>
+          <Property Name="pagevar1" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="counts" Type="Int32" Nullable="false" />
+          <Property Name="counts_nonusers" Type="Int32" />
+          <Property Name="signups" Type="Int32" Nullable="false" />
+          <Property Name="female" Type="Int32" />
+          <Property Name="conversion" Type="Decimal" Nullable="false" Precision="14" Scale="4" />
+          <Property Name="femaleconver" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="intent" Type="Decimal" Precision="14" Scale="4" />
+          <Property Name="completedprofiles" Type="Int32" />
+          <Property Name="purchase" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="nologins" Type="Int32" />
+          <Property Name="nologinssevendaysago" Type="Int32" />
+          <Property Name="completedprofilessevendaysago" Type="Int32" />
+        </EntityType>
+        <EntityType Name="UserQueryLog">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Keyword" Type="String" Nullable="false" MaxLength="1024" Unicode="true" FixedLength="false" />
+          <Property Name="Category" Type="Int32" />
+          <Property Name="UserIP" Type="String" MaxLength="15" Unicode="true" FixedLength="false" />
+          <Property Name="EnterTime" Type="DateTime" Precision="3" />
+          <Property Name="EnterUser" Type="Int32" />
+          <Property Name="SubCategory" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserQuerySummary">
+          <Key>
+            <PropertyRef Name="RID" />
+          </Key>
+          <Property Name="RID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Keyword" Type="String" Nullable="false" MaxLength="1024" Unicode="true" FixedLength="false" />
+          <Property Name="Count" Type="Int32" />
+        </EntityType>
+        <EntityType Name="CianQuestionLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Question" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AnswerResult" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="CategoryID" Nullable="false" />
+          <Property Type="Int32" Name="DirectionID" Nullable="false" />
+          <Property Type="String" Name="DirectionString" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CategoryString" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserID" />
+        </EntityType>
+        <EntityType Name="SendEmailLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Sender" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Receiver" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="SendTime" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="SendResult" Nullable="false" />
+          <Property Type="Byte" Name="SiteType" Nullable="false" />
+          <Property Type="Int32" Name="EMailType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QueuedEmails">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Sender" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Receiver" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Title" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Body" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="Byte" Name="SiteType" Nullable="false" />
+          <Property Type="Int32" Name="EmailType" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UniqueVisits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Session_id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IP" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="browser" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="referer" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="visitdate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="path" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Pagevar" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="user_id" />
+          <Property Type="Int32" Name="ipcountry_id" />
+          <Property Type="DateTime" Name="firstvisit" Precision="3" />
+          <Property Type="String" Name="keyword" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="UserID" />
+          <Property Type="DateTime" Name="create_date" Precision="3" />
+        </EntityType>
+        <EntityType Name="Visits">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Decimal" Name="ID" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Session_id" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="IP" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="browser" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="referer" MaxLength="600" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="visitdate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="path" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Pagevar" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="user_id" />
+          <Property Type="Int32" Name="ipcountry_id" />
+          <Property Type="DateTime" Name="firstvisit" Precision="3" />
+          <Property Type="String" Name="keyword" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="EmailAccountToSend">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Guid" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="TemplateID" Nullable="false" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Subject" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Link" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TemplateName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WMathStatModelStoreContainer" CdmEntityContainer="StatDataContext">
+          <EntitySetMapping Name="MailTemp"><EntityTypeMapping TypeName="WMathStatModel.MailTemp"><MappingFragment StoreEntitySet="MailTemp">
+            <ScalarProperty Name="RID" ColumnName="RID" />
+            <ScalarProperty Name="From" ColumnName="From" />
+            <ScalarProperty Name="Tos" ColumnName="Tos" />
+            <ScalarProperty Name="MailSubjects" ColumnName="MailSubjects" />
+            <ScalarProperty Name="MailContents" ColumnName="MailContents" />
+            <ScalarProperty Name="MailTypes" ColumnName="MailTypes" />
+            <ScalarProperty Name="MailFormats" ColumnName="MailFormats" />
+            <ScalarProperty Name="MailPriority" ColumnName="MailPriority" />
+            <ScalarProperty Name="MailsStructure" ColumnName="MailsStructure" />
+            <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+            <ScalarProperty Name="EnterUser" ColumnName="EnterUser" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OperationLog"><EntityTypeMapping TypeName="WMathStatModel.OperationLog"><MappingFragment StoreEntitySet="OperationLog">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="LogID" ColumnName="LogID" />
+            <ScalarProperty Name="KeyObjType" ColumnName="KeyObjType" />
+            <ScalarProperty Name="KeyGUID" ColumnName="KeyGUID" />
+            <ScalarProperty Name="RelatedObjType" ColumnName="RelatedObjType" />
+            <ScalarProperty Name="RelatedObjGUID" ColumnName="RelatedObjGUID" />
+            <ScalarProperty Name="OperationType" ColumnName="OperationType" />
+            <ScalarProperty Name="IP" ColumnName="IP" />
+            <ScalarProperty Name="OperationTime" ColumnName="OperationTime" />
+            <ScalarProperty Name="UserID" ColumnName="UserID" />
+            <ScalarProperty Name="Flag" ColumnName="Flag" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Pagevar"><EntityTypeMapping TypeName="WMathStatModel.Pagevar"><MappingFragment StoreEntitySet="Pagevar">
+            <ScalarProperty Name="pagevar1" ColumnName="pagevar" />
+            <ScalarProperty Name="counts" ColumnName="counts" />
+            <ScalarProperty Name="counts_nonusers" ColumnName="counts_nonusers" />
+            <ScalarProperty Name="signups" ColumnName="signups" />
+            <ScalarProperty Name="female" ColumnName="female" />
+            <ScalarProperty Name="conversion" ColumnName="conversion" />
+            <ScalarProperty Name="femaleconver" ColumnName="femaleconver" />
+            <ScalarProperty Name="intent" ColumnName="intent" />
+            <ScalarProperty Name="completedprofiles" ColumnName="completedprofiles" />
+            <ScalarProperty Name="purchase" ColumnName="purchase" />
+            <ScalarProperty Name="nologins" ColumnName="nologins" />
+            <ScalarProperty Name="nologinssevendaysago" ColumnName="nologinssevendaysago" />
+            <ScalarProperty Name="completedprofilessevendaysago" ColumnName="completedprofilessevendaysago" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserQueryLog"><EntityTypeMapping TypeName="WMathStatModel.UserQueryLog"><MappingFragment StoreEntitySet="UserQueryLog">
+            <ScalarProperty Name="RID" ColumnName="RID" />
+            <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+            <ScalarProperty Name="Category" ColumnName="Category" />
+            <ScalarProperty Name="UserIP" ColumnName="UserIP" />
+            <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+            <ScalarProperty Name="EnterUser" ColumnName="EnterUser" />
+            <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="UserQuerySummary"><EntityTypeMapping TypeName="WMathStatModel.UserQuerySummary"><MappingFragment StoreEntitySet="UserQuerySummary">
+            <ScalarProperty Name="RID" ColumnName="RID" />
+            <ScalarProperty Name="Keyword" ColumnName="Keyword" />
+            <ScalarProperty Name="Count" ColumnName="Count" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="CianQuestionLog">
+            <EntityTypeMapping TypeName="WMathStatModel.CianQuestionLog">
+              <MappingFragment StoreEntitySet="CianQuestionLog">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CategoryString" ColumnName="CategoryString" />
+                <ScalarProperty Name="DirectionString" ColumnName="DirectionString" />
+                <ScalarProperty Name="DirectionID" ColumnName="DirectionID" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="AnswerResult" ColumnName="AnswerResult" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SendEmailLog">
+            <EntityTypeMapping TypeName="WMathStatModel.SendEmailLog">
+              <MappingFragment StoreEntitySet="SendEmailLog">
+                <ScalarProperty Name="EMailType" ColumnName="EMailType" />
+                <ScalarProperty Name="SiteType" ColumnName="SiteType" />
+                <ScalarProperty Name="SendResult" ColumnName="SendResult" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueuedEmails">
+            <EntityTypeMapping TypeName="WMathStatModel.QueuedEmails">
+              <MappingFragment StoreEntitySet="QueuedEmails">
+                <ScalarProperty Name="EmailType" ColumnName="EmailType" />
+                <ScalarProperty Name="SiteType" ColumnName="SiteType" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="Sender" ColumnName="Sender" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UniqueVisits">
+            <EntityTypeMapping TypeName="WMathStatModel.UniqueVisits">
+              <MappingFragment StoreEntitySet="UniqueVisits">
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+                <ScalarProperty Name="firstvisit" ColumnName="firstvisit" />
+                <ScalarProperty Name="ipcountry_id" ColumnName="ipcountry_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Pagevar" ColumnName="Pagevar" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="visitdate" ColumnName="visitdate" />
+                <ScalarProperty Name="referer" ColumnName="referer" />
+                <ScalarProperty Name="browser" ColumnName="browser" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Session_id" ColumnName="Session_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Visits">
+            <EntityTypeMapping TypeName="WMathStatModel.Visits">
+              <MappingFragment StoreEntitySet="Visits">
+                <ScalarProperty Name="keyword" ColumnName="keyword" />
+                <ScalarProperty Name="firstvisit" ColumnName="firstvisit" />
+                <ScalarProperty Name="ipcountry_id" ColumnName="ipcountry_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="Pagevar" ColumnName="Pagevar" />
+                <ScalarProperty Name="path" ColumnName="path" />
+                <ScalarProperty Name="visitdate" ColumnName="visitdate" />
+                <ScalarProperty Name="referer" ColumnName="referer" />
+                <ScalarProperty Name="browser" ColumnName="browser" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Session_id" ColumnName="Session_id" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmailAccountToSends">
+            <EntityTypeMapping TypeName="WMathStatModel.EmailAccountToSend">
+              <MappingFragment StoreEntitySet="EmailAccountToSend">
+                <ScalarProperty Name="TemplateName" ColumnName="TemplateName" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="TemplateID" ColumnName="TemplateID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="StatDataContext">
+        <EntityTypeShape EntityType="WMathStatModel.MailTemp" Width="1.5" PointX="0.75" PointY="0.75" Height="3.1340950520833335" IsExpanded="true" />
+        <EntityTypeShape EntityType="WMathStatModel.OperationLog" Width="1.5" PointX="2.75" PointY="0.75" Height="3.1340950520833326" IsExpanded="true" />
+        <EntityTypeShape EntityType="WMathStatModel.Pagevar" Width="1.5" PointX="4.75" PointY="0.75" Height="3.5186979166666656" IsExpanded="true" />
+        <EntityTypeShape EntityType="WMathStatModel.UserQueryLog" Width="1.5" PointX="2.75" PointY="5.75" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="WMathStatModel.UserQuerySummary" Width="1.5" PointX="4.75" PointY="5.75" Height="1.5956835937499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="WMathStatModel.CianQuestionLog" Width="1.5" PointX="9.375" PointY="0.75" Height="2.7494921875000031" />
+        <EntityTypeShape EntityType="WMathStatModel.SendEmailLog" Width="1.5" PointX="2.75" PointY="9.75" Height="2.9417936197916674" />
+        <EntityTypeShape EntityType="WMathStatModel.QueuedEmails" Width="1.5" PointX="9.375" PointY="9.75" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="WMathStatModel.UniqueVisits" Width="1.5" PointX="7.375" PointY="4.75" Height="3.7109993489583317" />
+        <EntityTypeShape EntityType="WMathStatModel.Visits" Width="1.5" PointX="9.375" PointY="4.75" Height="3.3263964843750031" />
+        <EntityTypeShape EntityType="WMathStatModel.EmailAccountToSend" Width="1.5" PointX="5.375" PointY="9.75" Height="1.7879850260416674" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

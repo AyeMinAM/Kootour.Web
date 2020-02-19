@@ -1,0 +1,202 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+
+@{
+    Layout = "~/Views/Shared/_LayoutFullPage.cshtml";
+}
+@section seoinfo{
+    <title>Get $20 USD Off Your Next Tour | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Receive a $20 USD promotional code and use it towards your next booking on Kootour. Claim it soon before the promotion expires." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="promotion code, $20 off, tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,nofollow" />
+}
+<style>
+       .promo-background{
+            background-image:url('/images/bg_promo.jpg');
+            background-position: center center;
+            background-repeat: no-repeat;
+            position: relative;
+            height: 100vh;
+            width:100%;
+            overflow:auto;
+        }
+
+        .promo_verticalcenter{
+            display: flex;
+            -webkit-box-align : center;
+            -webkit-align-items : center;
+           -moz-box-align : center;
+           -ms-flex-align : center;
+        }
+
+
+        section.section_promo{
+            background-color: rgba(0, 0, 0, 0.20);
+            margin-top: 25px;
+            border-top: 10px solid #0cc;
+            border-radius: 3px;
+            box-shadow: -1px 0 2px 0 rgba(0,0,0,.12), 1px 0 2px 0 rgba(0,0,0,.12), 0 1px 1px 0 rgba(0,0,0,.12);
+            padding-top: 15px;
+            padding-bottom: 30px;
+            padding-left: 45px;
+            padding-right: 45px;
+            overflow:auto;
+        }
+
+        @@media (max-width: 480px) {
+        section.section_promo{
+           padding-top:15px !important; 
+           margin-top:10px !important;
+           padding-bottom:10px !important;
+           padding-left:20px !important;
+           padding-right:20px !important;
+        }
+    }
+
+        .img_coupon{
+            width: 120px;
+            height: 20%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        @@media (max-width:480px){
+            .img_coupon{
+                width:75px !important;
+                height:auto;
+            }
+        }
+
+        @@media (max-width: 768 px) and (min-width: 601){
+
+}
+        .text_promo{
+            color:#f5D10A;
+            line-height: 35px;
+            margin-top: -20px;
+        }
+
+        @@media (max-width:480px){
+            .text_promo{
+                font-size:17px!important;
+                font-family:Montserrat-Regular !important;
+            }
+        }
+
+        .text_promo_white{
+            color:#fff;
+        }
+
+        .row_promo_01{
+            padding-top: 100px;
+        }
+        @@media (max-width:480px){
+            .row_promo_01{
+                padding-top:0;
+            }
+        }
+      /* specific to code page */
+
+    .action-button{
+            display: block;
+            width: 150px;
+            height: 40px;
+            padding: 10px 6px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+            color: #00cccc;
+            font-size: 24px;
+            line-height: 19px;
+            text-align: center;
+            border-radius: 3px;
+            background-color: #ededef;
+        }
+
+    .instruction{
+            text-align: center;
+            margin: 0 auto;
+            padding: 0;
+            color: #fff;
+    }
+
+    .copytext{
+            display: block;
+            color:#00cccc;
+            text-align:center;
+            margin:10px auto 10px auto;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border:none;
+            cursor: pointer;
+    }
+
+
+        .btn_promo{
+            padding-top:20px;
+            padding-bottom:20px;
+
+    }
+
+        .row_promo{
+            text-align: center;
+            margin-top: 50px;
+    }
+
+        @@media (max-width:480px){
+            .row_promo{
+                margin-top:20px !important;
+            }
+        }
+
+        textarea {
+            overflow-x: hidden;
+        }
+
+</style>
+<script>
+    $(document).ready(function(){
+
+        var copyText = document.querySelector('.copytext');
+
+        copyText.addEventListener('click',
+        function(e){
+            var heading = document.querySelector('.instruction');
+            e.preventDefault();
+            this.select();
+            document.execCommand('copy');
+            heading.innerHTML = 'Copied';
+        });
+    });
+</script>   
+<div class="container-fluid promo-background">
+    <div class="row row_promo_01">
+        <div class="col-lg-offset-4 col-md-offset-2 col-sm-offset-1 col-lg-4 col-md-8 col-sm-10 col-xs-12">
+            <section class="section_promo">
+                <div class="login-wrap login-wrap-collapse">
+                    <img alt="Brand" class="img_coupon" src=@Url.Content("~/images/icons/coupon_480.png")>
+                </div>
+
+                <h3 class="text_promo">Here is your code worth $20 USD on kootour.com.*</h3>
+
+                <p class="instruction">Click below to copy.</p>
+
+                <textarea name="copy" readonly="readonly" spellcheck="false" id="" cols="20" rows="1" class="copytext">WEBKOOTOUR</textarea>
+
+                <p class="text_promo_white">Redeem at checkout.</p>
+                <p class="text_promo_white">*Valid for bookings $60 USD or more.</p>
+            </section>
+        </div>
+    </div>
+
+    <div class="row row_promo">
+        <div class="col-lg-offset-1 col-lg-10">
+            <a href="@Url.Action("Index", "Tourist")" class="btn btn-lg btn-kootour-bold btn_promo">Browse Our Tours</a>
+        </div>
+    </div>
+</div>

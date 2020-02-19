@@ -1,0 +1,9 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.BookTimeDropDownListModel
+@{
+    ViewBag.Title = "BookTimeDropDownList";
+}
+
+@Html.DropDownListFor(m => m.BookTime, Model.BookTimeOptions, new { @class = "form-control" })                                                     
+

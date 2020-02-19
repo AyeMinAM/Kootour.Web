@@ -1,0 +1,161 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.TChatModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Chat | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Chat." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <section class="section section-small col-xs-12">
+                <div class="col-xs-offset-2 col-xs-8">
+                    <div class="user-thumbnail img-circle" style="background-image:url('@Model.PeerAvatarUrl')"></div>
+                    <p class="subtitle nomargin">@Model.PeerUserName</p>
+                        
+                    @if(Model.PeerRole == MVCSite.Common.UserRole.Guider)
+                    {
+                    <div class="vote-wrapper vote-wrapper-block">
+                        <input id="PeerScore" class="star-rating-kootour rating" type="text"  readonly="true" value="@Model.PeerScore" /> 
+                        <span class="vote-label">@Model.PeerReviewCount reviews</span>
+                    </div>
+                    }
+                    <ul class="list-style-none">
+                        <li>@Model.PeerLocation</li>
+                        <li>Member since @Model.PeerRegDate</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="section section-small col-xs-12">
+                <div id="kootour-tchat" class="tchat">
+                    <div id="LoadPreviousButton" class="text-center">
+                        <a id="LoadPreviousMsg" href="#" class="subtitle">Loading previous message</a>
+                    </div>
+                </div>
+
+                <form id="kootour-form-tchat" class="form-tchat">
+                    <div class="form-group">
+                        <textarea placeholder="Type a message" class="form-control gray" rows="5"></textarea>
+                    </div>
+
+                    <div class="text-right">
+                        <button id="SendMsg" type="submit" class="btn btn-kootour">Send</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+<script src="/assets/js/lib/tchat.js"></script>
+@*<script src="/assets/js/kootour-tchat.js"></script>*@
+<script type="text/javascript">
+    Tchat.prototype.addPreviousMessage = function (message) {
+        if (message.content == "") {
+            return;
+        }
+        var dateFragment = this.buildDateFragment(message);
+        var messageFragment = this.buildMessageFragment(message);
+        var loadPreviousButton=document.getElementById("LoadPreviousButton");
+        //var inserted=this.container.insertBefore(dateFragment,loadPreviousButton.nextSibling);
+        this.container.insertBefore(messageFragment,loadPreviousButton.nextSibling);
+        this.messages.unshift(message);
+        //Scrolldown
+        this.container.scrollTop =0;// this.container.scrollHeight;
+    }
+
+    var starOptions = {
+        min: 0,
+        max: 5,
+        step: 1,
+        size: 'xs',
+        showClear: false,
+        showCaption: false,
+        theme: "star-kootour",
+        emptyStar: "<i class='glyphicon glyphicon-star'></i>"
+    };
+    $("#PeerScore").rating(starOptions);
+    $(".star-rating-kootour.rating").rating(starOptions);
+    $(function () {
+        var guide = {
+              thumbnail: "@Model.PeerAvatarUrl"
+        }
+        var tourist = {
+            thumbnail: "@Model.UserAvatarUrl"
+        }
+        var endMsgId=0;
+        var nextPageNo=1;
+        var formElement = document.getElementById('kootour-form-tchat');
+        var msgContainer=document.getElementById('kootour-tchat');
+        var loadPreviousButton=document.getElementById("LoadPreviousButton");
+        var tchat = new Tchat(msgContainer, guide, tourist);
+        var urlPageMsg = "/Tourist/TChatGetMsgInPage/"+ @Model.PeerID;
+        formElement.addEventListener("submit", function (e) {
+            e.preventDefault();
+            //alert("You submit!");
+            var message = {
+                date: new Date(),
+                from: tourist,
+                content: this.elements[0].value
+            }
+            var url = "/Tourist/TChatSendMsg/"+ @Model.PeerID;
+            $.post(url, {msg:this.elements[0].value}, function (data) {
+            });
+            tchat.addMessage(message);
+            //tchat.addPreviousMessage(message);
+
+            formElement.reset();
+            return false;
+        });
+        $("#LoadPreviousMsg").click(function (e) {
+            if(nextPageNo <=0)
+            {
+                $("#LoadPreviousButton").hide();
+                return;
+            }
+            e.preventDefault();
+            $.post(urlPageMsg, {end:endMsgId,page:nextPageNo}, function (data) {
+                if(!data.Result)
+                    return;
+                var e = document.createElement('div');
+                e.innerHTML = data.Data;
+                while(e.lastChild) {
+                    msgContainer.insertBefore(e.lastChild,loadPreviousButton.nextSibling);
+                }
+                nextPageNo=data.NextPageNo;
+                if(nextPageNo == 0)
+                {
+                    $("#LoadPreviousButton").hide();
+                }
+            });
+            return false;
+        });
+        $.post(urlPageMsg, {end:endMsgId,page:nextPageNo}, function (data) {
+            if(!data.Result)
+            {
+                $("#LoadPreviousButton").hide();
+                return;
+            }
+            var e = document.createElement('div');
+            e.innerHTML = data.Data;
+            while(e.firstChild) {
+                msgContainer.appendChild(e.firstChild);
+            }
+            endMsgId=data.EndId;
+            nextPageNo=data.NextPageNo;
+            if(nextPageNo == 0)
+            {
+                $("#LoadPreviousButton").hide();
+            }
+        });
+    });
+</script>

@@ -1,0 +1,78 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.ConfirmEmailModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Confirm Email | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Confirm Email." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="text-center section section-small">
+                <ul class="indicators">
+                    <!-- Display step-1 and step-2 if email not confirmed -->
+                    <li data-step="step-1" class="active"><a href="#"></a></li>
+                    <li data-step="step-2"><a href="#"></a></li>
+                    <!-- Display step-3 if email confirmed -->
+                    <!--<li data-step="step-3"><a href="#"></a></li>-->
+                </ul>
+
+                <!-- Display step-1 and step-2 if email not confirmed -->
+                <div id="step-1">
+                    <label class="title black"><b>Confirm your email</b></label>
+
+                    <p>Please input your email address and then click "Verify Your Email".</p>
+                    <p>You only have to verify your email once.</p>
+
+                    <div class="phone-icon">
+                        <img class="" src="/images/icons/icon_email.png" />
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-md-6 col-sm-8 col-xs-8">
+                            @*<form id="email-form" class="form-horizontal">*@
+                             @using (Html.BeginForm("ConfirmEmail", "Account", new { }, FormMethod.Post, new { id = "ConfirmEmailForm" }))
+                             {
+                                
+                                @Html.HiddenFor(m => m.DoneControllerName)
+                                @Html.HiddenFor(m => m.DoneActionName)
+                                <div class="form-group">
+        @*                            <input type="email" class="form-control input-lg gray" placeholder="Your email" required>*@
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg gray", placeholder = "Your email" })
+                                </div>
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.Email)
+                                </div>    
+                                <button type="submit" class="btn btn-kootour-bold fullwidth">Verify Your Email</button>                                                     
+                              }
+
+                           @* </form>*@
+                        </div>
+                    </div>
+                </div> 
+
+                <!-- Display step-3 if email confirmed -->
+                <!--<div id="step-3">
+                    <label class="title black"><b>Email confirmed</b></label>
+
+                    <div class="phone-icon">
+                        <img class="" src="images/icons/icon_email.png" />
+                    </div>
+
+                    <div class="col-lg-offset-4 col-md-offset-4 col-sm-offset-3 col-xs-offset-3 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                        <a href="index.html" class="btn btn-kootour-bold fullwidth">Next</a>
+                    </div>
+                </div>-->
+            </section>
+        </div>
+    </div>
+</div>

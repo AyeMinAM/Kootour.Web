@@ -1,0 +1,207 @@
+﻿@using MVCSite.Common.NameHelper
+@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.GuiderModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Guide | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Guide." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <section class="section section-small col-xs-12">
+                <div class="nopadding col-lg-offset-0 col-lg-10 col-md-offset-0 col-md-12 col-sm-offset-3 col-sm-6 col-md-offset-12 col-xs-12">
+
+                    <table class="table-guide-desc">
+                        <tr>
+                            <td></td>
+                            <td>
+                                <div class="user-thumbnail img-circle" style="background-image:url('@Model.GuiderAvatarUrl')"></div>
+                                <p class="subtitle nomargin">@Model.GuiderName</p>
+
+                                @if (@Model.ReviewCount > 0)
+                                {
+                                    <div class="vote-wrapper vote-wrapper-block">
+                                        <input class="star-rating-kootour rating" type="text" readonly value="@Model.ReviewAverageScore" />
+                                        <span class="vote-label">@Model.ReviewCount reviews</span>
+                                    </div>
+                                }
+
+                                <ul class="list-style-none">
+                                    <li>@Model.GuiderLocation</li>
+                                    <li>@Model.GuiderFromTime</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                    </table>
+
+                    <table class="table-guide-desc">
+                        <tr>
+                            <td><img class="icon" src="/images/icons/ID.png" /></td>
+                            <td><span class="subtitle">Verified ID</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                @*<p>Email Address <img class="medium-icon pull-right" src="/images/icons/check.png"></p>
+                                    <p>Phone Number <img class="medium-icon pull-right" src="/images/icons/check.png"></p>*@
+                                @if (Model.IsEmailConfirmed)
+                                {
+                                    <p>Email Address <img class="medium-icon pull-right" src="/images/icons/icon_verified.png"></p>
+                                }
+                                else
+                                {
+                                    <p>Email Address <img class="medium-icon pull-right" src="/images/icons/icon_unverified.png"></p>
+                                }
+                                @if (Model.IsPhoneConfirmed)
+                                {
+                                    <p>Phone Number <img class="medium-icon pull-right" src="/images/icons/icon_verified.png"></p>
+                                }
+                                else
+                                {
+                                    <p>Phone Number <img class="medium-icon pull-right" src="/images/icons/icon_unverified.png"></p>
+                                }
+                            </td>
+                        </tr>
+                    </table>
+
+                    <table class="table-guide-desc">
+                        <tr>
+                            <td><img class="icon" src="/images/icons/language_green.png" /></td>
+                            <td><span class="subtitle">Languages</span></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <ul class="list-style-none">
+                                    @foreach (var lan in Model.Languages)
+                                    {
+                                        <li>@lan</li>
+                                    }
+                                </ul>
+                            </td>
+                        </tr>
+                    </table>
+                    @if (Model.UserID != Model.GuiderID)
+                    {
+                        <table class="table-guide-desc">
+                           @* <tr>
+                        <td><img class="icon" src="/images/icons/message.png" /></td>
+                        <td>
+                            if (Model.IsEmailConfirmed)
+                                {
+                                <a  class="subtitle" href="@Url.Action("TChat", new { id = @Model.GuiderID })">Message Me</a>
+                                }
+                                else
+                                {
+                                <a  class="subtitle" href="@Url.Action("ConfirmEmail", "Account")">Message Me</a>
+                                }
+                            <a class="subtitle" href="@Url.Action("TChat", new { id = @Model.GuiderID })">Message Me</a>
+                        </td>
+                    </tr>*@
+                        </table>
+                    }
+                </div>
+            </section>
+            <section class="section section-small col-xs-12">
+                <span class="title">Listings (@Model.TourCount)</span>
+                @foreach (var tour in Model.Tours)
+                {
+                    <div class="tours nopadding col-xs-12">
+                        <a href="@Url.Action("Tour", new {tourname=@NameHelper.GenTourInUrl(tour.TourName), id = tour.TourId})">
+                            <div class="tours-content">
+                                <div class="tours-illustration" style="background-image: url('@tour.ImageUrl')">
+                                    <div class="tours-price-wrapper">
+                                        <div>
+                                            <h2 class="tours-price">$@tour.NowPrice</h2>
+                                        </div>
+                                        <div>
+                                            @if (@tour.SugRetailPrice > @tour.NowPrice)
+                                            {
+                                                <div class="tours-original-price">$@tour.SugRetailPrice</div>
+                                            }
+                                            <div>@tour.PerPersonOrGroup</div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p class="subtitle nomargin">@tour.TourName</p>
+                                @if (@Model.ReviewCount > 0)
+                                {
+                                    <div class="vote-wrapper">
+                                        <input class="star-rating-kootour rating" type="text" readonly="true" value="@tour.ReviewAverageScore" />
+                                        <span class="vote-label">@tour.ReviewCount reviews</span>
+                                    </div>
+                                }
+                            </div>
+                        </a>
+                    </div>
+                }
+
+            </section>
+        </div>
+        <div class="col-lg-8 tours-wrapper col-md-8 col-sm-12 col-xs-12">
+            <section class="section col-xs-12">
+                <span class="title">About the Guide</span>
+                <span class="col-xs-12" style="white-space: pre-line; word-wrap: break-word;">@Model.GuiderIntroduction</span>
+                @*<p>@Model.GuiderIntroduction</p>*@
+
+                @*<span class="title">Videos</span>
+                    <div>
+                        <iframe class="video"  src="@Model.GuiderVideoURL" frameborder="0" allowfullscreen>
+                        </iframe>
+                    </div>*@
+            </section>
+
+            @if (@Model.ReviewCount > 0)
+            {
+                <section class="section col-xs-12 nopadding reviews">
+                    <span class="title">Recommended Reviews(@Model.ReviewCount)</span>
+                    @foreach (var review in Model.Reviews)
+                    {
+                        <div class="col-xs-12 review">
+                            <div class="illustration">
+                                <div class="user-small-thumbnail img-circle" style="background-image:url('@review.AvatarUrl')"></div>
+                            </div>
+
+                            <div class="details">
+                                <p class="subtitle nomargin">@review.UserName</p>
+
+                                <div class="vote-wrapper">
+                                    <input class="star-rating-kootour rating" type="text" readonly value="@review.AverageScore" />
+                                    <span class="vote-label">@review.ReviewTime</span>
+                                </div>
+                                <p>@review.Comment</p>
+                            </div>
+                        </div>
+                    }
+                    @*                <div class="text-center col-xs-12">
+                            <button class="btn btn-lg btn-kootour" type="submit">See More</button>
+                        </div>*@
+                </section>
+            }
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var starOptions = {
+        min: 0,
+        max: 5,
+        step: 1,
+        size: 'xs',
+        showClear: false,
+        showCaption: false,
+        theme: "star-kootour",
+        emptyStar: "<i class='glyphicon glyphicon-star'></i>"
+    };
+    $(".star-rating-kootour.rating").rating(starOptions);
+</script>

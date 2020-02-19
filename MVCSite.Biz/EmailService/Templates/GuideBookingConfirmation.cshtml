@@ -1,0 +1,877 @@
+﻿@using MVCSite.Biz
+@using MVCSite.DAC.Entities
+@model BookingConfirmationModel
+
+
+<style type="text/css">
+    a:hover {
+        color: #ededef;
+    }
+
+    .hr {
+        height: 1px;
+        border-bottom: 1px solid #00cccc;
+        margin-bottom: 20px;
+        color: #00cccc;
+    }
+
+    .odd {
+        background-color: #ededef;
+    }
+
+    .even {
+        background-color: #ffffff;
+    }
+</style>
+<td colspan="2" style="background-color:#00cccc;">
+    <!--cover the whole page-->
+    <table style="max-width:600px; background-color:#ffffff; font-family: 'Montserrat',sans-serif; padding-left:24px; padding-right:24px;">
+        <tr>
+            <td colspan="2">
+                <!--table for the thank you for booking with kootour-->
+
+                <table>
+
+                    <!--logo-->
+                    <tr>
+                        <td class="mcnImageContent" valign="top" style="padding-right: 9px; padding-left: 9px; padding-top: 0; padding-bottom: 0; text-align:center;">
+                            <img align="center" alt="" src="https://gallery.mailchimp.com/ae7e6a7ee8317e0d0314105f7/images/4293b925-075b-4c02-89f8-15b162997a33.png" width="200px" height="auto" style="max-width:200px; padding-top: 10px; padding-bottom:20px; display: inline !important; vertical-align: bottom;" class="mcnImage">
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <h2 align="center">Your tour has been booked!</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>The booking confirmation code is <span style="font-family:'Montserrat',sans-serif;font-weight:700; ">#@Model.ConfirmationCode</span>.</p>
+                            <p style="line-height:25px;">
+                                Please review the tour details below.If you have any questions, contact your host using the information below. You can also call us at <span style="font-family:'Montserrat',sans-serif;font-weight:700;">+1-604-683-6450 </span> or email us at <span style="font-family:'Montserrat',sans-serif;font-weight:700; ">contact@kootour.com </span>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr><td class="hr"> </td></tr>
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h2>Your Tour Details:</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <img style="width: 100%; height: auto; margin: 0px;" src="@Model.ImageUrl">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p style="line-height:25px;">
+                                <span style="font-family:'Montserrat',sans-serif; font-weight:700; ">Name:&nbsp;</span>@Model.TourName<br>
+                                <span style="font-family:'Montserrat',sans-serif; font-weight:700; ">Date:&nbsp;</span>@Model.Date<br>
+                                <span style="font-family:'Montserrat',sans-serif; font-weight:700; ">Time:&nbsp;</span>@Model.Time<br>
+                                <span style="font-family:'Montserrat',sans-serif; font-weight:700; ">Location:&nbsp;</span>@Model.Location<br>
+                                <span style="font-family:'Montserrat',sans-serif; font-weight:700; ">Meetup Location:&nbsp;</span>@Model.MeetupLocation<br>
+                            </p>
+
+                        </td>
+                    </tr>
+                    <!--cell for guide info-->
+                    <tr><td class="hr"> </td></tr>
+                    <tr>
+                        <td>
+                            <h2>Traveller Contact Information</h2>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>
+                            <!--table for gudie tour-->
+
+                            <table cellpadding="0" cellspacing="0">
+
+                                <tr>
+                                    <td class="pattern" width="600">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                @*<td class="col" valign="top">
+                                                    <table cellpadding="0" cellspacing="0">
+
+                                                        <tr>
+                                                            <td align="left" class="headline" style="padding-top:15px; padding-bottom:15px;">
+                                                                <img src="https://media.kootour.com/@Model.GuideAvatarPath" style="border: 3px solid #00cccc; border-radius:50% 50% 50% 50%;width:75px;height: 75px;" alt="">
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>
+                                                </td>*@
+                                                <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                                <td class="col" valign="top">
+                                                    <table cellpadding="0" cellspacing="0">
+
+                                                        <tr>
+                                                            <td class="headline" align="left" style="padding-bottom:15px;color: #333;">
+
+                                                                <p style="font-weight:700;">@Model.TravelerName</p>
+                                                                <p>@Model.TravelerEmail</p>
+                                                                @if (!string.IsNullOrEmpty(@Model.TravelerMobile))
+                                                                {
+                                                                    <p>
+                                                                        @*+1-778-123-4567*@
+                                                                        +@Model.TravelerPhoneAreaCode-@Model.TravelerMobile
+                                                                    </p>
+                                                                }
+                                                                @*<a style="text-decoration:none; color:#00cccc;" href="http://www.kootour.com/Tourist/Guider/@Model.GuideID">Send message to the guide</a>*@
+                                                            </td>
+                                                        </tr>
+
+
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--table for gudie tour-->
+
+
+                        </td>
+                    </tr>
+                    <!--cell for guide info-->
+
+                </table>
+                <!--table for thank you for booking with kootour-->
+                <!--table for the chart-->
+
+                @{
+                    bool ifOdd = false;
+                }
+                <table>
+                    <tr>
+                        <td>
+                            <h2>Fee Breakdown</h2>
+                        </td>
+                    </tr>
+                </table>
+
+                <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pattern" width="600" align="center">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #00cccc;">
+                                                    Traveller(s):
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                    <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #333;">
+                                                    @Model.TotalTravelers traveller@((Model.TotalTravelers == 1) ? "" : "s")
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                @if (Model.BookingType == 0)
+                {
+                    <table class="@((ifOdd = !ifOdd) ? " odd " : " even ")" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="pattern" width="600" align="center">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #00cccc;">
+                                                        Tour Cost Per Person:
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+                                        <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #333;">
+                                                        $@Model.VendorPromoTourCost.ToString("0.00")
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                                    <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td class="pattern" width="600" align="center">
+                                                <table cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="col" width="290" valign="top">
+                                                            <table cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #00cccc;">
+                                                                        Tour Cost:
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                        <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                                        <td class="col" width="290" valign="top">
+                                                            <table cellpadding="0" cellspacing="0">
+                                                                <tr>
+                                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #333;">
+                                                                        $@((Model.VendorPromoTourCost * Model.TotalTravelers).ToString("0.00"))
+                                                                    </td>
+                                                                </tr>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                }
+                else
+                {
+                    <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="pattern" width="600" align="center">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #00cccc;">
+                                                        Tour Cost Per Group:
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #333;">
+                                                        $@((Model.VendorPromoTourCost).ToString("0.00"))
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                }
+
+                @if (@Model.Extras.Count > 0)
+                {
+                    <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="pattern" width="600" align="center">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #00cccc;">
+                                                        Customized Options:
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #333;"></td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                }
+
+                @foreach (var extra in Model.Extras)
+                {
+                    if (!string.IsNullOrEmpty(extra.Name))
+                    {
+                        <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                            <tr>
+                                <td class="pattern" width="600" align="center">
+                                    <table cellpadding="0" cellspacing="0">
+                                        <tr>
+                                            <td class="col" width="290" valign="top">
+                                                <table cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc;">
+                                                            @extra.Name
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                            <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                            <td class="col" width="290" valign="top">
+                                                <table cellpadding="0" cellspacing="0">
+                                                    <tr>
+                                                        <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#333;">
+                                                            @if (@extra.Price != 0)
+                                                            {
+                                                                <span>$@extra.Price.ToString("0.00")</span>
+                                                            }
+
+                                                            else
+                                                            {
+                                                                <span>free</span>
+                                                            }
+                                                            @if (@extra.Times != 0)
+                                                            {
+                                                                <span class="hours"><i>Extra @extra.Times @TimeTypeTranslation.GetTranslationOf(@extra.TimeType)</i></span>
+                                                            }
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    }
+                }
+
+
+                @if (@Model.BookingType == 0 && @Model.TourPriceBreakdown != null)
+                {
+                    <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="pattern" width="600" align="center">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc;">
+                                                        @{
+                                                            var endPoint1 = Model.TourPriceBreakdown.EndPoint1;
+                                                            var endPoint2 = Model.TourPriceBreakdown.EndPoint2;
+                                                            endPoint1 = (endPoint1 < Model.MinTouristNum) ? Model.MinTouristNum : endPoint1;
+                                                            endPoint2 = (endPoint2 > Model.MaxTouristNum) ? Model.MaxTouristNum : endPoint2;
+                                                        }
+                                                        @if (endPoint1 == 1 && endPoint2 == 1)
+                                                        {
+                                                            <span>Discount (for @endPoint1 guest)</span>
+                                                        }
+                                                        else if (endPoint1 == endPoint2)
+                                                        {
+                                                            <span>Discount (for @endPoint1 guests)</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span>Discount (for @endPoint1 - @endPoint2 guests)</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+                                        <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top: 15px; padding-bottom: 15px; padding-left: 15px; color: #333;">
+                                                        @if (@Model.TourPriceBreakdown.DiscountValue > 0)
+                                                        {
+                                                            string discountValue = (Model.TourPriceBreakdown.DiscountValue * Model.TotalTravelers).ToString();
+                                                            <span class="small">-$@discountValue</span>
+                                                        }
+                                                        else if (@Model.TourPriceBreakdown.DiscountPercent > 0)
+                                                        {
+                                                            <span class="small">-@Model.TourPriceBreakdown.DiscountPercent%</span>
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                }
+
+                <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pattern" width="600" align="center">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc; font-weight:700;">
+                                                    SubTotal:
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                    <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px;color: #333; font-weight:700;">
+                                                    $@Model.SubTotalPrice.ToString("0.00")
+                                                </td>
+                                            </tr>
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+
+                @*<table class="@((ifOdd=!ifOdd)?"odd":"even")" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td class="pattern" width="600" align="center">
+                                <table cellpadding="0" cellspacing="0">
+                                    <tr>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc;">
+                                                        Taxes
+                                                    </td>
+                                                </tr>
+
+                                            </table>
+                                        </td>
+                                        <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                        <td class="col" width="290" valign="top">
+                                            <table cellpadding="0" cellspacing="0">
+
+                                                <tr>
+                                                    <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px;color: #333;">
+                                                        @Model.Taxes
+                                                    </td>
+                                                </tr>
+
+
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>*@
+                <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pattern" width="600" align="center">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc;">
+                                                    Service Fee (3.9%):
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px;color: #333;">
+                                                    $@Model.ServiceFee.ToString("0.00")
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pattern" width="600" align="center">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc;">
+                                                    Promotion:
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px;color: #333;">
+                                                    $@Math.Round(Model.TotalPrice - Model.SubTotalPrice - Model.ServiceFee, 2)
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <table class="@((ifOdd=!ifOdd)?" odd ":" even ")" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td class="pattern" width="600" align="center">
+                            <table cellpadding="0" cellspacing="0">
+                                <tr>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px; color:#00cccc; font-weight:700;">
+                                                    Total:
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                    <td class="spacer" width="20" style="font-size: 1px;">&nbsp;</td>
+                                    <td class="col" width="290" valign="top">
+                                        <table cellpadding="0" cellspacing="0">
+                                            <tr>
+                                                <td class="headline" align="left" style="padding-top:15px; padding-bottom:15px; padding-left:15px;color: #333; font-weight:700;">
+                                                    $@Model.TotalPrice.ToString("0.00")
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+                <!--table for the chart-->
+                <!--footer-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowBlock" style="min-width:100%;">
+                    <tbody class="mcnFollowBlockOuter">
+                        <tr>
+                            <td align="center" valign="top" style="padding:9px" class="mcnFollowBlockInner">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentContainer" style="min-width:100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" style="padding-left:9px;padding-right:9px;">
+                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" style="min-width:100%;" class="mcnFollowContent">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td align="center" valign="top" style="padding-top:9px; padding-right:9px; padding-left:9px;">
+                                                                <table align="center" border="0" cellpadding="0" cellspacing="0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td align="center" valign="top">
+                                                                                <!--[if mso]>
+                                                                                <table align="center" border="0" cellspacing="0" cellpadding="0">
+                                                                                <tr>
+                                                                                <![endif]-->
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                                    <tbody>
+                                                                                                                        <tr>
+
+                                                                                                                            <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                                <a href="https://www.facebook.com/kootour" target="_blank"><img src="https://gallery.mailchimp.com/ae7e6a7ee8317e0d0314105f7/images/d46892d4-0565-4ce9-a31c-cf6577518fa5.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                            </td>
+
+
+                                                                                                                        </tr>
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                                    <tbody>
+                                                                                                                        <tr>
+
+                                                                                                                            <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                                <a href="https://twitter.com/gokootour" target="_blank"><img src="https://gallery.mailchimp.com/ae7e6a7ee8317e0d0314105f7/images/19c663cd-a004-430d-92d2-313741ab3593.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                            </td>
+
+
+                                                                                                                        </tr>
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                                    <tbody>
+                                                                                                                        <tr>
+
+                                                                                                                            <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                                <a href="https://www.linkedin.com/company/kootour" target="_blank"><img src="https://gallery.mailchimp.com/ae7e6a7ee8317e0d0314105f7/images/b1dd672f-b58c-49a0-9a31-04da43b30b20.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                            </td>
+
+
+                                                                                                                        </tr>
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td valign="top" style="padding-right:10px; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                                    <tbody>
+                                                                                                                        <tr>
+
+                                                                                                                            <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                                <a href="https://www.instagram.com/kootour/" target="_blank"><img src="https://gallery.mailchimp.com/ae7e6a7ee8317e0d0314105f7/images/2a97a87a-ec63-41ef-b420-a3b358d02408.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                            </td>
+
+
+                                                                                                                        </tr>
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+                                                                                <!--[if mso]>
+                                                                                <td align="center" valign="top">
+                                                                                <![endif]-->
+
+
+                                                                                @*<table align="left" border="0" cellpadding="0" cellspacing="0" style="display:inline;">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td valign="top" style="padding-right:0; padding-bottom:9px;" class="mcnFollowContentItemContainer">
+                                                                                                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnFollowContentItem">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td align="left" valign="middle" style="padding-top:5px; padding-right:10px; padding-bottom:5px; padding-left:9px;">
+                                                                                                                <table align="left" border="0" cellpadding="0" cellspacing="0" width="">
+                                                                                                                    <tbody>
+                                                                                                                        <tr>
+
+                                                                                                                            <td align="center" valign="middle" width="24" class="mcnFollowIconContent">
+                                                                                                                                <a href="https://plus.google.com/115377427222194102916" target="_blank"><img src="https://gallery.mailchimp.com/ae7e6a7ee8317e0d0314105f7/images/3e8406ec-2006-4257-bb2d-1350c56ca6c0.png" style="display:block;" height="24" width="24" class=""></a>
+                                                                                                                            </td>
+
+
+                                                                                                                        </tr>
+                                                                                                                    </tbody>
+                                                                                                                </table>
+                                                                                                            </td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>*@
+
+                                                                                <!--[if mso]>
+                                                                                </td>
+                                                                                <![endif]-->
+                                                                                <!--[if mso]>
+                                                                                </tr>
+                                                                                </table>
+                                                                                <![endif]-->
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!--footer-->
+                <!--newsletter button-->
+                <table border="0" cellpadding="0" cellspacing="0" width="100%" class="mcnButtonBlock" style="min-width:100%; font-family:'Montserrat',sans-serif;">
+                    <tbody class="mcnButtonBlockOuter">
+                        <tr>
+                            <td style="padding-top:0; padding-right:18px; padding-bottom:18px; padding-left:18px;" valign="top" align="center" class="mcnButtonBlockInner">
+                                <table border="0" cellpadding="0" cellspacing="0" class="mcnButtonContentContainer" style="border-collapse: separate !important;border-radius: 3px;background-color: #00cccc;">
+                                    <tbody>
+                                        <tr>
+                                            <td align="center" valign="middle" class="mcnButtonContent" style="font-family:'Montserrat',sans-serif; font-size: 16px; padding: 15px;">
+                                                <a class="mcnButton " title="Subscribe to our newsletter" href="http://www.eepurl.com/b__1gf" target="_blank" style="font-weight: bold;letter-spacing: normal;line-height: 100%;text-align: center;text-decoration: none;color: #FFFFFF;">Subscribe to our newsletter</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--newsletter-->
+
+            </td>
+        </tr>
+    </table> <!--the end of first table-->
+    <!--last info-->
+    <table align="center" class="mcnTextBlockOuter" style="font-family:'Montserrat',sans-serif; text-align:center; font-size:12px; color:#ededef;">
+        <tr>
+            <td colspan="2" valign="top" class="mcnTextBlockInner" style="padding-top:9px;">
+                <!--[if mso]>
+                <table align="left" border="0" cellspacing="0" cellpadding="0" width="100%" style="width:100%;">
+                <tr>
+                <![endif]-->
+                <!--[if mso]>
+                <td valign="top" width="600" style="width:600px;">
+                <![endif]-->
+                <table align="center" border="0" cellpadding="0" cellspacing="0" style="max-width:100%; min-width:100%;" width="100%" class="mcnTextContentContainer">
+                    <tbody>
+                        <tr>
+
+                            <td valign="top" class="mcnTextContent" style="padding-top:0; padding-right:18px; padding-bottom:9px; padding-left:18px;">
+
+                                <em>Copyright ©2017 Kootour Software & Technologies Inc., All rights reserved.</em>
+
+
+                                <br>
+                                <br>
+                                <strong>Our mailing address is:</strong>
+                                <br>
+
+                                101 - 887 Great Northern Way<br>
+                                Vancouver BC, V5T 4T5<br>
+                                Canada<br>
+                                <br>
+
+                                Want to change how you receive these emails?<br>
+                                You can <a style="text-decoration:none; color:#333333;" href="http://kootour.us13.list-manage1.com/unsubscribe?u=ae7e6a7ee8317e0d0314105f7&id=8151ffc652">unsubscribe from this list.</a>
+                                <br>
+
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <!--last info-->
+</td>

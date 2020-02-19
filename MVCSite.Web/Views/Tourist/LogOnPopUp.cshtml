@@ -1,0 +1,195 @@
+﻿@using System.Web.UI.WebControls
+@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.LogOnModel
+@{
+    Layout = null;
+}
+@section seoinfo{
+    <title>Contact Us | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="LogOn." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+
+<style>
+
+.modal-content {
+    box-shadow: none;
+    border: 0;
+}
+
+.login-wrap {
+    z-index: 9;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.login-wrap p {
+    color: black;
+    background-color: white;
+    padding: 0 10px;
+}
+
+.login-wrap:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: black;
+    left: 0;
+    right: 0;
+    top: calc(50% - 1px);
+}
+
+.login-wrap .login-separator {
+    z-index: 9;
+}
+</style>
+    
+<div class="col-lg-offset-3 col-md-offset-2 col-lg-6 col-md-8 col-sm-12 col-xs-12">
+           
+            <section class="section row">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                 
+                </div>
+                @if (Model.Role == (int)MVCSite.Common.UserRole.Tourist)
+                {
+                <div >
+                    <div style="margin-bottom:15px" class="login-container">
+                        <a class="btn btn-social fullwidth btn-social-wechat" id=BtnGuestBooking>
+                            Book as a Guest
+                        </a>
+                    </div>
+
+                    <div style="margin-bottom:15px" class="login-container">                      
+                        <a id="fbLogin" class="btn btn-social fullwidth btn-social-facebook" href="#">
+                            <img alt="Brand" src="@Url.Content("~/images/icons/facebook_signup.png")" /> Login with Facebook
+                        </a>
+                    </div>
+                    
+                </div>
+
+                <div class="login-wrap">
+                    <div class="login-container"></div>
+                    <div class="login-separator">
+                        <p class="nomargin text-center blue">OR</p>
+                    </div>
+                    <div class="login-container"></div>
+                </div>
+                }
+                @using (Html.BeginForm("LogOn", "Account", new { }, FormMethod.Post, new { id = "LogonForm"}))
+                {
+                    @Html.HiddenFor(m=>Model.Role)
+                    @Html.HiddenFor(m=>Model.ReturnUrl)
+                    @Html.ValidationSummary(true)                    
+                    <div class="form-group">
+                        <!--<label for="loginEmail">Email</label>-->
+                        @*<input type="email" class="form-control input-lg gray" id="loginEmail" placeholder="Email">*@
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg gray", placeholder = "Email" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>    
+                    <div class="form-group">
+                        <!--<label for="loginPassword">Password</label>-->
+                        @*<input type="password" class="form-control input-lg gray" id="loginPassword" placeholder="Password">*@
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg gray", placeholder = "Password" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>   
+                    <div class="form-actions">
+                        <div class="form-group">
+                            <input class="checkbox" id="loginRemember" type="checkbox">
+                            @*@Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox", type="checkbox"})*@
+                            <label for="loginRemember"></label>
+                            <label for="loginRemember" style="float:left;">Remember me</label>
+                        </div>
+                        <div class="form-group text-right">
+                            <a href="@Url.Action("ForgotPassword","Account")">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="button" id="LogMeIn" class="btn btn-kootour-bold fullwidth">Log me In</button>
+                }
+                
+                <p style="margin-top: 30px;" class="text-center">Don't have an account?&nbsp;<a href="@Url.Action("Register","Account", new {returnUrl=Model.ReturnUrl, role=Model.Role})"><b>Sign Up</b></a></p>
+            </section>
+        </div>
+  
+
+
+<script>
+    //Login Popup should handle login via ajax call, then show any validation errors 
+    //if success then Post Tour
+    $(document).ready(function () {
+        $("#LogMeIn").click(function () {
+            $('#ReturnUrl').val('Tour');
+
+            $.ajax({
+                url: '/Account/LogOn',
+                type: 'post',
+                data: $("#LogonForm").serialize(),
+                success: function (data) {
+                    if (data.Result == true) {
+                        $('#logonModal').modal('toggle');
+                        $('#BookTourForm').submit();
+                    }
+                    else
+                    {
+                        for (var i = 0, len = data.modelErrors.length; i < len; i++) {
+                            var key = data.modelErrors[i].Key;
+                            var msg = data.modelErrors[i].Message;
+
+                            var emailValidation = $('span[data-valmsg-for='+key +']');
+                            emailValidation.text(msg);
+                            emailValidation.addClass('field-validation-error').removeClass('field-validation-valid');
+
+                        }
+                          
+                    }
+                },
+             
+            });
+        });
+    });
+</script>
+
+
+
+<script type="text/javascript" src="@Url.Content("/ViewScripts/Account/Facebook.js")"></script>
+<script type="text/javascript">
+    var currentUserRole=@Model.Role;
+    $(function () {
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '151250988634214',
+                cookie: true,  // enable cookies to allow the server to access
+                xfbml: true,  // parse social plugins on this page
+                version: 'v2.5' // use graph api version 2.5
+            });
+            //FB.getLoginStatus(function (response) {
+            //    fbStatusChangeCallback(response, false);
+            //});
+        };
+        $("#fbLogin").on("click", function () {
+            //FB.logout();
+            checkLoginStateWithFb(true,"Tour");
+        });
+    });
+
+</script>

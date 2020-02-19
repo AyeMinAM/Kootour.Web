@@ -1,0 +1,100 @@
+﻿@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.NotFoundModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Not Found | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Not Found." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+
+
+    <div class="container-fluid four0fourcenter">
+        <figure class="text-center">
+           
+            <img class="img-logo"  src="@Url.Content("~/images/404.svg")" alt="404">
+        </figure>
+        <h2 class="title">Oops! Page not found...</h2>
+        <h3 class="text">
+            Perhaps our bunny was too fast
+            as the page you are looking for no longer exists.
+        </h3>
+        <a href="@Model.Referrer" class="btn btn-xl" >Home</a>
+    </div>
+
+
+<style>
+
+
+   		header{
+			text-align: center;
+			margin-bottom: 50px;
+		}
+
+
+		.img-logo {
+		  display: inline-block;
+		  margin-left: auto;
+		  margin-right: auto;
+		  width: 530px;
+		  height: auto;
+		  margin-top: 30px;
+		  margin-bottom: 20px;
+		}
+
+		@@media (max-width: 768px) {
+  		.img-logo {
+    		max-width: 300px}
+		}
+
+		.text_header{
+
+			font-family:Montserrat-Medium;
+		}
+
+
+		.text{
+
+			font-family:Montserrat-Light;
+			line-height: 35px;
+			max-width:700px;
+		}
+		@@media (max-width:768px){
+			.text{
+				font-size: 20px;
+			}
+		}
+
+        .four0fourcenter{
+            text-align:center;
+            padding-bottom:20px;
+        }
+		.btn-xl {
+			  color: white;
+			  background-color: #00cccc;
+			  border-color: #00cccc;
+			  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+			  text-transform: uppercase;
+			  font-weight: 700;
+			  border-radius: 3px;
+			  font-size: 18px;
+			  padding: 20px 60px;
+		}
+
+
+		.btn-xl:hover,
+		.btn-xl:focus,
+		.btn-xl:active,
+		.btn-xl.active,
+		.open .dropdown-toggle.btn-xl {
+  				color: white;
+  				background-color: #6cc;
+  				border-color: #6cc;
+  		}
+
+</style>

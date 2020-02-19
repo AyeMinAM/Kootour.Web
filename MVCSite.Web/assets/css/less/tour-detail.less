@@ -1,0 +1,25 @@
+/* Tour description */
+.tour-detail {
+  
+}
+
+.tour-detail .tour-descriptions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.tour-detail .tour-description {
+  flex: 0 1 auto;
+  width: 160px;
+  word-break: break-all;
+}
+.tour-detail .tour-description td {
+  vertical-align: text-top;
+}
+
+@media screen and (max-width: 970px) {
+  .tour-detail .tour-description {
+    margin: 10px 0px;
+  }
+}

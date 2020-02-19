@@ -1,0 +1,18 @@
+﻿.RightDescriptionText{
+    text-align:right;
+    color:Gray;
+    font-size:large;
+}
+.BooksIcon {
+    background: url("/Content/Images/books.jpg") no-repeat scroll transparent;
+    display: block;
+    float: left;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    vertical-align: top;
+    width: 30px;
+    left: -40px;
+    position: absolute;
+    top: 0;     
+}

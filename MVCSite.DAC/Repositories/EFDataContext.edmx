@@ -1,0 +1,580 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CollaborModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="Intro" Type="varchar" MaxLength="3000" />
+          <Property Name="DestinationList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BlogList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Tip1" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip2" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip3" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip4" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip5" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip6" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="RegionID" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Latitude" Type="varchar" MaxLength="50" />
+          <Property Name="Longitude" Type="varchar" MaxLength="50" />
+          <Property Name="TimeZone" Type="varchar" MaxLength="50" />
+          <Property Name="DmaId" Type="varchar" MaxLength="50" />
+          <Property Name="Code" Type="varchar" MaxLength="50" />
+          <Property Name="NCountryID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="UniqueCityName" Type="nvarchar" MaxLength="200" />
+          <Property Name="IsInUse" Type="bit" />
+          <Property Name="UniqueCityNameInURL" Type="nvarchar" MaxLength="200" />
+          <Property Name="Intro" Type="varchar" MaxLength="3000" />
+          <Property Name="DestinationList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BlogList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Tip1" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip2" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip3" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip4" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip5" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip6" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Name="country_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="isbanned" Type="bit" Nullable="false" />
+          <Property Name="abbreviation" Type="nvarchar" MaxLength="50" />
+          <Property Name="Intro" Type="varchar" MaxLength="3000" />
+          <Property Name="DestinationList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="BlogList" Type="nvarchar" MaxLength="1000" />
+          <Property Name="Tip1" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip2" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip3" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip4" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip5" Type="varchar" MaxLength="1000" />
+          <Property Name="Tip6" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="InternatinalPhoneCodes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaCode" Type="varchar" MaxLength="50" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="TimeZone" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ADM1Code" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="IsConfirmed" Type="bit" Nullable="false" />
+          <Property Name="CanChangeName" Type="bit" Nullable="false" />
+          <Property Name="LastLoginTime" Type="datetime" />
+          <Property Name="ResetPasswordTime" Type="tinyint" />
+          <Property Name="SignUpIP" Type="nvarchar" MaxLength="50" />
+          <Property Name="SignUpBrowser" Type="varchar" MaxLength="150" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="255" />
+          <Property Name="TokenExpireTime" Type="datetime" />
+          <Property Name="PasswordChangeTime" Type="datetime" />
+          <Property Name="PasswordFailedCount" Type="smallint" />
+          <Property Name="PasswordFailedTime" Type="datetime" />
+          <Property Name="ChangeToEmail" Type="nvarchar" MaxLength="100" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="30" />
+          <Property Name="PhoneAreaCode" Type="nvarchar" MaxLength="10" />
+          <Property Name="PhoneLocalCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="DefaultPhoneType" Type="tinyint" />
+          <Property Name="Initials" Type="nvarchar" MaxLength="3" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="30" />
+          <Property Name="Bio" Type="nvarchar(max)" />
+          <Property Name="AvatarPath" Type="nvarchar" MaxLength="256" />
+          <Property Name="UseAvatar" Type="bit" />
+          <Property Name="NotificationEmailType" Type="tinyint" />
+          <Property Name="Title" Type="nvarchar" MaxLength="100" />
+          <Property Name="Role" Type="smallint" Nullable="false" />
+          <Property Name="IsOnline" Type="bit" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="GeoX" Type="int" Nullable="false" />
+          <Property Name="GeoY" Type="int" Nullable="false" />
+          <Property Name="LocationId" Type="int" Nullable="false" />
+          <Property Name="Sex" Type="tinyint" />
+          <Property Name="VideoPath" Type="nvarchar" MaxLength="100" />
+          <Property Name="Birthday" Type="datetime" />
+          <Property Name="IsPhoneConfirmed" Type="bit" Nullable="false" />
+          <Property Name="OpenID" Type="varchar" MaxLength="50" />
+          <Property Name="OpenSite" Type="tinyint" />
+          <Property Name="IsEmailVerified4OpenID" Type="bit" Nullable="false" />
+          <Property Name="Credits" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserMsg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FromUserID" Type="int" Nullable="false" />
+          <Property Name="ToUserID" Type="int" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="1024" Nullable="false" />
+          <Property Name="EnterTime" Type="datetime" Nullable="false" />
+          <Property Name="ModifyTime" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPromo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="BookingID" Type="int" />
+          <Property Name="PromoID" Type="int" />
+          <Property Name="isPromoUsed" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_NCities_countries">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="NCountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CollaborModelStoreContainer">
+          <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InternatinalPhoneCodes" EntityType="Self.InternatinalPhoneCodes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserMsg" EntityType="Self.UserMsg" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPromo" EntityType="Self.UserPromo" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_NCities_countries" Association="Self.FK_NCities_countries">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CollaborModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="EFDataContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Categories" EntityType="CollaborModel.Category" />
+          <EntitySet Name="Users" EntityType="CollaborModel.User" />
+          <EntitySet Name="InternatinalPhoneCodes" EntityType="CollaborModel.InternatinalPhoneCode" />
+          <EntitySet Name="UserMsgs" EntityType="CollaborModel.UserMsg" />
+          <EntitySet Name="Cities" EntityType="CollaborModel.City" />
+          <EntitySet Name="Countries" EntityType="CollaborModel.Country" />
+          <EntitySet Name="Regions" EntityType="CollaborModel.Region" />
+          <AssociationSet Name="FK_NCities_countries" Association="CollaborModel.FK_NCities_countries">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="City" EntitySet="Cities" />
+          </AssociationSet>
+          <EntitySet Name="UserPromoes" EntityType="CollaborModel.UserPromo" />
+        </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <Property Name="Intro" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BlogList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tip1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip3" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip4" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip5" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip6" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsConfirmed" Nullable="false" />
+          <Property Type="Boolean" Name="CanChangeName" Nullable="false" />
+          <Property Type="DateTime" Name="LastLoginTime" Precision="3" />
+          <Property Type="Byte" Name="ResetPasswordTime" />
+          <Property Type="String" Name="SignUpIP" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SignUpBrowser" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ConfirmationToken" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="TokenExpireTime" Precision="3" />
+          <Property Type="DateTime" Name="PasswordChangeTime" Precision="3" />
+          <Property Type="Int16" Name="PasswordFailedCount" />
+          <Property Type="DateTime" Name="PasswordFailedTime" Precision="3" />
+          <Property Type="String" Name="ChangeToEmail" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Mobile" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneAreaCode" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PhoneLocalCode" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Byte" Name="DefaultPhoneType" />
+          <Property Type="String" Name="Initials" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FullName" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Bio" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="AvatarPath" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="UseAvatar" />
+          <Property Type="Byte" Name="NotificationEmailType" />
+          <Property Type="String" Name="Title" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="Int16" Name="Role" Nullable="false" />
+          <Property Type="Boolean" Name="IsOnline" Nullable="false" />
+          <Property Type="String" Name="Address" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="GeoX" Nullable="false" />
+          <Property Type="Int32" Name="GeoY" Nullable="false" />
+          <Property Type="Int32" Name="LocationId" Nullable="false" />
+          <Property Type="Byte" Name="Sex" />
+          <Property Type="String" Name="VideoPath" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="Birthday" Precision="3" />
+          <Property Type="Boolean" Name="IsPhoneConfirmed" Nullable="false" />
+          <Property Type="String" Name="OpenID" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Byte" Name="OpenSite" />
+          <Property Type="Boolean" Name="IsEmailVerified4OpenID" Nullable="false" />
+          <Property Type="Double" Name="Credits" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InternatinalPhoneCode">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="AreaCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CountryCode" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Country" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TimeZone" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserMsg">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FromUserID" Nullable="false" />
+          <Property Type="Int32" Name="ToUserID" Nullable="false" />
+          <Property Type="String" Name="Message" Nullable="false" MaxLength="1024" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="EnterTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="ModifyTime" Nullable="false" Precision="3" />
+          <Property Type="Byte" Name="Status" Nullable="false" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Type="Int32" Name="CityId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CountryID" />
+          <Property Type="Int32" Name="RegionID" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Latitude" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Longitude" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TimeZone" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="DmaId" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Code" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="NCountryID" />
+          <Property Type="Int32" Name="StateID" />
+          <Property Type="String" Name="UniqueCityName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsInUse" />
+          <Property Type="String" Name="UniqueCityNameInURL" MaxLength="200" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Country" Relationship="CollaborModel.FK_NCities_countries" FromRole="City" ToRole="Country" />
+          <Property Name="Intro" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BlogList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tip1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip3" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip4" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip5" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip6" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="country_id" />
+          </Key>
+          <Property Type="Int32" Name="country_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="description" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="isbanned" Nullable="false" />
+          <Property Type="String" Name="abbreviation" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Cities" Relationship="CollaborModel.FK_NCities_countries" FromRole="Country" ToRole="City" />
+          <Property Name="Intro" Type="String" MaxLength="3000" FixedLength="false" Unicode="false" />
+          <Property Name="DestinationList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="BlogList" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Tip1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip2" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip3" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip4" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip5" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="Tip6" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CountryId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ADM1Code" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_NCities_countries">
+          <End Type="CollaborModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="CollaborModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="country_id" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="NCountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserPromo">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="BookingID" Type="Int32" />
+          <Property Name="PromoID" Type="Int32" />
+          <Property Name="isPromoUsed" Type="Boolean" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CollaborModelStoreContainer" CdmEntityContainer="EFDataContext">
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="CollaborModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="Tip6" ColumnName="Tip6" />
+                <ScalarProperty Name="Tip5" ColumnName="Tip5" />
+                <ScalarProperty Name="Tip4" ColumnName="Tip4" />
+                <ScalarProperty Name="Tip3" ColumnName="Tip3" />
+                <ScalarProperty Name="Tip2" ColumnName="Tip2" />
+                <ScalarProperty Name="Tip1" ColumnName="Tip1" />
+                <ScalarProperty Name="BlogList" ColumnName="BlogList" />
+                <ScalarProperty Name="DestinationList" ColumnName="DestinationList" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CollaborModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Credits" ColumnName="Credits" />
+                <ScalarProperty Name="IsEmailVerified4OpenID" ColumnName="IsEmailVerified4OpenID" />
+                <ScalarProperty Name="OpenSite" ColumnName="OpenSite" />
+                <ScalarProperty Name="OpenID" ColumnName="OpenID" />
+                <ScalarProperty Name="IsPhoneConfirmed" ColumnName="IsPhoneConfirmed" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="VideoPath" ColumnName="VideoPath" />
+                <ScalarProperty Name="Sex" ColumnName="Sex" />
+                <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+                <ScalarProperty Name="GeoY" ColumnName="GeoY" />
+                <ScalarProperty Name="GeoX" ColumnName="GeoX" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="NotificationEmailType" ColumnName="NotificationEmailType" />
+                <ScalarProperty Name="UseAvatar" ColumnName="UseAvatar" />
+                <ScalarProperty Name="AvatarPath" ColumnName="AvatarPath" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Initials" ColumnName="Initials" />
+                <ScalarProperty Name="DefaultPhoneType" ColumnName="DefaultPhoneType" />
+                <ScalarProperty Name="PhoneLocalCode" ColumnName="PhoneLocalCode" />
+                <ScalarProperty Name="PhoneAreaCode" ColumnName="PhoneAreaCode" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="ChangeToEmail" ColumnName="ChangeToEmail" />
+                <ScalarProperty Name="PasswordFailedTime" ColumnName="PasswordFailedTime" />
+                <ScalarProperty Name="PasswordFailedCount" ColumnName="PasswordFailedCount" />
+                <ScalarProperty Name="PasswordChangeTime" ColumnName="PasswordChangeTime" />
+                <ScalarProperty Name="TokenExpireTime" ColumnName="TokenExpireTime" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="SignUpBrowser" ColumnName="SignUpBrowser" />
+                <ScalarProperty Name="SignUpIP" ColumnName="SignUpIP" />
+                <ScalarProperty Name="ResetPasswordTime" ColumnName="ResetPasswordTime" />
+                <ScalarProperty Name="LastLoginTime" ColumnName="LastLoginTime" />
+                <ScalarProperty Name="CanChangeName" ColumnName="CanChangeName" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InternatinalPhoneCodes">
+            <EntityTypeMapping TypeName="CollaborModel.InternatinalPhoneCode">
+              <MappingFragment StoreEntitySet="InternatinalPhoneCodes">
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMsgs">
+            <EntityTypeMapping TypeName="CollaborModel.UserMsg">
+              <MappingFragment StoreEntitySet="UserMsg">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+                <ScalarProperty Name="EnterTime" ColumnName="EnterTime" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="ToUserID" ColumnName="ToUserID" />
+                <ScalarProperty Name="FromUserID" ColumnName="FromUserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="CollaborModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="Tip6" ColumnName="Tip6" />
+                <ScalarProperty Name="Tip5" ColumnName="Tip5" />
+                <ScalarProperty Name="Tip4" ColumnName="Tip4" />
+                <ScalarProperty Name="Tip3" ColumnName="Tip3" />
+                <ScalarProperty Name="Tip2" ColumnName="Tip2" />
+                <ScalarProperty Name="Tip1" ColumnName="Tip1" />
+                <ScalarProperty Name="BlogList" ColumnName="BlogList" />
+                <ScalarProperty Name="DestinationList" ColumnName="DestinationList" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="UniqueCityNameInURL" ColumnName="UniqueCityNameInURL" />
+                <ScalarProperty Name="IsInUse" ColumnName="IsInUse" />
+                <ScalarProperty Name="UniqueCityName" ColumnName="UniqueCityName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="NCountryID" ColumnName="NCountryID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="DmaId" ColumnName="DmaId" />
+                <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="CollaborModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="Tip6" ColumnName="Tip6" />
+                <ScalarProperty Name="Tip5" ColumnName="Tip5" />
+                <ScalarProperty Name="Tip4" ColumnName="Tip4" />
+                <ScalarProperty Name="Tip3" ColumnName="Tip3" />
+                <ScalarProperty Name="Tip2" ColumnName="Tip2" />
+                <ScalarProperty Name="Tip1" ColumnName="Tip1" />
+                <ScalarProperty Name="BlogList" ColumnName="BlogList" />
+                <ScalarProperty Name="DestinationList" ColumnName="DestinationList" />
+                <ScalarProperty Name="Intro" ColumnName="Intro" />
+                <ScalarProperty Name="abbreviation" ColumnName="abbreviation" />
+                <ScalarProperty Name="isbanned" ColumnName="isbanned" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="CollaborModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="ADM1Code" ColumnName="ADM1Code" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPromoes">
+            <EntityTypeMapping TypeName="CollaborModel.UserPromo">
+              <MappingFragment StoreEntitySet="UserPromo">
+                <ScalarProperty Name="isPromoUsed" ColumnName="isPromoUsed" />
+                <ScalarProperty Name="PromoID" ColumnName="PromoID" />
+                <ScalarProperty Name="BookingID" ColumnName="BookingID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="EFDataContext" ZoomLevel="74">
+        <EntityTypeShape EntityType="CollaborModel.Category" Width="1.5" PointX="6.25" PointY="0.875" />
+        <EntityTypeShape EntityType="CollaborModel.User" Width="1.5" PointX="12.875" PointY="0.875" Height="9.0954394531250031" />
+        <EntityTypeShape EntityType="CollaborModel.InternatinalPhoneCode" Width="1.5" PointX="3.375" PointY="0.875" />
+        <EntityTypeShape EntityType="CollaborModel.UserMsg" Width="1.5" PointX="0.625" PointY="0.875" />
+        <EntityTypeShape EntityType="CollaborModel.City" Width="1.5" PointX="9.125" PointY="0.875" />
+        <EntityTypeShape EntityType="CollaborModel.Country" Width="1.5" PointX="9.125" PointY="7.375" />
+        <EntityTypeShape EntityType="CollaborModel.Region" Width="1.5" PointX="3.7727070133074685" PointY="26.452514198819415" />
+        <AssociationConnector Association="CollaborModel.FK_NCities_countries" />
+        <EntityTypeShape EntityType="CollaborModel.UserPromo" Width="1.5" PointX="3.375" PointY="4.375" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

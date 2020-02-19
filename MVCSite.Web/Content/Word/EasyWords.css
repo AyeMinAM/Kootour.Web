@@ -1,0 +1,36 @@
+﻿.RightWordCn 
+{
+    float:right;
+    display: inline;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-right: 8px;
+    font-size:large;
+}
+.LeftWordEn 
+{
+    float:left;
+    display: inline;
+    font-weight: normal;
+    margin-bottom: 0;
+    padding-right: 8px;
+    font-size:large;
+}
+.TooEasyIcon {
+    background: url("/Content/Images/tooeasy2.jpg") no-repeat scroll transparent;
+    display: block;
+    float: left;
+    height: 30px;
+    overflow: hidden;
+    position: relative;
+    vertical-align: top;
+    width: 30px;
+    left: -40px;
+    position: absolute;
+    top: 0;     
+}
+.Pager td, .Pager th{
+    border:medium none;
+    padding: 10px;
+    text-align:center;
+}

@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>Accept</value>
+  </data>
+  <data name="ActionResultFailedHint" xml:space="preserve">
+    <value>OperationFailed! Touch anywhere on the screen to return.</value>
+  </data>
+  <data name="ActionResultOKHint" xml:space="preserve">
+    <value>Operation Succeeded! Touch anywhere on the screen to return.</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ChangeAvatar" xml:space="preserve">
+    <value>Change Avatar</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="ChangePersonalInfo" xml:space="preserve">
+    <value>Change Personal Information</value>
+  </data>
+  <data name="ChangeTopic" xml:space="preserve">
+    <value>Change Topic</value>
+  </data>
+  <data name="ChaptersOfTopic" xml:space="preserve">
+    <value>Chapters of &lt;&lt;{0}&gt;&gt;</value>
+  </data>
+  <data name="Chats" xml:space="preserve">
+    <value>Chats</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="ChooseAnAction" xml:space="preserve">
+    <value>Choose an action</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>Choose File</value>
+  </data>
+  <data name="Classmates" xml:space="preserve">
+    <value>Classmates</value>
+  </data>
+  <data name="CurrentSelection" xml:space="preserve">
+    <value>Current Selection</value>
+  </data>
+  <data name="Discovery" xml:space="preserve">
+    <value>Discovery</value>
+  </data>
+  <data name="DownloadedHint" xml:space="preserve">
+    <value>Downloaded</value>
+  </data>
+  <data name="FindMateToPractise" xml:space="preserve">
+    <value>Find classmate!</value>
+  </data>
+  <data name="FollowHer" xml:space="preserve">
+    <value>Follow Her!</value>
+  </data>
+  <data name="FollowHim" xml:space="preserve">
+    <value>Follow Him!</value>
+  </data>
+  <data name="FriendlyHint" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Friends" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="GlobalUsers" xml:space="preserve">
+    <value>Global Users</value>
+  </data>
+  <data name="GotNSearchResults" xml:space="preserve">
+    <value>VirtualStudyLab got {0} results for you</value>
+  </data>
+  <data name="InputSearchKeyword" xml:space="preserve">
+    <value>Please input search keywords here</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="Me" xml:space="preserve">
+    <value>Me!</value>
+  </data>
+  <data name="MySettings" xml:space="preserve">
+    <value>{0}'s Settings</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>Next Page</value>
+  </data>
+  <data name="NoFriendYet" xml:space="preserve">
+    <value>You have no friends now,please go to Classmates Tab to select one to practise together</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="OralEnglish" xml:space="preserve">
+    <value>Speaking English</value>
+  </data>
+  <data name="PartOf" xml:space="preserve">
+    <value>Part {0}</value>
+  </data>
+  <data name="PlaceHolderSelfIntro" xml:space="preserve">
+    <value>Please input your introduction to let others remember you at once</value>
+  </data>
+  <data name="PlaceHolderStudyTarget" xml:space="preserve">
+    <value>Please input your study target,e.g. learn daily chinese</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>Play</value>
+  </data>
+  <data name="PlayAll" xml:space="preserve">
+    <value>Play All</value>
+  </data>
+  <data name="PleaseSelectTopic" xml:space="preserve">
+    <value>Please Select Topic</value>
+  </data>
+  <data name="PracticeWithHer" xml:space="preserve">
+    <value>Practice With Her!</value>
+  </data>
+  <data name="PracticeWithHim" xml:space="preserve">
+    <value>Practice With Him!</value>
+  </data>
+  <data name="PressHereToSpeak" xml:space="preserve">
+    <value>Press Here To Speak!</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>Previous Page</value>
+  </data>
+  <data name="PullDownToRefresh" xml:space="preserve">
+    <value>Pull down to refresh...</value>
+  </data>
+  <data name="PullUpToRefresh" xml:space="preserve">
+    <value>Pull up to refresh...</value>
+  </data>
+  <data name="RecommendedUser4You" xml:space="preserve">
+    <value>These users are studying the same subject with you,practise together?</value>
+    <comment>e</comment>
+  </data>
+  <data name="RecordAgain" xml:space="preserve">
+    <value>Record Again!</value>
+  </data>
+  <data name="Refuse" xml:space="preserve">
+    <value>Refuse</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>Resources</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>&lt; Return!</value>
+  </data>
+  <data name="SayHello" xml:space="preserve">
+    <value>Say Hello!</value>
+  </data>
+  <data name="SearchDictionary" xml:space="preserve">
+    <value>Search Dictionary</value>
+  </data>
+  <data name="SearchOnLocalNoTraffic" xml:space="preserve">
+    <value>Searching in dictionary finished on local,no traffic at all.</value>
+  </data>
+  <data name="SelectAContactToSend" xml:space="preserve">
+    <value>Select a contact to send</value>
+  </data>
+  <data name="SelectGameContents" xml:space="preserve">
+    <value>Please select game contents</value>
+  </data>
+  <data name="SelfIntroduction" xml:space="preserve">
+    <value>Self Introduction</value>
+  </data>
+  <data name="SendErrorReport" xml:space="preserve">
+    <value>Send error report!</value>
+  </data>
+  <data name="SendToClassmate" xml:space="preserve">
+    <value>Send To Classmate</value>
+  </data>
+  <data name="Slow" xml:space="preserve">
+    <value>Slow</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>Standard</value>
+  </data>
+  <data name="StudyTopic" xml:space="preserve">
+    <value>Study Topic - &lt;&lt;{0}&gt;&gt;</value>
+  </data>
+  <data name="TooManyUsersToChat" xml:space="preserve">
+    <value>You invite too many users to chat!</value>
+  </data>
+  <data name="TotalChapterNo" xml:space="preserve">
+    <value>(Total {0} Chapters)</value>
+  </data>
+  <data name="TotalPartNo" xml:space="preserve">
+    <value>Total {0} Parts</value>
+  </data>
+  <data name="UnitHint" xml:space="preserve">
+    <value>Units</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>Upload</value>
+  </data>
+  <data name="UserInformation" xml:space="preserve">
+    <value>User Information</value>
+  </data>
+  <data name="UsersWantedToBeFriends" xml:space="preserve">
+    <value>These users want to be your friends</value>
+  </data>
+  <data name="YouMadeAVoiceRecord" xml:space="preserve">
+    <value>You made a voice record!</value>
+  </data>
+</root>

@@ -1,0 +1,38 @@
+/* Reviews */
+.guide {
+	padding-left: @sectionPaddingLeft;
+    padding-right: @sectionPaddingRight;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.guide > .illustration {
+    flex-grow: 0;
+    flex-basis: 20%;
+    flex-shrink: 0;
+}
+
+.guide > .details {
+    flex-grow: 1;
+    flex-basis: 1;
+    flex-shrink: 1;
+}
+
+@media screen and (max-width: 640px) {
+    .guide {
+        flex-direction: column;
+    }
+
+    .guide > .details,
+    .guide > .illustration {
+        flex-grow: 1;
+        flex-basis: auto;
+        flex-shrink: 1;
+        overflow-x:auto;
+    }
+}
+

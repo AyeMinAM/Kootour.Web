@@ -1,0 +1,100 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.DashBoardModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>DashBoard | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="DashBoard." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+    <div class="row">
+@*        <div class="col-xs-12 notification-wrapper">
+            <section class="notification">
+                <p>Please comfirm your email.</p>
+                <img src="/images/icons/icon_close.png" class="close-icon" />
+            </section>
+            <section class="notification">
+                <p>Mark White just announced a tour.</p>
+                <img src="/images/icons/icon_close.png" class="close-icon" />
+            </section>
+        </div>*@
+        <div class="col-xs-12 message-list-wrapper">
+            <section class="section section-small nopadding">
+                <span class="title">All messages (@Model.MessageCount)</span>
+
+                <div id="MsgContainer" class="message-list-wrapper">
+                 @foreach (var msg in Model.Msgs)
+                 {
+                    <a href="@Url.Action("TChat", new {id=msg.FromUserId})">
+                        <div class="message-list"> 
+                            <div class="illustration">
+                                <div class="user-small-thumbnail img-circle" style="background-image:url('@msg.UserAvatarUrl')"></div>
+                            </div>
+
+                            <div class="name">
+                                <span class="subtitle">@msg.UserName</span>
+                            </div>
+
+                            <div class="content">
+                                <p  class="wrap-long-text"  style="width:70%;">@msg.Msg</p>
+                            </div>
+
+                            <div class="date">
+                                @msg.Date
+                            </div>
+                        </div>
+                    </a>
+                 }
+                @if (Model.NextPageNo>0)
+                {
+                    <div id="SeeMoreBlock" class="text-center">
+                        <button id="SeeMore" class="btn btn-lg btn-kootour" type="button">See More</button>
+                    </div>
+                }
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var nextPageNo=@Model.NextPageNo;
+        var msgContainer=document.getElementById('MsgContainer');
+        var seeMoreBlock=document.getElementById("SeeMoreBlock");
+        $("#SeeMore").click(function (e) {
+            if(nextPageNo <=0)
+            {
+                $("#SeeMoreBlock").hide();
+                return;
+            }
+            e.preventDefault();
+            var urlPageMsg = "/Tourist/DashboardMsgList/";
+            $.post(urlPageMsg, {page:nextPageNo}, function (data) {
+                if(!data.Result)
+                {
+                    $("#SeeMoreBlock").hide();
+                    return;
+                }
+                var e = document.createElement('div');
+                e.innerHTML = data.Data;
+                while(e.firstChild) {
+                    msgContainer.insertBefore(e.firstChild,seeMoreBlock);
+                }
+                nextPageNo=data.NextPageNo;
+                if(nextPageNo == 0)
+                {
+                    $("#SeeMoreBlock").hide();
+                }
+            });
+            return false;
+        });
+    });
+
+</script>

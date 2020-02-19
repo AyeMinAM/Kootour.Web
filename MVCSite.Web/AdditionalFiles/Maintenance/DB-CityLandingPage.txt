@@ -1,0 +1,310 @@
+﻿--*********	Step 1	*******************************************************************************
+--*********	All Default Countries Intro and tips **************************************************
+Update [dbo].[Country] set 
+DestinationList = '42948|42976|42970|42956|42996|42967',
+Intro = '<p>Travel is the only thing you buy that makes you richer. Travelling with some of our unique private and small group tours allows you to see more of the world, safely and with an expert local at your side. Our tours come in all shapes and sizes and cover many niche travel styles and experiences. If you are looking for something specific that we don’t currently offer, please get in touch as we can customize and create your ideal tour.</p>',
+Tip1 = 'Visas/Vaccinations|<p>Many visas and vaccinations can take 1-3 months, so make sure you research what’s necessary for your chosen destination and plan this well ahead of time.</p>',
+Tip2 = 'When to go|<p>Check the climate for the month you are travelling, to know what clothing to pack. Many countries have a rainy season in the middle of summer, or have cooler nights at high altitude. Knowing exactly what the weather will be like will help you to avoid overpacking.</p>',
+Tip3 = 'Currency|<p>Keep your money spread over a few different places in case of lost luggage or theft. It’s always useful to carry some of a universal currency like US dollars which you should be able to exchange anywhere.</p>'
+
+--*************************************************************************************************
+
+--*********	Step 2	*******************************************************************************
+--*********	Canada Country and Cities	***********************************************************
+Update [dbo].[Country] set 
+Intro = '',
+DestinationList = '42948|42976|42970|42956|42996|42967',
+BlogList = '',
+Tip1 = 'Visas/Vaccinations|<p>Many visas and vaccinations can take 1-3 months, so make sure you research what’s necessary for your chosen destination and plan this well ahead of time.</p>',
+Tip2 = 'When to go|<p>Check the climate for the month you are travelling, to know what clothing to pack. Many countries have a rainy season in the middle of summer, or have cooler nights at high altitude. Knowing exactly what the weather will be like will help you to avoid overpacking.</p>',
+Tip3 = 'Currency|<p>Keep your money spread over a few different places in case of lost luggage or theft. It’s always useful to carry some of a universal currency like US dollars which you should be able to exchange anywhere.</p>'
+where Country_id = 17;
+
+
+Update [dbo].[City] set 
+Intro = '<p>Vancouver embodies west-coast cool, perched on the edge of the Pacific Ocean with a backdrop of ski hills and one of the world’s largest urban parks. It’s located just a few hours from Seattle, Victoria, Whistler, The Okanagan and the Sunshine Coast making it an enviable vacation hub. </p>
+<p>Vancouver is known for its shopping, west-coast food scene, craft beer and outdoor activities, with something to keep every visitor entertained. Shoppers can enjoy strolling down Robson and visit the many malls and department stores. </p>
+<p>Fabulous restaurants here are abundant, many focusing on seafood and fresh produce from all over BC. One of the top activities on any visitor’s wish list is taking one of the renowned food tours on offer. Beer enthusiasts can visit the myriad of breweries located downtown and in the surrounding areas or take a brewery tour showcasing the best on offer. </p>
+<p>Outdoors enthusiasts can visit one of the many parks, taking a stroll around the seawall at Stanley Park or viewing the city from the highest point in Vancouver, Queen Elizabeth Park. Adventure seekers can white water raft at Squamish, kayak or paddle board in between the boats at False Creek or hike the mountain trails in North van and Coquitlam. </p>
+',
+DestinationList = '42948',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Stanley Park</li>
+<li>Capilano Suspension Bridge</li>
+<li>Grouse Mountain</li>
+<li>Whistler/Squamish</li>
+<li>Queen Elizabeth Park</li>
+<li>Commercial Drive</li></ul>
+',
+Tip2 = 'When to go|<p>Vancouver, lightheartedly referred to as “Raincouver” by many, is best visited between April-October for most city and outdoor activities to avoid the rainfall. unless you are coming for some of its many nearby ski slopes which gets the best snow between November and March. The mountains shelter Vancouver from the bitter winters the rest of Canada experiences, so no thermals required. </p>',
+Tip3 = 'Currency|<p>Canadian Dollar, although the USD is accepted in many stores, particularly those aimed at tourists. ATMs are widespread, although most charge a few dollars to take out currency from other banking institutions. </p>'
+where CityId = 42948;--Vancouver
+
+Update [dbo].[City] set 
+Intro = '',
+DestinationList = '42948',
+BlogList = '',
+Tip1 = '',
+Tip2 = '',
+Tip3 = ''
+where CityId = 42990;--Canada-Squamish
+--***************************************************************************************************
+
+--*********	Italy Country and Cities	***********************************************************
+Update [dbo].[Country] set 
+Intro = '',
+DestinationList = '42948|42976|42970|42956|42996|42967',
+BlogList = '',
+Tip1 = 'Visas/Vaccinations|<p>Many visas and vaccinations can take 1-3 months, so make sure you research what’s necessary for your chosen destination and plan this well ahead of time.</p>',
+Tip2 = 'When to go|<p>Check the climate for the month you are travelling, to know what clothing to pack. Many countries have a rainy season in the middle of summer, or have cooler nights at high altitude. Knowing exactly what the weather will be like will help you to avoid overpacking.</p>',
+Tip3 = 'Currency|<p>Keep your money spread over a few different places in case of lost luggage or theft. It’s always useful to carry some of a universal currency like US dollars which you should be able to exchange anywhere.</p>'
+where Country_id = 44;
+
+
+Update [dbo].[City] set 
+Intro = '',
+DestinationList = '',
+BlogList = '',
+Tip1 = '',
+Tip2 = '',
+Tip3 = ''
+where CityId = 42980;--Italy-Piedmont
+--***************************************************************************************************
+
+
+--*********	Cambodia Country and Cities	***********************************************************
+Update [dbo].[Country] set 
+Intro = '',
+DestinationList = '42948|42976|42970|42956|42996|42967',
+BlogList = '',
+Tip1 = 'Visas/Vaccinations|<p>Many visas and vaccinations can take 1-3 months, so make sure you research what’s necessary for your chosen destination and plan this well ahead of time.</p>',
+Tip2 = 'When to go|<p>Check the climate for the month you are travelling, to know what clothing to pack. Many countries have a rainy season in the middle of summer, or have cooler nights at high altitude. Knowing exactly what the weather will be like will help you to avoid overpacking.</p>',
+Tip3 = 'Currency|<p>Keep your money spread over a few different places in case of lost luggage or theft. It’s always useful to carry some of a universal currency like US dollars which you should be able to exchange anywhere.</p>'
+where Country_id = 237;
+
+
+Update [dbo].[City] set 
+Intro = '',
+DestinationList = '',
+BlogList = '',
+Tip1 = '',
+Tip2 = '',
+Tip3 = ''
+where CityId = 42984;--Cambodia-Krong Siem Reap
+--***************************************************************************************************
+
+
+--*********	France Country and Cities	***********************************************************
+Update [dbo].[Country] set 
+Intro = '',
+DestinationList = '42948|42976|42970|42956|42996|42967',
+BlogList = '',
+Tip1 = 'Visas/Vaccinations|<p>Many visas and vaccinations can take 1-3 months, so make sure you research what’s necessary for your chosen destination and plan this well ahead of time.</p>',
+Tip2 = 'When to go|<p>Check the climate for the month you are travelling, to know what clothing to pack. Many countries have a rainy season in the middle of summer, or have cooler nights at high altitude. Knowing exactly what the weather will be like will help you to avoid overpacking.</p>',
+Tip3 = 'Currency|<p>Keep your money spread over a few different places in case of lost luggage or theft. It’s always useful to carry some of a universal currency like US dollars which you should be able to exchange anywhere.</p>'
+where Country_id = 31;
+
+
+Update [dbo].[City] set 
+Intro = '',
+DestinationList = '',
+BlogList = '',
+Tip1 = '',
+Tip2 = '',
+Tip3 = ''
+where CityId = 43003;--France-Normandy
+--***************************************************************************************************
+
+
+
+--*********	Mexico Country and Cities	***********************************************************
+Update [dbo].[Country] set 
+Intro = '<p>Tacos, lucha libre and tequila. These may be the first things that come to mind when you think of Mexico, but it’s so much more than that. Its culture is a mixture of the ancient civilizations that inhabited its lands and all the others that followed with the arrival of the Spaniards in the 16th century. Today, visitors can find the best of Mexico’s cultural mix in its friendly people, beautiful art, impressive architecture and delicious food. </p>
+
+<p>Whether you’re diving in the crystalline waters of <b>Cancun</b>, revisiting the past at the <b>Pyramid of the Sun</b> or simply enjoying the food in the streets of Mexico City, Mexico has something for every kind of traveler. </p>
+',
+DestinationList = '42970|43029|42967|43017',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Snorkeling in the Underwater Museum (Cancun)</li>
+<li>Mayan Ruins of Chichen Itza (Cancun)</li>
+<li>The Zocalo (Mexico City)</li>
+<li>Pyramids of the Sun and Moon in Teotihuacan (Mexico City)</li>
+<li>Cabo San Lucas (Los Cabos)</li></ul>
+',
+Tip2 = 'When to go|<p>November, when the rain season has stopped and you can enjoy the country before the peak tourist season.</p>',
+Tip3 = 'Currency|<p>Mexican pesos are the local currency. U.S. Dollars can be used at some places in tourist areas like Cancun, but usually at an unfavorable exchange rate. ATMs are linked to the Cirrus and Plus networks and will charge a different currency exchange fee depending on the bank. Visa and MasterCard remain the most widely accepted credit cards, while some others like American Express will be accepted by a limited number of hotels, restaurants and shops.</p>'
+where Country_id = 58;
+
+Update [dbo].[City] set 
+Intro = '<p>Right in the heart of the Yucatan Peninsula, Cancun enjoys all the wonders that the area provides. If you’re looking to enjoy nature, the <b>Cenotes</b> (water-filled sinkholes) and the <b>Underwater Museum (MUSA) </b> provide a great opportunity for swimming, snorkeling and scuba diving. The nearby <b>ecological reserve of Rio Largartos</b> is a necessary destination for birdwatching, especially the majestic flamingos. If the history of Cancun is what you’re looking for, a stop in the Mayan ruins of <b>Chichen Itza</b> or <b>Tulum</b> will help you to explore this ancient civilization and the changes that occurred with the arrival of the Spanish settlers. Cancun is also one of the top destinations for spring break vacations thanks to its ideal mix of beaches, nightlife, watersports, activities and of course, delicious food.</p>',
+DestinationList = '42970|43029|42967|43017',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Cenotes</li>
+<li>Underwater Museum (MUSA) </li>
+<li>Ruins of Chichen Itza and Tulum</li>
+<li>Rio Lagartos</li>
+<li>Valladolid</li></ul>
+',
+Tip2 = 'When to go|<p>Between October and May is the best time to go for enjoying the best weather and avoiding the rain. Unless you are a student, avoid visiting March-April as it gets busy with Spring Break)</p>',
+Tip3 = 'Currency|<p>Mexican pesos are the local currency. U.S. Dollars can be used at some places in tourist areas like Cancun, but usually at an unfavorable exchange rate. ATMs are linked to the Cirrus and Plus networks and will charge a different currency exchange fee depending on the bank. Visa and MasterCard remain the most widely accepted credit cards, while some others like American Express will be accepted by a limited number of hotels, restaurants and shops.</p>'
+where CityId = 42970;--Cancun
+
+Update [dbo].[City] set 
+Intro = '<p>Originally known as Tenochtitlan, the ancient capital city of the Aztec empire, Mexico City has embraced many changes over the years without abandoning its ancient roots. Experience the evolution of Mexico City’s history by walking its streets and visiting buildings from Aztec, colonial and modern times. </p>
+
+<p>The perfect place to start is the city’s <b>Historic Center</b> and its <b>Zocalo</b>, the main square. Around this area, you will see the murals by Diego Rivera at the <b>National Palace</b>, enjoy the beauty of the <b>House of Tiles</b> or get in touch with your spiritual side at the <b>Metropolitan Cathedral</b>.</p>
+
+<p>Once you’re ready for a break, the nearby <b>San Juan Market</b> provides a great opportunity to try local foods and purchase specialty and exotic ingredients. A few minutes away by foot, the <b>Ciudadela Market</b> is a good spot for purchasing Mexican handcrafts and folk art to take back home as a trip memento or as a gift for friends. In the evening, finish your day with some local action in a <b>Lucha Libre</b> show at <b>Arena Mexico</b>.</p>
+
+<p>On the outskirts of Mexico City, only an hour ride away, the ruins of <b>Teotihuacan</b> await. Here the <b>Pyramid of the Sun</b> and <b>Pyramid of the Moon</b> stand as reminders of the original inhabitants of Mexico City and its surrounding areas even before the arrival of the Aztecs. </p>
+',
+DestinationList = '42970|43029|42967|43017',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Paseo La Reforma (Avenue) </li>
+<li>Palace of Fine Arts</li>
+<li>Basilica of Our Lady of Guadalupe</li>
+<li>Frida Kahlo Museum (Casa Azul) </li>
+<li>Pyramids of the Sun and Moon in Teotihuacan</li></ul>
+',
+Tip2 = 'When to go|<p>Between March and May is deal for enjoying pleasant temperatures as avoiding the rain. </p>',
+Tip3 = 'Currency|<p>Mexican pesos are the local currency. U.S. Dollars can be used at some places in tourist areas like Cancun, but usually at an unfavorable exchange rate. ATMs are linked to the Cirrus and Plus networks and will charge a different currency exchange fee depending on the bank. Visa and MasterCard remain the most widely accepted credit cards, while some others like American Express will be accepted by a limited number of hotels, restaurants and shops.</p>'
+where CityId = 42967;--Mexico City
+
+
+
+Update [dbo].[City] set 
+Intro = '<p>Surrounded by water on three sides, its no surprise that Los Cabos is well-known for its beaches, watersports and ocean scenery. Visitors can enjoy the food, events and nightlife at the seaside cities and towns or at any of the sandy beaches that lie between them. </p>
+
+<p>Closest to the airport and cruise terminal is the city of Cabo San Lucas, the perfect place to start your trip by visiting the beaches of <b>Costa Azul</b> or <b>Medano</b> and taking a dip. <b>Snorkeling</b> lets you see the incredible marine eco-system under the waves, while paddle boarding will allow you to admire the natural beauty from on top of the water. Enjoy seeing the local sea lion colony at <b>The Arch</b> or take a boat out for <b>whale watching</b>.</p>
+
+<p>Less than an hour away, the <b>town of Santiago</b> lets you take a break from the bustling city and do a nature hike through the nearby <b>Fox Canyon</b> or <b>Cabo Pulmo National Park</b>. When you’re ready to return to the beach, the town of <b>Todos Santos</b> welcomes you with its art galleries, surf shops and sport fishing activities. </p>
+',
+DestinationList = '42970|43029|42967|43017',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Cerritos Beach</li>
+<li>Chileno Bay</li>
+<li>Todos Santos</li>
+<li>Arbolitos Beach</li>
+<li>Sportfishing (multiple locations) </li>
+<li>Seaside golf courses (multiple locations) </li></ul>
+',
+Tip2 = 'When to go|<p>May-June and October-November are both good times to visit Los Cabos to enjoy the weather at its best. However, the former provides a good opportunity for those seeking to go when there are less tourists.</p>',
+Tip3 = 'Currency|<p>Mexican pesos are the local currency. U.S. Dollars can be used at some places in tourist areas like Cancun, but usually at an unfavorable exchange rate. ATMs are linked to the Cirrus and Plus networks and will charge a different currency exchange fee depending on the bank. Visa and MasterCard remain the most widely accepted credit cards, while some others like American Express will be accepted by a limited number of hotels, restaurants and shops.</p>'
+where CityId = 43029;--Los Cabos
+
+Update [dbo].[City] set 
+Intro = '<p>Located by the sea on the west coast of Mexico, Puerta Vallarta is one of the top destinations for anyone seeking a vacation by the beach. Upon arrival, you will no doubt want to stop by <b>Los Muertos Beach</b>, one of the favorite local spots for relaxing in the sun. From there you can walk along the coast to the <b>Los Muertos Pier</b> for some good photo opportunities or to grab a water taxi to the southern beaches. Take a short walk to the <b>Zona Romantica</b> (Romantic Zone), also called Old Vallarta or Old Town. This area offers many restaurants, cafes, shops and art galleries.
+</p>
+
+<p>Continue your journey by taking a stroll along the <b>Malecon Boardwalk</b>, yet another location famous for its culinary offerings, views of the sea and nightlife. Along the way, be sure to stop by the <b>Arcos de Malecon</b> (The Arches), you may find some open-air performances underway.
+</p> 
+',
+DestinationList = '42970|43029|42967|43017',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Playa Las Gemelas</li>
+<li>Vallarta Botanical Gardens</li>
+<li>Pueblo Viejo Artisan Market</li>
+<li>Puerto Vallarta Municipal Market</li>
+<li>The Church of Our Lady of Guadalupe</li></ul>
+',
+Tip2 = 'When to go|<p>January to March is the best time for enjoying the warm weather and avoiding the rain. If you’re looking to steer clear of crowds, April to June tends to have less of them and cheaper hotels, with the weather still being pleasant.</p>',
+Tip3 = 'Currency|<p>Mexican pesos are the local currency. U.S. Dollars can be used at some places in tourist areas like Cancun, but usually at an unfavorable exchange rate. ATMs are linked to the Cirrus and Plus networks and will charge a different currency exchange fee depending on the bank. Visa and MasterCard remain the most widely accepted credit cards, while some others like American Express will be accepted by a limited number of hotels, restaurants and shops.</p>'
+where CityId = 43017;-- Puerta Vallarta
+
+--***************************************************************************************************
+
+--*********	China Country and Cities	***********************************************************
+Update [dbo].[Country] set 
+Intro = '<p>A land of beauty and diversity, China has over 3,000 years of history to offer its visitors. The streets are lined with buildings from ancient to modern times, allowing travelers to walk through the country’s history and see how different eras left their influence. Regardless of what you seek, China likely has it: Bustling cities that have become centers of international commerce, towns that retain their original traditions and a wide range of natural spectacles like mountains, rivers and deserts. Immerse yourself in discovery and let China surprise you.</p>
+',
+DestinationList = '42957|42965|42996|42956|42976',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Great Wall (Beijing)</li><li>The Bund (Shanghai)</li><li>Terracota Warriors (Xi’an)</li><li>Canton Tower (Guangzhou)</li><li>Ganza Ridge Natural Reserve (Sanya)</li></ul>',
+Tip2 = 'When to go|<p>March to May (Spring) and September to November (Fall). These times tend to have the most pleasant weather for travel. The first week of October should be avoided since it is the Chinese National Day holiday and many Chinese tourists are traveling throughout the country.</p>',
+Tip3 = 'Currency|<p>The Yuan, locally called Renminbi (RMB) or, more informally, Kwai. U.S. Dollars can be used at most tourist attractions, but the poor exchange rates don’t make it worthwhile. ATMs are widely available throughout the country but are rare in rural areas. Credit cards accepted include Visa, MasterCard, American Express, Diners Club, JCB, Federal and Million.</p>'
+where Country_id = 20;
+
+Update [dbo].[City] set 
+Intro = '<p>Beijing is a city with many stories, and it should be since it’s one of the most populated cities in the world. It is also home to seven UNESCO world heritage sites, including: The <b>Forbidden City</b>, the <b>Summer Palace</b> and the <b>Temple of Heaven</b>. On the more recent side of history, the <b>Olympic Bird Nest</b> and <b>Water Cube</b> serve as a contrast with the evolution of Chinese architecture to that of previous eras. </p>
+
+<p><b>Hutong</b> alleys, traditional <b>Chinese medicine</b> shops, <b>Peking duck</b> restaurants, <b>Kung Fu</b> shows and <b>Jade-carving</b> workshops are some of the points of interest to visit while in Beijing. Take your camera out with you and snap some panoramic views of central Beijing at the <b>Drum</b> <b>Tower</b>, capture the mix of Chinese and Tibetan artwork at the <b>Yonghe Temple</b> or relax with the locals at <b>Jingshan Park</b>.</p>
+
+<p>After a long day, enjoy some of the local cuisine at <b>Nanluoguxiang Alley</b> with its mix of bars, cafes and modern boutiques or buy some gifts at the <b>Hongqiao Pearl Market</b>. Nearby, in the <b>Niujie district</b>, enjoy a unique experience by joining a local family for a meal in their home. </p>
+',
+DestinationList = '42957|42965|42996|42956|42976',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Tiananmen Square</li><li>Ming Tombs</li><li>Beijing Opera at the Beijing Liyuan Theater</li><li>Chairman Mao Memorial</li><li>Great Hall of the People</li></ul>',
+Tip2 = 'When to go|<p>March to May (Spring) and September to November (Fall). These times tend to have the most pleasant weather for travel. The first week of October should be avoided since it is the Chinese National Day holiday and many Chinese tourists are traveling throughout the country.</p>',
+Tip3 = 'Currency|<p>The Yuan, locally called Renminbi (RMB) or, more informally, Kwai. U.S. Dollars can be used at most tourist attractions, but the poor exchange rates don’t make it worthwhile. ATMs are widely available throughout the country but are rare in rural areas. Credit cards accepted include Visa, MasterCard, American Express, Diners Club, JCB, Federal and Million.</p>'
+where CityId = 42957;--Beijing
+
+Update [dbo].[City] set 
+Intro = '<p>As one of the port towns that first welcomed foreigners to China, it’s no surprise that Shanghai retains much of the influence it received from abroad and even has concessions named after the foreigners that originally settled there. Perhaps the most famous is the <b>French Concession</b>, easily identified by the Sycamore trees imported from France that line its streets. The nearby <b>Fuxing Park</b> highlights a fun aspect of local life: people playing, dancing and singing on the street with complete strangers. Afterwards, the <b>Jade Buddha Temple</b> is a good stop for some cultural experiences. </p>
+
+<p>Not far from the <b>People’s Square</b>, visitors can follow <b>Nanjing Road</b>, sometimes called the Fifth Avenue of Shanghai. Going east-ward, it will take you past many shops selling traditional food, eventually reaching <b>The Bund</b>. Take in the view, snap some good photos and then do a <b>Huangpu River Cruise</b> to get to the other side. There you can go up the <b>Oriental Pearl Tower</b>, visit the <b>Shanghai History Museum</b> that lies at its base and even visit the bottle opener-shaped <b>Shanghai World Financial Center</b>.</p>
+
+<p>Ready for shopping and eating? The area of <b>Xintiandi</b> has many good restaurants, both foreign and local. <b>Shanghai Old Town</b> should be your next stop for shopping, enjoying traditional Chinese architecture and trying out new dishes. End your day at <b>Tianzifang</b>, even more beautiful at night, browsing its many boutique stores, food stands and bars. </p>
+
+<p>Head outside the city and experience the beauty of <b>Tongli Watertown</b> whose waterways have earned it the title of “The Chinese Venice”. A similar destination, <b>Zhouzhuang Watertown</b>, will impress with its Buddhist temple built over water and its ancient opera house. </p>
+',
+DestinationList = '42957|42965|42996|42956|42976',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Shanghai Urban Planning Exhibition</li>
+<li>Marriage market at People’s Park</li>
+<li>Yu Garden</li></ul>
+',
+Tip2 = 'When to go|<p>March to May (Spring) and September to November (Fall). These times tend to have the most pleasant weather for travel. The first week of October should be avoided since it is the Chinese National Day holiday and many Chinese tourists are traveling throughout the country.</p>',
+Tip3 = 'Currency|<p>The Yuan, locally called Renminbi (RMB) or, more informally, Kwai. U.S. Dollars can be used at most tourist attractions, but the poor exchange rates don’t make it worthwhile. ATMs are widely available throughout the country but are rare in rural areas. Credit cards accepted include Visa, MasterCard, American Express, Diners Club, JCB, Federal and Million.</p>'
+where CityId = 42956;--Shanghai
+
+Update [dbo].[City] set 
+Intro = '<p>The <b>Terracotta Warriors</b> are without a doubt the first thing many people think of regarding Xi’an. Yet this is just the starting point for discovering a city with such a rich history and variety of cultural traditions. Structures like the <b>Big Wild Goose Pagoda</b>, the <b>Thousand Buddha Temple</b> and the <b>City Wall</b>, reveal much about the city and its inhabitants. But it is not just Chinese culture that is present here, the <b>Great Mosque</b> and <b>Muslim Street</b> are symbols of Islam’s presence and influence in the area. </p>
+
+<p>Xi’an is also a hub for culinary experiences thanks to its myriad of street food vendors. <b>Defuxiang Street</b> is lined with coffee bars for a break from exploring and the restaurants in Muslim Street bring a taste of the Middle East into the everyday life of the city. </p>
+',
+DestinationList = '42957|42965|42996|42956|42976',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Tang Dynasty Show at Sunshine Theater</li>
+<li>Shaanxi History Museum</li>
+<li>Guangren Lama Temple</li>
+<li>Hanyangling Tomb</li>
+<li>Mt. Huashan</li></ul>
+',
+Tip2 = 'When to go|<p>March to May (Spring) and September to November (Fall). These times tend to have the most pleasant weather for travel. The first week of October should be avoided since it is the Chinese National Day holiday and many Chinese tourists are traveling throughout the country.</p>',
+Tip3 = 'Currency|<p>The Yuan, locally called Renminbi (RMB) or, more informally, Kwai. U.S. Dollars can be used at most tourist attractions, but the poor exchange rates don’t make it worthwhile. ATMs are widely available throughout the country but are rare in rural areas. Credit cards accepted include Visa, MasterCard, American Express, Diners Club, JCB, Federal and Million.</p>'
+where CityId = 42976;--Xi'an
+
+Update [dbo].[City] set 
+Intro = '<p>As the third largest city in China, Guangzhou has established itself as one of the hubs for commerce. Its many wholesale markets are one of the aspects that has drawn a significant foreign presence. Nowadays, one of the most iconic features of the city is the hour-glass shaped <b>Canton Tower</b>, said to be made to embody female features, which contrasts with the many male features found in most buildings in the area. Nearby, <b>Huacheng Square</b> is surrounded by many interesting cultural and historical spots as well as a 150,000 square meter underground shopping mall. </p>
+
+<p>Visitors can enjoy a cruise along the <b>Pearl River</b>, a stop at the <b>Guangdong Folk Art Museum</b> housed in the <b>Chen Clan Academy</b> complex or enjoy a show at the <b>Guangzhou Opera House</b>. Architecture lovers will appreciate a visit to <b>Shamian Island</b>, originally a concession for France and the UK, to see what resulted from the artistic mixture of these two cultures with the local Chinese one. </p>
+',
+DestinationList = '42957|42965|42996|42956|42976',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Huacheng Square</li>
+<li>Mausoleum of the Nanyue King</li>
+<li>Guangzhou Opera House</li>
+<li>Chikan Old Town</li>
+<li>Kaiping City</li></ul>
+',
+Tip2 = 'When to go|<p>March to May (Spring) and September to November (Fall). These times tend to have the most pleasant weather for travel. The first week of October should be avoided since it is the Chinese National Day holiday and many Chinese tourists are traveling throughout the country. The same is true for visiting during the Canton Trade Fair which takes place twice a year: Mid-April to early May and mid-October to early November.</p>',
+Tip3 = 'Currency|<p>The Yuan, locally called Renminbi (RMB) or, more informally, Kwai. U.S. Dollars can be used at most tourist attractions, but the poor exchange rates don’t make it worthwhile. ATMs are widely available throughout the country but are rare in rural areas. Credit cards accepted include Visa, MasterCard, American Express, Diners Club, JCB, Federal and Million.</p>'
+where CityId = 42965;--Guangzhou
+
+Update [dbo].[City] set 
+Intro = '<p>While many major cities in China are close to the sea, Sanya is one of the few that has the right mix of weather, natural beauty and clean water to provide visitors the opportunity to enjoy a Chinese beach vacation. Take a seaside break and enjoy local cuisines such as bamboo rice, pumpkin rice and fish tea. Couples will enjoy a stop at <b>Tianya Haijiao</b>, a famous romantic location that symbolizes eternal union.
+</p>
+
+<p>For a more immersive cultural experience, visit the <b>Ganza Ridge Natural Reserve</b>, where you can interact with members of the <b>Li Minority Village</b> and the <b>Miao Minority Village</b>. </p>
+',
+DestinationList = '42957|42965|42996|42956|42976',
+BlogList = '',
+Tip1 = 'Highlights|<ul><li>Ganza Ridge Natural</li>
+<li>Tianya Haijiao</li>
+<li>Li Minority Village</li>
+<li>Miao Minority Village</li></ul>
+',
+Tip2 = 'When to go|<p>November to April are the best months to go for avoiding the rainy season and hot weather.</p>',
+Tip3 = 'Currency|<p>The Yuan, locally called Renminbi (RMB) or, more informally, Kwai. U.S. Dollars can be used at most tourist attractions, but the poor exchange rates don’t make it worthwhile. ATMs are widely available throughout the country but are rare in rural areas. Credit cards accepted include Visa, MasterCard, American Express, Diners Club, JCB, Federal and Million.</p>'
+where CityId = 42996;--Sanya
+--***************************************************************************************************

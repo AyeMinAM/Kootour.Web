@@ -1,0 +1,164 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@model MVCSite.Web.ViewModels.BookingDetailsModel
+<div class="widget-body col-xs-12">
+    @using (Html.BeginForm("BookingDetails", @ViewContext.RouteData.Values["controller"].ToString(), new { }, FormMethod.Post, new { id = "BookingDetailsForm", @class = "primary-col clearfix form-horizontal" }))
+    {
+        @Html.HiddenFor(m => m.ID)
+        @Html.HiddenFor(m => m.GuideID)
+        <div id="fuelux-wizard-container">
+            <div class="form-group">
+                <ul class="steps visible-lg hidden-xs hidden-sm hidden-md">
+                    <li data-step="1" class="complete">
+                        <a href="#" onclick="return OnClickBackButton('@Url.Action(("TourType"), new {id=Model.ID})');">
+                            <span class="step kootour-main-color">1</span> 
+                            <span class="title kootour-main-color">
+                                Tour Type
+                            </span>
+                        </a>
+                    </li>
+                    <li data-step="2" class="complete">
+                        <a href="#" onclick="return OnClickBackButton('@Url.Action(("Overview"), new { id = Model.ID })');">
+                            <span class="step kootour-main-color">2</span> 
+                            <span class="title kootour-main-color">
+                                Overview
+                            </span>
+                        </a>
+                    </li>
+                    <li data-step="3" class="active">
+                        <span class="step kootour-main-color">3</span> 
+                        <span class="title kootour-main-color">Booking Details</span>
+                    </li>
+                    <li data-step="4">
+                        <span class="step kootour-main-color">4</span> 
+                        <span class="title kootour-main-color">
+                            Schedule & Price
+                        </span>
+                    </li>
+                    <li data-step="5">
+                        <span class="step kootour-main-color">5</span> 
+                        <span class="title kootour-main-color">
+                            Pictures
+                        </span>
+                    </li>
+                    <li data-step="6">
+                        <span class="step kootour-main-color">6</span>
+                        <span class="title kootour-main-color">Activation</span>
+                    </li>
+                </ul>
+
+                <ul class="steps visible-xs visible-sm visible-md hidden-lg">
+                    <li data-step="3" class="active">
+                        <span class="step kootour-main-color">3</span> <span class="title kootour-main-color">Booking Details</span>
+                    </li>
+                    <li data-step="4">
+                        <span class="step kootour-main-color">4</span> <span class="title kootour-main-color">
+                            Schedule & Price
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            @*            <hr>
+                <form class="form-horizontal" id="course_form" method="post">
+                    <div class="step-content pos-rel">*@
+            <div class="step-pane" data-step="3">
+                <h4 class="lighter block kootour-main-color">
+                    7.Booking Details:
+                </h4>
+                <h5 class="block">
+                    Minimum people intake:
+                </h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        @* <input type="number" id="minTouristNum" name="minTouristNum">*@
+                        @Html.TextBoxFor(m => m.MinTouristNum, new { @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:20%;" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.MinTouristNum)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Maximum People intake:
+                </h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        @*<input type="number" id="maxTouristNum" name="maxTouristNum">*@
+                        @Html.TextBoxFor(m => m.MaxTouristNum, new { @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:20%;" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.MaxTouristNum)
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.PeopleIntakeValidMsg)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Booking Type:
+                </h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        <div class="control-group">
+                            <div class="radio">
+                                <label>
+                                    @*<input type="radio" id="radiop" class="ace" value="P" name="personOrGroup">*@
+                                    @Html.RadioButtonFor(m => m.BookingType, (byte)TourBookingType.PerPerson)
+                                    <span class="lbl">Per person</span>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label>
+                                    @* <input type="radio" id="radiog" class="ace" value="G" name="personOrGroup">*@
+                                    @Html.RadioButtonFor(m => m.BookingType, (byte)TourBookingType.PerGroup)
+                                    <span class="lbl">Per group</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.BookingType)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Minimum booking hours in advance:
+                </h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        @*<input type="number" id="minHourAdvance" name="minHourAdvance">&nbsp;hours*@
+                        @Html.TextBoxFor(m => m.MinHourAdvance, new { @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:20%;float:left" })
+                        <div style="margin-top:10px; margin-left: 8px; float:left;">
+                            hours
+                        </div>
+                    </div>
+                    @*                                                    <div class="form-validator">
+                            <div class="clearfix">
+                                <input disabled="disabled" type="number" id="minHourAdvance" name="minHourAdvance">&nbsp;hours</div>
+                        </div>*@
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.MinHourAdvance)
+                    </div>
+                </div>
+            </div>
+            @*                </div>
+                </form>*@
+        </div>
+        <div class="wizard-actions">
+            @* <a class="btn  btn-success  btn-next" href="@Url.Action("Overview", new { id = @Model.ID })">*@
+            <a class="btn  btn-blue  btn-next" href="#" onclick="return OnClickBackButton('@Url.Action(("Overview"), new { id = Model.ID })');">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                Prev
+            </a>
+            <button class="btn btn-blue btn-next" data-last="Finish">
+                Save & Next
+                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    }
+</div>

@@ -1,0 +1,1002 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Terms & Conditions | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Learn how Kootour ensures your satisfaction and privacy as a traveller or guide." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+  <!-----start of main tab container-->
+<style>
+ .container{
+     padding-bottom: 40px;
+ }
+.title_terms{
+    font-family:"Montserrat-Light";
+    font-size: 1.6rem;
+    font-style:normal;
+    line-height: 1.8;
+}
+
+.header_terms{
+    font-family:"Montserrat-Medium";
+    margin-top: 20px;
+    text-align:center;
+}
+.boldIt{
+    font-family: "Montserrat-Medium";
+}
+.topOfthepage_terms{
+    padding-top:20px;
+    padding-bottom: 20px;
+
+}
+</style>
+<div class="container">
+    <h2 class="topOfthepage_terms">Terms and Privacy</h2>
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#terms">Terms and Conditions</a></li>
+        <li><a data-toggle="tab" href="#private">Privacy Policy</a></li>
+    </ul>
+<!--start tab contents-->
+    <div class="tab-content">
+    <div id="terms" class="tab-pane fade in active"> <!--start of terms and condiiton tab-->
+        <p class="header_terms">
+            Terms and Conditions 
+        </p>
+        <p align="center">
+            Lasted Updated: Aug 17, 2016
+        </p>
+        <p align="left">
+            Please read these Terms and Conditions (the “<strong>Terms</strong>”) carefully.
+            These Terms govern your use of the online platform offered by Kootour Software &amp;
+            Technologies Inc. (“<strong>Kootour</strong>“, “<strong>we</strong>“, “<strong>us</strong>”
+            or “<strong>our</strong>“) that connects guides offering tours with travellers seeking
+            to purchase guided tours, and which Kootour makes available at [www.kootour.com]
+            (the “<strong>Site</strong>”) and as applications for devices (collectively, the
+            “<strong>Application</strong>”). Kootour’s online platform, as it is made available
+            through the Site and the Application, is referred to collectively throughout these
+            Terms as the “<strong>Services</strong>”.
+        </p>
+        <p>
+            YOU ACKNOWLEDGE AND AGREE THAT BY REGISTERING FOR, ACCESSING OR USING THE SERVICES,
+            YOU ARE INDICATING THAT YOU HAVE READ AND UNDERSTAND THESE TERMS, AND THAT YOU ARE
+            ENTERING INTO A LEGALLY BINDING AGREEMENT WITH KOOTOUR SUBJECT TO THESE TERMS. IF
+            YOU DO NOT AGREE WITH THESE TERMS, YOU MUST NOT ACCESS OR USE THE SERVICES.
+        </p>
+        <p>
+            Wherever used in these Terms, “you”, “your” or similar terms means the person or
+            legal entity accessing or using the Services. If you are accessing or using the
+            Services on behalf of a company (such as your employer) or other legal entity, you
+            represent and warrant that you have the authority to bind that company or other
+            legal entity to these Terms.
+        </p>
+        <h1 class="title_terms boldIt">
+            1. DEFINITIONS
+        </h1>
+        <h2 class="title_terms">
+            “<strong>Guide</strong>” means a Member who creates a Listing via the Services.
+        </h2>
+        <p class="title_terms">
+            “<strong>Kootour Content</strong>” means all information and material (including
+            text, imagines, video, audio, software and other media) that Kootour makes available
+            in association with or via the Services.
+        </p>
+        <p class="title_terms">
+            “<strong>Listing</strong>” means a Tour listed by a Guide as available for purchase
+            by a Member via the Services.
+        </p>
+        <h2 class="title_terms">
+            “<strong>Member</strong>” means a person who completes the Kootour account registration
+            process, as described in Section 2.1 below.
+        </h2>
+        <p class="title_terms">
+            “<strong>Member Content</strong>” means all information and material (including
+            text, images, video, audio and other media) that a user of the Services, including
+            but not limited to Travellers and Guides, posts, publishes, transmits or otherwise
+            makes available through the Services.
+        </p>
+        <p class="title_terms">
+            “<strong>Tour</strong>” means a guided tour or other activities led by a Guide.
+        </p>
+        <p>
+            “<strong>Traveller</strong>” means a Member who requests a booking of or purchases
+            a Tour via the Services.
+        </p>
+        <h1 class="title_terms boldIt">
+            2. THE SERVICES
+        </h1>
+        <h2 class="title_terms">
+            KOOTOUR OFFERS THE SERVICES TO FACILITATE GUIDES AND TRAVELLERS CONNECTING AND BOOKING
+            TOURS DIRECTLY WITH EACH OTHER. YOU UNDERSTAND AND AGREE THAT: I) KOOTOUR IS NOT
+            IN THE BUSINESS OF OFFERING OR PROVIDING TOURS AND ALL TOURS AVAILABLE FOR PURCHASE
+            VIA THE SERVICES ARE NOT OFFERED OR PROVIDED BY KOOTOUR; II) KOOTOUR IS NOT A PARTY
+            TO ANY AGREEMENTS ENTERED INTO BETWEEN GUIDES AND TRAVELLERS; AND III) KOOTOUR DOES
+            NOT ENDORSE OR MAKE ANY REPRESENTATIONS OR WARRANTIES ABOUT ANY MEMBER OR LISTING.
+            ACCORDINGLY, ALL BOOKINGS WILL BE MADE AT THE MEMBER’S OWN RISK, AND KOOTOUR IS
+            NOT RESPONSIBLE FOR AND DISCLAIMS ALL LIABILITY IN RESPECT OF ANY AND ALL BOOKINGS
+            AND ANY OFFLINE ACTIVITY IN CONNECTION WITH SUCH BOOKINGS TO THE MAXIMUM EXTENT
+            PERMITTED BY LAW. FURTHERMORE, ANY LEGAL REMEDY OR LIABILITY THAT YOU SEEK TO OBTAIN
+            FOR ACTIONS OR OMISSIONS OF OTHER MEMBERS WILL BE LIMITED TO A CLAIM AGAINST SUCH
+            MEMBERS, AND YOU AGREE NOT TO IMPOSE LIABILITY ON OR SEEK ANY LEGAL REMEDY FROM
+            KOOTOUR WITH RESPECT TO SUCH ACTS OR OMISSIONS.
+        </h2>
+        <h1 class="title_terms boldIt">
+            3. REGISTRATION
+        </h1>
+        <h2 class="title_terms">
+            In order to access certain features of the Services , including but not limited
+            to creating or booking a Listing, you must register with Kootour to create a user
+            account and become a Member. You may not have more than one (1) active user account.
+            You agree to provide accurate, up-to-date and complete information during the registration
+            process and to update such information in the event it changes. Kootour reserves
+            the right to suspend or terminate your account or your access to the Services if
+            you create more than one (1) account, or if you provide any information that is
+            false, inaccurate, misleading, not up-to-date, incomplete or otherwise in violation
+            of these Terms.
+        </h2>
+        <h1 class="title_terms boldIt">
+            4. MODIFICATION OF SERVICES OR TERMS
+        </h1>
+        <h2 class="title_terms">
+            Kootour reserves the right, in its sole discretion, to modify the Services (including
+            the addition, modification or removal of functionality, features or content) or
+            these Terms, at any time and without prior notice. If Kootour modifies these Terms,
+            Kootour will post the changes on the Services or otherwise provide you with notice.
+            Your continued use of the Services following our posting the changes or providing
+            you with notice will mean that you accept and agree to such changes. You are responsible
+            for regularly consulting the current version of the Terms prior to your use of the
+            Services. If the modified Terms are not acceptable to you, you must stop using the
+            Services.
+        </h2>
+        <h1 class="title_terms boldIt">
+            5. LISTINGS
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">5.1</span> Subject to completion of a verification process
+            to confirm your identity and other information, you may as a Member create Listings
+            via the Services. You acknowledge and agree that you are solely responsible for
+            your Listings, including the information in the Listings and any offline activity
+            related to the Listings. You represent and warrant that your Listings, including
+            the information in the Listings and any offline activity related to the Listings
+            (i) will not breach any agreements you have entered into with third parties, (ii)
+            will not breach the rights of any third parties, including intellectual property
+            rights, and (iii) will be in compliance with all applicable laws (including having
+            all necessary permits, licenses, certifications or other legal or regulatory requirements).
+            Kootour reserves the right, at any time and without prior notice, to remove or disable
+            access to a Listing for any reason in the sole discretion of Kootour, including
+            but not limited to, a Listing that is in violation of these Terms or Kootour’s Community
+            Guidelines or that Kootour considers objectionable or otherwise harmful to the Services.
+            You acknowledge and agree that the placement or ranking of Listings available via
+            the Services, including through search results, may depend on a variety of factors
+            determined by Kootour in its sole discretion, and that Kootour does not guarantee
+            any specific placement or ranking.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">5.2</span> You agree as a Guide to obtain reasonable insurance
+            to cover potential liabilities related to loss, damage or injury suffered by yourself,
+            a Traveller or other person in connection with your Tours. Kootour recommends that
+            Travellers also obtain appropriate travel and/or medical insurance when booking
+            or participating in a Tour.
+        </h2>
+        <h1 class="title_terms boldIt">
+            6. BOOKINGS
+        </h1>
+        <h2 class="title_terms">
+            If you are a Guide and a booking is requested for your Listing via the Services,
+            you must confirm or reject the booking request (either through instant or manual
+            confirmation in accordance with the confirmation mechanism for the relevant Listing)
+            within 48 hours or such other booking request period Listings is instant confirmation
+            (i.e. the request is automatically confirmed). If a booking request is not confirmed
+            by the Guide within the booking request period, the booking request will terminate.
+        </h2>
+        <h1 class="title_terms boldIt">
+            7. PAYMENT TERMS
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">7.1</span> <em>Definitions</em>
+        </h2>
+        <h3 class="title_terms">
+            (a) “<strong>Taxes</strong>” means sales taxes, value added taxes, goods and services
+            taxes or other taxes imposed by governmental authorities.
+        </h3>
+        <h3 class="title_terms">
+            (b) “<strong>Guide Fees</strong>” means the fee that Kootour charges a Guide for
+            use of the Services, which is calculated as a percentage of the applicable Tour
+            Fees. The percentage used to calculate the Guide Fees is displayed to the Guide
+            at the time the Guide creates a Listing.
+        </h3>
+        <h3 class="title_terms">
+            (c) “<strong>Referral Discounts</strong>” means amounts that Kootour may from time
+            to time offer to a Traveller as a discount for being referred by another Member
+            to register for the Services.
+        </h3>
+        <h3 class="title_terms">
+            (d) “<strong>Tour Fees</strong>” means the amounts that are due and payable by a
+            Traveller in exchange for participation in a Tour as determined by Guides in their
+            sole discretion, less any applicable Referral Discounts.
+        </h3>
+        <h3 class="title_terms">
+            (e) “<strong>Traveller Fees</strong>” means the fee that Kootour charges a Traveller
+            for use of the Services, which is calculated as a percentage of the applicable Tour
+            Fees and displayed to the Traveller at the time the Traveller elects to send a booking
+            request to a Guide.
+        </h3>
+        <h3 class="title_terms">
+            (f) “<strong>Total Fees</strong>” means collectively the Tour Fees and the Traveller
+            Fees, plus any applicable Taxes.
+        </h3>
+        <h2 class="title_terms">
+            <span class="boldIt">7.2</span> <em>General Payment Terms</em>
+        </h2>
+        <h3 class="title_terms">
+            (a) Kootour will collect the Total Fees from the Traveller at the time a booking
+            request for a Listing is confirmed or refunds in accordance with these Terms, to
+            the Guide within 48 hours of the scheduled completion time for the Tour, provided
+            that if such 48 hour period includes a day that is not a business day, then on the
+            following business day.
+        </h3>
+        <h3 class="title_terms">
+            (b) All amounts due and payable in connection with the Services or any bookings
+            made via the Services, including the Tour Fees, the Traveller Fees and the Guide
+            Fees, will be in United States dollars unless otherwise stated.
+        </h3>
+        <h2 class="title_terms">
+            <span class="boldIt">7.3</span> <em>Payment Terms for Guides</em>
+        </h2>
+        <h3 class="title_terms">
+            <em>(a) </em>You, as a Guide, hereby appoint Kootour to act as your limited payment
+            collection agent solely for the purpose of accepting the Tour Fees from Travellers.
+            You agree that payment of the Tour Fees made by a Traveller through the Services
+            shall be considered the same as a payment made directly to you, and you will provide
+            the Tour to the Traveller in the manner agreed between you and the Traveller as
+            if you have received the Tour Fees. You agree that Kootour may, in accordance with
+            the cancellation policy selected by the Traveller and indicated in the relevant
+            Listing, (i) permit the Traveller to cancel the booking, and/or (ii) refund to the
+            Traveller that portion of the Tour Fees specified in the applicable cancellation
+            policy. You understand that as Kootour accepts payments from Travellers as your
+            limited payment collection agent and that Kootour’s obligation to pay you is subject
+            to and conditional upon successful receipt of the associated payments from Travellers,
+            Kootour does not guarantee payments to you for amounts that have not been successfully
+            received by Kootour from Travellers. In accepting appointment as your limited authorized
+            agent, Kootour assumes no liability for any of your acts or omissions.
+        </h3>
+        <h3 class="title_terms">
+            <em>(b) </em>In consideration for the use of the Services provided by Kootour, Kootour
+            charges the Service Fees. You acknowledge and agree that: i) the Total Fees include
+            the Traveller Fees, and ii) Kootour will deduct the Guide Fees from the Tour Fees
+            before remitting the balance to the Guide. iii) Kootour does not cover any costs incurred by the Guide related to receiving a balance transfer, such as, but not limited to: wire transfer fees, currency conversion fees and ATM withdrawal fees.
+        </h3>
+        <h2 class="title_terms">
+            <span class="boldIt">7.4</span> <em>Payment Terms for Travellers</em>
+        </h2>
+        <h3 class="title_terms">
+            (a) You agree as a Traveller to pay Kootour for any confirmed bookings made in connection
+            with your account in accordance with these Terms by a payment method approved by
+            Kootour and described in the Services, and you hereby authorize the collection of
+            such amounts by Kootour or a third-party payment processor. In the event you are
+            directed to a third-party payment processor, you may be subject to terms and conditions
+            governing the use of that third party’s services and personal information collection
+            practices. You should review such terms and conditions before using the third-party’s
+            services.
+        </h3>
+        <h3 class="title_terms">
+            (b) You understand and agree as a Traveller that Guides, and not Kootour, are solely
+            responsible for honoring any confirmed bookings and providing the Tours booked via
+            the Services. If you choose to book a Tour with a Guide via the Services, you understand
+            and agree that you will be required to enter into an agreement with the Guide and
+            you agree to accept any terms, conditions, rules and restrictions associated with
+            such Tour imposed by the Guide. You acknowledge and agree that you, and not Kootour,
+            will be responsible for performing the obligations of any such agreements, that
+            Kootour is not a party to such agreements, and that, with the exception of its payment
+            obligations hereunder, Kootour disclaims all liability arising from or related to
+            any such agreements. You acknowledge and agree that, notwithstanding the fact that
+            Kootour is not a party to the agreement between you and the Guide, Kootour acts
+            as the Guide’s payment collection agent for the limited purpose of accepting payments
+            from you on behalf of the Guide.
+        </h3>
+        <h1 class="title_terms boldIt" id="Refund-Policy">
+            8. REFUNDS AND CANCELLATIONS
+        </h1>
+        <h3 class="title_terms">
+            You may cancel a requested but unconfirmed booking made via the Services as a Traveller
+            with no charge or penalty.
+        </h3>
+        <h3 class="title_terms">
+            (b) In the event you cancel a confirmed booking made via the Services as a Traveller,
+            either Kootour’s standard cancellation policy (the “Standard Cancellation Policy”)
+            or a customized cancellation policy the terms of which are determined by the Guide
+            (a “Customized Cancellation Policy”) will apply as indicated in the relevant Listing.
+            For the purposes of either cancellation policy, each 24 hours before the scheduled
+            starting time of the Tour will count as 1 day before such scheduled starting time
+        </h3>
+        <h3 class="title_terms">
+            The Standard Cancellation Policy is as follows:
+        </h3>
+        <h4 class="title_terms">
+            (i) Traveller cancels 5 days or more before the scheduled starting time of the Tour:
+            100% refund of Tour Fees (no refund of Traveller Fees).
+        </h4>
+        <h4 class="title_terms">
+            (ii) Traveller cancels less than 5 days but more than 1 day before the scheduled
+            starting time of the Tour: 50% refund of Tour Fees (no refund of Traveller Fees).
+        </h4>
+        <h4 class="title_terms">
+            (iii) Traveller cancels less than 1 day before the scheduled starting time of the
+            Tour: no refund of Tour Fees or Traveller Fees.
+        </h4>
+        <h3 class="title_terms">
+            (c) The default cancellation policy for Listings is the Standard Cancellation Policy.
+            You may, as a Guide, create a Listing with a Customized Cancellation Policy.
+        </h3>
+        <h3 class="title_terms">
+            (d) If a Guide does not arrive at the scheduled starting location of a Tour within
+            30 minutes of the scheduled starting time of the Tour, the Traveller may elect to
+            cancel the Tour and, in the event of such cancellation, the Traveller will be entitled
+            to a 100% refund of the Total Fees. If a Traveller does not arrive at the scheduled
+            starting location of a Tour within 30 minutes of the scheduled starting time of
+            the Tour, the Tour will be deemed completed and, in the event of such completion,
+            all payments made by the Traveller in respect of the Tour, including the Tour Fees
+            and the Travellers Fees, will be non-refundable .
+        </h3>
+        <h3 class="title_terms">
+            (e) In the event a Guide cancels a confirmed booking made via the Services, the
+            Traveller will be entitled to a 100% refund of the Total Fees.
+        </h3>
+        <h3 class="title_terms">
+            (f) A guide may indicate in a Listing that the Tour is to be conducted “rain or
+            shine”. If a Listing does not indicate that a Tour is to be conducted “rain or shine”
+            and a Guide reasonably determines on the scheduled starting date of a Tour that
+            a Tour cannot be conducted due to extreme weather conditions or Force Majeure situations,
+            as defined below. The Guide may elect to cancel the booking and, in the event of
+            such cancellation, the Traveller will be entitled to a 100% refund of the Total
+            Fees. If a Listing indicates that a Tour is to be conducted “rain or shine”, the
+            Guide may not elect to cancel the booking due to weather conditions unless, in the
+            discretion of the Guide, such conditions on the starting date of the Tour, or at
+            any time during the Tour, are hazardous to the safety of the Guide or Traveller,
+            and in the event of such cancellation, the Traveller will be entitled to a 100%
+            refund of the Total Fees.
+        </h3>
+        <h3 class="title_terms">
+            (g) Kootour reserves the right, in its sole discretion, to cancel a confirmed booking
+            made via the Services and/or refund all or part of the amounts charged to the Traveller
+            in circumstances including, but not limited to, those set out in Kootour’s Cancellation
+            and <a href="/Terms-and-Conditions#Refund-Policy">Refund Policy</a>. You agree that Kootour, and the relevant Traveller or Guide,
+            will not have any liability for such cancellation or refund.
+        </h3>
+        <h1 class="title_terms boldIt">
+            9. USER CONDUCT
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">9.1</span> You are responsible for your own conduct when using
+            the Services. You agree that you will only use the Services for lawful purposes
+            and in a manner consistent with these Terms and any applicable rules, policies and
+            guidelines established by Kootour in respect of the Services from time to time,
+            including but not limited to, the [Community Guidelines]. Misuse or unauthorized
+            use of the Services and its related systems or networks, or of any information or
+            material available through the Services is strictly prohibited and Kootour reserves
+            the right, at its sole discretion and without liability or prejudice to any other
+            remedies that it may have, to immediately suspend or terminate access by any user
+            who is using, or who Kootour reasonably believes is using, the Services in violation
+            of these Terms. 
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">9.2</span> Without limiting Section 9.1, you agree not to use
+            the Services to: (i) engage in conduct that would constitute a criminal or quasi-criminal
+            offence, that would give rise to civil liability, or that would otherwise violate
+            any applicable local, provincial, state, federal or international law or accepted
+            Internet protocol; (ii) communicate, transmit, upload or post information that is
+            inaccurate, incomplete, misleading, false or libellous; (iii) communicate, transmit,
+            upload or post information or material that infringes intellectual property rights,
+            privacy rights, rights of publicity or any other rights of any person; (iv) communicate,
+            transmit, upload or post material that is obscene, vulgar, pornographic, abusive,
+            defamatory, threatening, racist, sexist or otherwise objectionable; (v) attempt
+            to interfere with or gain unauthorized access to the Services or its related systems
+            or networks; (vi) use the Services for any commercial or other purposes that are
+            not expressly permitted by these Terms; (vii) recruit or otherwise solicit any Traveller
+            or Guide to join or otherwise participate in any third-party services or websites
+            that are competitive to Kootour; (viii) use the Services to find a Traveller or
+            Guide and then arrange to book or otherwise purchase or participate in a Tour independent
+            of the Services in order to avoid the obligation to pay any fees to Kootour under
+            these Terms for the use of the Services; (ix) use or attempt to use the Services
+            to gain unauthorized access to any person’s data or network; or (x) otherwise use
+            the Services in a manner that could, in the opinion of Kootour, adversely affect
+            the ability of other users to use the Services or the Internet, including post or
+            transmit information or data containing worms, viruses, Trojan horses or other disruptive
+            components.
+        </h2>
+        <h1 class="title_terms boldIt">
+            10. INTELLECTUAL PROPERTY
+        </h1>
+        <h2 class="title_terms">
+            10.1 Kootour is the owner of the Services and the Kootour Content and all intellectual
+            property rights therein. All rights, title, and interest in and to the Services
+            and the Kootour Content not expressly granted under these Terms are reserved by
+            Kootour. Without limiting the generality of the forgoing, Kootour owns the trademarks
+            and design marks, trade dress, domain names, service names, logos and associated
+            designs (“<strong>Trademarks</strong>”) used in connection with the Services and
+            any unauthorized use of the Trademarks is strictly prohibited.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">10.2</span> If you submit any suggestions, comments or other
+            feedback (“<strong>Feedback</strong>“) to Kootour regarding the Services, you agree
+            that Kootour shall have a worldwide, perpetual, irrevocable, unrestricted, unlimited
+            and fully paid-up right and license to use, copy, modify, publish, disclose, distribute,
+            license, sublicense, incorporate into its products or services, and create derivative
+            works of, any Feedback or any ideas or materials contained in or resulting from
+            any Feedback, for any and all commercial and non-commercial purposes. For greater
+            certainty, you agree that Kootour may use and exploit any Feedback in any way at
+            our discretion, without compensation or obligation to you or to any other party.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">10.3</span> You retain ownership of all your Member Content.
+            You agree that you grant to Kootour a non-exclusive, royalty-free, perpetual, irrevocable,
+            transferable, world-wide license, with the right to sublicense, to access, use,
+            reproduce, modify, publish, translate, create derivative works from, distribute,
+            disseminate, perform, transmit, display, store, index and archive your Member Content
+            or to incorporate it in other works in any form, media, or technology, for the full
+            term of any rights that may exist in such Member Content, for any purpose and without
+            compensation or obligation to you or any other party. You are solely responsible
+            for your Member Content that you upload, publish, transmit, link to or otherwise
+            make available through the Services. If you are posting Member Content belonging
+            to or generated by or on behalf of a third party, you warrant that you are authorized
+            to act on behalf of that third party and to bind them to these Terms.
+        </h2>
+        <h1 class="title_terms boldIt">
+            11. PRIVACY</h1>
+        <h2 class="title_terms">
+            Your use of the Services, and our use of certain information about you, are subject
+            to our privacy policy Terms and Conditions <a href="#top">Privacy Policy</a> , which
+            is incorporated by reference into these Terms. Please read the Privacy Policy carefully
+            prior to using the Services.
+        </h2>
+        <h1 class="title_terms boldIt">
+            12. TERM AND TERMINATION
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">12.1</span> These Terms shall commence on the date on which
+            you first register for, access or use the Services and shall continue until your
+            account is cancelled.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">12.2</span> Kootour may, in our sole discretion, with or without
+            cause, with or without prior notice and at any time, suspend, limit or cancel your
+            account. You may cancel your account and discontinue your use of the Services at
+            any time via the account cancellation feature of the Services. In the event your
+            account is suspended, limited or cancelled: i) any requested or confirmed bookings
+            associated with your account will automatically be terminated; ii) we may communicate
+            to your Guide or Traveller about such cancellation, iii) we reserve the right to
+            refund your Traveller any amounts paid in respect of a booking, and iv) you will
+            not be entitled to any compensation for any requested or confirmed bookings terminated
+            as a result of your account being suspended, limited or cancelled. 
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">12.3</span> Upon termination of these Terms for any reason:
+            i) you shall immediately discontinue your use of the Services, and ii) any rights
+            and licenses granted to you under these Terms will terminate.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">12.4</span> Any provision of these Terms in favour of Kootour
+            or which expressly, or by their nature, are intended to survive termination shall
+            survive the expiration or termination of these Terms.
+        </h2>
+        <h1 class="title_terms boldIt">
+            13. DISCLAIMER OF WAFRANTIES
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">13.1</span> YOU ACKNOWLEDGE AND AGREE THAT YOUR USE OF THE
+            SERVICES IS AT YOUR SOLE RISK, AND THAT THE SERVICES ARE PROVIDED TO YOU ON AN “AS
+            IS” AND “AS AVAILABLE” BASIS. TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW,
+            KOOTOUR EXPRESSLY DISCLAIMS ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED,
+            STATUTORY OR OTHERWISE, INCLUDING BUT NOT LIMITED TO, ALL WARRANTIES OF MERCHANTABILITY,
+            FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. WITHOUT LIMITING THE GENERALITY
+            OF THE FOREGOING, KOOTOUR EXPRESSLY DISCLAIMS THAT: (I) THE SERVICES, THE LISTINGS
+            OR ANY TOURS WILL MEET YOUR EXPECTATIONS OR SATISFY YOUR REQUIREMENTS; (II) THE
+            SERVICES, THE LISTINGS OR ANY TOURS WILL ALWAYS BE AVAILABLE, ACCESSIBLE, UNINTERRUPTED,
+            TIMELY, SAFE, SECURE, ACCURATE, COMPLETE, OR ERROR-FREE; (III) THE RESULTS OBTAINED
+            FROM YOUR USE OF THE SERVICES, THE LISTINGS OR ANY TOURS WILL BE COMPLETE, ACCURATE,
+            RELIABLE OR USEFUL; AND (IV) THAT ANY ERRORS OR DEFECTS IN THE OPERATION OR FUNCTIONALITY
+            OF THE SERVICES WILL BE CORRECTED. IN ADDITION, KOOTOUR EXPRESSLY DISCLAIMS ANY
+            AND ALL RESPONSIBILITY OR LIABILITY IN RELATION TO: (I) ANY CONTENT MADE AVAILABLE
+            THROUGH THE SERVICES, INCLUDING BUT NOT LIMITED TO, ANY MEMBER CONTENT; (II) ANY
+            PRODUCTS OR SERVICES OFFERED OR PROVIDED BY MEMBERS OR OTHER THIRD PARTIES IN ASSOCIATION
+            OR CONNECTION WITH THE SERVICES, INCLUDING THE LISTINGS, ANY TOURS OR ANY THIRD
+            PARTY SERVICES; (III) ANY HACKING OR OTHER UNAUTHORIZED ACCESS TO OR USE OF THE
+            SERVICES; AND (IV) ANY DAMAGE TO YOUR SOFTWARE, COMPUTER SYSTEM OR OTHER PROPERTY
+            CAUSED BY VIRUSES OR OTHER MALICIOUS CODE AS A RESULT OF YOUR ACCESS OR USE OF THE
+            SERVICES. YOU ACKNOWLEDGE AND AGREE THAT IF YOU ARE DISSATISFIED WITH OR HARMED
+            BY THE SERVICES, OR WITH ANYTHING RELATED TO THE SERVICES, YOUR SOLE AND EXCLUSIVE
+            REMEDY WILL BE TO DISCONTINUE USE OF THE SERVICES AND TERMINATE THIS AGREEMENT IN
+            ACCORDANCE WITH SECTION 12.
+        </h2>
+        <h1 class="title_terms boldIt">
+            14. LIMITATION OF LIABILITY
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">14.1</span> YOU ACKNOWLEDGE AND AGREE THAT, TO THE MAXIMUM
+            EXTENT PERMITTED BY APPLICABLE LAW, KOOTOUR WILL NOT BE LIABLE FOR ANY DIRECT, INDIRECT,
+            INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES OF ANY KIND, INCLUDING BUT
+            NOT LIMITED TO, DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, DATA OR OTHER INTANGIBLE
+            LOSSES (EVEN IF KOOTOUR HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES), RESULTING
+            FROM OR RELATED TO: (I) YOUR LISTING OR BOOKING OF ANY TOURS VIA THE SERVICES, AND
+            ANY OFFLINE ACTIVITY OR COMMUNICATIONS IN CONNECTION WITH SUCH TOURS OR THE SERVICES,
+            (II) THE USE OR THE INABILITY TO USE OR ACCESS THE SERVICES, INCLUDING ANY CONTENT,
+            PRODUCTS, SERVICES, OFFERINGS, INFORMATION OR OTHER MATERIAL AVAILABLE THROUGH THE
+            SERVICES; (III) ANY ERRORS OR OMISSIONS IN THE SERVICES OR ANY CONTENT; (IV) THE
+            SUSPENSION OR TERMINATION OF YOUR ABILITY TO ACCESS THE SERVICES; (V) ANY INTERRUPTION
+            TO OR CESSATION OF THE DELIVERY OF THE SERVICES OR FAILURE OF OUR SYSTEMS; (VI)
+            THE COST OF PROCUREMENT OF SUBSTITUTE GOODS AND SERVICES; (VII) UNAUTHORIZED ACCESS
+            TO OR ALTERATION OF OUR SYSTEMS OR YOUR TRANSMISSIONS, DATA AND/OR PERSONAL INFORMATION;
+            (VIII) STATEMENTS OR CONDUCT OF ANY MEMBER OR OTHER THIRD PARTY USING THE SERVICES;
+            (IX) ANY BUGS, VIRUSES OR THE LIKE THAT ARE TRANSMITTED TO OR THROUGH THE SERVICES
+            BY ANY THIRD PARTY; OR (X) ANY OTHER MATTER OR EVENT RELATING TO YOUR OR ANY OTHER
+            PARTY’S USE OF THE SERVICES. YOU ACKNOWLEDGE AND AGREE THAT IF YOU ARE DISSATISFIED
+            WITH OR HARMED BY THE SERVICES, OR WITH ANYTHING RELATED TO THE SERVICES, YOUR SOLE
+            AND EXCLUSIVE REMEDY WILL BE TO DISCONTINUE USE OF THE SERVICES AND TERMINATE THIS
+            AGREEMENT IN ACCORDANCE WITH SECTION 12.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">14.2</span> YOU ACKNOWLEDGE AND AGREE THAT THE ESSENTIAL PURPOSE
+            OF THIS SECTION IS TO ALLOCATE THE RISKS UNDER THESE TERMS BETWEEN THE PARTIES AND
+            LIMIT THEIR POTENTIAL LIABILITY GIVEN THE FEES CHARGED UNDER THIS AGREEMENT, WHICH
+            WOULD HAVE BEEN SUBSTANTIALLY GREATER IF KOOTOUR WERE TO ASSUME ANY FURTHER LIABILITY
+            OTHER THAN AS SET FORTH HEREIN.
+        </h2>
+        <h1 class="title_terms boldIt">
+            15. INDEMIFICATION
+        </h1>
+        <h2 class="title_terms">
+            You agree to defend, indemnify and hold us, our affiliates and licensors, and each
+            of their respective officers, partners, directors, employees and agents, harmless
+            from and against any and all claims, actions or demands, including without limitation
+            reasonable legal and accounting fees, resulting from or related to: (i) your access
+            to or use of the Services or any Member Content; (ii) your interaction with any
+            Member; (III) your booking or creation of a Listing; (iii) any injury, loss or damage
+            of any kind arising in connection with a Listing or Tour; (iv) your violation of
+            these Terms; or (v) your violation of any third party right, including without limitation,
+            any intellectual property, privacy or proprietary right, or obligation of confidentiality.
+            You will use your best efforts to cooperate with Kootour in the defense of any claim.
+            Kootour reserves the right, at our own expense, to assume the exclusive defense
+            and control of any matter subject to indemnification by you.
+        </h2>
+        <h1 class="title_terms boldIt">
+            16. THIRD PARTY SERVICES
+        </h1>
+        <h2 class="title_terms">
+            The Services may enable you to access third party websites, applications or materials
+            linked to or accessible through the Services (“ <strong>Third Party Services</strong>”).
+            Kootour provides access to Third Party Services as a convenience only, and such
+            access does not imply any warranties, representations, endorsements, approvals or
+            verification by Kootour of such Third Party Services. You acknowledge that the use
+            of Third Party Services may be subject to the terms and conditions of such Third
+            Party Services, and that any contract entered into or transaction completed through
+            Third Party Services is between only you and the relevant third party.
+        </h2>
+        <h1 class="title_terms boldIt">
+            17. GENERAL
+        </h1>
+        <h2 class="title_terms">
+            <span class="boldIt">17.1</span> <u>Governing Law</u>. You agree that these
+            Terms, and your use of the Services, are governed exclusively by the laws of the
+            Province of British Columbia and the federal laws of Canada applicable therein (excluding
+            conflicts and choice of laws principles). Any contract formed through the use of
+            the Services will be deemed to have been formed and executed within the Province
+            of British Columbia, Canada. The application of the <em>United Nations Convention on
+                Contracts for the International Sale of Goods</em> is hereby expressly excluded.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.2</span> <em>Dispute Resolution</em> 
+        </h2>
+        <h3 class="title_terms">
+            (a) <u>Means of Resolution</u> . You and Kootour agree that any disputes arising
+            under these terms or otherwise in connection with your use of the Services will
+            be resolved through arbitration under the <em>Commercial Arbitration Act</em>, R.S.B.C.
+            1996, c. 55, as amended from time to time. Arbitration will be held in Vancouver,
+            BC, Canada, and conducted in the English language. Notwithstanding the foregoing,
+            you agree that: (i) the courts in any relevant venue will have jurisdiction for
+            the purposes of obtaining and enforcing injunctive or other equitable relief, and
+            for the purposes of enforcing the decision of any arbitrator appointed in accordance
+            with this provision, and (ii) Kootour may bypass arbitration in cases of fraud or
+            other crimes against it, and in the case of interference with its technical operations
+            or violations of its rights or property.
+        </h3>
+        <h3 class="title_terms">
+            (b) <u>Class Waiver</u>. You acknowledge and agree that you and Kootour are each
+            waiving the right to a trial by jury or to participate as a plaintiff or class member
+            in any purported class action or representative proceeding. Further, unless both
+            you and Kootour otherwise agree in writing, the arbitrator may not consolidate more
+            than one person's claims, and may not otherwise preside over any form of any class
+            or representative proceeding. If this paragraph is held unenforceable, then the
+            entirety of this Section 17.2 will be deemed void.<u></u>
+        </h3>
+        <h2 class="title_terms">
+            <span class="boldIt">17.3</span> <u>Jurisdiction and Venue</u>. If Section 17.2
+            is deemed void or is otherwise inapplicable, all disputes under these Terms will
+            be resolved by a court of competent jurisdiction located in Vancouver, British Columbia,
+            Canada, provided that the courts in any relevant venue will have jurisdiction for
+            the purposes of obtaining and enforcing injunctive or other equitable relief.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.4</span> <u>Force Majeure</u>. Neither party shall be
+            liable for delay or failure in performance (other than the making of payments) resulting
+            from any cause beyond the reasonable control of such party, including but not limited
+            to, acts of God, acts of war, riot, fire, flood, or other disaster, acts of government,
+            strike lockout, power failures, or the inability to use or the failure of any third
+            party telecommunications carrier or other services, which events or conditions prevent
+            in whole or in part the performance by such party of its obligations hereunder or
+            which renders the performance of such obligations so difficult or costly as to make
+            performance commercially unreasonable.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.5</span> <u>Assignment</u>. You may not assign any of your
+            rights or obligations under these Terms without our prior written consent. Kootour
+            may freely assign our rights and obligations under these Terms, either in part or
+            in full, without notice to you.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.6</span> <u>Notice</u>. Kootour may communicate with you
+            about the Services or these Terms, including any changes to these Terms, by email
+            or by posting notices via the Services. Unless expressly prohibited by law, you
+            consent to receive communications relating to the Services or our business relationship
+            from Kootour electronically, and agree that all notices, waivers, agreements, disclosures
+            and other communications satisfy any legal requirements that such communications
+            be in writing. You may provide legal notice to Kootour at <strong>[101-887 Great Northern
+                Way, Vancouver, B.C.,Canada, V5T 4T5]</strong>.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.7</span> <u>Nature of Relationship</u>. Nothing in these
+            Terms or from your use of the Services will create or be deemed to create any partnership,
+            joint venture, agency, franchise or other business relationship between you and
+            Kootour, even if your use of the Services is for a commercial purpose which has
+            been authorized by us. You and Kootour will, at all times, be and remain independent,
+            third-party contractors.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.8</span> <u>Severability</u>. The provisions of these Terms
+            are severable. If any individual provision is held to be invalid, unenforceable
+            or contrary to applicable law, such provision shall be construed, limited, altered
+            or deleted, as necessary, to eliminate the invalidity, unenforceability or conflict
+            with applicable law while endeavoring to preserve the intention of these Terms,
+            and all other provisions shall remain in full force and effect.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.9</span> <u>Entire Agreement</u>. These Terms, including
+            the Privacy Policy, together with any changes published by Kootour via the Services
+            or otherwise communicated to you, constitute the entire agreement between you and
+            Kootour governing your use of the Services.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.10</span> <u>Waiver</u>. The failure by Kootour to exercise
+            or enforce any right or remedy under these Terms will not constitute a waiver of
+            such right or remedy.
+        </h2>
+        <h2 class="title_terms">
+            <span class="boldIt">17.11</span> <u>Contact</u>. If you wish to contact Kootour
+            with any questions, comments or concerns regarding the Services or these Terms,
+            please refer to our <a href="/Contact-Us">Contact Us</a>
+            page.
+        </h2>
+        <div>
+            <br />
+            <div>
+                <div id="_com_24">
+                </div>
+            </div>
+        </div>
+    </div>
+        <!--end of terms and condiiton tab-->
+        <div id="private" class="tab-pane fade">
+            <!--start of privacy tab-->
+            <p class="header_terms">
+                <b>Privacy Policy</b>
+            </p>
+            <p>
+                This Privacy Policy (“<b>Policy</b>”) describes the personal information that Kootour
+                Software &amp; Technologies Inc. (“<b>Kootour</b>”, “<b>we</b>”, “ <b>us</b>” or
+                “<b>our</b>”) collects from or about you when you use Kootour’s online platform
+                that connects guides offering tours with travellers seeking to purchase guided tours
+                (the “<b>Services</b>”), how we use that information, and to whom we disclose it.
+                “<b>Personal information</b>” means information about an individual that is reasonably
+                capable of identifying the individual, either alone or in combination with other
+                available information.
+            </p>
+            <p>
+                Please read this Policy carefully. If you do not agree with this Policy, you should
+                not access or use the Services or provide us with your personal information. This
+                Policy should be read in conjunction with the Kootour Terms and Conditions, into
+                which it is incorporated by reference.
+            </p>
+            <p>
+                This Policy was last updated on Aug 18, 2016 . We may modify this Policy from time
+                to time. We will provide you with notice of any material changes to this Policy
+                by publishing or communicating the changes through our Services or by other means
+                so that you may review and comment on the changes before continuing to use our Services.
+                Your continued use of the Services after we publish or communicate a notice about
+                any changes to this Policy means that you are consenting to the changes.
+            </p>
+            <p class="boldIt">
+                1. Accountability and Openness / Compliance
+            </p>
+            <p>
+                Kootour is responsible for personal information under our control. We have established
+                policies and procedures to effectively safeguard any confidential personal information
+                that we collect, and to deal with complaints and inquiries. We are committed to
+                maintaining the accuracy, confidentiality and security of your personal information,
+                and we will ensure that you have access to information regarding the policies and
+                procedures that we use to manage your personal information.
+            </p>
+            <p>
+                Kootour has designated a privacy officer (“<b>Privacy Officer</b>”) who is accountable
+                for our compliance with this Policy, and for ensuring that information about our
+                policies and practices relating to the management of personal information is easily
+                accessible. All questions or concerns regarding this Policy and our compliance with
+                it should be directed to the Privacy Officer in writing, and sent by email to <b>[privacy@Kootour.com]</b>
+                or by mail to:
+            </p>
+            <p class="boldIt">
+                Privacy Officer
+                <br />
+                Kootour <br /> 101-887 Great Northern Way, Vancouver, B.C. V5T 4T5
+            </p>
+            <p>
+                Every complaint or challenge regarding our compliance with this Policy will be investigated,
+                and where a deficiency is found to exist, we will take appropriate measures to address
+                it. This may include amending our policies and procedures as necessary. We will
+                also cooperate with regulatory authorities to resolve any complaints that cannot
+                be resolved between us and an individual user.
+            </p>
+            <p>
+                If you are located in British Columbia, you may contact the Office of the Information
+                &amp; Privacy Commissioner for British Columbia at P.O. Box 9038 Stn. Prov. Govt.,
+                Victoria, B.C. V8W 9A4 or <a href="https://www.oipc.bc.ca/">https://www.oipc.bc.ca</a>
+                with any complaints regarding this Policy. Users may also contact the Office of
+                the Privacy Commissioner of Canada at 30 Victoria Street, Gatineau, Quebec K1A 1H3
+                or <a href="https://www.priv.gc.ca/">https://www.priv.gc.ca/</a>.
+            </p>
+            <p class="boldIt">
+                2. Consent
+            </p>
+            <p>
+                By using the Services, you signify your agreement to the terms and conditions of
+                this Policy and to our collection, use and disclosure of your personal information
+                as set out herein. You may change or withdraw your consent to the collection, use
+                or disclosure of your personal information at any time by contacting the Privacy
+                Officer in writing at the address listed above (see: Accountability and Openness
+                / Compliance). In some circumstances, a change or withdrawal of consent may affect
+                your ability to use the Services.
+            </p>
+            <p class="boldIt">
+                3. Collection and Retention of Information
+            </p>
+            <p>
+                We collect Personal Information only to the extent that it is necessary for the
+                purposes set out below (see: Purpose - Why We Collect, Use and Disclose Information).
+            </p>
+            <p>
+                Subject to any legal or accounting requirements, we will retain personal information
+                only as long as necessary to fulfill the purposes for which it was collected. Personal
+                information that is no longer required will be destroyed, erased or made anonymous,
+                although copies of deleted information may continue to exist on back-up media.
+            </p>
+            <p>
+                Information that we may collect includes:
+            </p>
+            <p class="boldIt">
+                (a) User Submitted Information
+            </p>
+            <p>
+                We collect certain personal information at the time users registerto create a user
+                account or update their account details, including a user’s name, e-mail address
+                and other contact information. We also collect information that users submit through
+                their use of the Services, including when they create listings of tours offered
+                for purchase by other users, request or confirm bookings for tours, pay for tours
+                and post comments or reviews or otherwise share information through the Services.
+            </p>
+            <p class="boldIt">
+                (b) Usage Data
+            </p>
+            <p>
+                We collect certain non-identifying information about usage of the Services, including
+                information about how users are using the Services and the characteristics of those
+                users. This information is anonymized and is not used by us to identify you as an
+                individual.
+            </p>
+            <p class="boldIt">
+                (c) Technical and Device Information
+            </p>
+            <p>
+                We collect certain non-identifying information related to a user’s access of the
+                Services, including the Internet Protocol (IP) address of the user’s computer, the
+                date and time the user accessed the Services, and the operating system that the
+                user is using. We make no attempt to link this information with the identity of
+                individuals visiting our website without express permission. We may, however, review
+                server logs and anonymous traffic for system administration and security purposes,
+                for example to detect intrusions into our network, for planning and improving web
+                services, and to monitor and compile statistics about website usage. The possibility
+                therefore exists that server log data, which contains users’ IP addresses, could
+                in instances of criminal malfeasance be used to trace and identify individuals.
+                In such instances, we may share raw data logs with the appropriate authorities for
+                the purpose of investigating security breaches.
+            </p>
+            <p class="boldIt">
+                (d) Cookies and Web Beacons
+            </p>
+            <p>
+                A “cookie” is a small piece of information stored on your computer by a web page.
+                It is used to identify you to the web server. It tells the server who you are when
+                you return to a page on the same website. Your browser will only send a cookie back
+                to the domain that originally sent it to you. A cookie cannot run any programs,
+                deliver any viruses, or send back information about your system.
+            </p>
+            <p>
+                We may use cookies to determine your access privileges on our websites, to complete
+                and support a current activity, and to track website usage. We may also use cookies
+                for remarketing purposes to deliver ads for relevant Kootour products and services
+                to you when you use our Services and then visit certain third-party sites.
+            </p>
+            <p>
+                Most web browsers automatically accept cookies, but if you do not wish to have cookies
+                on your system, you should adjust your browser settings to decline them or to alert
+                you when cookies are being sent. If you decline cookies, you will still be able
+                to use the Services, but your ability to access certain features and functions may
+                be affected.
+            </p>
+            <p>
+                Some of our web pages contain an invisible electronic image known as a "web beacon."
+                Web beacons are similar in function to cookies, but allow websites on different
+                domains to share information. We may use web beacons to transfer your subscription
+                access information between our websites and domains. Web beacons do not transmit
+                any personal information that we collect to any websites that are not owned by Kootour
+                or its affiliates.
+            </p>
+            <p class="boldIt">
+                4. Purpose - Why We Collect, Use and Disclose Information
+            </p>
+            <p>
+                We will identify the purposes for which we collect personal information before or
+                when we request the information. We will not collect personal information which
+                is not necessary and, except as specified below, will not use or disclose personal
+                information for any purpose other than the purpose(s) for which it was collected
+                without first obtaining your consent. The information that we collect is used and
+                disclosed only for business purposes. These include:
+            </p>
+            <ul>
+                <li>to enable you to access and use the Services; </li>
+                <li>to process, track and communicate with you about usage of the Services; </li>
+                <li>to establish, maintain and manage business relations with you so that we may provide
+                    you with the information, products or services that you request; </li>
+                <li>internal business purposes, such as administering or improving the Services;
+                </li>
+                <li>to perform internal market research and conduct polls and surveys; </li>
+                <li>to obtain feedback regarding the Services and our ability to address a user’s needs;
+                </li>
+                <li>to provide users with information and promotional materials regarding Kootour and
+                    Kootour’s products and services; </li>
+                <li>to protect us against error, fraud, theft or damage to our goods, our business or
+                    our property; </li>
+                <li>to comply with any legal, accounting and regulatory requirements, including reporting
+                    requirements, applicable laws, and any search warrants, subpoenas or court orders;
+                    and </li>
+                <li>any other reasonable purpose for which you provide consent. </li>
+            </ul>
+            <p>
+                We may collect, use or disclose your personal information without your knowledge
+                or consent where we are permitted or required to do so by applicable law, government
+                request or court order, or based on our good faith belief that it is necessary to
+                do so in order to comply with such law, request or court order, or to protect our
+                assets, the users of our website, or the public.
+            </p>
+            <p class="boldIt">
+                5. Disclosure to Third Parties
+            </p>
+            <p>
+                We may disclose your personal information in response to requests from government
+                agencies, law enforcement authorities and regulators, or to satisfy legal or regulatory
+                requirements. We may also disclose your personal information when we buy a business
+                or sell all or part of our business.
+            </p>
+            <p>
+                You further acknowledge and agree that, in the course of providing the Services
+                to you, we may delegate our authority to collect, access, use, and disseminate your
+                information to third party subcontractors. Third party subcontractors may include
+                web hosts, payment processors, delivery and logistics providers, social network
+                integrators, and membership vendors. If we transfer any personal information to
+                a third party subcontractor, we will provide the subcontractors only with the information
+                needed to perform the subcontracted service, and will use appropriate contractual
+                or other means to provide a comparable level of protection while the information
+                is being used by them.
+            </p>
+            <p class="boldIt">
+                6. Safeguards – How Information is Protected
+            </p>
+            <p>
+                We maintain reasonable security safeguards to protect personal information in our
+                possession or under our control from loss or theft, and from unauthorized access,
+                disclosure, copying, use or modification, regardless of the format in which the
+                information is held. The safeguards applied will depend on the sensitivity of the
+                personal information, with the highest level of protection given to the most sensitive
+                personal information. We use user IDs, passwords, and encryption technology, maintain
+                our paper files in locked premises, and restrict the employees and contractors who
+                have access to personal information to those having a “need to know” and who are
+                bound by confidentiality obligations in order to ensure that information is handled
+                and stored in a confidential and secure manner. When destroying personal information,
+                we delete electronically stored personal information and shred any tangible materials
+                containing personal information. While we will endeavour to destroy all copies of
+                personal information, you acknowledge that deleted information may continue to exist
+                on back-up media but will not be used unless permitted by law.
+            </p>
+            <p>
+                We will continually review and update our security policies and controls as technology
+                evolves. However, no security technology can be guaranteed to be failsafe. Using
+                the Internet or other public means of communication to collect and process personal
+                data may involve the transmission of data on an international basis and across networks
+                not owned and/or operated by us. Therefore, by using the Services and/or communicating
+                electronically with us, you acknowledge and agree to our processing of personal
+                information in this way and agree that we are not responsible for any personal information
+                which is lost, or which is altered, intercepted or stored by a third party without
+                authorization.
+            </p>
+            <p class="boldIt">
+                7. Accuracy / Access
+            </p>
+            <p>
+                Kootour has a responsibility to ensure that all personal information contained in
+                our records or which is disclosed to third parties for the purposes described above
+                is accurate, complete and up-to-date. You may make a request in writing for access
+                to your personal information. We will inform you of your personal information held
+                by us, and provide an account of the use that has been made of the information,
+                as well as identify any third parties to whom the information has been disclosed.
+                You may have reasonable access to your personal information, and if you demonstrate
+                the inaccuracy or incompleteness of personal information, the information will be
+                amended as appropriate. You should advise us immediately if you discover inaccuracies
+                in our data, if your personal information changes, or if you wish to have your information
+                removed from our files. All notices and requests should be in writing and sent to
+                the Privacy Officer at the address listed above (see: Accountability and Openness
+                / Compliance).
+            </p>
+            <p class="boldIt">
+                8. International Transfer and Storage of Information
+            </p>
+            <p>
+                You acknowledge and agree that your personal information may be transmitted, transferred,
+                processed, and/or stored outside of Canada, including in the United States, and
+                therefore may be available to governmental authorities under lawful orders and laws
+                applicable in such jurisdictions. We will use reasonable means to ensure that your
+                information is protected, but cannot guarantee that the laws of any foreign jurisdiction
+                will accord the same degree of protection as the laws of Canada.
+            </p>
+            <p class="boldIt">
+                9. Third Party Content and Links to other Websites
+            </p>
+            <p>
+                The Services may contain optional links to third party Internet websites and services.
+                You acknowledge that these third parties may collect data from users or their computers.
+                The accessing and use of third party websites or services is at your own risk, and
+                we cannot assume responsibility for the privacy practices, policies or actions of
+                the third parties who operate those websites or services. This Policy applies only
+                to the Kootour Services, and we encourage you to review the privacy policies of
+                any third parties when using their websites or services.
+            </p>
+            <p class="boldIt">
+                10. Minors
+            </p>
+            <p>
+                Minors (persons under the age of majority as defined in your jurisdiction) are not
+                eligible to use the Services unsupervised, and we request that minors do not submit
+                any personal information to us. If you are under the age of majority in your jurisdiction,
+                you may only use the Services in conjunction with and under the supervision of an
+                adult. Kootour does not knowingly collect personal information from minors.
+            </p>
+        </div>
+        <!--end of privacy tab-->
+    </div>
+    <!--end of tab contents-->
+</div>
+<!--end of main tab container-->

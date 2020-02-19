@@ -1,0 +1,275 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Help Centre | Account | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Get answers to your questions regarding your Kootour account." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <section class="section row">
+
+                <!--breadcrumb-->
+
+                <ol class="breadcrumb nobackgroundcolor">
+                    <li><a href="@Url.Action("HelpHome")">Help</a></li>
+                    <li class="active">Account Related</li>
+                </ol>
+
+                <!--breadcrumb-->
+                   
+                <h2 class="blue">Account Related </h2>
+                <span class="title_help">Sign Up</span>
+
+                <!--start accordian-->
+
+                            		          
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                    
+                    <!---01-->
+												  
+					<div class="panel-heading" role="tab" id="headingOne">
+						<h4 class="panel-title">
+							<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+							How do I sign up to be a Kootour traveller?
+
+                            </a>
+						</h4>
+					</div>
+
+
+					<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						<div class="new_panel_body">
+						On the upper right corner of the Kootour page you will see “Sign Up”. Click on that and follow the steps to create your account.
+
+						</div>
+					</div>
+
+
+
+
+                <!---02-->
+												  
+					<div class="panel-heading" role="tab" id="headingTwo">
+						<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+							How do I sign up to be a Kootour guide?
+
+						</a>
+						</h4>
+					</div>
+					<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+						<div class="new_panel_body">
+						Go to the upper right corner of the Kootour website and select “Become a Guide”. On the next page click “Join Us” and follow the steps to sign up.
+
+						</div>
+					</div>
+
+                    <hr>
+												  
+                <span class="title_help">Your Account</span>
+                <!---03-->
+
+												  
+					<div class="panel-heading" role="tab" id="headingThree">
+						<h4 class="panel-title">
+						<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+							I logged in and all my bookings and/or tours are gone! What happened?
+						</a>
+						</h4>
+					</div>
+					<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+						<div class="new_panel_body">
+						Please verify that you logged in using the same method you used for signing up. If you used your email, then login using that. If you used Facebook or WeChat, use those accounts to login. If you don’t remember which one you used or are still having difficulties, send us an email to <a href="mailto:contact@kootour.com"> contact@kootour.com</a> so we can assist you.
+                                                        
+						</div>
+					</div>
+												  
+
+                <!---04-->
+                                                    
+                                                    
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            Is using Facebook to log in better?
+
+
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="new_panel_body">
+                        Registering using Facebook or linking to it later helps us to validate your account with another method besides phone number. This helps increase the level of trust you can gain from people viewing your profile. Additionally, logging in with Facebook lets you easily share your travel plans with friends on Facebook or even import photos from your account to Kootour’s website with ease.Additionally, logging in with Facebook lets you easily share your travel plans with friends on Facebook or even import photos from your account to Kootour’s website with ease.
+
+                        </div>
+                    </div>
+
+
+                    <!---05-->
+                                                  
+
+                                                    
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            What should I do if I forgot my Facebook password and can’t log in?
+
+
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="new_panel_body">
+                        Read <a href="https://www.facebook.com/help/105487009541643?ref=related"> this article</a> from Facebook’s help center on how to recover your password. 
+                        </div>
+                    </div>
+                                                  
+
+
+                <!---06-->
+                                                  
+                    <div class="panel-heading" role="tab" id="headingSix">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseFive">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                        I signed up with my email but forgot my password. How do I recover it?
+
+
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                        <div class="new_panel_body">
+                        Click on “Log in” button on the top of the page. In this page, click on “forgot your password?” then type in the email address you used when signing up. We will then send you an email with instructions on how to reset your password.
+
+
+                        </div>
+                    </div>
+                                                  
+
+
+
+                <!---07-->
+                                                  
+                    <div class="panel-heading" role="tab" id="headingSeven">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            Can I change the email address I used when I signed up?
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                        <div class="new_panel_body">
+                        For the moment you can only change your email if you signed up using Facebook or WeChat. However, even in this case, you can only change it once (when you verify it). If you have an urgent need to change your email, seek our assistance at <a href="mailto:contact@kootour.com"> contact@kootour.com</a>.
+
+
+                        </div>
+                    </div>
+
+                    <hr>
+                    <span class="title_help">Messaging </span>
+                                                  
+
+
+
+                    <!---08-->
+                    <div class="panel-heading" role="tab" id="headingEight">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            Where do I see and answer messages?
+
+
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                        <div class="new_panel_body">
+                                                        
+                        This can be done by clicking on “Messages” in the top right corner of the page. You will then be able to see messages received from travellers, tour guides or other members of the Kootour community.
+                        </div>
+                    </div>
+
+
+                    <!---9-->
+
+
+                                                
+                    <div class="panel-heading" role="tab" id="headingNine">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            Will I be notified of new messages?
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                        <div class="new_panel_body">
+                        When a new message arrives, you will be notified by receiving an email in the address you provided when you signed up. A popup notification will also appear in the upper right corner of the page if you are logged in to your Kootour account.
+
+                        </div>
+                    </div>
+                                                 
+                    <!---10-->
+
+
+                                                  
+                    <div class="panel-heading" role="tab" id="headingTen">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            How fast should I answer messages?
+
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                        <div class="new_panel_body">
+                        Messages should be answered as soon as possible to ensure that any important information that needs to be exchanged can reach the other person in time. We recommend replying to messages in less than 48 hours or even faster if your tour is coming up soon.
+
+
+
+                        </div>
+                    </div>
+                                                  
+                    <!---11-->
+
+
+                                                  
+                    <div class="panel-heading" role="tab" id="headingEleven">
+                        <h4 class="panel-title">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                            Why should I use Kootour’s messaging system rather than contact the person directly?
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+                        <div class="new_panel_body">
+                        We feel it’s better for all parties involved if you contact the guide through our internal messaging system. This lets everyone have a record of the things discussed, therefore helping to avoid misunderstandings and facilitating any dispute resolution.
+                        </div>
+                    </div>
+                                                 
+         
+                </div><!--end accordian-->
+			</section>
+            @Html.Partial("_Social")
+        </div>
+    </div>
+</div>

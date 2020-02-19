@@ -1,0 +1,1 @@
+﻿Please follow Developer standards for coding and testing work. Thanks!

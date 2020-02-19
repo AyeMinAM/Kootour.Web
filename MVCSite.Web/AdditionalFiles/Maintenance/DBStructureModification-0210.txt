@@ -1,0 +1,42 @@
+﻿--Update By Kevin, 20170219 Crucial Update
+alter table [EmailServer].[dbo].[Visits] alter column path varchar(2000);
+
+
+drop procedure [dbo].[updateUserPhoneConfirmed]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+ 
+create procedure [dbo].[updateUserPhoneConfirmed]
+(
+@ID int
+)
+as
+begin
+update [dbo].[User] set IsPhoneConfirmed = 1 where ID = @ID;
+end
+GO
+  
+  
+DROP procedure [dbo].[updateUserEmailConfirmed]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+create procedure [dbo].[updateUserEmailConfirmed]
+(
+@ID int
+)
+as
+begin
+update [dbo].[User] set IsConfirmed = 1 where ID = @ID;
+end
+GO

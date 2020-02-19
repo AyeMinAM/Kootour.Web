@@ -1,0 +1,15 @@
+#preview {
+	width: 80%; 
+	max-width: 100px;
+	margin-top:0px;
+	margin-bottom:0px;	
+}
+#preview img {
+	width: 64px;
+    height: 64px;	
+}
+.hiddenfile {
+	width: 0px;
+	height: 0px;
+	overflow: hidden;
+}

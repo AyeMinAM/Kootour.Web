@@ -1,0 +1,456 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    footer {
+        margin-top: 0;
+    }
+    .subscribe-section  {
+        background: #ededef;
+    }
+</style>
+@section seoinfo{
+    <title>Become a Local Guide | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Create and manage tours, obtain more bookings and easily receive payments, all in a simple and automatic way." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="become a guide, become a tour guide, become a local guide, tour guide, local guide, marketplace, increase bookings, easy payments, automatic payments, phone, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+<body class="white" id="to-top">
+    <!-- Begin navbar -->
+    <div class="cover guide-cover">
+
+        @Html.Action("Header", "Home", new { role = Model.Role, page = 1 }, true)
+
+        <div class="cover-content">
+            <div class="container">
+                <h2 class="become-a-guide">
+                    Welcome to our easy-to-use platform where
+                    amateur and professional guides alike can
+                    easily create and manage tours, obtain more
+                    bookings and easily receive payments, all in a
+                    simple and automatic way.
+                </h2>
+                <div style="padding-bottom:30px; padding-top:20px;">
+                    @if (Model.CurrentUser == null)
+                    {
+                        <a href="@Url.Action("Register", "Account", new { role =(int)MVCSite.Common.UserRole.Guider})" style="color:white;" class="btn btn-kootour btn-xl">JOIN US</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("BecomeGuider", "Account")" style="color:white;" class="btn btn-xxl btn-kootour">JOIN US</a>
+                    }
+                    @*                    <a href="http://www.kootour.com/Account/Logon/" style="color:white;" class="btn btn-xl">JOIN US</a>*@
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side nav -->
+    <nav class="side-nav" role="navigation">
+
+        <ul class="nav-side-nav">
+            <li><a class="tooltip-side-nav" href="#section-1" title="" data-original-title="Benefits" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#section-2" title="" data-original-title="Kootour" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#section-3" title="" data-original-title="Join&nbsp;Us" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#to-top" title="" data-original-title="Top" data-placement="left auto"></a></li>
+        </ul>
+
+    </nav> <!-- /.side-nav -->
+
+    <div class="container">
+        <section class="services-section" id="section-1">
+
+            <div class="container">
+
+                <div class="row">
+                    <h2 class="text-center blue">Manage Tours</h2>
+                    <div class="col-md-4 col-services">
+                        <figure>
+                            <img class="img-services" src="/images/icons/booking.png" alt="">
+                        </figure>
+
+                        <h3 class="blue">Simplified Bookings</h3>
+                        <p>Set your availability and we’ll notify you as soon as your tour is booked. Less time spent managing bookings means more time to focus on your tours.</p>
+                    </div>
+
+
+
+                    <div class="col-md-4 col-services">
+
+                        <figure>
+                            <img class="img-services" src="/images/icons/support.png" alt="">
+                        </figure>
+
+                        <h3 class="blue">Direct Support</h3>
+                        <p>We have a dedicated, multi-lingual support team offering support in English, Mandarin and Spanish.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+
+                    <div class="col-md-4 col-services">
+                        <figure>
+                            <img class="img-services" src="/images/icons/payments.png" alt="">
+                        </figure>
+                        <h3 class="blue">Payment Management</h3>
+                        <p>Our prices are in US dollars and you can receive USD or your local currency. We transfer payment after the tour concludes, even in case of last-minute cancels or “no-shows” by the consumer.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+
+                </div> <!-- /.row -->
+            </div> <!--end container of first row-->
+        </section> <!--end section of first row-->
+        <!--end of manage tour-->
+
+        <hr class="blue">
+
+        <!--get bookings-->
+        <section class="services-section" id="section-1">
+            <!--start section of 2nd row-->
+            <div class="container">
+                <!--start container of second row-->
+                <div class="row">
+                    <h2 class="text-center blue">Get Bookings</h2>
+                    <p>The online world gives you access to a huge market of travellers looking for tours. It’s not easy to reach these travellers however, Kootour helps in the following ways:</p>
+                    <div class="col-md-4 col-services">
+
+                        <!-- Icons -->
+                        <figure>
+                            <img class="img-services" src="/images/icons/visibility-01.png" alt="">
+                        </figure>
+
+                        <!-- Title -->
+                        <h3 class="blue">Increase visibility</h3>
+
+                        <!-- Description -->
+                        <p>We provide marketing and promotion for your tours, reaching customers from around the world.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+                    <div class="col-md-4 col-services">
+
+                        <!-- Icons -->
+                        <figure>
+                            <img class="img-services" src="/images/icons/trends.png" alt="">
+                        </figure>
+
+                        <!-- Title -->
+                        <h3 class="blue">Learn trends</h3>
+
+                        <!-- Description -->
+                        <p>The world of tourism is constantly changing. Our blog and analytics help your business stay up-to-date and competitive.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+                    <div class="col-md-4 col-services">
+
+                        <!-- Icons -->
+                        <figure>
+                            <img class="img-services" src="/images/icons/training and resources.png" alt="">
+                        </figure>
+
+                        <!-- Title -->
+                        <h3 class="blue">Training and resources</h3>
+
+                        <!-- Description -->
+                        <p>Learn how to sell, prepare and conduct your tours better than before.  Our tutorials, videos and one-on-one support help get you more bookings and great reviews.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+                </div> <!-- /.row -->
+                <!--end second row-->
+
+            </div> <!--end container of second row -->
+
+        </section> <!-- end section of 2nd row -->
+        <!--end get booking-->
+
+        <hr class="blue">
+
+        <!--meet new people-->
+        <section class="services-section" id="section-1">
+            <!--start section of meet new people-->
+
+            <div class="container">
+                <!--start container of meet new people-->
+                <div class="row">
+
+                    <h2 class="blue">Meet New People</h2>
+
+                    <div class="col-md-6 col-services">
+                        <figure>
+                            <img class="img-services" src="/images/icons/meet people.png" alt="">
+                        </figure>
+
+
+                        <h3 class="blue">Make friends worldwide and establish business connections</h3>
+
+
+                        <p>Travellers don’t have to just be customers, they’re also future friends and business partners. Leading a tour provides a unique opportunity to get to know each other.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+
+
+
+                    <div class="col-md-6 col-services">
+
+
+                        <figure>
+                            <img class="img-services" src="/images/icons/share.png" alt="">
+                        </figure>
+
+                        <h3 class="blue">Share your passions and work</h3>
+
+
+                        <p style="padding-top:32px;">Teach people about your country, culture, local history, and interests. Travellers like to learn first-hand about the country they’re visiting and teaching them can be very rewarding.</p>
+
+                    </div> <!-- /.col-md-4 -->
+
+
+
+                </div> <!-- /.row -->
+                <!--end meet new people row-->
+
+            </div> <!--end container of meet new people -->
+
+        </section> <!-- end section of meet new people-->
+        <!--end meet new people-->
+
+    </div>
+
+
+    <!-- kootour step by step explained -->
+    <!--kootour_step01-->
+    <section class="features-section" id="section-2">
+
+        <div class="container">
+
+            <h1 class="text-center blue">What is Kootour?</h1>
+            <br />
+            <div class="row">
+
+                <div class="col-md-7 col-features text-center">
+
+                    <!-- Images showcase -->
+                    <figure>
+                        <img class="img-iPhone" src="/images/step_01.png" alt="">
+                    </figure>
+
+                </div> <!-- /.col-md-5 -->
+
+                <div class="col-md-5 col-features features-content">
+
+                    <!-- Title -->
+                    <h2 class="blue" id="title-1">You create a tour with Kootour</h2>
+
+                    <!-- Description -->
+                    <p>Our intuitive system makes it easy to create your tours, add customized options and manage your availability.</p>
+
+                    <!-- end kootour_step01-->
+
+                </div> <!-- /.col-md-7 -->
+
+            </div> <!-- /.row -->
+            <!--kootour step_02-->
+
+            <div class="row media-screen-800">
+
+                <div class="col-md-7 col-md-push-5 col-features text-center">
+
+                    <!-- Images showcase -->
+                    <figure>
+                        <img class="img-iPhone" src="/images/step_02.png" alt="">
+                    </figure>
+
+                </div> <!-- /.col-md-5 -->
+
+                <div class="col-md-5 col-md-pull-7 col-features features-content">
+
+                    <!-- Title -->
+                    <h2 class="blue" id="title-2">Travellers book your tours on our website</h2>
+
+                    <!-- Description -->
+                    <p>Your published tours are displayed in a simple interface that allows them to search and explore the tours they are interested in.</p>
+
+                </div> <!-- /.col-md-7 -->
+
+            </div> <!-- /.row -->
+            <!--end kootour step_02-->
+            <!--kootour step_03-->
+            <div class="row">
+
+                <div class="col-md-7 col-features text-center">
+
+                    <!-- Images showcase -->
+                    <figure>
+                        <img class="img-iPhone" src="/images/step_03.png" alt="">
+                    </figure>
+
+                </div> <!-- /.col-md-5 -->
+
+                <div class="col-md-5 col-features features-content">
+
+                    <!-- Title -->
+                    <h2 class="blue" id="title-3">Kootour manages the bookings</h2>
+
+                    <!-- Description -->
+                    <p>Review the bookings you have received, get in touch with your tour group and get organized on the day of the tour with our mobile-friendly website.</p>
+
+                </div> <!-- /.col-md-5 -->
+
+            </div> <!-- /.row -->
+            <!--end of kootour step_03-->
+            <!--kootour step_04-->
+            <div class="row media-screen-800">
+
+                <div class="col-md-7 col-md-push-5 col-features text-center">
+
+                    <!-- Images showcase -->
+                    <figure>
+                        <img class="img-iPhone" src="/images/step_04.png" alt="">
+                    </figure>
+
+                </div> <!-- /.col-md-5 -->
+
+                <div class="col-md-5 col-md-pull-7 col-features features-content">
+
+                    <!-- Title -->
+                    <h2 class="blue" id="title-2">Lead your group on an awesome tour</h2>
+
+                    <!-- Description -->
+                    <p>Our platform takes care of all the administrative tasks so you can focus on your tours.</p>
+
+                </div> <!-- /.col-md-7 -->
+
+            </div> <!-- /.row -->
+            <!--end of kootour step_04-->
+            <!--kootour step_05-->
+            <div class="row ">
+
+                <div class="col-md-7 col-features text-center">
+
+                    <!-- Images showcase -->
+                    <figure>
+                        <img class="img-iPhone" src="/images/step_05.jpg" alt="">
+                    </figure>
+
+                </div> <!-- /.col-md-5 -->
+
+                <div class="col-md-5 col-features features-content">
+
+                    <!-- Title -->
+                    <h2 class="blue" id="title-3">We transfer your payment</h2>
+
+                    <!-- Description -->
+                    <p>We transfer your payment upon tour completion, and there is no cash exchanged with the traveller. This ensures that you always get paid, even if they are a “no-show”.</p>
+
+                </div> <!-- /.col-md-7 -->
+
+            </div> <!-- /.row -->
+
+        </div> <!-- /.container -->
+        <!--end of kootour step_05-->
+
+
+    </section> <!-- end kootour step by step explained -->
+    <!-- join us -->
+    <section class="subscribe-section" id="section-3">
+
+        <div class="container">
+
+            <div class="row">
+
+                <div class=" col-md-12">
+
+                    <!-- Title -->
+                    @*<h3></h3>*@
+
+                    <div>
+                        @if (Model.CurrentUser == null)
+                        {
+                            <a href="@Url.Action("Register", "Account", new { role =(int)MVCSite.Common.UserRole.Guider})" class="page-scroll btn btn-xxl btn-kootour">JOIN US</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("BecomeGuider", "Account")" class="page-scroll btn btn-xxl btn-kootour sr-button">JOIN US</a>
+                        }
+                        @*      <a href="http://www.kootour.com/Account/Logon" class="page-scroll btn btn-xl sr-button">JOIN US</a>*@
+                    </div>
+
+                </div> <!-- /.col-md-12 -->
+
+            </div> <!-- /.row -->
+
+        </div> <!-- /.container -->
+
+    </section> <!-- join us -->
+</body>
+
+<script>
+    $(function() {
+
+  /*-----------------------------------------------------------------------------------*/
+  /*  Anchor Link
+  /*-----------------------------------------------------------------------------------*/
+  $('a.tooltip-side-nav').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      || location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    if (target.length) {
+      $('html,body').animate({
+        scrollTop: target.offset().top
+      }, 1000);
+        return false;
+      }
+    }
+  });
+
+  /*-----------------------------------------------------------------------------------*/
+  /*  Tooltips
+  /*-----------------------------------------------------------------------------------*/
+  $('.tooltip-side-nav').tooltip();
+
+});
+</script>
+
+
+@*<div class="container">
+        <div class="row">
+
+            <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                <section class="text-center section section-small">
+
+                      <div class="intro-heading">
+                               Welcome to our easy-to-use platform where
+                            amateur and professional guides alike can
+                            easily create and manage tours, gain more
+                            bookings and easily receive payments, all in a
+                            simple and automatic way.
+                      </div>
+                      <div class="row">
+                          <div style="padding-bottom:30px; padding-top:20px;">
+                              @if (Model.CurrentUser == null)
+                              {
+                             <a href="@Url.Action("Register", "Account", new { role =(int)MVCSite.Common.UserRole.Guider})" style="color:white;" class="btn btn-primary btn-xl page-scroll">JOIN US</a>
+                              }
+                              else
+                              {
+                             <a href="@Url.Action("BecomeGuider", "Account")" style="color:white;" class="btn btn-primary btn-xl page-scroll">JOIN US</a>
+                              }
+                          </div>
+                      </div>
+
+                </section>
+            </div>
+        </div>
+    </div>
+*@

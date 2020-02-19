@@ -1,0 +1,11 @@
+﻿*****	Nuget Packages	*****
+
+
+
+*****	Visual Studio Extensions & Updates	*****
+
+Click Tools > Extensions and Updates...
+
+Essentail Extensions and Updates include:
+NPM Tasker Runner
+Resharper

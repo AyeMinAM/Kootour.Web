@@ -1,0 +1,54 @@
+.notification-wrapper {
+    margin-top: 25px;
+}
+
+section.notification {
+    background-color: @breadcrumbBackground;
+    color: white;
+    padding: @sectionPaddingTop;
+    position: relative;
+    padding-right: 50px;
+    padding-left: 50px;
+    background-image: url('../../images/icons/icon_notification.png');
+    background-repeat: no-repeat;
+    background-size: 35px;
+    background-position: 10px center;
+}
+
+.notification:not(:first-child) {
+    border-top: 1px solid @darkGray;
+}
+
+.notification .icon {
+    float: left;
+}
+
+.notification > * {
+    margin-bottom: 0 !important;
+}
+
+.notification > p {
+    margin-left: 15px;
+}
+
+.close-icon {
+    .small-icon();
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin-top: calc(-(@iconWidth / 3) / 2);
+    cursor: pointer;
+}
+
+.navbar {
+    section.notification {
+        background-color: white;
+        color: @body-color;
+        font-size: 14px;
+        background-position: 19px center;
+    }
+
+    section.notification:hover {
+        background-color: @lightGray;
+    }
+}

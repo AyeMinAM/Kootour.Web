@@ -1,0 +1,570 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Help Centre | Guides | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Get answers to your questions regarding posting or managing tours on Kootour." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+
+
+<div class="container">
+        <div class="row">
+        <div class="col-xs-12">
+                <section class="section row">
+
+                	<!--breadcrumb-->
+
+                    <ol class="breadcrumb nobackgroundcolor">
+                        <li><a href="@Url.Action("HelpHome")">Help</a></li>
+                        <li class="active">Guides</li>
+                    </ol>
+
+                    <!--breadcrumb-->
+                   
+                    <h2 class="blue">Guides </h2>
+                    <span class="title_help">Posting a Tour</span>
+
+                    <!--start accordian-->
+
+                            		          
+                            	<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                                                    
+                                    <!---01-->
+												  
+									<div class="panel-heading" role="tab" id="headingOne">
+										<h4 class="panel-title">
+											<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                            <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+											How do I offer a tour?
+                                            </a>
+										</h4>
+									</div>
+
+
+									<div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+										<div class="new_panel_body">
+										Begin by signing-up as a Guide. To do this, go to the upper right corner of the Kootour website and select “Become a Guide”. On the next page click “Join Us” and follow the steps to sign up. Once you have finished, click on the Manage Tours option in the upper part of the website. Here you can create a new tour using the “Create a tour product” button on the upper-right side of the page or manage existing tours.
+										</div>
+									</div>
+
+
+
+
+                                <!---02-->
+												  
+									<div class="panel-heading" role="tab" id="headingTwo">
+										<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+											Are all tours Instant-Book?
+										</a>
+										</h4>
+									</div>
+									<div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+										<div class="new_panel_body">
+										All the tours offered on Kootour must be Instant-Book. You need to provide the available dates and times that travellers can book instantly without having to wait for your approval.
+										</div>
+									</div>
+												  
+
+                                <!---03-->
+
+												  
+									@*<div class="panel-heading" role="tab" id="headingThree">
+										<h4 class="panel-title">
+										<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+											When will my tour appear to Kootour visitors after I post it?
+
+										</a>
+										</h4>
+									</div>
+									<div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+										<div class="new_panel_body">
+										All tours will be approved in less than 48 hours. We like to make sure that all the information and images you placed on your tour page meet our standards. This allows us to help you if the description of the tour is not complete enough or if we believe better images can be used to support the information you provide and grab the attention of travellers more.
+
+										</div>
+									</div>*@
+												  
+
+                                <!---04-->
+                                                    
+                                                    
+                                    <div class="panel-heading" role="tab" id="headingFour">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I create a good profile?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                        <div class="new_panel_body">
+                                        Travellers are looking for people who can provide them with unique experiences. Your profile is the ideal place to talk about what qualifies you as a guide. Write about your experience as a guide, the unique skills and knowledge you have, what you love about the places you take people to, among other things. In short: tell people what makes you an awesome guide and why you’re passionate about what you do. Also, be sure to use a good quality profile photo that shows your face clearly.
+
+                                        </div>
+                                    </div>
+
+
+                                    <!---05-->
+                                                  
+
+                                                    
+                                    <div class="panel-heading" role="tab" id="headingFive">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I verify my phone number?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                                        <div class="new_panel_body">
+                                        If you didn’t do it when you originally signed up, go to your account page and you will see a button next to “Phone” that says “Verify Number”. Click it and follow the instructions to verify your phone number. Once verified, a check will appear next to “Phone” in your account page. You will also see a button to the right that says “Change Number”. You can use this to change your number at any time. Please be sure to inform travellers who have already booked a tour with you about this change.
+                                        </div>
+                                    </div>
+                                                  
+
+
+                                <!---06-->
+                                                  
+                                    <div class="panel-heading" role="tab" id="headingSix">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseFive">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                        What is a good price to charge for my tour?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                                        <div class="new_panel_body">
+                                        The most important thing to remember when setting your price is that people expect to receive what they pay for. If you plan on charging a higher price, be sure travellers know they are getting great value in exchange. There are several other things you should take into account when setting your price:
+                                        </br>
+                                        </br>
+
+                                        <ol type="a">
+                                                <li><span class="boldIt">The average cost of things where you live:</span> Travellers generally know how expensive each country is. As such, people traveling to expensive destinations like Europe or North America know that the general cost of goods, services and tours is higher than in, for example, developing countries. Be sure to offer prices that are competitive according to your region to avoid being seen as someone who is taking advantage of travellers.</li>
+                                                <li><span class="boldIt">What you include in the tour:</span> If you offer a simple walking tour with no added activities such as meals, transportation or similar, then offering a lower price makes sense. If you are going to include things such as food samples in local stores, transportation between locations, visits to paid attractions, etc. then be sure to include these in the price. Make it clear in the description so travellers know they are paying a higher price because of what your tour includes.</li>
+                                                <li><span class="boldIt">Pay attention to other guides:</span> Ask around the area you conduct your tours to see for how much tours are being offered to travellers. Also check what other Kootour guides in your area are charging for their tours. Both of these thing will help you offer a price that makes you competitive. </li>
+                                        </ol>
+
+
+                                        </div>
+                                    </div>
+                                                  
+
+
+
+                                <!---07-->
+                                                  
+                                    <div class="panel-heading" role="tab" id="headingSeven">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What will Kootour charge me for posting a tour?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                                        <div class="new_panel_body">
+                                        There is no fee for posting a tour on Kootour. Once you start receiving bookings, we will charge you a fixed commission on the price of each booking. When making tours, you choose the net price (this is the amount you receive from Kootour) and we simply add our commission to it, resulting in the price the traveller sees on our website.
+
+                                        </div>
+                                    </div>
+
+
+                                                  
+
+
+
+                                    <!---08-->
+                                    <div class="panel-heading" role="tab" id="headingEight">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What should I do once someone books my tour?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseEight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEight">
+                                        <div class="new_panel_body">
+                                        You should send an email to the traveler and include in it the following things:
+                                        <ol type="a">
+                                                <li><span class="boldIt">Detailed information regarding the meeting place, time and how to get there.</span> Make sure to also include a short message in the local language that travellers can show to locals in case they are lost or need to contact you.
+                                                </li>
+                                                <li><span class="boldIt">Additional information</span> regarding what to bring, things to know during the tour, safety tips and any other advice to make the traveller’s journey more pleasant.
+                                                </li>
+                                                <li><span class="boldIt">Inquire about any health conditions, dietary restrictions or similar things</span> which may impact your preparations for the tour and the way you will conduct it.
+                                                </li>
+
+                                                <li><span class="boldIt">Verify the traveller’s experience, knowledge and physical fit</span> in case that your tour includes activities that require a certain level of preparedness in any of these.
+                                                </li>
+                                        </ol>
+                                        </div>
+                                    </div>
+
+
+                                    <!---9-->
+
+
+                                                
+                                    <div class="panel-heading" role="tab" id="headingNine">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I edit a tour I posted?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                                        <div class="new_panel_body">
+                                        This can be done by selecting “Manage Tours” on the upper right corner of the page. Once there, choose the tour you want to edit and click the “Edit” button below its name.
+
+                                        </div>
+
+                                        <div class="new_panel_body">
+                                            It’s important to note that once a tour becomes active, the “Edit” button changes to “Extend”. Clicking this button will allow you to only make changes to these sections: Tour Summary, Itinerary and the date range your tour is available. If you need to change any other part of your tour, first deactivate it, then when the Edit button appears again, click it to make the changes you want.
+
+                                        </div>
+
+
+
+                                    </div>
+                                                 
+                                    <!---10-->
+
+
+                                                  
+                                    <div class="panel-heading" role="tab" id="headingTen">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTen" aria-expanded="false" aria-controls="collapseTen">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            Can I temporarily hide a tour I posted?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTen">
+                                        <div class="new_panel_body">
+                                        This can be done by selecting “Manage Tours” on the upper right corner of the page. Once there, choose the tour you want to hide and click the “Inactive” button below its name. Be aware that anyone visiting the page directly (bookmarked, URL on social networks, etc.) will see a message saying that your tour was removed by you. When you want to make it visible again, simply return to this page and click the “Active” button that now appears where the “Inactive” button was. Your tour will immediately become visible again. Please be aware that you cannot deactivate a tour that has existing bookings. If you need to deactivate it for whatever reason, send us an email to <a href="mailto:contact@kootour.com" target="_top">contact@kootour.com</a>.
+
+
+                                        </div>
+                                    </div>
+                                                  
+                                    <!---11-->
+
+
+                                                  
+                                    <div class="panel-heading" role="tab" id="headingEleven">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I delete a tour I posted?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+                                        <div class="new_panel_body">
+                                        This can be done by selecting “Manage Tours” on the upper right corner of the page. Once there, choose the tour you want to delete and click the “Delete” button below its name. Be aware that anyone visiting the page directly (bookmarked, URL on social networks, etc.) will see a message saying that your tour was removed by you.
+                                        </div>
+                                    </div>
+                                                 
+
+
+
+                                <!---12-->
+                                                    
+                                    <div class="panel-heading" role="tab" id="headingTwelve">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwelve" aria-expanded="false" aria-controls="collapseTwelve">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I edit my profile?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseTwelve" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwelve">
+                                        <div class="new_panel_body">
+                                        This can be done by going to your account page, making the changes you want and then clicking “Save” at the bottom of the page.
+
+                                    </div>
+                                    </div>
+                                                 
+
+                                                    
+                                    <!---13--> <!--
+                                    <div class="panel-heading" role="tab" id="headingThirteen">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThirteen" aria-expanded="false" aria-controls="collapseThirteen">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How do I cancel a booking?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseThirteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThirteen">
+                                        <div class="new_panel_body">
+                                        Cancel a booking
+
+                                        </div>
+                                    </div> --> 
+
+                                                  
+
+                                    <!---14-->
+                                    <div class="panel-heading" role="tab" id="headingFourteen">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFourteen" aria-expanded="false" aria-controls="collapseFourteen">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            Can I promote my tour on my own website and/or blog?
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFourteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFourteen">
+                                        <div class="new_panel_body">
+                                        Of course you can! Just link back to your tour page on Kootour to make it easier for people to book it.
+                                    </div>
+                                    </div>
+                                            
+                                                   
+                            <hr>
+
+                            <span class="title_help">Receiving Payments for Completed Tours</span>
+
+
+
+                                    <!---15-->
+                                    <div class="panel-heading" role="tab" id="headingFifteen">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFifteen" aria-expanded="false" aria-controls="collapseFifteen">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What payment methods does Kootour use to pay me for the tours I do?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseFifteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFifteen">
+                                        <div class="new_panel_body">
+                                                      
+                                        Kootour currently offers two payments methods:
+
+                                        <ol type='a'>
+                                            <li> 
+                                                <span class="boldIt">
+                                                    Payoneer (www.payoneer.com): This is our default provider for sending payments to our guides. We pay tours in USD but Payoneer can convert this amount to local currencies based on the exchange rate they use. Please verify beforehand the countries and currencies that Payoneer supports. If your country or currency is not supported, contact us so we can send payment through Paypal.
+                                                </span>
+                                            </li>
+                                            <li>
+                                                <span class="boldIt"> 
+                                                    Paypal (www.paypal.com): We use this provider for sending payments when Payoneer is not feasible in a specific country or for a certain bank. Guides can also request this method if they simply prefer it over Payoneer.
+                                                </span> 
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    </div>
+
+                                    <!---16-->
+                                    <div class="panel-heading" role="tab" id="headingSixteen">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSixteen" aria-expanded="false" aria-controls="collapseSixteen">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            Should I accept payments in cash directly from the traveller?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                                    
+                                    <div id="collapseSixteen" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSixteen">
+                                        <div class="new_panel_body">
+                                        Payments must always be made through the Kootour platform. Any cash payments should only be made by the traveller to pay for meals, attraction tickets and any other expenses not included in the tour’s price. If you receive (or fail to receive) payments in cash, then Kootour will not be able to help you resolve any disputes since we will have no record of a payment being made.
+
+                                    </div>
+                                    </div>
+
+
+
+                                        <!---17-->
+                                    <div class="panel-heading" role="tab" id="heading17">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse17" aria-expanded="false" aria-controls="collapse17">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What currency does Kootour pay in?
+
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                                    
+                                    <div id="collapse17" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading17">
+                                        <div class="new_panel_body">
+                                                     
+                                        Kootour accepts payments for tours in USD and pays guides using the same currency. If you want those funds deposited in a foreign currency, they will be converted according to the current exchange rate managed by our payment partners. Additional charges may be applied by your banking institution.
+
+
+                                    </div>
+                                    </div>
+
+
+
+                                    <!---18-->
+                                    <div class="panel-heading" role="tab" id="heading18">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse18" aria-expanded="false" aria-controls="collapse18">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            How does Kootour calculate exchange rates?
+
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                                    
+                                    <div id="collapse18" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading18">
+                                        <div class="new_panel_body">
+                                                      
+                                        The exchange rate used is determined by our payment partners and fluctuates daily. Additional charges may be applied by your banking institution.
+
+
+
+                                    </div>
+                                    </div>
+
+                                                   
+                                                    
+                                    <hr>
+
+                                        <span class="title_help">Guidelines for Leading Tours</span>
+
+
+                                    <!---19-->
+                                                        
+                                    <div class="panel-heading" role="tab" id="heading19">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse19" aria-expanded="false" aria-controls="collapse19">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What should I remember to do during my tour?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapse19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading19">
+                                        <div class="new_panel_body">
+                                                      
+                                        The 5 most important things to remember are:
+
+                                        <ol type='a'>
+
+                                            <li> Be on time
+                                            </li>
+
+                                            <li>
+                                            Be professional and respectful
+                                            </li>
+
+                                            <li>
+                                            Be open and flexible to on-the-spot changes based on traveller requests
+
+                                            </li>
+
+                                            <li>
+                                            Introduce travellers to locals, suggest things to eat or offer other things that make your tour more unique
+
+                                            </li>
+
+                                            <li>
+                                            Request feedback personally and, especially, in the form of reviews on your tour’s page on Kootour
+
+                                            </li>
+
+
+                                        </ol>
+                                    </div>
+                                    </div>
+
+
+                                    <!---20-->
+                                    <div class="panel-heading" role="tab" id="heading20">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse20" aria-expanded="false" aria-controls="collapse20">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What should I do if I am late to a tour?
+
+
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                                    
+                                    <div id="collapse20" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading20">
+                                        <div class="new_panel_body">
+                                        The first thing you should do is notify the traveller as soon as possible by sending them an email, text or call. If you are unable to contact them, call us at +1-604-683-6450 to help you get in touch with them. In case contacting the traveller is not possible and you arrive at the destination to find they are not there, we will provide the traveller with a full refund.
+
+
+
+
+                                    </div>
+                                    </div>
+
+
+                                    <!---21-->
+                                    <div class="panel-heading" role="tab" id="heading21">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse21" aria-expanded="false" aria-controls="collapse21">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            I find myself unable to do a certain tour. What should I do?
+
+
+
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                                    
+                                    <div id="collapse21" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading21">
+                                        <div class="new_panel_body">
+                                                      
+                                        <p>Start by contacting the traveller who booked the tour and explain the situation to them. Try to reschedule the tour to a date and time that benefits both the traveller and yourself. Another option is to find someone you trust and equally qualified who can take over for you on that tour. A last resort alternative can be to contact another guide on Kootour who does tours in your area and see if they can take your group on the established itinerary.</p>
+
+                                        <p>If the above fail, please contact Kootour at <a href="mailto:contact@kootour.com"> contact@kootour.com</a> so we can resolve the situation by helping you find alternatives or simply facilitating the refund process for the traveller. Please also remember to keep your availability dates updated at all times to avoid any problems.</p>
+
+
+
+                                    </div>
+                                    </div>
+
+
+                                        <!---22-->
+                                    <div class="panel-heading" role="tab" id="heading22">
+                                        <h4 class="panel-title">
+                                        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse22" aria-expanded="false" aria-controls="collapse22">
+                                        <img src="@Url.Content("~/images/icons/bullet.png")" class="small-icon">
+                                            What should I do if the traveller who booked the tour is late?
+
+                                        </a>
+                                        </h4>
+                                    </div>
+                                                    
+                                    <div id="collapse22" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading22">
+                                        <div class="new_panel_body">
+
+                                        Your first action should be to contact the traveller by email, text or phone to see if they need help arriving or if they have encountered any delay. If you are unable to contact the traveller, please call us at <span class="boldIt">+1 (604) 683-6450 </span> so we can be aware of the situation and assist you. If after 30 minutes of waiting neither Kootour nor you are able to communicate with the traveller and they still haven’t shown up, they will be considered “No Show” and the tour completed. In this circumstance, you may leave and we will proceed to transfer your payment.
+
+                                        </div>
+                                    </div>
+                                            
+						</div><!--end accordian-->
+				</section> <!--the end of section for row-->
+
+                @Html.Partial("_Social")
+            </div>
+        </div>
+    </div>

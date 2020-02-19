@@ -1,0 +1,226 @@
+.coverbase(@height, @background-img) {
+    position: relative;
+    height: @height;
+    background-image: url('@{images}/@{background-img}');
+    background-size: cover;
+    font-family: Montserrat-Light;
+}
+
+.cover {
+    .coverbase(600px, 'cover_img.jpg');
+}
+
+.cover .cover-content {
+    position: absolute;
+    top: 38%;
+    left: 0;
+    width: 100%;
+    display: block;
+    text-align: center;
+    padding: 15px 0;
+}
+
+.cover-aboutus{
+    .coverbase(750px, 'company_banner.jpg');
+
+    .cover-aboutus-cover-content {
+        position: absolute;
+        top: 38%;
+        left: 0;
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .aboutus-slogan{
+        font-size: 36px;
+        color: @white;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 86px;
+    }
+}
+.cover-tours{
+    .coverbase(600px, 'landing/Generic/Generic.jpg');
+
+    .cover-tours-cover-content {
+        position: absolute;
+        top: 38%;
+        left: 0;
+        width: 100%;
+        display: block;
+        text-align: center;
+        padding: 15px 0;
+    }
+
+    .tours-slogan{
+        font-size: 36px;
+        color: @white;
+        max-width: 700px;
+        margin: 0 auto;
+        line-height: 86px;
+    }
+}
+
+@media (max-width: 1200px) {
+  .guide-cover.cover .cover-content{
+    top: 20%;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+  .guide-cover.cover {
+    height: 650px !important;
+  }
+
+}
+@media (max-width: 568px) {
+  .guide-cover.cover {
+    height: 750px !important;
+  }
+
+}
+
+.cover .slogan {
+    .font-size(@sloganFontSize);
+    color: @white;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 86px;
+}
+
+.cover .become-a-guide {
+  color: white;
+}
+
+.form-cover-mobile-wrapper {
+    display:none;
+    margin-bottom: 30px;
+}
+
+.cover .form-cover {
+    display: flex;
+    padding: 5px;
+    border-radius: @borderRadius;
+    background-color: rgba(237, 237, 239, 0.5);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 900px;
+}
+
+.cover .form-cover > *{
+    flex: 0 1 33.3%;
+    margin: 0 2.5px;
+}
+
+.cover .form-cover > :first-child{
+ 	 margin-left: 0;
+}
+
+.cover .form-cover > :last-child{
+ 	 margin-right: 0;
+}
+
+.cover .form-cover .form-control {
+	width: 100%;
+    .placeholder(black);
+}
+
+.cover-variant(@height, @background-size:cover, @background-position:left center){
+    position: relative;
+    height: @height;
+    background-size: @background-size;
+    background-position: @background-position;
+    background-repeat: no-repeat;
+}
+
+@media (min-width: 1200px) {
+    .cover-aboutus{
+        .cover-variant(750px, cover);
+    }
+
+    /*.cover-tours{
+        .cover-variant(600px, cover);
+    }*/
+}
+
+@media (max-width: 1200px) {
+    .cover .form-cover {
+        width: 90%;
+    }
+
+    .cover-aboutus{
+        .cover-variant(750px, cover);
+    }
+
+    /*.cover-tours{
+        .cover-variant(500px, cover);
+    }*/
+
+}
+@media (max-width: 992px) {
+    .cover {
+        .cover-variant(500px, cover);
+    }
+
+    .cover-aboutus{
+        .cover-variant(650px, cover);
+    }
+
+    /*.cover-tours{
+        .cover-variant(400px, cover);
+    }*/
+
+}
+@media (max-width: 768px) {
+    .cover {
+        .cover-variant(450px, cover);
+    }
+
+    .cover .slogan {
+        .font-size(5.2);
+        line-height: 66px;
+    }
+
+    .cover-aboutus{
+        .cover-variant(600px, cover);
+    }
+    /*.cover-tours{
+        .cover-variant(300px, cover);
+    }*/
+
+}
+
+@media (max-width: 600px) {
+    .cover {
+        .cover-variant(400px, cover);
+    }
+
+    .cover .slogan {
+        .font-size(@sloganFontSizeSmallScreen);
+        line-height: 43px;
+    }
+    .form-cover-mobile-wrapper {
+        display: block;
+    }
+
+    .cover-aboutus{
+        .cover-variant(450px, cover, 50% 0%);
+    }
+    /*.cover-tours{
+        .cover-variant(250px, cover, 50% 0%);
+    }*/
+}
+
+
+.cover.guide-cover {
+  background-image: url('@{images}/header_bg.jpg');
+}

@@ -1,0 +1,94 @@
+/* Customized options */
+.right-column-sticky section.section:first-child {
+  margin-top: calc(~'@{sectionSmallPaddingTop} - 5px');
+}
+
+.widget {
+}
+
+.widget .form-group {
+    margin: 0;
+}
+
+.widget .input-group-addon {
+    padding: 5px 12px;
+}
+
+.widget .customized-option {
+  .borderbottom();
+}
+
+.widget .widget-row {
+    display: table;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    width: 100%;
+    padding-left: @sectionSmallPaddingLeft;
+    padding-right: @sectionSmallPaddingRight;
+}
+
+.widget .widget-row.customized-option-readonly {
+    padding-bottom: 5px;
+    padding-top: 5px;
+}
+
+.widget .customized-option {
+  .font-size(@smallFontSize);
+}
+
+.widget .customized-option > .option-checkbox {
+    display: table-cell;
+    vertical-align: middle;
+    width: 10%;
+}
+
+.widget .customized-option > .option-label {
+    display: table-cell;
+    vertical-align: middle;
+    width: 60%;
+}
+
+.widget .customized-option > .option-price {
+    display: table-cell;
+    vertical-align: top;
+    width: 30%;
+    text-align: right;
+}
+
+.widget .customized-option > .option-label label {
+    font-weight: normal;
+    margin-bottom: 0;
+    cursor: pointer;
+}
+
+
+.widget button {
+    white-space: normal;
+    margin-top: 30px;
+}
+
+.widget .option-price > span {
+  display:block;
+}
+
+.widget .option-price > span.hours {
+  .font-size(@extraSmallFontSize);
+}
+
+
+.widget .coupon-form {
+    display: flex;
+    flex-direction: row nowrap;
+    justify-content: space-between;
+}
+
+.widget .coupon-form > input {
+     flex: 0 1 auto;
+    max-width: 145px;
+}
+
+.widget .coupon-form > button {
+    flex: 0 1 auto;
+    margin: 0;
+}
+

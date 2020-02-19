@@ -1,0 +1,40 @@
+﻿@using MVCSite.Biz
+
+@model EmailConfirmation
+
+
+<td colspan="2" bgcolor="#FFFFFF">
+    <font face="Arial, Helvetica, sans-serif" color="#0779be" size="5">
+        <strong>Hi, @Model.UserName,</strong>
+    </font> 
+    <font face="Arial, Helvetica, sans-serif" color="#000000">
+        <p>
+            Welcome to Kootour! Please click the link below to confirm your email address.         
+        </p>
+        <p>
+            <a href="@Model.ConfirmationLink" target="_blank">@Model.ConfirmationLink</a>
+        </p>
+        @if(!string.IsNullOrEmpty(Model.Password))
+        {
+        <p>
+            Your temporary password: @Model.Password. Please logon and change password ASAP.
+        </p>
+        }
+        <p>
+            (If the link doesn't work, copy the link and paste it into your web browser.)
+        </p>
+    </font>
+
+@*    <font face="Arial, Helvetica, sans-serif" color="#000000">Any problem feel free to send us email.
+        <a href="mailto:kefu@vjiaoshi.com" class="blue" target="_blank" ><strong>kefu@vjiaoshi.com</strong></a>
+    </font>*@
+    <font face="Arial, Helvetica, sans-serif" color="#000000">
+    </font>
+
+    <font face="Arial, Helvetica, sans-serif"
+        color="#000000">
+        <p>
+            <b>Thanks very much for your support!</b>
+        </p>
+    </font>
+</td>

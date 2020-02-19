@@ -1,0 +1,50 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Terms & Conditions | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Learn how Kootour ensures your satisfaction and privacy as a traveller or guide." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+  <!-----start of main tab container-->
+<style>
+ .container{
+     padding-bottom: 40px;
+ }
+.title_terms{
+    font-family:"Montserrat-Light";
+    font-size: 1.6rem;
+    font-style:normal;
+    line-height: 1.8;
+}
+
+.header_terms{
+    font-family:"Montserrat-Medium";
+    margin-top: 20px;
+    text-align:center;
+}
+.boldIt{
+    font-family: "Montserrat-Medium";
+}
+.topOfthepage_terms{
+    padding-top:20px;
+    padding-bottom: 20px;
+
+}
+</style>
+<div class="container">
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+        <input type="hidden" name="cmd" value="_s-xclick">
+        <input type="hidden" name="hosted_button_id" value="DLGX54RHRVHF4">
+        <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+        <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+    </form>  
+</div>
+<!--end of main tab container-->

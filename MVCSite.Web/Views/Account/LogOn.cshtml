@@ -1,0 +1,136 @@
+﻿@using System.Web.UI.WebControls
+@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.LogOnModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    @if (Model.Role == 0)
+    {
+        <title>Log In | Local Guide | Kootour</title>
+        @*The following 3 lines is for google plus*@
+        <meta itemprop="name" content="@Model.MetaName" />
+        <meta name="description" content="Signup to become a Kootour local guide and start increasing your tour's bookings." />
+        <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+        <meta name="keywords" content="login, log in, signin, sign in, tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+        <meta name="robots" content="index,follow" />
+    } else {
+        <title>Log In | Traveller | Kootour</title>
+        @*The following 3 lines is for google plus*@
+        <meta itemprop="name" content="@Model.MetaName" />
+        <meta name="description" content="Sign up to Kootour and begin booking unforgettable trips with our local guides." />
+        <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+        <meta name="keywords" content="login, log in, signin, sign in, tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+        <meta name="robots" content="index,follow" />
+    }
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-3 col-md-offset-2 col-lg-6 col-md-8 col-sm-12 col-xs-12">
+            @if(Model.Role == (int)MVCSite.Common.UserRole.Guider)
+            {
+            <h2 class="text-center title-page blue">Become Our Partner</h2>
+            }
+            <section class="section">
+                <div class="login-wrap">
+                    <div class="login-container">
+                        <p class="nomargin text-right blue"><b>Log In</b></p>
+                    </div>
+                    <div class="login-separator">
+                        <p class="nomargin text-center blue">|</p>
+                    </div>
+                    <div class="login-container">
+                        <p class="nomargin text-left blue"><a href="@Url.Action("Register", new {returnUrl=Model.ReturnUrl, role=Model.Role})">Sign Up</a></p>
+                    </div>
+                </div>
+                @if (Model.Role == (int)MVCSite.Common.UserRole.Tourist)
+                {
+                <div class="login-wrap login-wrap-collapse">
+                  
+                        <a id="fbLogin" class="btn btn-social fullwidth btn-social-facebook" href="#">
+                            <img alt="Brand" src="@Url.Content("~/images/icons/facebook_signup.png")" /> facebook
+                        </a>
+                    
+                   
+                </div>
+
+                <div class="login-wrap">
+                    <div class="login-container"></div>
+                    <div class="login-separator">
+                        <p class="nomargin text-center blue">OR</p>
+                    </div>
+                    <div class="login-container"></div>
+                </div>
+                }
+                @using (Html.BeginForm("LogOn", "Account", new { }, FormMethod.Post, new { id = "LogonForm"}))
+                {
+                    @Html.HiddenFor(m=>Model.Role)
+                    @Html.HiddenFor(m=>Model.ReturnUrl)
+                    @Html.ValidationSummary(true)                    
+                    <div class="form-group">
+                        <!--<label for="loginEmail">Email</label>-->
+                        @*<input type="email" class="form-control input-lg gray" id="loginEmail" placeholder="Email">*@
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg gray", placeholder = "Email" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>    
+                    <div class="form-group">
+                        <!--<label for="loginPassword">Password</label>-->
+                        @*<input type="password" class="form-control input-lg gray" id="loginPassword" placeholder="Password">*@
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control input-lg gray", placeholder = "Password" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>   
+                    <div class="form-actions">
+                        <div class="form-group">
+                            <input class="checkbox" id="loginRemember" type="checkbox">
+                            @*@Html.CheckBoxFor(m => m.RememberMe, new { @class = "checkbox", type="checkbox"})*@
+                            <label for="loginRemember"></label>
+                            <label for="loginRemember" style="float:left;">Remember me</label>
+                        </div>
+                        <div class="form-group text-right">
+                            <a href="@Url.Action("ForgotPassword")">Forgot password?</a>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-kootour-bold fullwidth">Log me In</button>
+                }
+                
+                <p style="margin-top: 30px;" class="text-center">Don't have an account?&nbsp;<a href="@Url.Action("Register", new {returnUrl=Model.ReturnUrl, role=Model.Role})"><b>Sign Up</b></a></p>
+            </section>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="@Url.Content("/ViewScripts/Account/Facebook.js")"></script>
+<script type="text/javascript">
+    var currentUserRole=@Model.Role;
+    $(function () {
+        // Load the SDK asynchronously
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                appId: '151250988634214',
+                cookie: true,  // enable cookies to allow the server to access
+                xfbml: true,  // parse social plugins on this page
+                version: 'v2.5' // use graph api version 2.5
+            });
+            //FB.getLoginStatus(function (response) {
+            //    fbStatusChangeCallback(response, false);
+            //});
+        };
+        $("#fbLogin").on("click", function () {
+            //FB.logout();
+            checkLoginStateWithFb(true);
+        });
+    });
+
+</script>

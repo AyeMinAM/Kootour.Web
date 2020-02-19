@@ -1,0 +1,269 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.AccountModel
+@{
+    Layout = "~/Views/Shared/_LayoutGuide.cshtml";
+}
+
+<div class="main-container container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a href="@Url.Action("TourProducts")">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#">Account</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-content">
+                @Html.Partial("_GuideMenu")
+                @using (Html.BeginForm("Account", "Guide", new { }, FormMethod.Post, new { id = "AccountForm", @class = "form-horizontal" }))
+                {
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <div class="widget-box kootour-widget-color-main light-border">
+                                <div class="widget-header">
+                                    <h4 class="widget-title lighter">
+                                        <span class="pull-left white">General</span>
+                                    </h4>
+                                </div>
+                                <div class="widget-body kootour-widget-color-main">
+                                    <div class="widget-main">
+                                        <form id="localhost_account_form" class="form-horizontal" role="form">
+                                            <h4 class="lighter block kootour-main-color left">1.Account Information:</h4>
+                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>First Name</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    @*<input type="text" id="firstName" name="firstName" class="form-control">*@
+                                                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.FirstName)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>Last Name</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    @*<input type="text" id="lastName" name="lastName" class="form-control">*@
+                                                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.LastName)
+                                                </div>
+                                            </div>
+@*                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>Old Password</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.OldPassword)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>New Password</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                     @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.NewPassword)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>Confirm New Password</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    @Html.PasswordFor(m => m.ConfirmNewPassword, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.ConfirmNewPassword)
+                                                </div>
+                                            </div>*@
+                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>Email Address</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                                    @*<input type="text" id="email" name="email" class="form-control">*@
+                                                    @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.EmailAddress)
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="col-xs-12 col-sm-12 col-md-3 col-lg-3 control-label align-left">
+                                                    <b>Phone Number</b></label>
+                                                <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3">
+                                                    @* <input type="text" id="phone" class="form-control">*@
+                                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                    @Html.ValidationMessageFor(m => m.PhoneNumber)
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <h4 class="lighter block kootour-main-color left">2.Introduction about yourself:</h4>
+@*                                            <div id="editor">
+                                            </div>*@
+                                            <div class="form-validator">
+                                                <div class="clearfix">
+                                                    @Html.TextAreaFor(m => m.IntroductionYourself, new {id="IntroductionYourselfTB", @class = "form-control" })
+                                                </div>
+                                                <div class="validation-row">
+                                                @Html.ValidationMessageFor(m => m.IntroductionYourself)
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="btn btn-white kootour-btn-main pull-right">
+                                                Update</button>
+                                        </form>
+                                        <div class="space-32">
+                                        </div>
+                                        <div class="space-8">
+                                        </div>
+                                        <hr>
+                                        <h4 class="lighter block kootour-main-color left">3.Update your avatar:</h4>
+                                        <h5 class="block">Upload up to five color photos that represent your tour or activity.
+                                        </h5>
+                                        <h5 class="block">Minimum size is 720 x 480. Images must be horizontal.
+                                        </h5>
+                                        <h5 class="block">Don’t show logo or company name.</h5>
+                                        @if (!string.IsNullOrEmpty(@Model.AvatarUrl))
+                                        {
+                                        <div class="file-preview">
+                                            <div class=" file-drop-zone">
+                                                <div class="file-preview-thumbnails">
+                                                    <div class="file-preview-frame" id="uploaded-1468108461223" data-fileindex="-1">
+                                                        <img src="@Model.AvatarUrl" class="file-preview-image" title="Tour Image" alt="Tour Image" style="width: auto; height: 160px;">
+@*                                                        <div class="file-thumbnail-footer">
+                                                             <div class="file-actions">
+                                                                <div class="file-footer-buttons">
+                                                                    <button id="RemoveAvatar" type="button" class="kv-file-remove btn btn-xs btn-default" title="Remove file" style="display: block;"><i class="glyphicon glyphicon-trash text-danger"></i></button>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </div>*@
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="file-preview-status text-center text-success"></div>
+                                                <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                        }
+                                        <form id="uploadForm" action="" method="post" target="_self" enctype="multipart/form-data">
+                                            <input id="UploadAvatar" name="file" type="file" multiple class="file-loading" accept="image/*">
+                                        </form>
+                                        <hr>
+                                        <h4 class="lighter block kootour-main-color left">4.Upload your Video:</h4>
+                                        <h5 class="block">Upload up to 3 videos that represent your tour or activity.
+                                        </h5>
+                                        <h5 class="block">Minimum size is 10M. Video type is .mp4.
+                                        </h5>
+                                        <h5 class="block">Don’t show logo or company name.</h5>
+                                        @if (!string.IsNullOrEmpty(@Model.VideoUrl))
+                                        {
+                                        <div class="file-preview">
+                                            <div class=" file-drop-zone">
+                                                <div class="file-preview-thumbnails">
+                                                    <div class="file-preview-frame" id="uploaded-1468108461223" data-fileindex="-1">
+                                                        <video width="400px" height="400px" autoplay loop controls>
+                                                            <source src="@Model.VideoUrl" type="video/mp4">
+                                                            Your browser does not support HTML5 video.
+                                                        </video>
+@*                                                        <div class="file-thumbnail-footer">
+                                                             <div class="file-actions">
+                                                                <div class="file-footer-buttons">
+                                                                    <button type="button" id="RemoveVideo" class="kv-file-remove btn btn-xs btn-default" title="Remove file" style="display: block;"><i class="glyphicon glyphicon-trash text-danger"></i></button>
+                                                                </div>
+                                                                <div class="clearfix"></div>
+                                                            </div>
+                                                        </div>*@
+                                                    </div>
+                                                </div>
+                                                <div class="clearfix"></div>
+                                                <div class="file-preview-status text-center text-success"></div>
+                                                <div class="kv-fileinput-error file-error-message" style="display: none;"></div>
+                                            </div>
+                                        </div>
+                                        }
+                                        <form id="uploadVideoForm" action="" method="post" target="_self" enctype="multipart/form-data">
+                                            <input id="UploadVideo" name="file" type="file" multiple class="file-loading" accept="video/*">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>
+<script type="text/javascript">
+    $(function () {
+        $('#IntroductionYourselfTB').summernote({
+            airMode: false,
+            height: 100,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true                  // set focus to editable area after initializing summernote
+        });
+    });
+    $("#UploadAvatar").fileinput({
+        language: 'en',
+        showCaption: false,
+        browseClass: "btn btn-primary",
+        maxFileCount: 5,
+        uploadUrl: "/Guide/UploadFiles",
+        allowedFileExtensions: ["jpg", "png", "jpeg"],
+        maxFileSize: 5000,
+        uploadExtraData: {
+            uploadType: 1
+        }
+    });
+    $("#UploadVideo").fileinput({
+        language: 'en',
+        showCaption: false,
+        browseClass: "btn btn-primary",
+        maxFileCount: 5,
+        uploadUrl: "/Guide/UploadFiles",
+        allowedFileExtensions: ["mp4"],
+        maxFileSize: 1000000,
+        uploadExtraData: {
+            uploadType: 2
+        }
+    });
+    $('#UploadVideo,#UploadAvatar').on('fileuploaded', function (event, data, previewId, index) {
+        //var form = data.form, files = data.files, extra = data.extra,
+        //    response = data.response, reader = data.reader;
+        location.href = "@Url.Action("Account")";
+    });
+    //$("#RemoveAvatar").click(function () {
+    //    var url = "/Guide/DeleteAvatar";
+    //    $.post(url, null, function (data) {
+    //        if (data.Result) {
+    //            location.href = data.Data;
+    //        }
+    //    });
+    //});
+    //$("#RemoveVideo").click(function () {
+    //    var url = "/Guide/DeleteVideo";
+    //    $.post(url, null, function (data) {
+    //        if (data.Result) {
+    //            location.href = data.Data;
+    //        }
+    //    });
+    //});
+</script>

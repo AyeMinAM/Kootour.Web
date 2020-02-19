@@ -1,0 +1,30 @@
+.nobackgroundcolor {
+  background-color: transparent;
+}
+
+.navbar-breadcrumb {
+    background-color: @breadcrumbBackground;
+    color: white;
+}
+
+.navbar-breadcrumb .breadcrumb {
+    margin-bottom: 0px;
+    background-color: transparent;
+    /*padding: 8px 0px;*/
+}
+
+.navbar-breadcrumb a,
+.navbar-breadcrumb a:hover {
+    color: white;
+}
+
+.navbar-breadcrumb .breadcrumb>li+li:before {
+    color: white;
+}
+
+
+@media (max-width: 768px) {
+  .navbar-breadcrumb {
+    display:none;
+  }
+}

@@ -1,0 +1,214 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@model MVCSite.Web.ViewModels.EditProfileModel
+@using (Html.BeginForm("EditProfile", "Account", new { }, FormMethod.Post, new { id = "EditProfileForm", @class = "form-horizontal row" }))
+{
+    @Html.HiddenFor(m => m.MobilePhone)
+    <div class="col-xs-12">
+        <p class="subtitle"><b>General</b></p>
+
+        <div class="form-group uploader-from-group">
+            <label class="col-xs-12 col-sm-3 text-left control-label">Picture</label>
+            <div class="uploader nopadding col-xs-12 col-sm-8">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="user-thumbnail img-circle nomargin" id="output-uploader" style="background-image:url('@Model.AvatarUrl')"></div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <a href="@Url.Action("ChangeAvatar//"+ViewBag.id)" class="btn btn-lg btn-kootour fullwidth">Change Picture</a>
+                    @*<input id="uploadFileInput" class="file-input" type='file'  id="output" accept="image/*" onchange="loadFile(event)"/>*@
+                    @*                                        <form id="uploadForm" action="" method="post" target="_self" enctype="multipart/form-data">
+                            <input id="uploadFileInput" class="file-input" type='file'  accept="image/*" onchange="loadFile(event)"/>
+                        </form>*@
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group required">
+            <label for="firstName" class="col-sm-3 text-left control-label">First Name</label>
+            <div class="col-sm-9">
+                @*<input type="text" value="John" class="form-control input-lg gray" id="firstName" required>*@
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+            <div class="validation-row">
+                @Html.ValidationMessageFor(m => m.FirstName)
+            </div>
+        </div>
+
+        <div class="form-group required">
+            <label for="lastName" class="col-sm-3 text-left control-label">Last Name</label>
+            <div class="col-sm-9">
+                @*<input type="text" value="Wayne" class="form-control input-lg gray" id="lastName" required>*@
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+            <div class="validation-row">
+                @Html.ValidationMessageFor(m => m.LastName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="location" class="col-sm-3 text-left control-label">Location</label>
+            <div class="col-sm-9">
+                @*<input type="text" value="Vancouver, BC" class="form-control input-lg gray" id="location">*@
+                @Html.TextBoxFor(m => m.Location, new { id = "Location", onFocus = "geolocate()", @class = "form-control" })
+            </div>
+            <div class="validation-row">
+                @Html.ValidationMessageFor(m => m.Location)
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="location" class="col-sm-3 text-left control-label">Introduction</label>
+            <div class="col-sm-9">
+                @*<input type="text" value="Vancouver, BC" class="form-control input-lg gray" id="location">*@
+                @Html.TextAreaFor(m => m.Introduction, new { @class = "form-control", rows = 20 })
+            </div>
+            <div class="validation-row">
+                @Html.ValidationMessageFor(m => m.Introduction)
+            </div>
+        </div>
+
+        @*<div class="form-group">
+                <label for="location" class="col-sm-3 text-left control-label">Video Link</label>
+                <div class="col-sm-9">
+                    @Html.TextBoxFor(m => m.VideoURL, new { @class = "form-control" })
+                </div>
+                <div class="validation-row">
+                    @Html.ValidationMessageFor(m => m.VideoURL)
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            <label for="password" class="col-sm-3 text-left text-left control-label">Password</label>
+            @*<div class="col-sm-4">
+                    <input type="password" value="password123" class="form-control input-lg transparent" id="password" readonly>
+                </div>*@
+            <div class="col-sm-4">
+                <a href="@Url.Action("ChangePassword")" class="btn btn-lg btn-kootour fullwidth">Change Password</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 divider"></div>
+
+    <div class="col-xs-12">
+        <p class="subtitle"><b>Private Information</b></p>
+
+        <div class="form-group">
+            <label for="location" class="col-sm-3 text-left control-label">Gender</label>
+            <div class="control-group">
+                <div class="col-sm-2">
+                    <div class="radio">
+                        @*<input type="radio" name="gender" id="radio1" value="male" checked>*@
+                        @Html.RadioButtonFor(m => m.Gender, (byte)GenderType.Male, new { name = "gender", id = "radio1" })
+                        <label for="radio1">Male</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="radio">
+                        @*<input type="radio" name="gender" id="radio2" value="female">*@
+                        @Html.RadioButtonFor(m => m.Gender, (byte)GenderType.Female, new { name = "gender", id = "radio2" })
+                        <label for="radio2">Female</label>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="radio">
+                        @*<input type="radio" name="gender" id="radio3" value="other">*@
+                        @Html.RadioButtonFor(m => m.Gender, (byte)GenderType.Other, new { name = "gender", id = "radio3" })
+                        <label for="radio3">Other</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="location" class="col-sm-3 text-left control-label">Birth Date</label>
+            <div class="col-sm-3 radio">
+                @Html.DropDownListFor(m => m.BirthDateMonth, Model.MonthOptions, new { @class = "form-control gray input-lg" })
+            </div>
+            <div class="col-sm-3 radio">
+                @Html.DropDownListFor(m => m.BirthDateDay, Model.DayOptions, new { @class = "form-control gray input-lg" })
+            </div>
+            <div class="col-sm-3 radio">
+                @Html.DropDownListFor(m => m.BirthDateYear, Model.YearOptions, new { @class = "form-control gray input-lg" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="col-sm-3 text-left control-label">
+                Email @if (Model.IsEmailVerified)
+                {
+                    <span>(<img class="verified-icon" src="/images/icons/icon_check.png">verified)</span>
+                }
+            </label>
+            @if (Model.IsEmailVerified)
+            {
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg", id = "userEmail", @readonly = "readonly" })
+                    @*<input type="text" value="@Model.Email" class="form-control input-lg transparent" id="userEmail" readonly="readonly">*@
+                </div>
+            }
+            @if (!Model.IsEmailVerified)
+            {
+                <div class="col-sm-4">
+                    <a href="@Url.Action("ConfirmEmail", new { DoneActionName = "EditProfile", DoneControllerName = "Account" })" class="btn btn-lg btn-kootour fullwidth">Add an email</a>
+                </div>
+            }
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber" class="col-sm-3 text-left control-label">
+                Phone @if (Model.IsPhoneVerified)
+                {<span>(<img style="padding-top: 3px;" class="verified-icon" src="/images/icons/icon_check.png">verified)</span>}
+            </label>
+            @if (Model.IsPhoneVerified)
+            {
+                <div class="col-sm-4">
+                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control input-lg", id = "phoneNumber", @readonly = "readonly" })
+                </div>
+            }
+            <div class="col-sm-4">
+                @if (Model.IsPhoneVerified)
+                {
+                    <a href="@Url.Action("ConfirmPhone", new { DoneActionName = "EditProfile", DoneControllerName = "Account" })" class="btn btn-lg btn-kootour fullwidth">Change Number</a>
+                }
+                else
+                {
+                    <a href="@Url.Action("ConfirmPhone", new { DoneActionName = "EditProfile", DoneControllerName = "Account" })" class="btn btn-lg btn-kootour fullwidth">Add a phone</a>
+                }
+            </div>
+        </div>
+
+        <div class="nested-section col-xs-offset-3 col-xs-6">
+            <p class="text-center">
+                <button type="submit" class="btn btn-lg btn-kootour-bold fullwidth">Save</button>
+            </p>
+        </div>
+    </div>
+}
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcFF0OduPD2AFFo-RlxhivvT6_Tc1UhRs&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script type="text/javascript">
+    var autocomplete;
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('Location')),
+            {types: ['geocode']});
+    }
+
+
+</script>

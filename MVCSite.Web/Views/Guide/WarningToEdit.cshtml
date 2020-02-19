@@ -1,0 +1,19 @@
+﻿@model MVCSite.Web.ViewModels.Layout
+@{
+    ViewBag.Title = "WarningToEdit";
+}
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-lg-offset-3 col-md-offset-3 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <section class="section">
+                <span class="title">This Tour Cannot Be Deactivated or Deleted</span>
+                <p> Since you still have some existing bookings for this tour, it cannot be deactivated or deleted. Please send
+                    us an email to <a href="mailto:contact@kootour.com" target="_blank">contact@kootour.com</a> if you need it removed urgently.
+                </p>
+                <a href="@Url.Action("TourProducts","Guide")">Click here to return</a>
+            </section>
+        </div>
+    </div>
+</div>

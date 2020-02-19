@@ -1,0 +1,60 @@
+﻿.extra-price-dollar-sign
+{
+    float:left;
+    width:20px;
+    border:none;
+    background-color:transparent;
+}
+.extra-price-dollar-value
+{
+    float:left; 
+    width:90%;    
+}
+.extra-time-unit
+{
+    float:left;
+    width:20px;
+    height:40px;
+    border:none;
+    padding:0px;
+    background-color:transparent;     
+}
+.extra-time-unit select
+{
+    height:40px;
+}
+.extra-time-value
+{
+    float:left; 
+    width:100%;    
+}
+.btn-white.kootour-btn-delete {
+    border-color: #00cccc;
+    color: #00cccc!important;
+}
+.listitem-header{
+    width: 100%;
+    height:30px; 
+    text-align:left; 
+    clear:both; 
+    font-size:20px; 
+    font-weight:bold;    
+}
+.add-favorite-checked {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  background-image: url('../images/icons/heart_active.png');
+}
+.wrap-long-text { 
+   white-space: pre-wrap;      /* CSS3 */   
+   white-space: -moz-pre-wrap; /* Firefox */    
+   white-space: -pre-wrap;     /* Opera <7 */   
+   white-space: -o-pre-wrap;   /* Opera 7 */    
+   word-wrap: break-word;      /* IE */
+}

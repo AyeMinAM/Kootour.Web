@@ -1,0 +1,29 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model List<MVCSite.Web.ViewModels.DashBoardMsg>
+@{
+    ViewBag.Title = "Tours";
+}
+
+@foreach (var msg in Model)
+{
+<a href="@Url.Action("TChat", new {id=msg.FromUserId})">
+    <div class="message-list"> 
+        <div class="illustration">
+            <div class="user-small-thumbnail img-circle" style="background-image:url('@msg.UserAvatarUrl')"></div>
+        </div>
+
+        <div class="name">
+            <span class="subtitle">@msg.UserName</span>
+        </div>
+
+        <div class="content">
+            <p class="wrap-long-text" style="width:70%;">@msg.Msg</p>
+        </div>
+
+        <div class="date">
+            @msg.Date
+        </div>
+    </div>
+</a>
+}

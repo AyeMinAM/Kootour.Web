@@ -1,0 +1,212 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@model MVCSite.Web.ViewModels.BookingModel
+<style>
+    img.tour-thumbnail {
+        width: 100%;
+    }
+    #promoCodeErrorMsg {
+        color: red;
+        font-size: 14px;
+    }
+    #promoButton {
+        margin-top: 2px !important;
+    }
+    .tourcost {
+        text-decoration: line-through;
+        line-height: 5px;
+    }
+    .custom-option-price {
+        line-height: 10px;
+    }
+</style>
+<div class="widget-row col-xs-12 customized-option">
+    <div class="col-xs-6 nopadding">
+        <span class="subtitle">Traveller(s):</span>
+    </div>
+    <div class="col-xs-6 nopadding text-right">
+        <span>@Model.TotalTravelers traveller@((Model.TotalTravelers == 1) ? "" : "s")</span>
+    </div>
+</div>
+@if (Model.BookingType == 0)
+{
+    <div class="widget-row col-xs-12 customized-option">
+        <div class="col-xs-6 nopadding">
+            <span class="subtitle">Tour Cost Per Person:</span>
+        </div>
+        <div class="col-xs-6 nopadding text-right">
+            <span>$@Model.VendorPromoTourCost.ToString("0.00")</span>
+            @if(!Model.VendorPromoTourCost.Equals(Model.TourCost)){
+                <span class="tourcost small"><i>$@Model.TourCost.ToString("0.00")</i></span>
+            }
+            
+        </div>
+    </div>
+    <div class="widget-row col-xs-12 customized-option">
+        <div class="col-xs-6 nopadding">
+            <span class="subtitle">Tour Cost:</span>
+        </div>
+        <div class="col-xs-6 nopadding text-right">
+            <span>$@((Model.VendorPromoTourCost * Model.TotalTravelers).ToString("0.00"))</span>
+        </div>
+    </div>
+}
+else
+{
+    <div class="widget-row col-xs-12 customized-option">
+        <div class="col-xs-6 nopadding">
+            <span class="subtitle">Tour Cost Per Group:</span>
+        </div>
+        <div class="col-xs-6 nopadding text-right">
+            <span>$@((Model.VendorPromoTourCost).ToString("0.00"))</span>
+        </div>
+    </div>
+}
+
+
+
+@if (@Model.IfShowBookingExtras)
+{
+    <div class="widget-row col-xs-12 customized-option">
+        <div class="option-label">
+            <span class="subtitle">Your Customized Options:</span>
+        </div>
+    </div>
+    foreach (var extra in Model.Extras)
+    {
+        if (!string.IsNullOrEmpty(extra.Name))
+        {
+            <div class="widget-row col-xs-12 customized-option">
+                <div class="col-xs-6 nopadding">
+                    <label for="chb1">@extra.Name</label>
+                </div>
+                <div class="col-xs-6 nopadding text-right">
+                    @if (@extra.Price != 0)
+                    {
+                        <span class="custom-option-price">$@extra.Price.ToString("0.00")</span>
+                        if (Model.BookingType == 0)
+                        {
+                            <span class="custom-option-unitprice small"><i>$@((extra.Price / Model.TotalTravelers).ToString("0.00")) per person</i></span>
+                        }
+                    }
+                    else
+                    {
+                        <span>free</span>
+                    }
+                    @if (@extra.Times != 0)
+                    {
+                        <span class="hours"><i>Extra @extra.Times @TimeTypeTranslation.GetTranslationOf(@extra.TimeType)</i></span>
+                    }
+                </div>
+            </div>
+        }
+    }
+}
+
+@if (@Model.BookingType == 0 && Model.TourPriceBreakdown != null)
+{
+    <div class="widget-row col-xs-12 customized-option">
+        <div class="col-xs-6 nopadding">
+            @{
+                var endPoint1 = Model.TourPriceBreakdown.EndPoint1;
+                var endPoint2 = Model.TourPriceBreakdown.EndPoint2;
+                endPoint1 = (endPoint1 < Model.MinTouristNum) ? Model.MinTouristNum : endPoint1;
+                endPoint2 = (endPoint2 > Model.MaxTouristNum) ? Model.MaxTouristNum : endPoint2;
+            }
+            @if (endPoint1 == 1 && endPoint2 == 1)
+            {
+                <span>Discount (for @endPoint1 guest)</span>
+            }
+            else if (endPoint1 == endPoint2)
+            {
+                <span>Discount (for @endPoint1 guests)</span>
+            }
+            else
+            {
+                <span>Discount (for @endPoint1 - @endPoint2 guests)</span>
+            }
+        </div>
+        <div class="col-xs-6 nopadding text-right">
+            @if (@Model.TourPriceBreakdown.DiscountValue > 0)
+            {
+                string discountValue = (Model.TourPriceBreakdown.DiscountValue * Model.TotalTravelers).ToString();
+                <span>-$@discountValue</span>
+            }
+            else if (@Model.TourPriceBreakdown.DiscountPercent > 0)
+            {
+                <span>-@Model.TourPriceBreakdown.DiscountPercent%</span>
+            }
+        </div>
+    </div>
+}
+
+<div class="widget-row col-xs-12 customized-option">
+    <div class="col-xs-6 nopadding">
+        <span class="subtitle">Sub-total:</span>
+    </div>
+    <div class="col-xs-6 nopadding text-right">
+        <span>$@Model.SubTotalPrice.ToString("0.00")</span>
+    </div>
+</div>
+<div class="widget-row col-xs-12 customized-option">
+    <div class="col-xs-6 nopadding">
+        <span>Service Fee (3.9%):</span>
+    </div>
+    <div class="col-xs-6 nopadding text-right">
+        <span>$@Model.ServiceFee.ToString("0.00")</span>
+    </div>
+</div>
+<div class="widget-row col-xs-12 customized-option">
+    <div class="col-xs-6 nopadding">
+        <span>Taxes:</span>
+    </div>
+    <div class="col-xs-6 nopadding text-right">
+        <span>@Model.Taxes%</span>
+    </div>
+</div>
+
+@if (Model.IfShowPromoCodeBox)
+{
+    <div id="widget-row-promo-form" class="widget-row col-xs-12">
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12  nopadding">
+            <span>Coupon Code:</span>
+        </div>
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 nopadding">
+            <div class="promo-form">
+                <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                    <input id="promoValue" name="booking[coupon][code]" class="form-control input-xs" type="text" placeholder="Promo code" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <button id="promoButton" type="button" class="btn btn-xs btn-kootour">apply</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="widget-row-promo-form-errormsg" class="widget-row col-xs-12">
+        <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12 nopadding">
+            <span id="promoCodeErrorMsg"></span>
+        </div>
+    </div>
+}
+
+<div id="widget-row-promovalue-form" class="widget-row col-xs-12 customized-option">
+    <div class="col-xs-6 nopadding">
+        <span>Promotion:</span>
+    </div>
+    <div class="col-xs-6 nopadding text-right">
+        @*<span>$@Html.LabelFor(x=>x.PromoPrice)</span>*@
+        $<span id="promoPrice">@Model.PromoPrice</span>
+    </div>
+</div>
+
+<div class="widget-row col-xs-12">
+    <div class="col-xs-6 nopadding">
+        <span class="subtitle">Total:</span>
+    </div>
+    <div class="col-xs-6 nopadding text-right">
+        @*<span><b>$@Model.TotalPrice.ToString("0.00")</b></span>*@
+        @*<span><b>$@Html.LabelFor(x => x.TotalPrice)</b></span>*@
+        <b>$<span class="totalPrice">@Model.TotalPrice.ToString("0.00")</span></b>
+    </div>
+</div>

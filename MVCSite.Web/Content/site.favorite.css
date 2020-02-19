@@ -1,0 +1,51 @@
+﻿/*Favorite*/
+.card-window-main-col {
+    float: left;
+    margin: 0 0 12px;
+    min-height: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding: 6px 12px 12px;
+    width: 100%;
+    height: 100%;    
+}
+.card-public-main-col {
+    min-height: 20px;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    margin-left:15px;
+    padding: 0px;   
+    width: 98%;
+    height:inherit;     
+}
+.horizontal-element {
+    float: left;
+    padding: 7px 10px;   
+}
+.HintText {
+     font-size:large;
+     color:Gray;
+}
+.favcard-left-container {
+    border: none; 
+    float: left; 
+    margin: 0; 
+    padding: 0; 
+    width: 20%;
+    
+}
+
+.favcard-right-container {
+    border: none; float: right; margin: 0; padding: 0; width: 80%;
+}
+.NotClickedContent {
+    border:1px solid red; 
+}
+#FavCardAllInformationBlock dt,#FavCardAllInformationBlock dd,#FavCardAllInformationBlock li
+{
+    float:left;    
+}
+#FavCardAllInformationBlock dl,#FavCardAllInformationBlock ul
+{
+    clear:both;    
+}

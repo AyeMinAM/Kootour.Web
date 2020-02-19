@@ -1,0 +1,61 @@
+/* Reviews */
+.reviews .review {
+    padding-left: @sectionPaddingLeft;
+    padding-right: @sectionPaddingRight;
+}
+
+.review {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.review:not(:nth-last-child(2)) {
+    .borderbottom();
+}
+
+.review > .illustration {
+    flex-grow: 0;
+    flex-basis: 15%;
+    flex-shrink: 0;
+}
+
+.review > .details {
+    flex-grow: 1;
+    flex-basis: 1;
+    flex-shrink: 1;
+}
+
+@media screen and (max-width: 640px) {
+    .review > .illustration {
+        margin-right: 0
+    }
+    
+    .review {
+        flex-direction: column;
+    }
+
+    .review > .details,
+    .review > .illustration {
+        flex-grow: 1;
+        flex-basis: auto;
+        flex-shrink: 1;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+    .review {
+        flex-direction: column;
+    }
+
+    .review > .details,
+    .review > .illustration {
+        flex-grow: 1;
+        flex-basis: auto;
+        flex-shrink: 1;
+    }
+}
+

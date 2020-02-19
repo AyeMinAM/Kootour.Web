@@ -1,0 +1,34 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model List<MVCSite.Web.ViewModels.RecommendedReviews>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Recommended Reviews | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Recommended Reviews." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+@foreach (var review in Model)
+{
+    <div class="col-xs-12 review">
+        <div class="illustration">
+            <div class="user-small-thumbnail img-circle" style="background-image:url('@review.AvatarUrl')"></div>
+        </div>
+
+        <div class="details">
+            <p class="subtitle nomargin">@review.UserName</p>
+
+            <div class="vote-wrapper">
+                <input class="star-rating-kootour rating" type="text"  readonly="true" value="@review.AverageScore" /> 
+
+                <span class="vote-label">@review.ReviewTime</span>
+            </div>
+            <p><i>@review.Comment</i></p>
+        </div>
+    </div>
+}

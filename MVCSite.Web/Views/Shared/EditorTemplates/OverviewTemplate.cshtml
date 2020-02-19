@@ -1,0 +1,471 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.Web.ViewModels
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.TourOverviewModel
+<div class="widget-body col-xs-12">
+    <div class="widget-main">
+        @using (Html.BeginForm("Overview", @ViewContext.RouteData.Values["controller"].ToString(), new { }, FormMethod.Post, new { id = "OverviewForm", @class = "primary-col clearfix form-horizontal" }))
+        {
+            @Html.HiddenFor(m => m.ID)
+            @Html.HiddenFor(m => m.GuideID)
+            @Html.HiddenFor(m => m.TourCityHidden, new { id = "TourCityHidden" })
+            <div id="fuelux-wizard-container">
+                <div class="form-group">
+                    <ul class="steps visible-lg hidden-xs hidden-sm hidden-md">
+                        <li data-step="1" class="complete">
+                            <a href="#" onclick="return OnClickBackButton('@Url.Action(("TourType"), new {id=Model.ID})');">
+                                <span class="step kootour-main-color">1</span>
+                                <span class="title kootour-main-color">Tour Type</span>
+                            </a>
+                        </li>
+
+                        <li data-step="2" class="active">
+                            <span class="step kootour-main-color">2</span>
+                            <span class="title kootour-main-color">Overview</span>
+                        </li>
+
+                        <li data-step="3">
+                            <span class="step kootour-main-color">3</span>
+                            <span class="title kootour-main-color">Booking Details</span>
+                        </li>
+
+                        <li data-step="4">
+                            <span class="step kootour-main-color">4</span>
+                            <span class="title kootour-main-color">Schedule &amp; Price</span>
+                        </li>
+
+                        <li data-step="5">
+                            <span class="step kootour-main-color">5</span>
+                            <span class="title kootour-main-color">Pictures</span>
+                        </li>
+                        <li data-step="6">
+                            <span class="step kootour-main-color">6</span>
+                            <span class="title kootour-main-color">Activation</span>
+                        </li>
+                    </ul>
+
+                    <ul class="steps visible-xs visible-sm visible-md hidden-lg">
+                        <li data-step="2" class="active">
+                            <span class="step kootour-main-color">2</span> <span class="title kootour-main-color">Overview</span>
+                        </li>
+                        <li data-step="3">
+                            <span class="step kootour-main-color">3</span> <span class="title kootour-main-color">
+                                Booking Details
+                            </span>
+
+                        </li>
+                    </ul>
+                </div>
+
+
+                @*                <div class="step-content pos-rel">
+                    <div class="step-pane" data-step="2">*@
+                <div class="form-group">
+                    <h4 class="lighter block kootour-main-color">4.Overview of your tour</h4>
+                    <div class="form-validator">
+                        <div class="clearfix">
+                            @*<input type="text" id="overview" name="overview" style="display: none">*@
+                            @Html.TextAreaFor(m => m.Overview, new { id = "OverviewTB", @class = "form-control" })
+                        </div>
+                        <span style="font-size:medium">Max 3000 Characters</span>
+                        <div class="validation-row">
+                            @Html.ValidationMessageFor(m => m.Overview)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <h4 class="lighter block kootour-main-color">5.Itinerary</h4>
+                    <div class="form-validator">
+                        <div class="clearfix">
+                            @*<input type="text" id="itinerary" name="itinerary" style="display: none">*@
+                            @Html.TextAreaFor(m => m.Itinerary, new { id = "ItineraryTB", @class = "form-control" })
+                        </div>
+                        <span style="font-size:medium">Max 20000 Characters</span>
+                        <div class="validation-row">
+                            @Html.ValidationMessageFor(m => m.Itinerary)
+                        </div>
+                    </div>
+                </div>
+
+                <h4 class="lighter block kootour-main-color">
+                    6.Important Information
+                </h4>
+                <h5 class="block">
+                    Duration of the tour:
+                </h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        @Html.TextBoxFor(m => m.Duration, new { id = "Duration", @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:100px;float:left" })
+                        @Html.DropDownListFor(m => m.DurationType, Model.DurationTypeOptions, new { @class = "form-control", style = "width:100px;float:left;", placeholder = "e.g. Days" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Duration)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Tour Location:
+                </h5>
+                <div class="form-validator">
+                    @*                                                    <div class="clearfix">
+                              @Html.DropDownListFor(m => m.TourCityID, Model.CityOptions, new { @class = "form-control", style = "width:500px;", placeholder = "e.g. Vancouver Downtown" })
+                        </div>
+                        <div class="validation-row">
+                             @Html.ValidationMessageFor(m => m.TourCityID)
+                        </div>*@
+                    <div class="clearfix">
+                        @Html.TextBoxFor(m => m.TourCity, new { id = "TourCityText", onFocus = "geolocate()", @class = "form-control", placeholder = "e.g. Vancouver,B.C." })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.TourCity)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Meetup Location:
+                </h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        @Html.TextBoxFor(m => m.MeetupLocation, new { id = "MeetupLocationText", onFocus = "geolocate()", @class = "form-control", placeholder = "e.g. Will pick up at traveller's hotel" })
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.MeetupLocation)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Inclusions:
+                </h5>
+                <div>
+                    <div class="space-8">
+                    </div>
+                    <table id="inclusions-table" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                        @if (Model.TourInclusions==null)
+                        {
+                            Model.TourInclusions = new List<TourInclusionExclusionModel>();
+                        }
+                        @for (var i = 0; i < @Model.TourInclusions.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.TextBoxFor(m => m.TourInclusions[i].Name, new {@class = "form-control", placeholder = ""})
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                    @Html.ValidationMessageFor(m => m.TourInclusions[i].Name)
+                                </td>
+                            </tr>
+                        }
+                        @for (var i = 0; i < @Model.TourInclusionsExtra.Count; i++)
+                        {
+                            var placeholder = string.Empty;
+                            switch (i)
+                            {
+                                case 0:
+                                    placeholder = GuideStrings.InclusionPlaceholder1;
+                                    break;
+                                case 1:
+                                    placeholder = GuideStrings.InclusionPlaceholder2;
+                                    break;
+                                case 2:
+                                    placeholder = GuideStrings.InclusionPlaceholder3;
+                                    break;
+                            }
+                            <tr id="TourInclusionExtra-@i" class="TourInclusionExtra">
+                                <td>
+                                    @Html.TextBoxFor(m => m.TourInclusionsExtra[i].Name, new
+                                    {
+                                        @class = "form-control TourInclusionExtraText",
+                                        placeholder = placeholder
+                                    })
+                                </td>
+                            </tr>
+                            <tr id="TourInclusionExtraValidationMessage-@i" class="TourInclusionExtraValidationMessage">
+                                <td>
+                                    @Html.ValidationMessage("TourInclusionExtraValidationMessage" + @i)
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Exclusions:
+                </h5>
+                <div>
+                    <div class="space-8">
+                    </div>
+                    <table id="exclusions-table" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                        @if (Model.TourExclusions == null)
+                        {
+                            Model.TourExclusions = new List<TourInclusionExclusionModel>();
+                        }
+                        @for (var i = 0; i < @Model.TourExclusions.Count; i++)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.TextBoxFor(m => m.TourExclusions[i].Name, new { @class = "form-control", placeholder = "" })
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    @Html.ValidationMessageFor(m => m.TourExclusions[i].Name)
+                                </td>
+                            </tr>
+                        }
+                        @for (var i = 0; i < @Model.TourExclusionsExtra.Count; i++)
+                        {
+                            var placeholder = string.Empty;
+                            switch (i)
+                            {
+                                case 0:
+                                    placeholder = GuideStrings.InclusionPlaceholder1;
+                                    break;
+                                case 1:
+                                    placeholder = GuideStrings.InclusionPlaceholder2;
+                                    break;
+                            }
+                            <tr id="TourExclusionExtra-@i" class="TourExclusionExtra">
+                                <td>
+                                    @Html.TextBoxFor(m => m.TourExclusionsExtra[i].Name, new
+                               {
+                                   @class = "form-control TourExclusionExtraText",
+                                   placeholder = placeholder
+                               })
+                                </td>
+                            </tr>
+                            <tr id="TourExclusionExtraValidationMessage-@i" class="TourExclusionExtraValidationMessage">
+                                <td>
+                                    @Html.ValidationMessage("TourExclusionExtraValidationMessage" + @i)
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="wizard-actions">
+                @* <button class="btn btn-prev" disabled="disabled">
+                        <i class="ace-icon fa fa-arrow-left"></i>Prev
+                    </button>
+                    <button  type="submit" class="btn btn-success btn-next" data-last="Finish">
+                        Next <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                    </button>*@
+
+                <a class="btn  btn-blue  btn-next" href="#" onclick="return OnClickBackButton('@Url.Action(("TourType"), new {id=Model.ID})');">
+                    <i class="ace-icon fa fa-arrow-left"></i>
+                    Prev
+                </a>
+                <button type="submit" class="btn btn-blue btn-next" data-last="Finish">
+                    Save & Next 
+                    <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+                </button>
+            </div>
+        }
+    </div>
+</div>
+@Html.EditorFor(model => model, "OverviewTemplate2")
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBcFF0OduPD2AFFo-RlxhivvT6_Tc1UhRs&libraries=places&callback=initAutocomplete"
+    async defer></script>
+<script type="text/javascript">
+    var autocomplete, autocompleteMeetup;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+            (document.getElementById('TourCityText')),
+            {types: ['geocode']});
+        autocomplete.addListener('place_changed', fillInAddress);
+
+
+        autocompleteMeetup = new google.maps.places.Autocomplete(
+            (document.getElementById('MeetupLocationText')),
+            { types: ['geocode'] });
+        autocompleteMeetup.addListener('place_changed', fillInAddressMeetup);
+    }
+
+    function fillInAddress() {
+        // Get the place details from the autocomplete object.
+        var place = autocomplete.getPlace();
+        var city, area, country;
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (addressType === "locality") {
+                city = place.address_components[i][componentForm[addressType]];
+            }
+            if (addressType === "administrative_area_level_1") {
+                area = place.address_components[i][componentForm[addressType]];
+            }
+            if (addressType === "country") {
+                country = place.address_components[i][componentForm[addressType]];
+            }
+        }
+        if (city === "undefined" || typeof (city) === "undefined") {
+            city = area;
+        }
+        document.getElementById('TourCityText').value = city + "," + area + "," + country;
+        document.getElementById('TourCityHidden').value = city + "," + area + "," + country;
+    }
+    function fillInAddressMeetup() {
+        //// Get the place details from the autocomplete object.
+        //var place = autocompleteMeetup.getPlace();
+
+        //for (var component in componentForm) {
+        //    document.getElementById(component).value = '';
+        //    document.getElementById(component).disabled = false;
+        //}
+
+        //// Get each component of the address from the place details
+        //// and fill the corresponding field on the form.
+        //for (var i = 0; i < place.address_components.length; i++) {
+        //    var addressType = place.address_components[i].types[0];
+        //    if (componentForm[addressType]) {
+        //        var val = place.address_components[i][componentForm[addressType]];
+        //        //document.getElementById(addressType).value = val;
+        //    }
+        //}
+    }
+    // Bias the autocomplete object to the user's geographical location,
+    // as supplied by the browser's 'navigator.geolocation' object.
+
+
+    $(function () {
+        $('#OverviewTB').summernote({
+            airMode: false,
+            height: 200,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,                  // set focus to editable area after initializing summernote
+            placeholder: "e.g. A brief summary of your tour",
+            toolbar: [
+              // [groupName, [list of button]]
+              ['style', ['bold', 'italic', 'underline', 'clear']],
+              ['font', ['strikethrough', 'superscript', 'subscript']],
+              ['fontsize', ['fontsize']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']]
+            ],
+            callbacks: {
+                onPaste: function (e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                    e.preventDefault();
+                    // Firefox fix
+                    setTimeout(function () {
+                        document.execCommand('insertText', false, bufferText);
+                    }, 10);
+                }
+            }
+        }); 
+        $('#ItineraryTB').summernote({
+            airMode: false,
+            height: 300,                 // set editor height
+            minHeight: null,             // set minimum height of editor
+            maxHeight: null,             // set maximum height of editor
+            focus: true,                  // set focus to editable area after initializing summernote
+            placeholder: "e.g. The itinerary description of your tour",
+            toolbar: [
+              // [groupName, [list of button]]
+              ['style', ['bold', 'italic', 'underline', 'clear']],
+              ['font', ['strikethrough', 'superscript', 'subscript']],
+              ['fontsize', ['fontsize']],
+              ['color', ['color']],
+              ['para', ['ul', 'ol', 'paragraph']],
+              ['height', ['height']]
+            ],
+            callbacks: {
+                onPaste: function (e) {
+                    var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+                    e.preventDefault();
+                    // Firefox fix
+                    setTimeout(function () {
+                        document.execCommand('insertText', false, bufferText);
+                    }, 10);
+                }
+            }
+        });
+        $("#Duration").on('change', ensureNumberInputNotEmpty);
+
+
+        $($(".TourInclusionExtra").get().reverse()).each(function (i) {
+            iterateExtra($(this));
+        });
+
+        $($(".TourExclusionExtra").get().reverse()).each(function (i) {
+            iterateExtra($(this));
+        });
+
+        $(".TourInclusionExtraText, .TourExclusionExtraText").focus(function () {
+            var id = $(this).parent().parent().attr("id");
+            var idPart1 = id.split("-")[0];
+            var idPart2 = Number(id.split("-")[1]) + 1;
+            var nextId = "#" + idPart1 + "-" + idPart2;
+            var nextValidationMessageId = "#" + idPart1 + "ValidationMessage" + "-" + idPart2;
+
+            $(nextId).css("display", "block");
+            $(nextId).children("td").css("display", "block");
+
+            $(nextValidationMessageId).css("display", "block");
+            $(nextValidationMessageId).children("td").css("display", "block");
+            //alert(nextId + "   " + nextValidationMessageId);
+        });
+    });
+
+    function iterateExtra(container) {
+        var containerId = container.attr("id");
+        var containerIdPart1 = containerId.split("-")[0];
+        var containerIdPart2 = Number(containerId.split("-")[1]);
+        if (containerIdPart2 === 0)
+            return false;
+
+        var aboveLineContainerIdPart2 = containerIdPart2 - 1;
+        var aboveContainerId = "#" + containerIdPart1 + "-" + aboveLineContainerIdPart2;
+
+        var aboveId = "#" + $(aboveContainerId).children("td").children("input").attr("id");
+        var aboveInputText = $(aboveId).attr("value");
+        if (aboveInputText.length > 0)
+            return false;
+
+        var validationMessageId = "#" + containerIdPart1 + "ValidationMessage" + "-" + containerIdPart2;
+        container.css("display", "none");
+        container.children("td").css("display", "none");
+        $(validationMessageId).css("display", "none");
+        $(validationMessageId).children("td").css("display", "none");
+        //alert(i + "   " + id+ "    " +aboveInputText);   
+    }
+</script>

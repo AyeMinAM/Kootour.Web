@@ -1,0 +1,23 @@
+﻿File structure
+
+\assets\css\kootour.css
+\assets\css\less\.less files
+
+
+
+
+
+1. INSTALL Nodejs for windows
+after installation, open command line and type
+> npm install -g less
+$ npm install -g less
+
+2. use command line tool and go to Less folder (for Development) D:\VC\DOTNETDEV\KootourDev\MVCSite.Web\assets\css\less
+
+> d:
+
+> cd D:\VC\DOTNETDEV\KootourDev\MVCSite.Web\assets\css\less  (Copy/paste this to command line)
+
+3. use the command below to complie
+
+> lessc kootour.less ../kootour.css

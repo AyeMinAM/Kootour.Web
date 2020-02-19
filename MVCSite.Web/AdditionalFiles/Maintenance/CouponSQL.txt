@@ -1,0 +1,13 @@
+﻿  		INSERT INTO [dbo].[Promo] (PromoName, Code, PromoValue, MinValueToUse, BeginDate, EndDate, EnterTime, ModifyTime) VALUES (
+		'BCTECHKOOTOUR', 'BCTECHKOOTOUR', -20, 60, '2017-01-21 00:00:00.000', '2017-06-30 00:00:00.000', GETDATE(), GETDATE()
+	);
+		INSERT INTO [dbo].[Promo] (PromoName, Code, PromoValue, MinValueToUse, BeginDate, EndDate, EnterTime, ModifyTime) VALUES (
+		'WAVEKOOTOUR', 'WAVEKOOTOUR', -20, 60, '2017-01-21 00:00:00.000', '2017-06-30 00:00:00.000', GETDATE(), GETDATE()
+	);
+		
+		INSERT INTO [dbo].[Promo] (PromoName, Code, PromoValue, MinValueToUse, BeginDate, EndDate, EnterTime, ModifyTime) VALUES (
+		'HOBOKOOTOUR', 'HOBOKOOTOUR', -20, 60, '2017-01-21 00:00:00.000', '2017-06-30 00:00:00.000', GETDATE(), GETDATE()
+	);
+		INSERT INTO [dbo].[Promo] (PromoName, Code, PromoValue, MinValueToUse, BeginDate, EndDate, EnterTime, ModifyTime) VALUES (
+		'WEBKOOTOUR', 'WEBKOOTOUR', -20, 60, '2017-01-21 00:00:00.000', '2017-06-30 00:00:00.000', GETDATE(), GETDATE()
+	);

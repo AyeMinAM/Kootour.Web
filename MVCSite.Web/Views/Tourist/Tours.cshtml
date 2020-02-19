@@ -1,0 +1,531 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.Web.ViewModels
+@using System.Configuration
+@using MVCSite.Common.NameHelper
+@model MVCSite.Web.ViewModels.ToursModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    var landingFolder = System.Configuration.ConfigurationManager.AppSettings["landing"];
+}
+@section seoinfo{
+    <title>@Model.BannerTitle Tours and Activities | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Explore and book local tour guides in @Model.BannerTitle and customize your trip to make it unique. Life is an adventure, make it an unforgettable one." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.BannerTitle, tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+@{
+    var BannerImagePath = string.Format("/images/{0}/{1}/{1}.jpg", @landingFolder, @NameHelper.GenDriveName(@Model.BannerImageName));
+}
+<style>
+
+    section.search-section.section.section-small{
+        padding-top: 50px !important;
+    }
+    .tours-slogan {
+        font-size: 6.0rem !important;
+    }
+    .section-subtitle {
+        font-size: 3.8rem;
+        padding-bottom:20px;
+    }
+    .section-subtitle-tours {
+        font-size: 3.8rem;
+        padding:30px 0px 0px 0px;
+    }
+    .search-criteira-name {
+        margin-top: 3px;
+        font-size: 18px;
+		font-size: 1.8rem;
+		color: #0cc;
+		padding:0px;
+    }
+
+
+    .btn-search {
+    	display: inline-block;
+		margin-bottom: 0;
+		font-weight: normal;
+		text-align: center;
+		vertical-align: middle;
+		-ms-touch-action: manipulation;
+		touch-action: manipulation;
+		cursor: pointer;
+		background-image: none;
+		border: 1px solid transparent;
+		white-space: nowrap;
+		padding: 6px 12px;
+		font-size: 14px;
+		line-height: 1.42857143;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+		padding: 8px 16px;
+		font-size: 16px;
+		font-size: 1.6rem;
+		border-radius: 3px;
+	}
+    .btn-kootour-bold {
+		font-family: Montserrat-Medium;
+	}
+
+	.btn-kootour, .btn-kootour-bold {
+		color: #fff;
+		background-color: #0cc;
+		width: 200px;
+	}
+	.btn-lg, .btn-group-lg>.btn {
+		padding: 6px 16px;
+		font-size: 18px;
+		line-height: 1.3333333;
+	}
+
+    .cover-tours {
+        background: url(@BannerImagePath);
+        background-position: center center;
+        background-repeat: no-repeat;
+        font-family: monsterrat medium;
+    }
+   
+    .img_traveltips {
+        width: 75px;
+        height: 75px;
+    }
+    .traveltips_subtitle {
+        font-weight: bold;
+    }
+    .traveltips_para {
+        font-size: 13px;
+        font-weight: bold;
+        padding: 0px 30px;
+    }
+    .centered-wrapper {
+        float: none;
+        display: inline-block;
+    }
+    .city-wrapper span{
+        font-size: 3.8rem !important;
+    }
+    .destinations-wrapper {
+        height: 250px;
+    }
+    .destinations-wrapper .destinations-illustration {
+        height: 250px !important;
+        line-height: 40px;
+    }
+    .more-btn-container {
+        margin-top: 20px;
+    }
+    .more-btn-span {
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .img_more_btn {
+        cursor: pointer;
+        width: 45px;
+        height: 45px;
+    }
+
+    .tours-promo-price-wrapper {
+        position: absolute;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        left: 0;
+        top: 45px;
+        padding: 5px 10px 5px 7px;
+        color: white;
+        background-color: rgba(247, 0, 52, 1);
+        font-size: 18px;
+        /*shape-outside: polygon(0 0, 100% 0, 100% 100%, 30% 100%);*/
+    }
+
+    .tours-promo-price-wrapper > * {
+        flex: 0 1 auto;
+    }
+
+    .tours-promo-price-wrapper > div:last-child {
+        /*line-height: 12px;
+        margin-bottom: 5px;
+        margin-left: 7px;*/
+    }
+
+    .tours-promo {
+        display: block;
+        margin: 0;
+        color: white;
+    }
+
+
+</style>
+
+<div class="cover-tours">
+    <div class="cover-tours-cover-content">
+        <h1 class="tours-slogan">@Model.BannerTitle</h1>
+    </div>
+</div>
+
+    @*<nav class="navbar-breadcrumb">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li><a href="@Url.Action("Index")">Home</a></li>
+                    <li class="active">@SelectCityName</li>
+                </ol>
+            </div>
+        </nav>
+    *@
+    <div class="main-container container">
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <h1 class="nomargin blue section-subtitle-tours text-center">Tours</h1>
+
+                <!--search-section section -->
+                <section style="margin-top:20px;" class="section-small col-xs-12">
+
+                    @using (Html.BeginForm("Tours", "Tourist", new { }, FormMethod.Post, new { id = "ToursSearchForm", @class = "form-horizontal row" }))
+                    {
+                        @Html.HiddenFor(m => m.SelectCityID)
+                        @Html.HiddenFor(m => m.SelectCity)
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="hidden-lg col-md-6 col-sm-6 col-xs-6 nopadding search-criteira-name">
+                                <span class="subtitle">Calendar:</span>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    @Html.TextBoxFor(m => m.SelectDate, new { @class = "form-control datetimepicker", id = "filter-calendar", placeholder = "Selected Date" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.SelectDate)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="hidden-lg col-lg-5 col-md-6 col-sm-6 col-xs-6 nopadding search-criteira-name">
+                                <span class="subtitle">Categories:</span>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    @Html.DropDownListFor(m => m.CategoryID, Model.CategoryOptions, new { @class = "form-control" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.CategoryID)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="hidden-lg col-lg-5 col-md-6 col-sm-6 col-xs-6 nopadding search-criteira-name">
+                                <span class="subtitle">Duration:</span>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    @Html.DropDownListFor(model => model.Duration, new SelectList(ViewBag.durationList, "Value", "Text"), new { @class = "form-control", @id = "ddlDuration" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.LanguageID)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="text-right">
+                                <button class="btn btn-lg btn-kootour-bold btn-search" style="width:100%" type="submit">Find Tours</button>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-9 hidden-md hidden-sm hidden-xs">
+                            <p style="margin-top: 0px;font-size: 19px;font-weight: bold;" class="blue text-left">@Model.Tours.Count Tours found</p>
+                        </div>
+
+                        <div class="hidden-lg col-md-12 col-sm-12 col-xs-12">
+                            <p style="margin-top: 15px;font-size: 19px;font-weight: bold;" class="blue text-right">@Model.Tours.Count Tours found</p>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="hidden-lg col-lg-5 col-md-6 col-sm-6 col-xs-6 nopadding search-criteira-name">
+                                <span class="subtitle">Sort By:</span>
+                            </div>
+
+                            <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                                <div class="form-group">
+                                    @Html.DropDownListFor(model => model.SortByPrice, new SelectList(ViewBag.sortByPriceList, "Value", "Text"), new { @class = "form-control", @id = "ddlSortByPrice" })
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </section>
+            </div>
+
+            <div class="nopadding col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                @{
+                    var rowToursLimit = 3;
+                    var visibleToursLimit = 12;
+                    var allTours = Model.Tours.ToList();
+                    var totalToursCount = allTours.Count;
+                    var visibleToursCount = (totalToursCount < visibleToursLimit) ? totalToursCount : visibleToursLimit;
+                }
+                @if (totalToursCount > 0)
+                {
+                    foreach (var tour in allTours.GetRange(0, visibleToursCount))
+                    {
+                        <div class="tours tours-wrapper @(visibleToursCount < rowToursLimit ? "centered-wrapper" : "") col-lg-4 col-md-6 col-sm-6 col-xs-12">
+                            <a href="@Url.Action("Tour", new {tourname=@NameHelper.GenTourInUrl(tour.Name), id = tour.ID})">
+                                <section class="section section-small">
+                                    <div class="tours-content tours-content-fixed">
+                                        <div class="tours-illustration" style="background-image: url('@tour.CoverImageUrl')">
+                                            @if (@tour.SugRetailPrice > @tour.NowPrice)
+                                            {
+                                                <div class="tours-promo-price-wrapper">
+                                                    <div>
+                                                        <div class="tours-promo-price">Save $@Math.Round(@tour.SugRetailPrice - @tour.NowPrice)</div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="tours-price-wrapper">
+                                                <div>
+                                                    <h2 class="tours-price">$@tour.NowPrice</h2>
+                                                </div>
+                                                <div>
+                                                    @if (@tour.SugRetailPrice > @tour.NowPrice)
+                                                    {
+                                                        <div class="tours-original-price">$@tour.SugRetailPrice</div>
+                                                    }
+                                                    <div>@tour.PerPersonOrGroup</div>
+                                                </div>
+                                            </div>
+                                            @*<div class="add-favorite"></div>*@
+                                        </div>
+
+                                        <p class="subtitle nomargin">@tour.Name</p>
+                                        <p>By @tour.UserName</p>
+
+                                        <p>@Html.Raw(tour.Overview)</p>
+                                    </div>
+                                </section>
+                            </a>
+                        </div>
+                    }
+
+                    foreach (var tour in allTours.GetRange(visibleToursCount, totalToursCount - visibleToursCount))
+                    {
+                        <div class="tours tours-wrapper tours-collapse collapse col-lg-4 col-md-6 col-sm-6 col-xs-12">
+
+                            <a href="@Url.Action("Tour", new {tourname=@NameHelper.GenTourInUrl(tour.Name), id = tour.ID})">
+                                <section class="section section-small">
+                                    <div class="tours-content tours-content-fixed">
+                                        <div class="tours-illustration" style="background-image: url('@tour.CoverImageUrl')">
+                                            @if (@tour.SugRetailPrice > @tour.NowPrice)
+                                            {
+                                                <div class="tours-promo-price-wrapper">
+                                                    <div>
+                                                        <div class="tours-promo-price">Save $@Math.Round(@tour.SugRetailPrice - @tour.NowPrice)</div>
+                                                    </div>
+                                                </div>
+                                            }
+                                            <div class="tours-price-wrapper">
+                                                <div>
+                                                    <h2 class="tours-price">$@tour.NowPrice</h2>
+                                                </div>
+                                                <div>
+                                                    @if (@tour.SugRetailPrice > @tour.NowPrice)
+                                                    {
+                                                        <div class="tours-original-price">$@tour.SugRetailPrice</div>
+                                                    }
+                                                    <div>@tour.PerPersonOrGroup</div>
+                                                </div>
+                                            </div>
+                                            @*<div class="add-favorite"></div>*@
+                                        </div>
+
+                                        <p class="subtitle nomargin">@tour.Name</p>
+                                        <p>By @tour.UserName</p>
+
+                                        <p>@Html.Raw(tour.Overview)</p>
+                                    </div>
+                                </section>
+                            </a>
+                        </div>
+                    }
+                    if (totalToursCount > visibleToursLimit)
+                    {
+                        <div class="more-btn-container col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                            <span class="more-btn-span blue more-tours_span">more tours</span>
+                            <div data-toggle="collapse" data-target=".tours-collapse">
+                                <img class="img_more_btn more-tours_btn" src="/images/icons/icon_down-arrow.png" alt="an icon of loading more">
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="tours col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                        <section class="section section-small">
+                            <div>
+                                <h1 class="titlepage blue">Oops!</h1>
+                                <p>No results found. Check back later as we frequently add new tours</p>
+                            </div>
+                        </section>
+                    </div>
+                }
+
+            </div>
+
+            @if (!(
+                string.IsNullOrWhiteSpace(Model.Tip1) &&
+                string.IsNullOrWhiteSpace(Model.Tip2) &&
+                string.IsNullOrWhiteSpace(Model.Tip3) &&
+                string.IsNullOrWhiteSpace(Model.Tip4) &&
+                string.IsNullOrWhiteSpace(Model.Tip5) &&
+                string.IsNullOrWhiteSpace(Model.Tip6)))
+            {
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <section class="section section-small col-xs-12">
+                        <h1 class="nomargin blue section-subtitle">Travel Tips</h1>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-services">
+                                <figure>
+                                    <img class="img_traveltips" src="@string.Format("/images/icons/icon_{0}.png", @NameHelper.GenDriveName(@Model.Tip1.Split('|')[0]))" alt="an icon of @Model.Tip1.Split('|')[0]">
+                                </figure>
+                                <h4 class="traveltips_subtitle">@Model.Tip1.Split('|')[0]</h4>
+                                <div class="traveltips_para text-left">@Html.Raw(@Model.Tip1.Split('|')[1])</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-services">
+                                <figure>
+                                    <img class="img_traveltips" src="@string.Format("/images/icons/icon_{0}.png", @NameHelper.GenDriveName(@Model.Tip2.Split('|')[0]))" alt="an icon of @Model.Tip2.Split('|')[0]">
+                                </figure>
+                                <h4 class="traveltips_subtitle">@Model.Tip2.Split('|')[0]</h4>
+                                <div class="traveltips_para text-left">@Html.Raw(@Model.Tip2.Split('|')[1])</div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 col-services">
+                                <figure>
+                                    <img class="img_traveltips" src="@string.Format("/images/icons/icon_{0}.png", @NameHelper.GenDriveName(@Model.Tip3.Split('|')[0]))" alt="an icon of @Model.Tip3.Split('|')[0]">
+                                </figure>
+                                <h4 class="traveltips_subtitle">@Model.Tip3.Split('|')[0]</h4>
+                                <div class="traveltips_para text-left">@Html.Raw(@Model.Tip3.Split('|')[1])</div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            }
+
+            @if (Model.DestinationList != null && Model.DestinationList.Count > 0)
+            {
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <section class="section section-small col-xs-12">
+                        <div class="inner-container">
+                            <h1 class="nomargin blue section-subtitle">Other Destinations</h1>
+                            @{
+                                var rowDestinationsLimit = 4;
+                                var totalDestinationsCount = Model.DestinationList.Count;
+                                var visibleDestinationsCount = (totalDestinationsCount < rowDestinationsLimit) ? totalDestinationsCount : rowDestinationsLimit;
+                            }
+
+                            @foreach (var destination in Model.DestinationList.GetRange(0, visibleDestinationsCount))
+                            {
+                                <div class="city-wrapper destinations-wrapper @(visibleDestinationsCount < rowDestinationsLimit ? "centered-wrapper" : "") col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <a class="city-link" href="@Url.Content("~/"+@NameHelper.SpaceToDash(NameHelper.GetCityName(@destination.UniqueCityName)))">
+                                        <div class="city-illustration destinations-illustration" style="background-image: url(@string.Format("/images/{0}/{1}/destination_{1}.jpg", @landingFolder,  @NameHelper.GenDriveName(NameHelper.GetCityName(@destination.UniqueCityName))))">
+                                            <span>@NameHelper.GetCityName(@destination.UniqueCityName)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+
+                            @foreach (var destination in Model.DestinationList.GetRange(visibleDestinationsCount, totalDestinationsCount - visibleDestinationsCount))
+                            {
+                                <div class="city-wrapper destinations-wrapper destinations-collapse collapse col-lg-3 col-md-6 col-sm-12 col-xs-12">
+                                    <a class="city-link" href="@Url.Content("~/"+@NameHelper.SpaceToDash(NameHelper.GetCityName(@destination.UniqueCityName)))">
+                                        <div class="city-illustration destinations-illustration" style="background-image: url(@string.Format("/images/{0}/{1}/destination_{1}.jpg", @landingFolder,  @NameHelper.GenDriveName(NameHelper.GetCityName(@destination.UniqueCityName))))">
+                                            <span>@NameHelper.GetCityName(@destination.UniqueCityName)</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+
+                        </div>
+                        @if (totalDestinationsCount > rowDestinationsLimit)
+                        {
+                            <div class="more-btn-container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <span class="more-btn-span blue more-destinations_span">more destinations</span>
+                                <div data-toggle="collapse" data-target=".destinations-collapse">
+                                    <img class="img_more_btn more-destinations_btn" src="/images/icons/icon_down-arrow.png" alt="an icon of loading more">
+                                </div>
+                            </div>
+                        }
+                    </section>
+                </div>
+            }
+
+            @if (!string.IsNullOrWhiteSpace(Model.BlogList))
+            {
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <section class="section section-small col-xs-12">
+                        <h1 class="nomargin blue subtitle">From Our Blog</h1>
+                        <div class="row">
+                            @foreach (var blog in Model.BlogList)
+                            {
+                                <div class="col-md-4 col-services">
+                                    <figure>
+                                        <img class="img_blog" src="/images/icons/search.svg" alt="">
+                                    </figure>
+                                    <p class="blog_para">Find unique & traditional tours from trusted guides.</p>
+                                </div>
+                            }
+                        </div>
+                    </section>
+                </div>
+            }
+        </div>
+    </div>
+    <script type="text/javascript">
+    $(function () {
+    var widgetcalendar = $('#filter-calendar').datetimepicker({
+        useCurrent: false,
+        minDate: new Date(),
+        //defaultDate: new Date("@Model.SelectDate"),
+        format: "MM/DD/YYYY"
+    }).on('dp.change', function (e) {
+        $('#filter-calendar').data("DateTimePicker").hide();
+    });
+    $('#filter-calendar').val("@Model.SelectDate");
+
+
+    $(".tours-wrapper")
+        .on("shown.bs.collapse", function () {
+            $(".more-tours_span").html("less tours");
+            $(".more-tours_btn")
+            .attr("src", "/images/icons/icon_up-arrow.png");
+        })
+        .on('hidden.bs.collapse', function () {
+            $(".more-tours_span").html("more tours");
+            $(".more-tours_btn")
+            .attr("src", "/images/icons/icon_down-arrow.png");
+        });
+
+    $(".destinations-wrapper")
+        .on("shown.bs.collapse", function () {
+            $(".more-destinations_span").html("less destinations");
+            $(".more-destinations_btn")
+            .attr("src", "/images/icons/icon_up-arrow.png");
+        })
+        .on("hidden.bs.collapse", function () {
+            $(".more-destinations_span").html("more destinations");
+            $(".more-destinations_btn")
+            .attr("src", "/images/icons/icon_down-arrow.png");
+        });
+    });
+    </script>

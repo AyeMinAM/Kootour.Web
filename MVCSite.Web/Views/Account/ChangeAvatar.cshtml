@@ -1,0 +1,127 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.Layout
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Change Avatar | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Change Avatar." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="change Avatar, Avatar, change profile, profile, account, @Model.MetaKeywords" />
+    <meta name="robots" content="index,nofollow" />
+}
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="text-center section section-small">
+                <div id="step-1">
+                    <label class="title black"><b>Change your avatar</b></label>
+                    <p>Please select your avatar image file less than 5M.<br/>It can be .jpg, .png or .jpeg file.@ViewBag.id</p>
+                    <div class="row">
+                        <div class="col-lg-offset-3 col-md-offset-3 col-sm-offset-2 col-xs-offset-2 col-lg-6 col-md-6 col-sm-8 col-xs-8">
+                            <form id="uploadForm" action="" method="post" target="_self" enctype="multipart/form-data">
+                                <input id="uploadFileInput" name="file" type="file" multiple class="file-loading" accept="image/*">
+                            </form>
+                        </div>
+                    </div>
+                </div> 
+            </section>
+        </div>
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="@Url.Content("~/Content/guideSrc/css/fileinput.min.css")" />
+<script type="text/javascript" src="@Url.Content("~/Content/guideSrc/js/fileinput.js")"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        $("#uploadFileInput").fileinput({
+            language: 'en', 
+            showCaption: false,
+            showRemove:false,
+            browseClass: "btn btn-primary",
+            uploadClass: "btn btn-primary",
+            multiple: false,
+            maxFileCount: 1,
+            uploadUrl: "/Guide/UploadFiles/@ViewBag.id",
+            allowedFileExtensions: ["jpg", "png", "jpeg"],
+            maxFileSize: 5000,
+            uploadExtraData: {
+                uploadType: 1,
+            },
+            layoutTemplates: {
+                main1: '{preview}\n' +
+                    '<div class="kv-upload-progress hide"></div>\n' +
+                    '<div class="input-group {class}">\n' +
+                    '   {caption}\n' +
+                    '   <div class="input-group-btn">\n' +
+                    '       {remove}\n' +
+                    '       {cancel}\n' +
+                    '       {upload}\n' +
+                    '       {browse}\n' +
+                    '   </div>\n' +
+                    '</div>',
+                main2: '{preview}\n<div class="kv-upload-progress hide"></div>\n{remove}\n{cancel}\n{upload}\n{browse}\n',
+                preview: '<div class="file-preview {class}">\n' +
+                    '    {close}\n' +
+                    '    <div class="close fileinput-remove">×</div>\n' +
+                    '    <div class="{dropClass}">\n' +
+                    '    <div class="file-preview-thumbnails">\n' +
+                    '    </div>\n' +
+                    '    <div class="clearfix"></div>' +
+                    '    <div class="file-preview-status text-center text-success"></div>\n' +
+                    '    <div class="kv-fileinput-error"></div>\n' +
+                    '    </div>\n' +
+                    '</div>',
+                icon: '<span class="glyphicon glyphicon-file kv-caption-icon"></span>',
+                caption: '<div tabindex="-1" class="form-control file-caption {class}">\n' +
+                    '   <div class="file-caption-name"></div>\n' +
+                    '</div>',
+                btnDefault: '<button type="{type}" tabindex="500" title="{title}" class="{css}"{status}>{icon}{label}</button>',
+                btnLink: '<a href="{href}" tabindex="500" title="{title}" class="{css}"{status}>{icon}{label}</a>',
+                btnBrowse: '<div tabindex="500" class="{css}"{status}>{icon}{label}</div>',
+                modalMain: '<div id="kvFileinputModal" class="file-zoom-dialog modal fade" tabindex="-1" aria-labelledby="kvFileinputModalLabel"></div>',
+                modal: '<div class="modal-dialog modal-lg" role="document">\n' +
+                    '  <div class="modal-content">\n' +
+                    '    <div class="modal-header">\n' +
+                    '      <div class="kv-zoom-actions pull-right">{toggleheader}{fullscreen}{borderless}{close}</div>\n' +
+                    '      <h3 class="modal-title">{heading} <small><span class="kv-zoom-title"></span></small></h3>\n' +
+                    '    </div>\n' +
+                    '    <div class="modal-body">\n' +
+                    '      <div class="floating-buttons"></div>\n' +
+                    '      <div class="kv-zoom-body file-zoom-content"></div>\n' + '{prev} {next}\n' +
+                    '    </div>\n' +
+                    '  </div>\n' +
+                    '</div>\n',
+                progress: '<div class="progress">\n' +
+                    '    <div class="progress-bar progress-bar-success progress-bar-striped text-center" role="progressbar" aria-valuenow="{percent}" aria-valuemin="0" aria-valuemax="100" style="width:{percent}%;">\n' +
+                    '        {percent}%\n' +
+                    '     </div>\n' +
+                    '</div>',
+                footer: '<div class="file-thumbnail-footer">\n' +
+                    '    <div class="file-caption-name" style="width:{width}">{caption}</div>\n' +
+                    '    {progress} {actions}\n' +
+                    '</div>',
+                actions: '<div class="file-actions">\n' +
+                    '    <div class="file-footer-buttons">\n' +
+                    '        {delete}' +
+                    '    </div>\n' +
+                    '    {drag}\n' +
+                    '    <div class="file-upload-indicator" title="{indicatorTitle}">{indicator}</div>\n' +
+                    '    <div class="clearfix"></div>\n' +
+                    '</div>',
+                actionDelete: '<button type="button" class="kv-file-remove {removeClass}" title="{removeTitle}"{dataUrl}{dataKey}>{removeIcon}</button>\n',
+                actionUpload: '<button type="button" class="kv-file-upload {uploadClass}" title="{uploadTitle}">{uploadIcon}</button>\n',
+                actionZoom: '<button type="button" class="kv-file-zoom {zoomClass}" title="{zoomTitle}">{zoomIcon}</button>',
+                actionDrag: '<span class="file-drag-handle {dragClass}" title="{dragTitle}">{dragIcon}</span>'
+            },
+
+        });
+        $('#uploadFileInput').on('filebatchuploadcomplete', function (event, data, previewId, index) {
+            location.href="@Url.Action("EditProfile//"+ViewBag.id)";            
+        });
+    });
+</script>

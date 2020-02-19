@@ -1,0 +1,205 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@using MVCSite.Web.Extensions
+@using MVCSite.Web.ViewModels
+@using System.Web.Routing;
+@model MVCSite.Web.ViewModels.TourProductsModel
+@{
+    Layout = "~/Views/Shared/_LayoutGuide.cshtml";
+    var tourBackCSS = string.Empty;
+}
+<div class="main-container container" id="main-container">
+    <div class="main-content">
+        <div class="main-content-inner">
+
+            <div class="page-content-nopadding">
+                <div class="" id="breadcrumbs">
+                    <ul class="breadcrumb">
+                        <li>
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a href="/">Home</a>
+                        </li>
+
+                        <li>
+                            <a href="@Url.Action("TourProducts")">Tour Products</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            @Html.Partial("_GuideMenu")
+
+            <div class="page-content">
+                @using (Html.BeginForm("TourProductsModel", "Guide", new { }, FormMethod.Post, new { id = "TourProductsForm", @class = "primary-col clearfix" }))
+                {
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="kootour-widget-color-main">
+                            <div class="widget-header col-xs-12 nomargin">
+                                <div class="col-xs-12 col-sm-6 nopadding">
+                                    <h3 class="widget-title">
+                                        <span class="blue">Tour Products</span>
+                                    </h3>
+                                </div>
+                                <div class="hidden-xs visible-sm-6 nopadding">
+                                    <a href="@Url.Action("TourType")" id="create_new" type="button" class="btn btn-blue pull-right">
+                                        Create tour</a>
+                                </div>
+                                <div class="hidden-sm hidden-md hidden-lg hidden-sm visible-xs-12">
+                                    <a href="@Url.Action("TourType")" id="create_new" type="button" class="btn btn-blue">
+                                        Create tour</a>
+                                </div>
+                            </div>
+                                    @foreach(var tour in Model.Tours)
+                                    {
+                                        @*if(tour.Status == TourStatus.Active){
+                                            tourBackCSS = string.Empty;
+                                        }
+                                        else
+                                        {
+                                            tourBackCSS = "background-color : #eee;";
+                                        }  *@ 
+                                        <div class="col-xs-12 tour-product">                                                                                       
+                                                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 nopadding tour-product-picture" style="background-image:url('@tour.TourImageUrl')">
+                                                </div>
+                                                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 text-left tour-product-info">
+                                                    <div class="tour-product-info-title">
+                                                    <h3 style="color:#00cccc;font-weight:bold;margin-top: 0;">@tour.TourName</h3>
+                                                        <h4>
+                                                            @switch ((int)tour.Status)
+                                                            {
+                                                                case (int)TourStatus.Incomplete:
+                                                                <span class="#C3C3C3">Incomplete</span>
+                                                                    break;
+                                                                case (int)TourStatus.Complete:
+                                                                    <span class="#C3C3C3">Complete</span>
+                                                                    break;
+                                                                case (int)TourStatus.Active:
+                                                                    <span class="blue">Active(Pending Approval)</span>
+                                                                    break;
+                                                                case (int)TourStatus.Inactive:
+                                                                    <span class="#c3c3c3;">Inactive</span>
+                                                                    break;
+                                                                case (int)TourStatus.Deleted:
+                                                                    <span class="#C3C3C3">Deleted</span>
+                                                                    break;
+                                                                case (int)TourStatus.Published:
+                                                                    <span class="blue">Published</span>
+                                                                    break;
+                                                            }
+
+                                                            @*@if (tour.Status == TourStatus.Active)
+                                                            {
+                                                                <span class="blue">Active</span>
+                                                            }
+                                                            else if (tour.Status == TourStatus.Inactive)
+                                                            {
+                                                                <span style="color: #c3c3c3;">Inactive</span>
+                                                            }*@
+
+                                                            @if (tour.IfExpired)
+                                                            {
+                                                                <span class="limiter blue">&nbsp;|&nbsp;</span>
+                                                                <span style="color: #fa0000;">Expired</span>
+                                                            }
+                                                        </h4>
+                                                    </div>
+
+                                                    <div class="tour-product-actions">
+                                                        @if(tour.Status == TourStatus.Active){
+                                                        <a type="button" class="btn btn-white" href="@Url.Action("OverviewActive", new { id = @tour.TourID })"
+                                                           data-toggle="tooltip" data-placement="bottom" title="Deactivate to edit tour">
+                                                            Extend</a>
+                                                        }
+                                                        else
+                                                        {
+                                                        <a type="button" class="btn btn-white" href="@Url.Action("TourType", new { id = @tour.TourID })">
+                                                            Edit</a>                                                     
+                                                        }
+
+                                                        <a type="button" class="btn btn-white" href="#" onclick="return OnClickDeleteButton(@tour.TourID,'@tour.TourName');">
+                                                            Delete</a>
+                                                        <a type="button" class="btn btn-white" href="@Url.Action("TourClone", new {id = @tour.TourID})">
+                                                            Clone</a>
+
+                                                        @if (tour.Status == TourStatus.Active){
+                                                            <a type="button" class="btn btn-white" href="@Url.Action("TourSetStatus",
+                                                                new
+                                                                {
+                                                                    id = @tour.TourID,
+                                                                    status = (byte) TourStatus.Inactive,
+                                                                    NextActionName = "TourProducts",
+                                                                    NextControllerName = "Guide", 
+                                                                    DoneRedirect = new
+                                                                    {
+                                                                        DoneControllerName = "Guide",
+                                                                        DoneActionName = "TourProducts"
+                                                                    }
+                                                                })">Deactivate</a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a type="button" class="btn btn-white" href="@Url.Action("TourSetStatus",
+                                                                new
+                                                                {
+                                                                    id = @tour.TourID,
+                                                                    status = (byte) TourStatus.Active,
+                                                                    NextActionName = "TourProducts",
+                                                                    NextControllerName = "Guide", 
+                                                                    DoneRedirect = new
+                                                                    {
+                                                                        DoneControllerName = "Guide",
+                                                                        DoneActionName = "TourProducts"
+                                                                    }
+                                                                })">Activate</a>
+                                                        }
+                                                        <a href="@Url.Action("Tour","Tourist", new { id = @tour.TourID,calendar=DateTime.UtcNow.ToString(MVCSite.Common.TimeHelper.DefaultDateFormat)})" target="_blank" type="button" class="btn btn-blue" onclick="">Preview</a>
+    @*                                                    <button type="button" class="btn btn-white kootour-btn-main" onclick="">
+                                                            Promotion</button>*@
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    }
+                            <!-- /.widget-body -->
+                        </div>
+                        <!-- /.widget-box -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                }            
+            </div>
+            <!-- /.page-content -->
+        </div>
+    </div>
+    <!-- /.main-content -->
+</div>
+<script type="text/javascript">
+    var OnClickDeleteButton = function (tourId,tourName) {
+        BootstrapDialog.show({
+            title: 'Confirm Please',
+            message: "Are you sure you want to delete this tour - " + tourName + "?",
+            buttons: [{
+                label: 'Delete',
+                cssClass: 'btn btn-blue',
+                action: function (dialog) {
+                    dialog.close();
+                    location.href = "TourDelete/" + tourId;
+                }
+            },
+            {
+                label: 'Close',
+                cssClass: 'btn btn-white',
+                action: function (dialog) {
+                    dialog.close();
+                }
+            },
+            ]
+        });
+    };
+    $(function () {
+
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+

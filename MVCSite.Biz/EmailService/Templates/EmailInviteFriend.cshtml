@@ -1,0 +1,23 @@
+﻿@using MVCSite.Biz
+@model EmailInviteFriend
+
+<td colspan="2" bgcolor="#FFFFFF">
+    <font face="Arial, Helvetica, sans-serif" color="#0779be" size="5"><strong>来自@(Model.UserName)的邀请，</strong></font>
+    <font face="Arial, Helvetica, sans-serif" color="#000000">
+        <p>
+            @Model.UserName 邀请你加入微教室记事本： <a href="@Model.ConfirmationLink" target="_blank" >@Model.BoardName</a>
+        </p>
+    </font>
+    <p>
+        <a target="_blank" style="border-radius: 3px; background: #3AA54C; border: 1px solid #2F7D3D;
+            color: #fff; cursor: pointer; display: inline-block; font-weight: 700; line-height: 20px;
+            padding: 6px 15px; text-decoration: none" href="@Model.ConfirmationLink">
+            查看记事本</a>
+    </p>
+    <font face="Arial, Helvetica, sans-serif" color="#000000"></font></p> <font face="Arial, Helvetica, sans-serif"
+        color="#000000">
+        <p>
+            <b>欢迎加入微教室!</b>
+        </p>
+    </font>
+</td>

@@ -1,0 +1,124 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.ContactModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>Contact Us | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="We at Kootour are always happy to hear from our travellers and guides. Send us a message if you need support or have feedback for us." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="index,follow" />
+}
+
+@* <script src="http://maps.googleapis.com/maps/api/js"></script>*@
+ <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyC-KkNFPSWGG96_vooaUvt5LhZi3FbNYV4"></script>
+    <script>
+        function initialize() {
+            var mapProp = {
+                center: new google.maps.LatLng(49.279010, -123.080189),
+                zoom: 14,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                disableDefaultUI: true
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+<section class="map">
+    <section style="position: absolute;left: 0;top: 0;height:inherit; width:100%" id="googleMap">
+    </section>
+
+    <section class="section nomargin contact text-center">
+        <h2 class="nomargin">Contact Us</h2>
+
+        <p>contact@kootour.com</p>
+        <p>+1 (604) 683-6450</p>
+
+        <p class="initlineheight">101 - 887 Great Northern Way<br/>
+        Vancouver BC, V5T 4T5<br/>
+        Canada</p>
+    </section>
+</section>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-offset-2 col-md-offset-2 col-lg-8 col-md-8 col-sm-12 col-xs-12">
+            <section class="section row">
+                <p class="subtitle"> 
+                    <span class="boldIt">Like a good travel companion, we are here to support you.<br/></span>
+                    Need help with something or just want to provide some feedback? Don't hesitate to send us a message.
+                </p>
+                <br/>
+                 @using (Html.BeginForm("ContactUs", "Tourist", new { }, FormMethod.Post, new { id = "ContactForm", @class = "form-horizontal" }))
+                 {
+                        <div class="form-group">
+                            <label for="topic" class="col-sm-3 text-left control-label">Topic</label>
+                            <div class="col-sm-9">
+                              @*  <select type="text" class="form-control input-lg gray" id="topic">
+                                    <option value="feedback">Feedback</option>
+                                    <option value="services">Services</option>
+                                </select>*@
+                                 @Html.DropDownListFor(m => m.Topic, Model.TopicOptions, new { @class = "form-control input-lg gray" })
+                            </div>
+                        </div>
+                        <div class="validation-row">
+                               @Html.ValidationMessageFor(m => m.Topic)
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="name" class="col-sm-3 text-left control-label">Name</label>
+                            <div class="col-sm-9">
+                                @*<input type="text" class="form-control input-lg gray" id="name" required>*@
+                                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control input-lg gray", required = "true" })
+                            </div>
+                        </div>
+                        <div class="validation-row">
+                                @Html.ValidationMessageFor(m => m.Name)
+                        </div>   
+
+                        <div class="form-group required">
+                            <label for="email" class="col-sm-3 text-left control-label">Email</label>
+                            <div class="col-sm-9">
+                                @*<input type="email" class="form-control input-lg gray" id="email" required="true">*@
+                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-lg gray", required = "true" })
+                            </div>
+                        </div>
+                        <div class="validation-row">
+                                @Html.ValidationMessageFor(m => m.Email)
+                        </div>    
+
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-3 text-left control-label">Phone</label>
+                            <div class="col-sm-9">
+                                @*<input type="text" class="form-control input-lg gray" id="phone">*@
+                                 @Html.TextBoxFor(m => m.Phone, new { @class = "form-control input-lg gray"})
+                            </div>
+                        </div>
+                        <div class="validation-row">
+                                @Html.ValidationMessageFor(m => m.Phone)
+                        </div>    
+
+                        <div class="form-group required">
+                            <label for="comment" class="col-sm-3 text-left control-label">Comment</label>
+                            <div class="col-sm-9">
+                               @* <textarea id="comment" class="form-control gray" rows="5" required></textarea>*@
+                               @Html.TextAreaFor(m => m.Comment, new { @class = "form-control input-lg gray", rows = 5 })
+                            </div>
+                        </div>
+                        <div class="validation-row">
+                                @Html.ValidationMessageFor(m => m.Comment)
+                        </div>  
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-lg btn-kootour-bold">Submit</button>
+                        </div>
+                
+                 }
+            </section>
+            @Html.Partial("_Social")
+        </div>
+    </div>
+</div>

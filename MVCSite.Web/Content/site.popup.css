@@ -1,0 +1,143 @@
+﻿
+#PopupDialog {
+    background-color:inherit;
+    z-index: 255;
+    width: 0px;
+    height:0px;
+}
+
+#hatched
+{
+ border: 3px dashed #f89b1c; 
+ height:400px;
+ width:550px; 
+ 
+}
+
+#hatched img
+{
+ margin:10px 10px 20px 10px;   
+}
+
+
+
+#PopupDialogContent {
+    width: 550px;
+    height:400px;
+    padding:30px 35px 35px 30px;
+    
+}
+
+#PopupDialog h1 {
+    color: #0779be;
+    font-weight:bold;
+    font-size: 20px;
+}
+
+#PopupDialog .editor-label {
+    font-weight:bold;
+}
+
+#PopupDialog .sign-in 
+{
+    float:left;
+    width:550px;
+    text-align:center;
+    
+    
+}
+
+#PopupDialog .sign-up 
+{
+    float:right;
+    width:300px;
+}
+
+#closeLink 
+{
+    float:right;
+    margin-top:-20px;
+    margin-left:20px;
+    
+}
+
+a.closeLink:link
+{
+    float:right;
+    font-size:11px;
+    font-weight:bold;
+    color:#9bedff;
+    margin-top:-25px;
+    margin-right: -50px;
+}
+
+a.closeLink:visited {
+    color:#9bedff;
+}
+
+a.closeLink:hover {
+    color:#9bedff;
+}
+
+a.closeLink:active {
+    color:#9bedff;
+}
+
+#SubmitEmail 
+{
+    /*width:110px; 
+    height:44px;
+    background: transparent url('/Content/Images/submit.png') no-repeat center top;*/
+    margin-bottom:20px;
+}
+#SubmitEmail[disabled="disabled"]
+{
+    background: transparent url('/Content/Images/button_sign-in_bw.png') no-repeat center top;
+}
+/*
+#Email
+{
+ width:200px;
+ height: 25px;
+ margin: 20px 0 20px 0;   
+}
+*/
+#modal-overlay
+{  
+    position:fixed;  
+    top:0;  
+    right:0;  
+    bottom:0;  
+    left:0;  
+    height:100%;  
+    width:100%;  
+    margin:0;  
+    padding:0;  
+    background:grey;  
+    opacity:.75;  
+    filter: alpha(opacity=75);  
+    -moz-opacity: 0.75;  
+    z-index:10;  
+}  
+/*  
+.window-overlay
+{  
+    position:fixed;  
+    top:0;  
+    right:0;  
+    bottom:0;  
+    left:0;  
+    height:100%;  
+    width:100%;  
+    margin:0;  
+    padding:0;  
+    background:grey;  
+    opacity:.75;  
+    filter: alpha(opacity=75);  
+    -moz-opacity: 0.75;  
+    z-index:10;  
+}  
+
+
+
+  position: absolute;*/

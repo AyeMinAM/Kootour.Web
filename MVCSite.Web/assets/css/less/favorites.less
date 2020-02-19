@@ -1,0 +1,23 @@
+.add-favorite {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 35px;
+  height: 35px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: block;
+  background-image: url('@{images}/icons/heart_intactive.png');
+}
+
+.add-favorite:hover {
+  background-image: url('@{images}/icons/heart_active.png');
+}
+
+
+@media screen and (max-width: 400px) {
+  .add-favorite {
+      width: 20px;
+      height: 20px;
+    }
+}

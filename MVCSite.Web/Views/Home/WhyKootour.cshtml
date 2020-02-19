@@ -1,0 +1,381 @@
+﻿@using MVCSite.Web.ViewModels;
+@using MVCSite.Web;
+@model Layout
+@{
+    Layout = "~/Views/Shared/_LayoutWhyKootour.cshtml";
+}
+@section seoinfo{
+    <title>Why Travel with Kootour | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Want to know who's helping you plan your trip? Meet the Kootour team and learn about how we help you enjoy travel more." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="about us, about, introduction, what kootour does, tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, beijing, shanghai, cancun, mexico city, vancouver, china, mexico, canada, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+<style>
+    .header_content {
+        position: absolute;
+        text-align: center;
+        top: 38%;
+        left: 0;
+        color: #ffffff;
+        width: 100%;
+    }
+
+    .secondNav {
+        padding-top: 50px;
+        margin: 0 auto;
+        width: 600px;
+    }
+
+    .sectionheading_align {
+        margin-top: 0;
+        padding-top: 20px;
+        padding-bottom: 10px;
+    }
+
+    .paragraph_align {
+        padding-bottom: 50px;
+    }
+
+    .image_align {
+        padding-right: 10px;
+    }
+
+    .image_width_align {
+        width: 80px;
+        max-width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .team-wrapper {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .team-wrapper .team_profile {
+        height: auto;
+        background-color: #fff;
+        border-top: 10px solid #00CCCC;
+        border-radius: 3px;
+        box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+        padding-top: 15px;
+        padding-bottom: 30px;
+    }
+    .bio_img {
+        width: 285px;
+        height: 285px;
+        border-radius: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .bio_text {
+        margin: 0 0 10px;
+        margin-left: 30px;
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    .team_text {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .table_center {
+        margin: 20px auto 20px auto;
+    }
+
+    .whykootour_text {
+        background-color: #fff;
+        padding-left: 100px;
+        padding-right: 100px;
+        padding-bottom: 50px;
+        border-radius: 3px;
+        box-shadow: -1px 0 2px 0 rgba(0, 0, 0, 0.12), 1px 0 2px 0 rgba(0, 0, 0, 0.12), 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    }
+
+.cover.why-cover {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url(../images/whykootour/whykootour.jpg);
+}
+
+.cover .cover-content {
+    top: calc(50% - 96px);
+}
+
+.section.align-item {
+    display: flex;
+    align-items: center;
+}
+
+.section img {
+        max-height: 325px;
+            max-width: 100%;
+                margin: 0 auto;
+    display: block;
+}
+
+.section-title {
+    margin-top: 0;
+}
+
+.yellow-list {
+    padding-left: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 22px;
+}
+
+.yellow-list > li {
+    position: relative;
+        padding-left: 25px;
+}
+
+.yellow-list > li:after {
+    width: 3px;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 6px;
+    top: 0;
+    bottom: 0;
+    background-color: #333333;
+    margin: 0px;
+    z-index: 2;
+}
+
+.yellow-list > li:before {
+    border-radius: 50%;
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 12px;
+    background-color: #f5D10A;
+    border: 3px solid #333333;
+    padding: 5px;
+    z-index: 4;
+    margin: 0px;
+}
+
+.yellow-list > li:first-child:after {
+    top: 12px;
+}
+
+.yellow-list > li:last-child:after {
+    bottom: 12px;
+}
+
+.cover .become-a-guide {
+    font-size: 6.0rem !important;
+}
+
+@@media (max-width: 992px) {
+
+    .yellow-list {
+        font-size: 1.6rem;
+    }
+
+    .yellow-list > li:after {
+        display: none;
+    }
+
+    .section.align-item {
+        display: block;
+    }
+
+    .section img {
+        margin: 0 auto;
+        display: block;
+    }
+
+    .section.section-img-up img {
+        margin-bottom: 15px;
+    }
+
+    .why-cover {
+        height: 350px!important;
+        background-position: right center;
+    }
+
+    .cover .become-a-guide {
+        font-size: 4.0rem !important;
+    }
+
+    .cover .cover-content {
+        top: calc(50% - 64px);
+    }
+}
+
+.section {
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+</style>
+
+<div class="main-container" style="    padding: 0;">
+
+<!-- Begin navbar -->
+    <div id="top"  class="cover why-cover">
+
+        @Html.Action("Header", "Home", new { role = Model.Role, page = 1 }, true)
+
+        <div class="cover-content">
+            <div class="container">
+                <h1 class="become-a-guide">Why Kootour ?</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Side nav -->
+    <nav class="side-nav" role="navigation">
+
+        <ul class="nav-side-nav">
+            <li><a class="tooltip-side-nav" href="#top" title="" data-original-title="Top" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#section-1" title="" data-original-title="Unique&nbsp;&&nbsp;traditional&nbsp;guided&nbsp;tours" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#section-2" title="" data-original-title="Book&nbsp;your&nbsp;tour" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#section-3" title="" data-original-title="Safe&nbsp;&&nbsp;secure&nbsp;payment&nbsp;solutions" data-placement="left auto"></a></li>
+            <li><a class="tooltip-side-nav" href="#section-4" title="" data-original-title="Support" data-placement="left auto"></a></li>
+        </ul>
+
+    </nav> <!-- /.side-nav -->
+
+    <div style="background-color:#0cc; color: white">
+        <div class="container" style="padding-top:30px;padding-bottom:30px;">
+            <div class="align-item row section section-img-up">
+            <div class="hidden-md hidden-lg col-xs-12 col-sm-12">
+                    <img  src="/images/whykootour/iphone_mockup.png" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                    <ul class="yellow-list">
+                        <li>Search for your tour  by location, dates or theme</li>
+                        <li>Customize your tour  with any additional options</li>
+                        <li>Book & pay online  with our secure system</li>
+                        <li>Meet your guide and  enjoy your tour</li>
+                    </ul>
+                </div>
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                    <img style="    height: 225px;" src="/images/whykootour/iphone_mockup.png" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="background-color: white;">
+        <div class="align-item row section" id="section-1">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <h2 class="blue section-title">Find unique &  traditional guided tours</h2>
+
+                <p>We hand-pick private tours with unique elements  that you can’t find elsewhere. We also select a number of high-quality tours to  traditional landmarks for first-time visitors, and travellers with a limited  time frame.</p>
+
+                <p>Don’t share your experiences with busloads of  tourists. Our private and small group tours allow you to experience the world  with a local by your side without compromising your enjoyment.</p>
+
+                <p>We have a wide range of tours covering everything  from sports & activities, culture, history, architecture, photography to  cooking and much more.</p>
+                
+                <p>We negotiate the best prices so you can enjoy  high-quality tours at competitive prices.</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                <img src="/images/whykootour/icon-for-why-kootour.png" />
+            </div>
+        </div> <!-- /.row -->
+
+        <hr class="blue">
+
+        <div class="align-item row section" id="section-2">
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                    <img src="/images/whykootour/icon_booktours.png" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <h2 class="section-title blue">Book your tour</h2>
+
+                <p>We take the hassle out of travel. Find high quality  guides who will meet you at your hotel, or pick you up from the airport to  deliver a seamless experience.</p>
+                
+                <p>Our instant book feature means that your plans  are confirmed straight away. Your tour is booked as soon as the payment has  been received.</p>
+                
+                <p>Customize your tour with our range of inbuilt  customizable options.</p>
+
+                <p>Your guide will be in touch with any further  information and to provide useful recommendations about your tour.</p>
+            </div>
+            <div class="hidden-md hidden-lg col-xs-12 col-sm-12">
+                    <img src="/images/whykootour/icon_booktours.png" />
+            </div>
+        </div> <!-- /.row -->
+
+        <hr class="blue">
+
+        <div class="align-item row section" id="section-3">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <h2 class="section-title blue">Safe & secure payment solutions</h2>
+
+                <p>We use Stripe (link) to safely receive payments.  No card details are held and the transfer is encrypted.  The payment is held until after the tour concludes  for peace of mind and in the rare case that refunds are required.</p>
+                
+                <p>No cash is exchanged with the tour guide - so no  need to carry large amounts of cash or encounter any uncomfortable situations over  transactions.</p>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                    <img  src="/images/whykootour/icon_payment solutions.png" />
+            </div>
+        </div> <!-- /.row -->
+
+        <hr class="blue">
+
+        <div class="align-item row section" id="section-4">
+            <div class="hidden-xs hidden-sm col-md-4 col-lg-4">
+                    <img  src="/images/whykootour/icon_support.png" />
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                <h2 class="section-title blue">Support</h2>
+
+                <p>Our customer service team is multi-lingual and  can provide support in English, Spanish or Mandarin. We are on hand to answer  any questions you might have, and provide assistance from anywhere in the  world.</p>
+
+                <p>Our live chat option means you can get instant  responses to your questions about the site, booking process or your tour.</p>
+            </div>
+            <div class="hidden-md hidden-lg col-xs-12 col-sm-12">
+                    <img  src="/images/whykootour/icon_support.png" />
+            </div>
+        </div> <!-- /.row -->
+
+        <div class="row section">
+            <div class="col-xs-12">
+                <p class="text-center"><a href="#" class="btn btn-lg btn-kootour">Explore tours</a></p>
+            </div>
+        </div>    
+    </div> <!--end container of first row-->   
+</div>
+
+<script>
+    $(function() {
+
+  /*-----------------------------------------------------------------------------------*/
+  /*  Anchor Link
+  /*-----------------------------------------------------------------------------------*/
+  $('a.tooltip-side-nav').click(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+      || location.hostname == this.hostname) {
+
+      var target = $(this.hash);
+    target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
+    if (target.length) {
+      $('html,body').animate({
+        scrollTop: target.offset().top
+      }, 1000);
+        return false;
+      }
+    }
+  });
+
+  /*-----------------------------------------------------------------------------------*/
+  /*  Tooltips
+  /*-----------------------------------------------------------------------------------*/
+  $('.tooltip-side-nav').tooltip();
+
+});
+</script>
+
+
+
+

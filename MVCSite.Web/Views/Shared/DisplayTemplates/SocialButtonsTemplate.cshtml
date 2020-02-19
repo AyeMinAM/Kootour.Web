@@ -1,0 +1,28 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@using MVCSite.Common.NameHelper
+@model MVCSite.Web.ViewModels.TourModel
+<Script text="text/javascript">
+    var url;
+    $(document).Ready(function() {
+        url = @Model.RequestUrl;
+        alert(url);
+    });
+    function facebook() {
+        window.open('//www.facebook.com/sharer/sharer.php?u='+url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');
+        return false;
+    }
+</Script>
+@*FaceBook *@
+<div class="csbwfs-sbutton csbwfsbtns">
+    <div id="csbwfs-fb" class="csbwfs-fb">
+        <a onclick="facebook()" target="_blank" title="Share On Facebook" style="width: 45px;">
+            <i class="csbwfs_facebook"></i>face
+            <iframe id="tmp_downloadhelper_iframe" style="display: none;"></iframe>
+        </a>
+    </div>
+</div>
+@*Twitter*@
+
+@*Google*@

@@ -1,0 +1,996 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.DAC.Entities
+@using MVCSite.Common.NameHelper
+@model MVCSite.Web.ViewModels.TourModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section seoinfo{
+    <title>@Model.Name.Trim() | @Model.TourLocation.Split(',')[0].Trim() | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="@NameHelper.GetFirstParagraph(@Model.Overview)" />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.Name.Trim(), @Model.TourLocation.Trim(), @Model.Language.Replace("<br/>","").Replace("&",",").Replace(" ",""), tour marketplace, book tours, customizable tours, unique tours, instant booking, guided tours, tours, tour guide, local guide, activities, attractions, things to do, become a guide, kootour" />
+    <meta name="robots" content="index,follow" />
+}
+<style>
+    #readmore1 {
+        min-height: 145px;
+    }
+
+        #readmore1 div {
+            word-wrap: break-word;
+        }
+
+    #readmore2 ul {
+        word-wrap: break-word;
+    }
+
+    #guiderIntro {
+        word-wrap: break-word;
+        white-space: pre-line;
+    }
+
+    #guider-details {
+        padding-left: 3%;
+    }
+
+    .img-responsive {
+        width: 770px;
+        height: 450px;
+    }
+
+    .promo-price-variant {
+        margin-top: 30px;
+        padding: 5px 0px;
+        border-top: 2px solid #00cccc;
+        border-left: 2px solid #00cccc;
+        border-right: 2px solid #00cccc;
+        -webkit-border-radius: 3px 3px 0 0;
+        -moz-border-radius: 3px 3px 0 0;
+        border-radius: 3px 3px 0 0;
+    }
+
+    button.booking-button {
+        margin-top: 0px !important;
+        -webkit-border-radius: 0px 0px 3px 3px;
+        -moz-border-radius: 0px 0px 3px 3px;
+        border-radius: 0px 0px 3px 3px;
+    }
+
+    .crossed-perprice {
+        color: red;
+        font-weight: bold;
+        text-decoration: line-through;
+    }
+
+    .perprice {
+        font-weight: bold;
+        color: #00cccc;
+    }
+
+    .booking-type {
+        font-weight: bold;
+        color: #00cccc;
+    }
+</style>
+
+<nav class="navbar-breadcrumb">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="@Url.Action("Index")">Home</a></li>
+
+            @if (!string.IsNullOrEmpty(Model.TourLocation) && Model.TourLocation.Contains(","))
+            {
+                <li><a href="@Url.Action("Tours", new {cname=@NameHelper.SpaceToDash(@Model.TourLocation.Substring(0, Model.TourLocation.IndexOf(",")))})">@Model.TourLocation.Substring(0, @Model.TourLocation.IndexOf(","))</a></li>
+            }
+            else
+            {
+                <li><a href="@Url.Action("Tours", new {cname=@NameHelper.SpaceToDash(@Model.TourLocation)})">@Model.TourLocation</a></li>
+            }
+            <li class="active">@Model.Name</li>
+        </ol>
+    </div>
+</nav>
+<div class="main-container container ">
+<div class="row">
+<div class="left-column col-lg-8 col-md-8 col-sm-12 col-xs-12">
+
+    <section class="carousel-kootour carousel-kootour-section nopadding col-xs-12">
+        <!-- carousel -->
+        <div id="carousel-kootour" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        <li data-target="#carousel-kootour" data-slide-to="0" class="active"></li>
+                    }
+                    else
+                    {
+                        <li data-target="#carousel-kootour" data-slide-to="@i"></li>
+                    }
+                }
+            </ol>
+
+            <!-- Wrapper for slides -->
+            <div class="carousel-inner" role="listbox">
+                @for (int i = 0; i < Model.ImageUrls.Count; i++)
+                {
+                            @*<div class="item @{ (i == 0) ? "active" : "";}">
+                                    <img class="img-responsive" src="@Model.ImageUrls[i]" width="770" height="450">
+                                </div>*@
+                    if (i == 0)
+                    {
+                        <div class="item active">
+                            <img class="img-responsive" src="@Model.ImageUrls[i]">
+                        </div>
+                            @*
+                                <div class="item active" style="width:770px;height:450px;background-image: url('@Model.ImageUrls[i]');background-repeat: no-repeat;background-size: cover;background-position:center center">
+                                </div>*@
+                    }
+                    else
+                    {
+                        <div class="item">
+                            <img class="img-responsive" src="@Model.ImageUrls[i]">
+                        </div>
+                            @*<div class="item" style="width:770px;height:450px;background-image: url('@Model.ImageUrls[i]');background-position:center center;background-repeat: no-repeat;background-size: cover;">
+                                </div>*@
+                    }
+                }
+            </div>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#carousel-kootour" role="button" data-slide="prev">
+                <span class="icon icon-prev" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#carousel-kootour" role="button" data-slide="next">
+                <span class="icon icon-next" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+        @if (!@Model.IsDataSaved)
+        {
+            <div id="SaveToWishListHeart" class="add-favorite" data-saved="false"></div>
+        }
+        else
+        {
+            <div id="SaveToWishListHeart" class="add-favorite-checked" data-saved="true"></div>
+        }
+
+    </section>
+
+    <section class="tour-detail section noborder nomargin col-xs-12">
+        <div class="tour-descriptions">
+            <table class="tour-description">
+                <tr>
+                    <td width="40px">
+                        <img class="icon" src="@Url.Content("~/images/icons/icon_time_bgwhite_300X300.png")" alt="time">
+                    </td>
+
+                    <td>
+                        @Model.DurationString
+                    </td>
+                </tr>
+            </table>
+            <table class="tour-description">
+                <tr>
+                    <td width="40px">
+                        <img class="icon" src="@Url.Content("~/images/icons/icon_luggage_bgwhite_300X300.png")" alt="luggage">
+                    </td>
+
+                    <td>
+                        @Model.MinTouristNum-@Model.MaxTouristNum travellers
+                    </td>
+                </tr>
+            </table>
+            <table class="tour-description">
+                <tr>
+                    <td width="40px">
+                        <img class="icon" src="@Url.Content("~/images/icons/icon_location_bgwhite_300X300.png")" alt="location">
+                    </td>
+
+                    <td>
+                        @*Only show City Name*@
+                        @if (@Model.TourLocationSimple.Contains("-"))
+                        {
+                            @Model.TourLocationSimple.Split('-')[1]
+                        }
+                        else
+                        {
+                            @Model.TourLocationSimple
+                        }
+
+                    </td>
+                </tr>
+            </table>
+            <table class="tour-description">
+                <tr>
+                    <td width="40px">
+                        <img class="icon" src="@Url.Content("~/images/icons/icon_language_bgwhite_300X300.png")" alt="language">
+                    </td>
+
+                    <td>
+                        @Html.Raw(Model.Language)
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <h2 class="blue">@Model.Name</h2>
+
+        @if (@Model.TourReviewCount > 0)
+        {
+            <div class="vote-wrapper">
+                <input class="star-rating-kootour rating" type="text" readonly="true" value="@Model.TourReviewAverageScore" />
+                <span class="vote-label">@Model.TourReviewCount reviews</span>
+            </div>
+        }
+
+    </section>
+
+    <section class="section col-xs-12">
+        <span class="title">Tour Summary</span>
+        <div id="readmore1">
+            <p>@Html.Raw(Model.Overview)</p>
+
+            <span class="subtitle">Tour itinerary</span>
+
+            <p>@Html.Raw(Model.Itinerary)</p>
+        </div>
+
+        <a href="#" class="action">read more</a>
+    </section>
+
+    <section class="section col-xs-12">
+        <span class="title">Important Information</span>
+
+        <div id="readmore2">
+            <table class="table-information col-lg-6 col-md-12 col-sm-12 col-xs-12" style="width:100%;">
+                <tr>
+                    <td class="subtitle">Tour Location</td>
+                    <td>@Model.TourLocationSimple</td>
+                </tr>
+                @*  <tr>
+                                <td class="subtitle">Duration</td>
+                                <td>@Model.DurationString</td>
+                            </tr>*@
+                <tr>
+                    <td class="subtitle">Meetup Location</td>
+                    <td>@Model.MeetupLocation</td>
+                </tr>
+            </table>
+
+            <div class="clearfix"></div>
+
+            <p class="subtitle">Inclusions</p>
+            <ul>
+                @foreach (var inc in @Model.Inclusions)
+                {
+                    <li>@inc</li>
+                }
+
+            </ul>
+
+            <p class="subtitle">Exclusions</p>
+            <ul>
+                @foreach (var exc in @Model.Exclusions)
+                {
+                    <li>@exc</li>
+                }
+            </ul>
+        </div>
+
+        <a href="#" class="action">read more</a>
+    </section>
+</div>
+
+<div class="right-column col-lg-4 col-md-4 col-sm-12 col-xs-12">
+<section class="widget nopadding section section-small">
+    @using (Html.BeginForm("Tour", "Tourist", new { }, FormMethod.Post, new { id = "BookTourForm", @class = "form-horizontal" }))
+    {
+        @Html.HiddenFor(x => x.TourID)
+        @Html.HiddenFor(x => x.GuiderID)
+        @Html.HiddenFor(x => x.Name)
+        @Html.HiddenFor(x => x.Duration)
+        @Html.HiddenFor(x => x.DurationTimeType)
+        @Html.HiddenFor(x => x.CoverImagePath)
+        @Html.HiddenFor(x => x.GuiderName)
+        @Html.HiddenFor(x => x.TourLocation)
+        @Html.HiddenFor(x => x.SubTotal, new { id = "HiddenSubTotal" })
+        @Html.HiddenFor(x => x.Total, new { id = "HiddenTotal" })
+        @Html.HiddenFor(x => x.ExtraIds, new { id = "HiddenExtraIds" })
+        @Html.HiddenFor(x => x.DiscountValue)
+        @Html.HiddenFor(x => x.DiscountPercent)
+        @Html.HiddenFor(x => x.DiscountTourists)
+        @Html.HiddenFor(x => x.Tax)
+        @Html.HiddenFor(x => x.IsGuestBooking)
+
+    
+        <div class="widget-row col-xs-12">
+            <div class="col-xs-6 col-sm-4 nopadding">
+                <span class="subtitle">Calendar:</span>
+            </div>
+            <div class="col-xs-6 col-sm-8 nopadding">
+                @Html.TextBoxFor(m => m.BookDate, new { @class = "form-control", id = "widget-calendar", placeholder = "Pick a date" })
+                @*<input type="text" class="form-control" id='widget-calendar' placeholder="Pick a date">*@
+            </div>
+        </div>
+
+        <div class="widget-row col-xs-12">
+            <div class="col-xs-6 col-sm-4 nopadding">
+                <span class="subtitle">Time:</span>
+            </div>
+            <div class="col-xs-6 col-sm-8 nopadding">
+                <div id="BookTimeDropDownList" class="form-group">
+                    @Html.DropDownListFor(m => m.BookTime, Model.BookTimeOptions, new { @class = "form-control" })
+                </div>
+                <div class="validation-row">
+                    @Html.ValidationMessageFor(m => m.BookTime)
+                </div>
+            </div>
+        </div>
+
+        <div class="widget-row col-xs-12">
+            <div class="col-xs-6 col-sm-4 nopadding">
+                <span class="subtitle">Travellers:</span>
+            </div>
+            <div class="col-xs-6 col-sm-8 nopadding">
+                <div class="form-group">
+                    @Html.DropDownListFor(m => m.TravellerCount, Model.TravellerCountOptions, new { id = "TravellerCount", @class = "form-control" })
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.TravellerCount)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        if (@Model.IfShowExtras)
+        {
+            <div class="widget-row col-xs-12">
+                <div class="option-label">
+                    <span class="subtitle">Customized Options:</span>
+                </div>
+                @*<div class="option-label">
+                                   @if (@Model.BookingType ==0)
+                                   {
+                                       if (@Model.DiscountTourists > 0)
+                                        {
+                                           if (@Model.DiscountValue > 0)
+                                           {
+                                                     <p style="font-size:smaller">Group Discount (for @Model.DiscountTourists guests and more) -$@Model.DiscountValue</p>
+                                           }
+                                           else if (@Model.DiscountPercent > 0)
+                                           {
+                                                     <p style="font-size:smaller">Group Discount (for @Model.DiscountTourists guests and more) @Model.DiscountPercent%</p>
+                                            }
+                                        }
+                                   }
+                                </div>*@
+            </div>
+
+            for (int i = 0; i < @Model.Extras.Count; i++)
+            {
+                if (!string.IsNullOrEmpty(@Model.Extras[i].Name))
+                {
+                    <div class="widget-row customized-option">
+                        <div class="option-checkbox">
+                            <input type="checkbox" id="@("chb" + i.ToString())" class="checkbox" />
+                            <label for="@("chb" + i.ToString())"></label>
+                        </div>
+                        <div class="option-label">
+                            <label for="@("chb" + i.ToString())" style="word-wrap: break-word;width:200px;display: block;">@Model.Extras[i].Name</label>
+                        </div>
+                        <div class="option-price">
+                            @*  @if (@Model.Extras[i].Price != 0)
+                                                 {
+                                                 <p style="font-size:smaller">
+                                                     <span>$</span>
+                                                     <span id="@("ExtraPrice" + i.ToString())" extraId="@Model.Extras[i].ID">@Model.Extras[i].Price</span>
+                                                 </p>
+                                                 }
+                                            else
+                                            {
+                                                 <p style="font-size:smaller">free</p>
+                                            }*@
+                            <p style="font-size:smaller">
+                                <span>$</span>
+                                <span id="@("ExtraPrice" + i.ToString())" extraId="@Model.Extras[i].ID" originalPrice="@Model.Extras[i].Price">@Model.Extras[i].Price</span>
+                            </p>
+                            @if (@Model.Extras[i].Times != 0)
+                            {
+                                <p style="font-size:x-small">
+                                    <span class="hours">Extra <i>@Model.Extras[i].Times</i></span>
+                                    <span class="hours"><i>@TimeTypeTranslation.GetTranslationOf(@Model.Extras[i].TimeType)</i></span>
+                                </p>
+                            }
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+        //if (@Model.BookingType == 0 && @Model.DiscountTourists > 0 && (@Model.DiscountValue > 0 || @Model.DiscountPercent > 0))
+        if (@Model.BookingType == 0 && @Model.TourPriceBreakdowns != null)
+        {
+            for (int i = 0; i < @Model.TourPriceBreakdowns.Count; i++)
+            {
+                <div class="widget-row customized-option">
+                    <div class="option-checkbox">
+                        <input type="checkbox" id="@("chbPerPersonDiscount"+i.ToString())" class="checkbox chbPerPersonDiscount" disabled />
+                        <label for="@("chbPerPersonDiscount" + i.ToString())"></label>
+                    </div>
+                    <div class="option-label">
+                        <label for="@("chbPerPersonDiscount" + i.ToString())" style="font-size: small">
+                            @{
+                                var endPoint1 = Model.TourPriceBreakdowns[i].EndPoint1;
+                                var endPoint2 = Model.TourPriceBreakdowns[i].EndPoint2;
+                                endPoint1 = (endPoint1 < Model.MinTouristNum) ? Model.MinTouristNum : endPoint1;
+                                endPoint2 = (endPoint2 > Model.MaxTouristNum) ? Model.MaxTouristNum : endPoint2;
+                            }
+                            @if (endPoint1 == 1 && endPoint2 == 1)
+                            {
+                                <span>Discount (for @endPoint1 guest)</span>
+                            }
+                            else if (endPoint1 == endPoint2)
+                            {
+                                <span>Discount (for @endPoint1 guests)</span>
+                            }
+                            else
+                            {
+                                <span>Discount (for @endPoint1 - @endPoint2 guests)</span>
+                            }
+                        </label>
+                    </div>
+                    <div class="option-price">
+                        @if (@Model.TourPriceBreakdowns[i].DiscountValue > 0)
+                        {
+                            <span style="font-size:smaller">(@Model.TourPriceBreakdowns[i].DiscountValue / @Model.NowPrice)*100 % off</span>
+                        }
+                        else if (@Model.TourPriceBreakdowns[i].DiscountPercent > 0)
+                        {
+                            <span style="font-size:smaller">@Model.TourPriceBreakdowns[i].DiscountPercent  % off</span>
+                        }
+                    </div>
+                </div>
+            }
+        }
+
+        <div class="col-xs-12 text-center">
+            @*<button id="BookSubmitButton" class="btn btn-lg btn-kootour-bold fullwidth" type="submit">Book Now (US $<span id="TotalPrice">@Model.SugRetailPrice</span>)</button>*@
+            <div class="promo-price promo-price-variant">
+
+                <span class="crossed-perprice"></span>
+                &nbsp;<span class="perprice"></span>&nbsp;
+
+                @if (Model.BookingType == 0)
+                {
+                    <span class="booking-type">Per Person</span>
+                }
+                else
+                {
+                    <span class="booking-type">Per Group</span>
+                }
+            </div>
+           <button onclick="return LogonPopUp();" id="BookSubmitButton" class="booking-button btn btn-lg btn-kootour-bold fullwidth" type="submit" @Html.Raw(Model.IsAvailable ? "" : "disabled")>Book Now (US $<span id="NowPrice">@Model.NowPrice</span>)</button>
+        
+
+        </div>
+
+        <div class="clearfix"></div>
+    }
+</section>
+
+<section class="section section-small nopadding">
+    <div class="col-xs-12">
+        <p>
+            @if (!@Model.IsDataSaved)
+            {
+                <img id="SaveToWishListImg" src="@Url.Content("~/images/icons/heart_intactive.png")" class="medium-icon" />
+                <a class="wishlink" id="SaveToWishList" data-saved="false" href="#">Save to the Wish List</a>
+            }
+            else
+            {
+                <img id="SaveToWishListImg" src="@Url.Content("~/images/icons/heart_active.png")" class="medium-icon" />
+                <a class="wishlink" id="SaveToWishList" data-saved="true" href="#">Remove from the Wish List</a>
+            }
+        </p>
+    </div>
+
+    @*<div class="col-xs-12">
+                        <p class="nomargin">
+                            <img src="@Url.Content("~/images/icons/share_48X48.png")" class="medium-icon" />
+                            @Html.DisplayFor(model=> model, "SocialButtonsTemplate")
+                        </p>
+                    </div>*@
+
+    @*<div class="col-xs-12">
+                        <p class="nomargin">
+                            <img src="@Url.Content("~/images/icons/share_48X48.png")" class="medium-icon" />
+                            <a href="@Url.Action("Share")">Share this tour with a friend</a>
+                        </p>
+                    </div>*@
+
+    <div class="col-xs-12 nopadding divider"></div>
+    @if (@Model.GuiderID != @Model.UserID)
+    {
+        <div class="col-xs-12">
+            <p>Have questions about this tour?</p>
+            @*<a href="@Url.Action("TChat", new {id = @Model.GuiderID})" class="btn btn-kootour fullwidth">Contact tour guide</a>*@
+            @*<a href="@Url.Action("Contact", "Tourist", new { })" class="btn btn-kootour fullwidth">Contact Us</a>*@
+            <button type="button" class="btn btn-kootour fullwidth" data-toggle="modal" data-target="#myModal">Contact Us</button>
+
+        </div>
+    }
+    <div class="clearfix"></div>
+</section>
+</div>
+
+<div class="left-column col-lg-8 col-md-8 col-sm-12 col-xs-12">
+    <section class="section col-xs-12">
+        <span class="title">About the Guide</span>
+
+        <div class="col-xs-12 guide nopadding">
+            <div class="illustration">
+                <div class="user-thumbnail img-circle" style="background-image:url('@Model.GuiderAvatarUrl')"></div>
+            </div>
+            <div id="guider-details" class="details">
+                <p>
+                    <span class="subtitle">@Model.GuiderName</span>
+                </p>
+                <p><i>Member since @Model.GuiderFromTime</i></p>
+                <div id="guiderIntro">@Html.Raw(Model.GuiderIntro)</div>
+            </div>
+        </div>
+
+        <p class="nomargin text-right">
+            <a href="@Url.Action("Guider", new {id=@Model.GuiderID })" class="action">Learn more</a>
+        </p>
+    </section>
+
+    @if (Model.Reviews != null && Model.Reviews.Count() > 0)
+    {
+        <section id="MsgContainer" class="section col-xs-12 nopadding reviews">
+            <span class="title">Recommended Reviews (@Model.TourReviewCount)</span>
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="col-xs-12 review">
+                    <div class="illustration">
+                        <div class="user-small-thumbnail img-circle" style="background-image:url('@review.AvatarUrl')"></div>
+                    </div>
+
+                    <div class="details">
+                        <p class="subtitle nomargin">@review.UserName</p>
+
+                        <div class="vote-wrapper">
+                            <input class="star-rating-kootour rating" type="text" readonly="true" value="@review.AverageScore" />
+
+                            <span class="vote-label">@review.ReviewTime</span>
+                        </div>
+                        <p><i>@review.Comment</i></p>
+                    </div>
+                </div>
+            }
+            @if (Model.NextReviewPageNo > 0)
+            {
+                <div id="SeeMoreBlock" class="text-center col-xs-12">
+                    <button id="SeeMore" class="btn btn-lg btn-kootour" type="button">See More</button>
+                </div>
+            }
+        </section>
+    }
+</div>
+</div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog  modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          
+
+                @Html.Action("ContactUsPop", "Tourist", new { nameTour = @Model.Name })
+           
+
+            @*<div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>*@
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="logonModal" role="dialog">
+    <div class="modal-dialog  modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">          
+            @Html.Action("LogOnPopUp", "Tourist",  new {returnUrl = @Model.ReturnUrl, role = @Model.Role})           
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+
+    //if user is signedIn show logon Popup else Goto BookingPage
+    function LogonPopUp() {
+        $('#LogonForm #TourID').val(@Model.TourID);   
+  
+        if ("@Model.IsSignedIn" == "False") {
+            $('#logonModal').modal('toggle');
+            return false;
+        }
+
+        else {
+            $('#IsGuestBooking')('FALSE');;
+            $('#BookTourForm').submit();           
+        }
+    }
+
+    $("#BtnGuestBooking").click(function () {
+        $('#logonModal').modal('toggle');
+        $('#IsGuestBooking').val('TRUE');;      
+        $('#BookTourForm').submit();
+
+
+    });
+
+
+
+</script>
+
+
+<script type="text/javascript">
+    var sugRetailPrice=@Model.SugRetailPrice;
+    var nowPrice=@Model.NowPrice;
+    var discountTourists=@Model.DiscountTourists;
+    var discountPercent=@Model.DiscountPercent;
+    var discountValue=@Model.DiscountValue;
+    var curTourId=@Model.TourID;
+    var bookType=@Model.BookingType;
+    var tourPriceBreakdowns=@Html.Raw(Json.Encode(Model.TourPriceBreakdowns));
+    var calculateCost = function (theNowPrice) {
+        var total;
+        var nowPriceDiscounted = theNowPrice;
+        var travellerCount = $("#TravellerCount").val();
+        var isChecked = $("#chb0").is(':checked');
+        var selectExtraIds = "";
+
+        var originalPrice0 = $("#ExtraPrice0").attr("originalPrice");
+        if(isChecked)
+        {
+            selectExtraIds += $("#ExtraPrice0").attr("extraId")+",";
+            $("#ExtraPrice0").html("" + Number(originalPrice0) * travellerCount);
+        }
+        else {
+            $("#ExtraPrice0").html(originalPrice0);
+        }
+        //var ExtraPrice0 = isChecked?$("#ExtraPrice0").html():0;
+        var ExtraUnitPrice0 = isChecked ? originalPrice0 : 0;
+
+        isChecked=$("#chb1").is(':checked');
+        var originalPrice1 = $("#ExtraPrice1").attr("originalPrice");
+        if(isChecked)
+        {
+            selectExtraIds+=$("#ExtraPrice1").attr("extraId")+",";
+            $("#ExtraPrice1").html("" + ExtraPrice1);
+            $("#ExtraPrice1").html("" + Number(originalPrice1) * travellerCount);
+        }
+        else {
+            $("#ExtraPrice1").html(originalPrice1);
+        }
+        //var ExtraPrice1 = isChecked?$("#ExtraPrice1").html():0;
+        var ExtraUnitPrice1 = isChecked ? originalPrice1 : 0;
+
+        isChecked=$("#chb2").is(':checked');
+        var originalPrice2 = $("#ExtraPrice2").attr("originalPrice");
+        if(isChecked)
+        {
+            selectExtraIds+=$("#ExtraPrice2").attr("extraId")+",";
+            $("#ExtraPrice2").html("" + Number(originalPrice2) * travellerCount);
+        }
+        else {
+            $("#ExtraPrice2").html(originalPrice2);
+        }
+        //var ExtraPrice2 = isChecked?$("#ExtraPrice2").html():0;
+        var ExtraUnitPrice2 = isChecked ? originalPrice2 : 0;
+
+        isChecked=$("#chb3").is(':checked');
+        var originalPrice3 = $("#ExtraPrice3").attr("originalPrice");
+        if(isChecked)
+        {
+            selectExtraIds+=$("#ExtraPrice3").attr("extraId")+",";
+            $("#ExtraPrice3").html("" + Number(originalPrice3) * travellerCount);
+        }
+        else {
+            $("#ExtraPrice3").html(originalPrice3);
+        }
+        //var ExtraPrice3 = isChecked?$("#ExtraPrice3").html():0;
+        var ExtraUnitPrice3 = isChecked ? originalPrice3 : 0;
+
+        isChecked=$("#chb4").is(':checked');
+        var originalPrice4 = $("#ExtraPrice4").attr("originalPrice");
+        if(isChecked)
+        {
+            selectExtraIds+=$("#ExtraPrice4").attr("extraId")+",";
+            $("#ExtraPrice4").html("" + Number(originalPrice4) * travellerCount);
+        }
+        else {
+            $("#ExtraPrice4").html(originalPrice4);
+        }
+        //var ExtraPrice4 = isChecked?$("#ExtraPrice4").html():0;
+        var ExtraUnitPrice4 = isChecked ? originalPrice4 : 0;
+
+        if (bookType == 0)//Per Person
+        {
+            $(".chbPerPersonDiscount").prop('checked', false);
+            //var total=Number(nowPrice)+Number(ExtraPrice0)+Number(ExtraPrice1)+Number(ExtraPrice2)+Number(ExtraPrice3)+Number(ExtraPrice4);
+            //var total=Number(nowPrice)*travellerCount+Number(ExtraPrice0)+Number(ExtraPrice1)+Number(ExtraPrice2)+Number(ExtraPrice3)+Number(ExtraPrice4);
+            $.each(tourPriceBreakdowns, function (index, value) {
+                var endPoint1 = Number(value.EndPoint1);
+                var endPoint2 = Number(value.EndPoint2);
+                var discountValue = Number(value.DiscountValue);
+                var discountPercent = Number(value.DiscountPercent);
+                var discountValueText = Math.floor(discountValue / nowPrice * 100) + "% off";
+                if (discountValue > 0) {//Initilize discount Value
+                    $("#chbPerPersonDiscount" + index).parent().siblings("div.option-price").children("span").text(discountValueText);
+                }
+
+                // If the travellerCount is bounded by a certain rule
+                if (travellerCount >= endPoint1 && travellerCount <= endPoint2) {
+                    $("#chbPerPersonDiscount" + index).prop('checked', true);
+
+                    if (discountValue > 0) {
+                        nowPriceDiscounted -= discountValue;
+                      //  discountValueText = "-$" + discountValue * travellerCount;
+                        $("#chbPerPersonDiscount" + index).parent().siblings("div.option-price").children("span").text(discountValueText);
+                    }else if (discountPercent > 0){
+                        nowPriceDiscounted = nowPriceDiscounted * (100 - discountPercent) / 100;
+                    }
+                }else{
+                    $("#chbPerPersonDiscount" + index).prop('checked', false);
+
+                }
+            });
+            var total1 = Number(nowPriceDiscounted) * travellerCount;
+
+            //if(travellerCount >= discountTourists)
+            //{
+            //    $("#chbPerPersonDiscount").prop('checked', true);
+            //    if(discountValue>0){
+            //        total1 -= discountValue*travellerCount;
+            //    }
+            //    else if(discountPercent>0)
+            //    {
+            //        total1 = total1*(100-discountPercent)/100;
+            //    }
+            //}else{
+            //    $("#chbPerPersonDiscount").prop('checked', false);
+            //}
+
+
+            var total2=(Number(ExtraUnitPrice0)+Number(ExtraUnitPrice1)+Number(ExtraUnitPrice2)+Number(ExtraUnitPrice3)+Number(ExtraUnitPrice4))*travellerCount;
+            total=total1+total2;
+
+
+            //if(travellerCount >= discountTourists)
+            //{
+            //    if(discountValue >0)
+            //    {
+            //        total=total-(discountValue*travellerCount)
+            //    }
+            //    else if(discountPercent >0)
+            //    {
+            //        total=total*(1-discountPercent/100);
+            //    }
+            //}
+
+        }
+        else//Per Group
+        {
+            //var total = travellerCount*(Number(ExtraPrice0)+Number(ExtraPrice1)+Number(ExtraPrice2)+Number(ExtraPrice3)+Number(ExtraPrice4));
+            var total1 = Number(nowPriceDiscounted);
+
+            //if(travellerCount >= discountTourists)
+            //{
+            //    $("#chbPerPersonDiscount").prop('checked', true);
+            //    if(discountValue>0){
+            //        total1 -= discountValue;
+            //    }
+            //    else if(discountPercent>0)
+            //    {
+            //        total1 = total1*(100-discountPercent)/100;
+            //    }
+            //}
+            //else
+            //{
+            //    $("#chbPerPersonDiscount").prop('checked', false);
+            //}
+
+            var total2 = (Number(ExtraUnitPrice0)+Number(ExtraUnitPrice1)+Number(ExtraUnitPrice2)+Number(ExtraUnitPrice3)+Number(ExtraUnitPrice4))*travellerCount;
+            total = total1+total2;
+        }
+        $("#NowPrice").html(total);
+        var perprice = "$"+Math.round(total / travellerCount);
+        $(".perprice").html(perprice);
+
+        if (parseInt(sugRetailPrice) > parseInt(theNowPrice))
+            $(".crossed-perprice").html("$" +sugRetailPrice);
+        else
+            $(".crossed-perprice").html("");
+
+        $("#HiddenSubTotal").val(total);
+        $("#HiddenTotal").val(total);
+        $("#HiddenExtraIds").val(selectExtraIds);
+    };
+    $(function () {
+        var defaults = {
+            notsaved : "Save to the Wish List",
+            saved: "Remove from the Wish List"
+        }
+
+        var toursummary = $("#readmore1 > p")[0];
+        var toursummaryreadmore = new ReadMore($("#readmore1"), $(toursummary).height()).init();
+
+        var information = $("#readmore2 > table")[0];
+        var informationreadmore = new ReadMore($("#readmore2"), $(information).height()).init();
+
+        var widgetcalendar = $('#widget-calendar').datetimepicker({
+            useCurrent: false,
+            minDate: new Date(),
+            format: "MM-DD-YYYY"
+        }).on('dp.change', function (e) {
+            $('#widget-calendar').data("DateTimePicker").hide();
+            var tourDate = $('#widget-calendar').val().replace("-", "/").replace("-", "/");//MM/DD/YYYY
+            var urlGetTime = "/Tourist/BookTimeDropDownList/"+@Model.TourID;
+            $.post(urlGetTime, {date:tourDate}, function (data) {
+                if(!data.Result)
+                    return;
+                $('#BookTimeDropDownList').html(data.Data);
+                if(!data.IsAvailable)
+                {
+                    $("#BookSubmitButton").attr("disabled", true);
+                } else {
+                    $("#BookSubmitButton").removeAttr("disabled");
+                    nowPrice = data.NowPrice;
+                    calculateCost(nowPrice);
+                }
+            });
+        });
+        $('#widget-calendar').val("@Model.BookDate");
+
+        //Disable dates
+        $('#widget-calendar').data("DateTimePicker").minDate("@Model.BeginDate");
+        $('#widget-calendar').data("DateTimePicker").maxDate("@Model.EndDate");
+
+        var daysOfWeekDisabled = new Array();
+        if ("@Model.IsSunday"=="False")
+            daysOfWeekDisabled.push(0);
+        if ("@Model.IsMonday"=="False")
+            daysOfWeekDisabled.push(1);
+        if ("@Model.IsTuesday"=="False")
+            daysOfWeekDisabled.push(2);
+        if ("@Model.IsWednesday"=="False")
+            daysOfWeekDisabled.push(3);
+        if ("@Model.IsThursday"=="False")
+            daysOfWeekDisabled.push(4);
+        if ("@Model.IsFriday"=="False")
+            daysOfWeekDisabled.push(5);
+        if ("@Model.IsSaturday"=="False")
+            daysOfWeekDisabled.push(6);
+        $('#widget-calendar').data("DateTimePicker").daysOfWeekDisabled(daysOfWeekDisabled);
+
+        var guiderExcludedDatesListStr = "@Model.GuiderExcludedDatesListStr";//"04-18-2017|04-19-2017|04-20-2017";
+        var guiderExcludedDatesList = guiderExcludedDatesListStr.split("|");
+        $('#widget-calendar').data("DateTimePicker").disabledDates(guiderExcludedDatesList);
+
+
+
+
+        $("#TravellerCount").change(function() {
+            calculateCost(nowPrice);
+        });
+        $("#chb0,#chb1,#chb2,#chb3,#chb4").change(function() {
+            calculateCost(nowPrice);
+        });
+        calculateCost(nowPrice);
+        $("#SaveToWishList,#SaveToWishListHeart").on("click",
+            function () {
+                var isSave=$(this).attr("data-saved")==="true"?0:1;
+                $.post('/Tourist/SetWish', {
+                    tourId: curTourId,
+                    save:isSave
+                },
+                    function (data) {
+                        var objForLogin = data;
+                        if (objForLogin.result) {
+                            //BootstrapDialog.show({
+                            //    title: 'Saved successfully',
+                            //    message: objForLogin.message,
+                            //    buttons: [{
+                            //        label: 'Close',
+                            //        action: function (dialog) {
+                            //            dialog.close();
+                            //        }
+                            //    }]
+                            //});
+                            if(!isSave)
+                            {
+                                $("#SaveToWishListImg").attr("src","@Url.Content("~/images/icons/heart_intactive.png")");
+                                $("#SaveToWishListHeart").toggleClass('add-favorite-checked add-favorite');
+                                $("#SaveToWishListHeart").attr('data-saved',"false");
+                                $("#SaveToWishList").attr('data-saved',"false");
+                                $("#SaveToWishList").html(defaults.notsaved);
+                            }
+                            else
+                            {
+                                $("#SaveToWishListImg").attr("src","@Url.Content("~/images/icons/heart_active.png")");
+                                $("#SaveToWishListHeart").toggleClass('add-favorite add-favorite-checked');
+                                $("#SaveToWishListHeart").attr('data-saved',"true");
+                                $("#SaveToWishList").attr('data-saved',"true");
+                                $("#SaveToWishList").html(defaults.saved);
+                            }
+                        }
+                        else
+                        {
+                            BootstrapDialog.show({
+                                title: 'Please login to save this tour',
+                                message: '<a href="@Url.Action("Register","Account")">Sign Up</a> or <a href="@Url.Action("LogOn","Account")">Log In</a>',
+                                buttons: [{
+                                    label: 'Close',
+                                    action: function (dialog) {
+                                        dialog.close();
+                                    }
+                                }]
+                            });
+                        }
+                    }
+                );
+                return false;
+            }
+        );
+
+        var nextReviewPageNo=@Model.NextReviewPageNo;
+        var msgContainer=document.getElementById('MsgContainer');
+        var seeMoreBlock=document.getElementById("SeeMoreBlock");
+        $("#SeeMore").click(function (e) {
+            if(nextReviewPageNo <=0)
+                return;
+            e.preventDefault();
+            var urlPageMsg = "/Tourist/TourReviewList/"+@Model.TourID;
+            $.post(urlPageMsg, {page:nextReviewPageNo}, function (data) {
+                if(!data.Result)
+                    return;
+                var e = document.createElement('div');
+                e.innerHTML = data.Data;
+                while(e.firstChild) {
+                    msgContainer.insertBefore(e.firstChild,seeMoreBlock);
+                }
+                nextReviewPageNo=data.NextPageNo;
+                if(nextReviewPageNo == 0)
+                {
+                    $("#SeeMoreBlock").hide();
+                }
+                $(".star-rating-kootour.rating").rating(starOptions);
+            });
+            return false;
+        });
+    });
+    var starOptions = {
+        min: 0,
+        max: 5,
+        step: 1,
+        size: 'xs',
+        showClear: false,
+        showCaption: false,
+        theme: "star-kootour",
+        emptyStar: "<i class='glyphicon glyphicon-star'></i>"
+    };
+    $(".star-rating-kootour.rating").rating(starOptions);
+
+</script>

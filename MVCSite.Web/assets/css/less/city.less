@@ -1,0 +1,54 @@
+.cities-wrapper {
+}
+
+.cities-wrapper .city-wrapper {
+	
+}
+
+.city-wrapper {
+	position: relative;
+	margin-bottom: 30px;
+	height: 350px;
+}
+
+.city-wrapper .city-illustration {
+    height: 350px;
+    position: relative;
+    background-size: cover;
+    background-position: center center;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    .border-section();
+    .bigboxshadow();
+    filter: brightness(100%);
+    -webkit-filter: brightness(100%);
+}
+
+.city-wrapper .city-illustration:hover {
+   -webkit-filter: brightness(85%);
+    filter: brightness(85%);
+}
+
+.city-wrapper a {
+	 text-decoration: none;
+}
+
+.city-wrapper span {
+    font-family: Montserrat-Medium;
+    color: white;
+    .font-size(@cityLabelFontSize);
+    margin: 0 auto;	
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+    .city-wrapper span {
+        .font-size(@cityLabelFontSizeSmallScreen);
+    }
+}

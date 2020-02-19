@@ -1,0 +1,52 @@
+.welcome-wrapper:before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.8;
+    background-image: url('@{images}/great_wall.jpg');
+    background-size: cover;
+}
+
+.welcome-wrapper {
+    padding: 30px 0;
+    position: relative;
+    color:white;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    -webkit-align-items: center;
+}
+
+.welcome-wrapper > * {
+    flex: 0 1 auto;
+}
+
+.welcome-wrapper h1 {
+    margin: 0;
+    display:block;
+    padding-bottom: 40px;
+    .font-size(@sloganFontSize);
+}
+
+.welcome-wrapper p {
+    margin: 0;
+    display:block;
+    padding-bottom: 30px;
+    .font-size(@H2FontSize);
+}
+
+@media screen and (max-width: 640px) {
+    .welcome-wrapper h1 {
+        .font-size(@sloganFontSizeSmallScreen);
+    }
+
+    .welcome-wrapper p {
+        .font-size(@H2FontSizeSmallScreen);
+    }
+}
+

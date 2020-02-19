@@ -1,0 +1,508 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Accept" xml:space="preserve">
+    <value>接  受</value>
+  </data>
+  <data name="ActionResultFailedHint" xml:space="preserve">
+    <value>抱歉操作失败了！请确保网络连接正常后再试。触屏即可返回。</value>
+  </data>
+  <data name="ActionResultOKHint" xml:space="preserve">
+    <value>操作成功了！触屏即可返回。</value>
+  </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>取  消</value>
+  </data>
+  <data name="ChangeAvatar" xml:space="preserve">
+    <value>修改头像</value>
+  </data>
+  <data name="ChangePassword" xml:space="preserve">
+    <value>修改密码</value>
+  </data>
+  <data name="ChangePersonalInfo" xml:space="preserve">
+    <value>修改个人信息</value>
+  </data>
+  <data name="ChangeTopic" xml:space="preserve">
+    <value>选择学习主题</value>
+  </data>
+  <data name="ChaptersOfTopic" xml:space="preserve">
+    <value>&lt;&lt;{0}&gt;&gt;的章节(共 {1} 章)</value>
+  </data>
+  <data name="Chats" xml:space="preserve">
+    <value>微教室</value>
+  </data>
+  <data name="ChatTitle" xml:space="preserve">
+    <value>我与{0}的微教室</value>
+  </data>
+  <data name="Chinese" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="ChooseAnAction" xml:space="preserve">
+    <value>请选择操作</value>
+  </data>
+  <data name="ChooseFile" xml:space="preserve">
+    <value>挑选图片</value>
+  </data>
+  <data name="Classmates" xml:space="preserve">
+    <value>同学</value>
+  </data>
+  <data name="CurrentSelection" xml:space="preserve">
+    <value>当前选择</value>
+  </data>
+  <data name="Discovery" xml:space="preserve">
+    <value>发现</value>
+  </data>
+  <data name="DownloadedHint" xml:space="preserve">
+    <value>已下载</value>
+  </data>
+  <data name="FindMateToPractise" xml:space="preserve">
+    <value>找同练</value>
+  </data>
+  <data name="FollowHer" xml:space="preserve">
+    <value>加她到关注</value>
+  </data>
+  <data name="FollowHim" xml:space="preserve">
+    <value>加他到关注</value>
+  </data>
+  <data name="FriendlyHint" xml:space="preserve">
+    <value>温馨提示</value>
+  </data>
+  <data name="Friends" xml:space="preserve">
+    <value>好友</value>
+  </data>
+  <data name="GlobalUsers" xml:space="preserve">
+    <value>网友</value>
+  </data>
+  <data name="GotNSearchResults" xml:space="preserve">
+    <value>微教室为您找到{0}个结果</value>
+  </data>
+  <data name="InputSearchKeyword" xml:space="preserve">
+    <value>请输入搜索关键字</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>退出登录</value>
+  </data>
+  <data name="Me" xml:space="preserve">
+    <value>我</value>
+  </data>
+  <data name="MySettings" xml:space="preserve">
+    <value>{0}的个性化设置</value>
+  </data>
+  <data name="NextPage" xml:space="preserve">
+    <value>下一页</value>
+  </data>
+  <data name="NoFriendYet" xml:space="preserve">
+    <value>你还没有创建微教室，快到同学频道找同练吧!</value>
+  </data>
+  <data name="Options" xml:space="preserve">
+    <value>管理中心</value>
+  </data>
+  <data name="OralEnglish" xml:space="preserve">
+    <value>口语</value>
+  </data>
+  <data name="PartOf" xml:space="preserve">
+    <value>第 {0} 阶段</value>
+  </data>
+  <data name="PlaceHolderSelfIntro" xml:space="preserve">
+    <value>输入个性化简介，让学友马上记住你！</value>
+  </data>
+  <data name="PlaceHolderStudyTarget" xml:space="preserve">
+    <value>输入你的学习目标，例如通过雅思考试</value>
+  </data>
+  <data name="Play" xml:space="preserve">
+    <value>播放</value>
+  </data>
+  <data name="PlayAll" xml:space="preserve">
+    <value>全部</value>
+  </data>
+  <data name="PleaseSelectTopic" xml:space="preserve">
+    <value>请选择学习主题</value>
+  </data>
+  <data name="PracticeWithHer" xml:space="preserve">
+    <value>与她一起练</value>
+  </data>
+  <data name="PracticeWithHim" xml:space="preserve">
+    <value>与他一起练</value>
+  </data>
+  <data name="PressHereToSpeak" xml:space="preserve">
+    <value>开始录音</value>
+  </data>
+  <data name="PreviousPage" xml:space="preserve">
+    <value>上一页</value>
+  </data>
+  <data name="PullDownToRefresh" xml:space="preserve">
+    <value>向下拉有更多...</value>
+  </data>
+  <data name="PullUpToRefresh" xml:space="preserve">
+    <value>向上拉有更多...</value>
+  </data>
+  <data name="RecommendedUser4You" xml:space="preserve">
+    <value>微教室为您找到{0}个所学略同的英雄，打个招呼一起练吧！</value>
+  </data>
+  <data name="RecordAgain" xml:space="preserve">
+    <value>再录制一遍</value>
+  </data>
+  <data name="Refuse" xml:space="preserve">
+    <value>拒  绝</value>
+  </data>
+  <data name="Resources" xml:space="preserve">
+    <value>资源</value>
+  </data>
+  <data name="Return" xml:space="preserve">
+    <value>&lt; 返回</value>
+  </data>
+  <data name="SayHello" xml:space="preserve">
+    <value>打个招呼！</value>
+  </data>
+  <data name="SearchDictionary" xml:space="preserve">
+    <value>查字典</value>
+  </data>
+  <data name="SearchOnLocalNoTraffic" xml:space="preserve">
+    <value>字典查询全部在本机完成,零流量,请放心使用。</value>
+  </data>
+  <data name="SelectAContactToSend" xml:space="preserve">
+    <value>请选一个学友</value>
+  </data>
+  <data name="SelectGameContents" xml:space="preserve">
+    <value>请选择游戏内容</value>
+  </data>
+  <data name="SelfIntroduction" xml:space="preserve">
+    <value>自我介绍</value>
+  </data>
+  <data name="SendErrorReport" xml:space="preserve">
+    <value>报错</value>
+  </data>
+  <data name="SendToClassmate" xml:space="preserve">
+    <value>发送给学友</value>
+  </data>
+  <data name="Slow" xml:space="preserve">
+    <value>慢速</value>
+  </data>
+  <data name="Standard" xml:space="preserve">
+    <value>标准</value>
+  </data>
+  <data name="StudyTopic" xml:space="preserve">
+    <value>学习主题 - &lt;&lt;{0}&gt;&gt;</value>
+  </data>
+  <data name="TooManyUsersToChat" xml:space="preserve">
+    <value>你邀请了太多同学加入群聊，系统暂不支持！</value>
+  </data>
+  <data name="TotalChapterNo" xml:space="preserve">
+    <value>(共 {0} 章)</value>
+  </data>
+  <data name="TotalPartNo" xml:space="preserve">
+    <value>共 {0} 节</value>
+  </data>
+  <data name="TotalSentenceNo" xml:space="preserve">
+    <value>(共 {0} 句)</value>
+  </data>
+  <data name="UnitHint" xml:space="preserve">
+    <value>章</value>
+  </data>
+  <data name="Upload" xml:space="preserve">
+    <value>上  传</value>
+  </data>
+  <data name="UserInformation" xml:space="preserve">
+    <value>用户信息</value>
+  </data>
+  <data name="UsersWantedToBeFriends" xml:space="preserve">
+    <value>如下同学想成为你的朋友</value>
+  </data>
+  <data name="YouMadeAVoiceRecord" xml:space="preserve">
+    <value>您刚录制的声音</value>
+  </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>确认</value>
+  </data>
+  <data name="QuitConfirm" xml:space="preserve">
+    <value>亲，你真的不打算练了吗?</value>
+  </data>
+  <data name="InvitationUnaccepted" xml:space="preserve">
+    <value>请耐心等待对方接受您的请求</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>关  闭</value>
+  </data>
+  <data name="Refresh" xml:space="preserve">
+    <value>刷  新</value>
+  </data>
+  <data name="InternalErrorHappened" xml:space="preserve">
+    <value>抱歉发生了内部错误:(</value>
+  </data>
+  <data name="VJiaoshiIsLoading4You" xml:space="preserve">
+    <value>微教室正努力为您处理......</value>
+  </data>
+  <data name="AboutUs" xml:space="preserve">
+    <value>关于我们</value>
+  </data>
+  <data name="ContactCSR" xml:space="preserve">
+    <value>联系客服</value>
+  </data>
+  <data name="ServiceCenter" xml:space="preserve">
+    <value>服务区</value>
+  </data>
+  <data name="AboutUsInfo" xml:space="preserve">
+    <value>多年以来我们一直为学了多年英语却说不出来而烦恼，更糟糕的是由于我们缺乏英语应用环境，在生活中用得少，填鸭式的教育尽管让我们在考试中获得高分，可是当我们真正需要说的时候却发现以前记住的东西又交给了老师,想说但是说不出来。长期以来我们一直立志于解决这个问题。今天， 微教室(www.wellyours.com)基于我们在互联网行业多年的从业经验和对于解决这一问题的专注、坚持，终于让这个问题有了满意的解决方案。微教室寓意为每一个中国人开设一个语言学习的虚拟小教室，避免再次遇到我们曾经的烦恼。如果你正在碰到同样的问题，那么微教室正是为你量身定制的。微教室团队致力于创造移动互联网语言学习极致体验环境，尽管我们的产品目前还不完美，但我们每天都在创新，每天都在努力，每天都在进步，你对微教室的持续关注是我们前进的最大动力。</value>
+  </data>
+  <data name="InputHere" xml:space="preserve">
+    <value>请在这里输入</value>
+  </data>
+  <data name="OperationFaileCheckTryLater" xml:space="preserve">
+    <value>抱歉操作失败，请检查后再试。</value>
+  </data>
+  <data name="SendMsgToCSR" xml:space="preserve">
+    <value>给客服发消息</value>
+  </data>
+  <data name="Submit" xml:space="preserve">
+    <value>提  交</value>
+  </data>
+  <data name="CSRNotReplied" xml:space="preserve">
+    <value>客服还未回复，谢谢您的耐心等待。我们会尽快处理。</value>
+  </data>
+  <data name="ImageName" xml:space="preserve">
+    <value>图片名称</value>
+  </data>
+  <data name="ReselectUploadImgAgain" xml:space="preserve">
+    <value>抱歉图片上传失败，请重新选择图片后再上传一次。</value>
+  </data>
+  <data name="SayImage" xml:space="preserve">
+    <value>看图说英语</value>
+  </data>
+  <data name="SpeakWithImage" xml:space="preserve">
+    <value>洋话说图</value>
+  </data>
+  <data name="UploadChatImage" xml:space="preserve">
+    <value>我要上传图片</value>
+  </data>
+  <data name="CommentsCount" xml:space="preserve">
+    <value>{0}条洋话</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>删  除</value>
+  </data>
+  <data name="LastCommentTime" xml:space="preserve">
+    <value>最近评说时间</value>
+  </data>
+  <data name="ManageImages" xml:space="preserve">
+    <value>管理图片</value>
+  </data>
+  <data name="Poster" xml:space="preserve">
+    <value>上传者</value>
+  </data>
+  <data name="PostTime" xml:space="preserve">
+    <value>上传时间</value>
+  </data>
+  <data name="Preview" xml:space="preserve">
+    <value>预  览</value>
+  </data>
+  <data name="DeleteConfirm" xml:space="preserve">
+    <value>亲，你真的打算彻底删除吗?</value>
+  </data>
+  <data name="StopRecording" xml:space="preserve">
+    <value>停止录音</value>
+  </data>
+  <data name="NoRights" xml:space="preserve">
+    <value>抱歉，您没有相应权限。</value>
+  </data>
+  <data name="ContactEmail" xml:space="preserve">
+    <value>联系邮箱</value>
+  </data>
+  <data name="FailedToChange" xml:space="preserve">
+    <value>修改失败，请检查后再试.</value>
+  </data>
+  <data name="Initial" xml:space="preserve">
+    <value>简写(至多3个字符)</value>
+  </data>
+  <data name="NickName" xml:space="preserve">
+    <value>昵称(至少2个字符)</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>保  存</value>
+  </data>
+  <data name="Sex" xml:space="preserve">
+    <value>性别</value>
+  </data>
+  <data name="StudyTarget" xml:space="preserve">
+    <value>学习目标</value>
+  </data>
+  <data name="UserName" xml:space="preserve">
+    <value>用户名(至少4个字符)</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>忘记密码了?</value>
+  </data>
+  <data name="LoginWithGoogleAccount" xml:space="preserve">
+    <value>或用谷歌帐号一键登录</value>
+  </data>
+  <data name="LoginWithMSNAccount" xml:space="preserve">
+    <value>用MSN(Windows Live帐号)登录</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>新密码</value>
+  </data>
+  <data name="NewPasswordAgain" xml:space="preserve">
+    <value>再输入一次新密码</value>
+  </data>
+  <data name="OldPassword" xml:space="preserve">
+    <value>旧密码</value>
+  </data>
+  <data name="ShareImgSummary" xml:space="preserve">
+    <value>你能快速说出下图中每个标号代表的英文单词以及对应的经典句型吗?这可是口语必备喔.</value>
+  </data>
+  <data name="ShareImgTitle" xml:space="preserve">
+    <value>朗文词图字典-{0}</value>
+  </data>
+  <data name="AboutUsInfoWY" xml:space="preserve">
+    <value>&lt;p&gt;为优网络技术(北京)有限公司,是一家立足于中国北京,致力于为全球互联网用户提供极致用户体验的公司.&lt;/p&gt;
+   &lt;p&gt; 为优(wellyours.com),一切为了你的优秀!&lt;/p&gt;
+    &lt;p&gt;我们相信,每一个人都有自己的潜能,只是很多人还没有被发现而已.为优网络需要做的工作,就是发现和挖掘你的潜能！&lt;/p&gt;
+   &lt;p&gt; 弹唱吧,是为优网络重磅推出的一款音乐游戏产品,旨在解决许多人唱歌时不能合拍的问题.通过我们多年潜心研发的核心技术,将歌词按照节拍与音乐精准对应.&lt;/p&gt;
+    &lt;p&gt;弹唱吧是学歌神器,也是训练指法的神器.有了她,你可以像专业音乐人一样玩音乐了!&lt;/p&gt;
+    &lt;p&gt;为优网络诚邀各位音乐大拿和技术高手加盟！如果你对音乐着迷,对技术热衷,请与我们联系,让我们共同开创一番美好事业!&lt;/p&gt;
+    &lt;p&gt;为优网络旗下还有英语图字典,We Chat Chinese等产品.&lt;/p&gt;</value>
+  </data>
+  <data name="TotalSongs" xml:space="preserve">
+    <value>共 {0} 首歌曲供下载(每日有新增)</value>
+  </data>
+  <data name="IWantThisSong" xml:space="preserve">
+    <value>请为我新增这首歌曲</value>
+  </data>
+  <data name="NotFound" xml:space="preserve">
+    <value>没有找到?</value>
+  </data>
+  <data name="YourSongRequestSubmitted" xml:space="preserve">
+    <value>你的请求已经提交到我们的编辑组按照顺序进行处理。请等待一段时间,谢谢你的耐心!</value>
+  </data>
+  <data name="InternalError" xml:space="preserve">
+    <value>&lt;p&gt;
+             很抱歉，系统发生了内部错误，不能完成你的操作. 
+            &lt;/p&gt;
+            &lt;p&gt;
+             我们的技术人员会尽快定位并解决.
+            &lt;/p&gt;
+            &lt;p&gt;
+             由此造成不便还请谅解.       
+            &lt;/p&gt;</value>
+  </data>
+  <data name="NotFoundError" xml:space="preserve">
+    <value>&lt;p&gt;很抱歉，你要找的页面不存在。&lt;/p&gt;
+&lt;p&gt;如果你是被邀请后操作看到这个页面，说明你还没有完成登录，这些操作只有登录之后才能进行. 请回到刚才的页面点击“接受邀请”完成注册和登录过程。&lt;/p&gt;
+&lt;p&gt;如果是因为系统内部错误导致，我们会尽快修复，造成不便还望谅解，感谢你的支持！&lt;/p&gt;</value>
+  </data>
+</root>

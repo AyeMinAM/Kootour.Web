@@ -1,0 +1,31 @@
+﻿@using MVCSite.ViewResource;
+@model MVCSite.Web.ViewModels.MInternalErrorModel
+@{
+    Layout = "~/Views/Shared/_LayoutCommunity.cshtml";
+}
+<div id="page" data-role="page">
+    <div data-role="header"  class="header">
+        <div id="backToParent" class="ui-block-b" ref="@Model.Referrer">
+            <a class="ui-shadow ui-btn ui-corner-all ui-icon-arrow-l ui-btn-icon-notext ui-btn-inline">Button</a>
+        </div>
+        <h1>@ViewStrings.InternalErrorHappened</h1>
+    </div>
+    <div class="center-wrapper">
+        <p>
+            很抱歉，系统发生了内部错误，不能完成你的操作. 
+        </p>
+        <p>
+            我们的技术人员会尽快定位并解决.
+        </p>
+        <p>
+            由此造成不便还请谅解.       
+        </p>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        $("#backToParent").bind("tap", function (event) {
+            window.location.href = $(this).attr("ref");
+        });
+    });
+</script>

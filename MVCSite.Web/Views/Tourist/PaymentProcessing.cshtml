@@ -1,0 +1,18 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";    
+}
+@section seoinfo{
+    <title>Payment Processing | Kootour</title>
+    @*The following 3 lines is for google plus*@
+    <meta itemprop="name" content="@Model.MetaName" />
+    <meta name="description" content="Payment Processing." />
+    <meta itemprop="image" content="@Url.Content("~/images/kootour.ico")" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="robots" content="noindex,nofollow" />
+}
+<div class="container">
+   <p>Your payment is being processed. It may take a few seconds.</p>
+</div>
+

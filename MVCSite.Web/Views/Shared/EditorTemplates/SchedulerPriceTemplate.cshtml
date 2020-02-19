@@ -1,0 +1,850 @@
+﻿@using MVCSite.DAC.Entities
+@using MVCSite.Web
+@using MVCSite.ViewResource
+@using MVCSite.Web.ViewModels
+@model MVCSite.Web.ViewModels.SchedulerPriceModel
+<style>
+    .RetrievedRows .Validated {
+        visibility: visible;
+    }
+    .ExtraRows .Validated {
+        visibility: hidden;
+    }
+    #DaterangeTB {
+        width:200px;
+    }
+    #extra-table thead tr th {
+        text-align: center;
+        font-size: small;
+    }
+    .EndPoint1 {
+        width: 10%;
+    }
+    .EndPoint2 {
+        width: 10%;
+    }
+    .NumericInput {
+        width: 10%;
+    }
+    .TourVendorPromo-span input.VendorPromoDateRangeTB {
+        width: 200px;
+    }
+    .TourVendorPromo-span{
+        width: 238px;
+        display: inline-table;
+        vertical-align: middle;
+    }
+    .append-icon {
+        display: inline-table;
+        vertical-align: middle;
+    }
+    .RowRemovalBtn {
+        cursor: pointer;
+    }
+</style>
+<div class="widget-body col-xs-12">
+    @using (Html.BeginForm("SchedulerPrice", @ViewContext.RouteData.Values["controller"].ToString(), new { }, FormMethod.Post, new { id = "SchedulerPriceForm", @class = "primary-col clearfix form-horizontal" }))
+    {
+        @Html.HiddenFor(m => m.ID)
+        @Html.HiddenFor(m => m.TourID)
+        @Html.HiddenFor(m => m.IfShowTourPriceBreakdowns)
+        <div id="fuelux-wizard-container">
+
+            <div class="form-group">
+                <ul class="steps visible-lg hidden-xs hidden-sm hidden-md">
+                    <li data-step="1" class="complete">
+                        @*<a href="@Url.Action("TourType", new {id=Model.ID})">*@
+                        <a href="#" onclick="return OnClickBackButton('@Url.Action(("TourType"), new { id = Model.TourID })');">
+                            <span class="step kootour-main-color">1</span>
+                            <span class="title kootour-main-color">Tour Type</span>
+                        </a>
+                    </li>
+                    <li data-step="2" class="complete">
+                        @*<a href="@Url.Action("Overview", new {id=Model.ID})">*@
+                        <a href="#" onclick="return OnClickBackButton('@Url.Action(("Overview"), new { id = Model.TourID })');">
+                            <span class="step kootour-main-color">2</span>
+                            <span class="title kootour-main-color">Overview</span>
+                        </a>
+                    </li>
+
+                    <li data-step="3" class="complete">
+                        @*<a href="@Url.Action("BookingDetails", new {id=Model.ID})">*@
+                        <a href="#" onclick="return OnClickBackButton('@Url.Action(("BookingDetails"), new { id = Model.TourID })');">
+                            <span class="step kootour-main-color">3</span>
+                            <span class="title kootour-main-color">Booking Details</span>
+                        </a>
+                    </li>
+
+                    <li data-step="4" class="active">
+                        <span class="step kootour-main-color">4</span>
+                        <span class="title kootour-main-color">Schedule & Price</span>
+                    </li>
+
+                    <li data-step="5">
+                        <span class="step kootour-main-color">5</span>
+                        <span class="title kootour-main-color">Pictures</span>
+                    </li>
+                    <li data-step="6">
+                        <span class="step kootour-main-color">6</span>
+                        <span class="title kootour-main-color">Activation</span>
+                    </li>
+                </ul>
+
+                <ul class="steps visible-xs visible-sm visible-md hidden-lg">
+                    <li data-step="4" class="active">
+                        <span class="step kootour-main-color">4</span>
+                        <span class="title kootour-main-color">Schedule & Price</span>
+                    </li>
+
+                    <li data-step="5">
+                        <span class="step kootour-main-color">5</span>
+                        <span class="title kootour-main-color">Pictures</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="step-pane" data-step="4">
+                <h4 class="lighter block kootour-main-color">8.Add your serving schedule option:</h4>
+                @*<h5 class="block">Schedule Name:</h5>
+                    <div class="form-validator">
+                        <div class="clearfix">
+                            @Html.TextBoxFor(m => m.ScheduleName, new { @class = "form-control", placeholder = "e.g. Summer Schedule" })
+                        </div>
+                        <div class="validation-row">
+                            @Html.ValidationMessageFor(m => m.ScheduleName)
+                        </div>
+                    </div>
+                    <div class="hr hr-8 hr-dotted"></div>*@
+                <h5 class="block">Date From:</h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        <div class="input-group">
+                            <span class="input-group-addon">
+                                <i class="fa fa-clock-o"></i>
+                            </span>
+                            @Html.TextBoxFor(m => m.Daterange, new { id = "DaterangeTB", @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.Daterange)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted"></div>
+                <h5 class="block">Available Tour Days:</h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        <div id="availabledays" class="control-group">
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsMonday)
+                                    <span class="lbl">Mon</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsTuesday)
+                                    <span class="lbl">Tue</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsWednesday)
+                                    <span class="lbl">Wed</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsThursday)
+                                    <span class="lbl">Thu</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsFriday)
+                                    <span class="lbl">Fri</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsSaturday)
+                                    <span class="lbl">Sat</span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox">
+                                <label>
+                                    @Html.CheckBoxFor(m => m.IsSunday)
+                                    <span class="lbl">Sun</span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.AvailableDaysValidMsg)
+                    </div>
+                </div>
+                <div class="hr hr-8 hr-dotted"></div>
+                <h5 class="block">Extra Tour Add-ons (Customized Options):<!-- <button id="add_extra" type="button" class="btn btn-white kootour-btn-main pull-right"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp;Add More</button> --></h5>
+                <table id="extra-table" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>Extra Tour Option Name</th>
+                            <th>Extra Price</th>
+                            <th>Extra Time</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-extra="true">
+                            <td>
+                                @*<input class="form-control" type="text" placeholder="e.g. Snorking" name="extraNames">*@
+                                @Html.TextBoxFor(m => m.ExtraNames1, new { @class = "form-control", placeholder = "e.g. Enjoy a Spa and Massage after the tour" })
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraNames1)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                <div class="input-group">
+                                    <span class="input-group-addon hidden-xs">$</span>
+                                    @Html.TextBoxFor(m => m.ExtraPrices1, new { id = "ExtraPrices1", @class = "form-control", type = "number", @min = "-1000", @max = "9999", @step = "1" })
+                                </div>
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraPrices1)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                @*  <input class="form-control" type="text" placeholder="2hrs" name="extraTimes">*@
+                                <div class="extra-time-value">
+                                    @Html.TextBoxFor(m => m.ExtraTimes1, new { id = "ExtraTimes1", @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:50%;float:left;" })
+                                    @Html.DropDownListFor(m => m.ExtraTimesType1, (List<SelectListItem>)Model.TimesTypeOptions, new { @class = "form-control", style = "width:50%;float:left;" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.ExtraTimes1)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr data-extra="true">
+                            <td>
+                                @*<input class="form-control" type="text" name="extraNames">*@
+                                @Html.TextBoxFor(m => m.ExtraNames2, new { @class = "form-control", placeholder = "e.g. No pickup & drop-off" })
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraNames2)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                <div class="input-group input-group">
+                                    <span class="input-group-addon hidden-xs">$</span>
+                                    @Html.TextBoxFor(m => m.ExtraPrices2, new { id = "ExtraPrices2", @class = "form-control", type = "number", @min = "-100", @max = "1000", @step = "1" })
+                                </div>
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraPrices2)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                @* <input class="form-control" type="text" name="extraTimes">*@
+                                <div class="extra-time-value">
+                                    @Html.TextBoxFor(m => m.ExtraTimes2, new { id = "ExtraTimes2", @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:50%;float:left;" })
+                                    @Html.DropDownListFor(m => m.ExtraTimesType2, (List<SelectListItem>)Model.TimesTypeOptions, new { @class = "form-control", style = "width:50%;float:left;" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.ExtraTimes2)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-extra="true">
+                            <td>
+                                @*<input class="form-control" type="text" name="extraNames">*@
+                                @Html.TextBoxFor(m => m.ExtraNames3, new { @class = "form-control" })
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraNames3)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                <div class="input-group input-group">
+                                    <span class="input-group-addon hidden-xs">$</span>
+                                    @Html.TextBoxFor(m => m.ExtraPrices3, new { id = "ExtraPrices3", @class = "form-control", type = "number", @min = "-100", @max = "1000", @step = "1" })
+                                </div>
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraPrices3)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                @* <input class="form-control" type="text" name="extraTimes">*@
+                                <div class="extra-time-value">
+                                    @Html.TextBoxFor(m => m.ExtraTimes3, new { id = "ExtraTimes3", @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:50%;float:left;" })
+                                    @Html.DropDownListFor(m => m.ExtraTimesType3, (List<SelectListItem>)Model.TimesTypeOptions, new { @class = "form-control", style = "width:50%;float:left;" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.ExtraTimes3)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-extra="true">
+                            <td>
+                                @* <input class="form-control" type="text" name="extraNames">*@
+                                @Html.TextBoxFor(m => m.ExtraNames4, new { @class = "form-control" })
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraNames4)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                <div class="input-group input-group">
+                                    <span class="input-group-addon hidden-xs">$</span>
+                                    @Html.TextBoxFor(m => m.ExtraPrices4, new { id = "ExtraPrices4", @class = "form-control", type = "number", @min = "-100", @max = "1000", @step = "1" })
+                                </div>
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraPrices4)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                @* <input class="form-control" type="text" name="extraTimes">*@
+                                <div class="extra-time-value">
+                                    @Html.TextBoxFor(m => m.ExtraTimes4, new { id = "ExtraTimes4", @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:50%;float:left;" })
+                                    @Html.DropDownListFor(m => m.ExtraTimesType4, (List<SelectListItem>)Model.TimesTypeOptions, new { @class = "form-control", style = "width:50%;float:left;" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.ExtraTimes4)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-extra="true">
+                            <td>
+                                @*<input class="form-control" type="text" name="extraNames">*@
+                                @Html.TextBoxFor(m => m.ExtraNames5, new { @class = "form-control" })
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraNames5)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                <div class="input-group input-group">
+                                    <span class="input-group-addon hidden-xs">$</span>
+                                    @Html.TextBoxFor(m => m.ExtraPrices5, new { id = "ExtraPrices5", @class = "form-control", type = "number", @min = "-100", @max = "1000", @step = "1" })
+                                </div>
+                                <div class="validation-row">
+                                    @Html.ValidationMessageFor(m => m.ExtraPrices5)
+                                </div>
+                            </td>
+                            <td class="form-validator">
+                                @*<input class="form-control" type="text" name="extraTimes">*@
+                                <div class="extra-time-value">
+                                    @Html.TextBoxFor(m => m.ExtraTimes5, new { id = "ExtraTimes5", @class = "form-control", type = "number", @min = "0", @step = "1", style = "width:50%;float:left;" })
+                                    @Html.DropDownListFor(m => m.ExtraTimesType5, (List<SelectListItem>)Model.TimesTypeOptions, new { @class = "form-control", style = "width:50%;float:left;" })
+                                    <div class="validation-row">
+                                        @Html.ValidationMessageFor(m => m.ExtraTimes5)
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                @*<div id="discount">
+                    <div class="hr hr-8 hr-dotted"></div>
+                    <h5 class="block">Discount for larger group</h5>
+                    <div class="form-validator">
+                        <div class="clearfix">
+                            <span>If >= </span>
+                            @Html.TextBoxFor(m => m.DiscountTourists, new { id = "discountTourists", style = "width:15%;", type = "number", @min = "0", @step = "1" })
+
+
+                            <span>tourists are booked, then give $</span>
+                            @Html.TextBoxFor(m => m.DiscountValue, new { id = "discountValue", style = "width:15%;", type = "number", @min = "0", @step = "1" })
+                            <span>or</span>
+                            @Html.TextBoxFor(m => m.DiscountPercent, new { id = "discountPercent", style = "width:15%;", type = "number", @min = "0", @step = "1" })
+                            <span>% discount per person.</span>
+                        </div>
+                    </div>
+                    <div class="validation-row">
+                        @Html.ValidationMessageFor(m => m.DiscountTourists)
+                        @Html.ValidationMessageFor(m => m.DiscountValue)
+                        @Html.ValidationMessageFor(m => m.DiscountPercent)
+                    </div>
+                </div>*@
+
+                <div class="hr hr-8 hr-dotted"></div>
+                <h5 class="block">Tour Start Times:</h5>
+
+                <div class="space-8"></div>
+                <div class="start_time_child">
+                    <div class="form-validator">
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label class="col-xs-4 control-label">1st StartTime</label>
+                            <div class="col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.StartTime1, new { id = "StartTime1TB", @class = "time start form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label class="col-xs-4 control-label">2nd StartTime</label>
+                            <div class="col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.StartTime2, new { id = "StartTime2TB", @class = "time start form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label class="col-xs-4 control-label">3rd StartTime</label>
+                            <div class="col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.StartTime3, new { id = "StartTime3TB", @class = "time start form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label class="col-xs-4 control-label">4th StartTime</label>
+                            <div class="col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.StartTime4, new { id = "StartTime4TB", @class = "time start form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label class="col-xs-4 control-label">5th StartTime</label>
+                            <div class="col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.StartTime5, new { id = "StartTime5TB", @class = "time start form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6 col-xs-12">
+                            <label class="col-xs-4 control-label">6th StartTime</label>
+                            <div class="col-xs-8">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                    @Html.TextBoxFor(m => m.StartTime6, new { id = "StartTime6TB", @class = "time start form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>@* end of start_time_child*@
+
+                <div class="hr hr-8 hr-dotted"></div>
+                <h5 class="block">Suggested Net Price:</h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        <div class="input-group input-group">
+                            <span class="input-group-addon">$</span>
+                            @Html.TextBoxFor(m => m.NetPrice, new { id = "NetPrice", @class = "form-control", type = "number", @min = "0", @step = "1" })
+                        </div>
+                    </div>
+                </div>
+                <div class="validation-row">
+                    @Html.ValidationMessageFor(m => m.NetPrice)
+
+                </div>
+
+                @*<div class="hr hr-8 hr-dotted"></div>
+                    <h5 class="block">Commision pay to Kootour:</h5>
+                    <div class="form-validator">
+                        <div class="clearfix">
+                            <div class="input-group">
+                                @Html.DropDownListFor(x => x.CommisionPay, new List<SelectListItem>
+                                                    {
+                                                        new SelectListItem() {Text = "10%", Value="10"},
+                                                        new SelectListItem() {Text = "15%", Value="15"},
+                                                        new SelectListItem() {Text = "20%", Value="20"},
+                                                        new SelectListItem() {Text = "Custom", Value="25"}
+                                                    }
+                                                    , new { @id = "commision0", @class = "form-control" })
+
+                                @Html.TextBoxFor(m => m.CommisionPay, new { id = "commision0", type = "number",@readonly="true", @class = "form-control", @min = "10", @step = "1", @max = "30" })
+                            </div>
+
+                            <div class="validation-row">
+                                @Html.ValidationMessageFor(m => m.CommisionPay)
+                            </div>
+
+                        </div>
+                    </div>*@
+                @*<label style = "float:right">%(Percentage)</label>*@
+
+                
+                <h5 class="block">Suggested Retail Price:</h5>
+                <div class="form-validator">
+                    <div class="clearfix">
+                        <div id="retailprice0_num" class="input-group input-group">
+                            <span class="input-group-addon">$</span>
+                            @Html.TextBoxFor(m => m.SugRetailPrice, new { id = "retailprice0", @class = "form-control", type = "number", @min = "0", @step = "1" })
+                        </div>
+                        @*<div id="retailprice0_text" class="input-group input-group">
+                                <span>Kootour will contact you to negotiate a retail price in 24 hours. Thank you for your business.</span>
+                            </div>*@
+                    </div>
+                </div>
+                <div class="validation-row">
+                    @Html.ValidationMessageFor(m => m.SugRetailPrice)<br />
+                    @Html.ValidationMessage("SugRetailPriceTooSmall")
+                </div>
+                <div class="hr hr-8 hr-dotted">
+                </div>
+                <h5 class="block">
+                    Seasonal Promotion:
+                </h5>
+                <div>
+                    <div class="space-8">
+                    </div>
+                    <table id="TourVendorPromons-table" class="table table-striped table-bordered table-hover">
+                        <tbody>
+                            @if (Model.TourVendorPromos == null)
+                            {
+                                Model.TourVendorPromos = new List<TourVendorPromoModel>();
+                            }
+                            @for (var i = 0; i < @Model.TourVendorPromos.Count; i++)
+                            {
+                                <tr id="TourVendorPromo-@i" class="TourVendorPromo RetrievedRows">
+                                    <td>
+                                        <span>Between dates </span>
+                                        <span class="TourVendorPromo-span input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </span>
+                                            @Html.TextBoxFor(m => m.TourVendorPromos[i].DateRange, new { @class = "VendorPromoDateRangeTB TourVendorPromoDateRangeTB form-control" })
+                                        </span>
+                                        <span>, give either $</span>
+                                        @Html.TextBoxFor(m => m.TourVendorPromos[i].PromoValue, new { @class = "NumericInput DiscountValue TourVendorPromoInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                        <span>or</span>
+                                        @Html.TextBoxFor(m => m.TourVendorPromos[i].PromoPercent, new { @class = "NumericInput DiscountPercent TourVendorPromoInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                        <span>% discount on each tour.</span>
+                                        <span class="append-icon Validated TourVendorPromoValidated"><i class="fa fa-check fa-2x text-success"></i></span>
+                                        <span class="append-icon RowRemoval TourVendorPromoRowRemoval pull-right"><i class="fa fa-close fa-2x RowRemovalBtn TourVendorPromoRowRemovalBtn"></i></span>
+                                    </td>
+                                </tr>
+                                <tr id="TourVendorPromoValidationMessage-@i" class="TourVendorPromoValidationMessage">
+                                    <td>
+                                        @Html.ValidationMessageFor(m => m.TourVendorPromos[i].PromoValue)
+                                        @Html.ValidationMessageFor(m => m.TourVendorPromos[i].PromoPercent)
+
+                                        @Html.ValidationMessage("TourVendorPromoValidationMessage" + @i)<br />
+                                    </td>
+                                </tr>
+                            }
+
+                            @for (var i = 0; i < @Model.TourVendorPromosExtra.Count; i++)
+                            {
+                                <tr id="TourVendorPromoExtra-@i" class="TourVendorPromoExtra ExtraRows">
+                                    <td>
+                                        <span>Between dates </span>
+                                        <span class="TourVendorPromo-span input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-clock-o"></i>
+                                            </span>
+                                            @Html.TextBoxFor(m => m.TourVendorPromosExtra[i].DateRange, new { @class = "VendorPromoDateRangeTB TourVendorPromoExtraDateRangeTB form-control" })
+                                        </span>
+                                        <span>, give either $</span>
+                                        @Html.TextBoxFor(m => m.TourVendorPromosExtra[i].PromoValue, new { @class = "ExtraInput NumericInput ExtraDiscountValue TourVendorPromoExtraInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                        <span>or</span>
+                                        @Html.TextBoxFor(m => m.TourVendorPromosExtra[i].PromoPercent, new { @class = "ExtraInput NumericInput ExtraDiscountPercent TourVendorPromoExtraInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                        <span>% discount on each tour.</span>
+                                        <span class="append-icon Validated TourVendorPromoExtraValidated"><i class="fa fa-check fa-2x text-success"></i></span>
+                                        <span class="append-icon RowRemoval TourVendorPromoExtraRowRemoval pull-right">
+                                            @if (i > 0)
+                                            {
+                                                <i class="fa fa-close fa-2x RowRemovalBtn TourVendorPromoExtraRowRemovalBtn"></i>
+                                            }
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr id="TourVendorPromoExtraValidationMessage-@i" class="TourVendorPromoExtraValidationMessage">
+                                    <td>
+                                        @Html.ValidationMessageFor(m => m.TourVendorPromosExtra[i].PromoValue)
+                                        @Html.ValidationMessageFor(m => m.TourVendorPromosExtra[i].PromoPercent)
+
+                                        @Html.ValidationMessage("TourVendorPromoExtraValidationMessage" + @i)<br />
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                @if (Model.IfShowTourPriceBreakdowns)
+                {
+                    <div class="hr hr-8 hr-dotted">
+                    </div>
+                    <h5 class="block">
+                        Price Range Specification:
+                    </h5>
+                    <div>
+                        <div class="space-8">
+                        </div>
+                        <table id="pricebreakdowns-table" class="table table-striped table-bordered table-hover">
+                            <tbody>
+                                @if (Model.TourPriceBreakdowns == null)
+                                {
+                                    Model.TourPriceBreakdowns = new List<TourPriceBreakdownModel>();
+                                }
+                                @for (var i = 0; i < @Model.TourPriceBreakdowns.Count; i++)
+                                {
+                                    <tr id="TourPriceBreakdown-@i" class="TourPriceBreakdown RetrievedRows">
+                                        <td>
+                                            <span>If >= </span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdowns[i].EndPoint1, new { @class = "EndPoint1 TourPriceBreakdownInput", type = "number", @min = "0", @step = "1" })
+                                            <span> and <= </span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdowns[i].EndPoint2, new { @class = "EndPoint2 TourPriceBreakdownInput", type = "number", @min = "0", @step = "1" })
+                                            <span>travellers are booked, give either $</span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdowns[i].DiscountValue, new { @class = "NumericInput DiscountValue TourPriceBreakdownInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                            <span>or</span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdowns[i].DiscountPercent, new { @class = "NumericInput DiscountPercent TourPriceBreakdownInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                            <span>% discount per person.</span>
+                                            <span class="append-icon Validated breakdownValidated"><i class="fa fa-check fa-2x text-success"></i></span>
+                                            <span class="append-icon RowRemoval breakdownRowRemoval pull-right"><i class="fa fa-close fa-2x RowRemovalBtn breakdownRowRemovalBtn"></i></span>
+                                        </td>
+                                    </tr>
+                                    <tr id="TourPriceBreakdownValidationMessage-@i" class="TourPriceBreakdownValidationMessage">
+                                        <td>
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].EndPoint1)
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].EndPoint2)
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].DiscountValue)
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].DiscountPercent)
+
+                                            @Html.ValidationMessage("TourPriceBreakdownValidationMessage" + @i)<br />
+                                        </td>
+                                    </tr>
+                                }
+
+                                @for (var i = 0; i < @Model.TourPriceBreakdownsExtra.Count; i++)
+                                {
+                                    <tr id="TourPriceBreakdownExtra-@i" class="TourPriceBreakdownExtra ExtraRows">
+                                        <td>
+                                            <span>If >= </span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdownsExtra[i].EndPoint1, new { @class = "ExtraInput EndPoint1 TourPriceBreakdownExtraInput", type = "number", @min = "0", @step = "1" })
+                                            <span> and <= </span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdownsExtra[i].EndPoint2, new { @class = "ExtraInput EndPoint2 TourPriceBreakdownExtraInput", type = "number", @min = "0", @step = "1" })
+                                            <span>travellers are booked, give either $</span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdownsExtra[i].DiscountValue, new { @class = "ExtraInput NumericInput ExtraDiscountValue TourPriceBreakdownExtraInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                            <span>or</span>
+                                            @Html.TextBoxFor(m => m.TourPriceBreakdownsExtra[i].DiscountPercent, new { @class = "ExtraInput NumericInput ExtraDiscountPercent TourPriceBreakdownExtraInput", placeholder = "", type = "number", @min = "0", @step = "1" })
+                                            <span>% discount per person.</span>
+                                            <span class="append-icon Validated breakdownValidated"><i class="fa fa-check fa-2x text-success"></i></span>
+                                            <span class="append-icon RowRemoval breakdownRowRemoval pull-right">
+                                                @if (i > 0)
+                                                {
+                                                    <i class="fa fa-close fa-2x RowRemovalBtn breakdownRowRemovalBtn"></i>
+                                                }
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    <tr id="TourPriceBreakdownExtraValidationMessage-@i" class="TourPriceBreakdownExtraValidationMessage">
+                                        <td>
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].EndPoint1)
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].EndPoint2)
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].DiscountValue)
+                                            @Html.ValidationMessageFor(m => m.TourPriceBreakdowns[i].DiscountPercent)
+
+                                            @Html.ValidationMessage("TourPriceBreakdownExtraValidationMessage" + @i)<br />
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="wizard-actions">
+            <a class="btn  btn-blue btn-next" href="#" onclick="return OnClickBackButton('@Url.Action(("BookingDetails"), new { id = Model.TourID })');">
+                <i class="ace-icon fa fa-arrow-left"></i>
+                Prev
+            </a>
+
+            <button type="submit" class="btn btn-blue btn-next" data-last="Finish">
+                Save & Next
+                <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    }
+</div>
+<script type="text/javascript">
+    $(function () {
+
+        //Old way to calculate price. Given retail price, calcualte net price.
+        //var calculateNetPrice=function () {
+        //    var commision = $("#commision0").val();
+        //    var v = ($("#retailprice0").val() * (1 - commision / 100)).toFixed(2);
+        //    $("#NetPrice").html(v);
+        //};
+
+        //New way to calculate price. Given net price, calcualte retail price.
+        //var calculateNetPrice = function () {
+        //    var commision = $("#commision0").val();
+
+        //    commision = parseInt(commision);
+        //    console.log(commision);
+        //    var v = Math.round($("#NetPrice").val() / (1 - commision / 100));
+        //    //var v = ($("#NetPrice").val() / (1 - commision / 100)).toFixed(2);
+        //    $("#retailprice0").val(v);
+
+        //    IfDisplayRetailPrice();
+        //};
+
+        //var IfDisplayRetailPrice = function (){
+        //    if ($("#commision0").val() === "25") {
+        //        $("#retailprice0_num").hide();
+        //        $("#retailprice0_text").show();
+        //    }else{
+        //        $("#retailprice0_text").hide();
+        //        $("#retailprice0_num").show();
+        //    }
+        //}
+
+        $('input[id="DaterangeTB"]').daterangepicker({
+            minDate: new Date(),
+            defaultDate: new Date()
+        });
+
+        $('.VendorPromoDateRangeTB').daterangepicker({
+            minDate: new Date(),
+            defaultDate: new Date()
+        });
+        //$('#EarliestStartHoursTB').timepicker();
+        $('#StartTime1TB,#StartTime2TB,#StartTime3TB,#StartTime4TB,#StartTime5TB,#StartTime6TB').timepicker({
+            'minTime': '12:00am',
+            'maxTime': '24:00pm',
+            'showDuration': false
+        });
+
+        //        $('#pairtimepicker0 .time').timepicker({
+        //            'showDuration': true,
+        //            'timeFormat': 'g:ia'
+        //        });
+        // initialize datepair
+        //        $('#pairtimepicker0').datepair();
+
+        //$("#retailprice0").on('input', calculateNetPrice);
+        //$("#NetPrice").on('input', calculateNetPrice);
+        //$("#commision0").on('change', calculateNetPrice);
+
+
+        //calculateNetPrice();
+
+        $($(".TourPriceBreakdownExtra").get().reverse()).each(function (i) {
+            return iterateExtra($(this));
+        });
+        $($(".TourVendorPromoExtra").get().reverse()).each(function (i) {
+            return iterateExtra($(this));
+        });
+
+        //Make next line and corresponding validation messages visible
+        $(".ExtraInput").focus(function () {
+            var id = $(this).parent().parent().attr("id");
+            var idPart1 = id.split("-")[0];
+            var idPart2 = Number(id.split("-")[1]) + 1;
+            var nextId = "#" + idPart1 + "-" + idPart2;
+            var nextValidationMessageId = "#" + idPart1 + "ValidationMessage" + "-" + idPart2;
+
+            //Give intelligent endPoint1 and endPoint2 values
+            //var nextExtraEndPoint1Id = $(nextId + " #ExtraEndPoint1");
+            //nextExtraEndPoint1Id.val(@Model.MinTouristNum); nextExtraEndPoint1Id.attr("value", @Model.MinTouristNum);
+            //var nextExtraEndPoint2Id = $(nextId + " #ExtraEndPoint2");
+            //nextExtraEndPoint2Id.val(@Model.MaxTouristNum); nextExtraEndPoint2Id.attr("value", @Model.MaxTouristNum);
+
+            $(nextId).css("display", "block");
+            $(nextId).children("td").css("display", "block");
+
+            $(nextValidationMessageId).css("display", "block");
+            $(nextValidationMessageId).children("td").css("display", "block");
+        });
+
+        //When Numeric Input gets blur, only ensure one has value greater than 0 and the other has value 0
+        $(".NumericInput")
+            .blur(function() {
+                var siblingNumericInput = $(this).siblings(".NumericInput");
+                siblingNumericInput.val("0");
+                siblingNumericInput.attr("value", "0");
+            });
+
+        //$.each($(".TourPriceBreakdownInput"), function (index, value) {
+        //    checkIfEntryValid($(this));
+        //}); 
+
+        //When Numeric Input, make entry with valid input prominent
+        $(".NumericInput")
+            .change(function() {
+                checkIfEntryValid($(this));
+            });
+
+        $(".RowRemovalBtn")
+            .click(function() {
+                $.each($(this).parent().siblings("Input.NumericInput"),
+                    function(index, value) {
+                        $(this).val("0");
+                        $(this).attr("value", "0");
+                        var container = $(this).parent().parent();
+                        var containerId = container.attr("id");
+                        var containerIdPart1 = containerId.split("-")[0];
+                        var containerIdPart2 = Number(containerId.split("-")[1]);
+
+                        var validationMessageId = "#" + containerIdPart1 + "ValidationMessage" + "-" + containerIdPart2;
+                        container.css("display", "none");
+                        container.children("td").css("display", "none");
+                        $(validationMessageId).css("display", "none");
+                        $(validationMessageId).children("td").css("display", "none");
+                });
+            });
+    });
+
+    function iterateExtra(container) {
+        var containerId = container.attr("id");
+        var containerIdPart1 = containerId.split("-")[0];
+        var containerIdPart2 = Number(containerId.split("-")[1]);
+        if (containerIdPart2 === 0) {
+            return false;
+        }
+
+        var aboveLineContainerIdPart2 = containerIdPart2 - 1;
+        var aboveContainerId = "#" + containerIdPart1 + "-" + aboveLineContainerIdPart2;
+
+        var aboveDiscountValue = $(aboveContainerId + " .ExtraDiscountValue").attr("value");
+        var aboveDiscountPercent = $(aboveContainerId + " .ExtraDiscountPercent").attr("value");
+        if (aboveDiscountValue > 0 || aboveDiscountPercent > 0) {
+            $(aboveContainerId + " span.Validated").css("visibility", "visible");
+            return false;
+        }
+
+        var validationMessageId = "#" + containerIdPart1 + "ValidationMessage" + "-" + containerIdPart2;
+        container.css("display", "none");
+        container.children("td").css("display", "none");
+        $(validationMessageId).css("display", "none");
+        $(validationMessageId).children("td").css("display", "none");
+    }
+
+    function checkIfEntryValid(entry) {
+        
+        //Make row look different if user input is valid
+        if (entry.val() == null ||
+            $.trim(entry.val()) == "" ||
+            !$.isNumeric(entry.val()) ||
+            Number(entry.val()) == 0) {
+            entry.siblings("span.Validated").css("visibility", "hidden");
+        } else {
+            entry.siblings("span.Validated").css("visibility", "visible");
+        }
+    }
+</script>

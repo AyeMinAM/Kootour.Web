@@ -1,0 +1,127 @@
+﻿@model MVCSite.Web.ViewModels.Layout
+@{Layout = string.Empty;}
+<nav class="navbar navbar-kootour">
+    <div class="container">
+
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-kootour-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @*            <a class="navbar-brand navbar-brand-img" href="@Url.Action("Index","Tourist")">  *@
+            <a class="navbar-brand navbar-brand-img" href="/">
+                <img alt="Brand" src="@Url.Content("~/images/icons/logo_header.png")" />
+            </a>
+            @*<p class="navbar-text kootour-link">
+                    <a href="@Url.Action("TourProducts","Guide",null)">Kootour</a>
+                </p>*@
+        </div>
+
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-kootour-collapse">
+            <!--<form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <select type="text" class="form-control white">
+                            <option value="vancouver" selected>Vancouver</option>
+                        </select>
+                    </div>
+                </form>-->
+
+            <ul class="nav navbar-nav navbar-right">
+                @*                <li><a href="#">Become a Guide
+                    <img class="icon" src="@Url.Content("~/images/icons/icon_guide.png")"></a></li>*@
+                @*<li class="message-link-mobile">
+                    <a href="#">
+                        Messages
+                        <img class="icon" src="@Url.Content("~/images/icons/icon_message.png")">
+                    </a>
+                </li>
+                <li class="message-link-desktop dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        Messages(@Model.MsgCount)
+                        <img class="icon" src="@Url.Content("~/images/icons/icon_message.png")">
+                    </a>
+                    <ul class="dropdown-menu dropdown-dashboard">
+                        @*                        <li class="dashboard-divider">
+                                <span>Notifications</span>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <div class="message-list-wrapper">
+                                        <div class="illustration">
+                                            <img src="@Url.Content("~/images/icons/icon_notification.png")" class="icon-notification">
+                                        </div>
+                                        <div>
+                                            <div class="message-list">
+                                                <p>Comfirm your email</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="dashboard-divider">
+                                <span>Messages(@Model.MsgCount)</span>
+                            </li>
+                        @foreach (var msg in Model.MsgList)
+                        {
+                            <li>
+                                <a href="#">
+                                    <div class="message-list-wrapper">
+                                        <div class="illustration">
+                                            <img src="@msg.UserAvatarUrl" alt="profile" class="icon-notification img-circle">
+                                        </div>
+                                        <div>
+                                            <div class="message-list">
+                                                <div class="name">
+                                                    <span class="blue">@msg.UserName</span>
+                                                </div>
+
+                                                <div class="content">
+                                                    <div class="wrap-long-text" style="width:200px;display: block;">@msg.Msg</div>
+                                                </div>
+
+                                                <div class="date">
+                                                    @msg.Date
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                        <li>
+                            <a href="@Url.Action("DashBoard", "Tourist")">
+                                <div class="text-center">
+                                    <span class="see-all">See All</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+               *@
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        
+                    @if (@Model.CurrentUser != null)
+                    {
+                        @Model.CurrentUser.FirstName
+                        <img class="icon img-circle" src="@Model.CurrentUser.AvatarUrl" />
+                    }
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href="@Url.Action("Tourist", "Tourist")">Profile</a></li>
+                    <li><a href="@Url.Action("EditProfile","Account")">Edit Profile</a></li>
+                    <li><a href="@Url.Action("LogOut","Account")">Log out</a></li>
+                </ul>
+            </li>
+            <!--<li><a href="#">Messages <img class="icon" src="images/icons/account_active_192X192.png" /></a></li>-->
+            <!--<li><a href="#"><img class="icon-navbar" src="images/icons/language_icon_white.png" /></a></li>-->
+        </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+</div>
+<!-- /.container-fluid -->
+</nav>

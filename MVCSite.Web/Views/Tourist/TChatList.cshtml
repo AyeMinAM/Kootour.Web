@@ -1,0 +1,30 @@
+﻿@using MVCSite.Web
+@using MVCSite.ViewResource
+@model MVCSite.Web.ViewModels.TChatListModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@foreach(var msgGroup in Model.Msgs)
+{
+    <div><span class="date">@msgGroup.Key</span></div>
+    foreach(var msg in msgGroup)
+    {
+        if (!msg.IsFromMe)
+        {
+            <div>
+                <div class="message-wrapper">
+                    <div class="message-user">
+                        <img alt="peer" class="user-extra-small-thumbnail img-circle" src="@msg.PeerUserAvatarUrl"></div>
+                    <div class="message-content drt-left"><span class="wrap-long-text">@msg.Msg</span></div>
+                </div>
+            </div>
+        } else {
+            <div>
+                <div class="message-wrapper">
+                    <div class="message-content drt-right"><span class="wrap-long-text">@msg.Msg</span></div>
+                </div>
+            </div>
+        }
+    }
+}
